@@ -1,7 +1,7 @@
 # SmurfsTrsc
 
-The repository refers to the "Smurfness-based two-phase model of ageing helps deconvolve the ageing transcriptional signature" study, currently avaiable on bioRxiv (doi: https://doi.org/10.1101/2022.11.22.517330).
-Author : Flaminia Zane, Michael Rera
+The repository refers to the following bioRxiv preprint <a href = "https://doi.org/10.1101/2022.11.22.517330"> Smurfness-based two-phase model of ageing helps deconvolve the ageing transcriptional signature</a>.
+<p> Authors : Flaminia Zane, Michael Rera
 
 ## Repository organization
 
@@ -54,7 +54,7 @@ The folder contains all the data used as an input for the code, as well as the o
 
 - The **correlation_gene_age_smurfness** folder contains the output (tables) of the **analysis_age_and_smurfness.Rmd** file.
 
--The **differential_expression** folder contains all the output of the differential gene expression analysis, included GSEA.
+- The **differential_expression** folder contains all the output of the differential gene expression analysis, included GSEA.
 
 - The **longevity** folder contains all the data of the longevity and smurf recording experiments.
 
