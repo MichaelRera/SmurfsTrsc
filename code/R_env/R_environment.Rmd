@@ -1,0 +1,19 @@
+---
+title: "R_environmet_printing"
+author: "F. Zane"
+date: "November 29, 2022"
+output: html_document
+---
+
+```{r Rversion}
+R.Version()
+
+```
+
+
+
+```{r installed_packages}
+installed.packages()
+```
+
+

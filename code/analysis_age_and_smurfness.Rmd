@@ -141,7 +141,7 @@ path_plotting_cor = function(n, paths){
                                   
 }
 
-###the function generate one pdf for each pathway. Results were manually merged and can be found at Fig6c_age_and_smurfness_correlation.pdf
+###the function generate one pdf for each pathway. Results were manually merged and can be found at ./figures/Fig6c_age_and_smurfness_correlation.pdf
 ```
 
 
