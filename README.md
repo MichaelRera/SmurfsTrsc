@@ -1,6 +1,6 @@
 # SmurfsTrsc
 
-The repository refers to the following bioRxiv preprint <a href = "https://doi.org/10.1101/2022.11.22.517330"> Smurfness-based two-phase model of ageing helps deconvolve the ageing transcriptional signature</a>.
+The repository contains the processed data and codes used for the following bioRxiv preprint <a href = "https://doi.org/10.1101/2022.11.22.517330"> Smurfness-based two-phase model of ageing helps deconvolve the ageing transcriptional signature</a>.
 <p> Authors : Flaminia Zane, Michael Rera
 
 ## Repository organization
