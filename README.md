@@ -1,6 +1,10 @@
 # SmurfsTrsc
 
+This GitHub repo contains all the code and processed data for the preprint <a href = "https://www.biorxiv.org/content/10.1101/2022.11.22.517330v1">Smurfness-based two-phase model of ageing helps deconvolve the ageing transcriptional signature</a>. 
+
 Author : XXX 
+
+
 
 ## Title 2
 
