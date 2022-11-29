@@ -1,0 +1,38 @@
+Human_gene_symbol	flybase	Gene_Set	log2FoldChange	padj2
+1	PSAT1	FBgn0014427	others	0.385665539588391	***
+2	A2M	FBgn0041180	others	0.487203060355785	*
+3	A2M	FBgn0041181	others	0.648427279351914	**
+4	A2M	FBgn0041182	others	0.904875137031725	***
+5	ADCY8	FBgn0024150	altered intercellular communication	0.560221798287241	*
+6	BIRC2	FBgn0260635	NF-κB related gene	0.2357145324452	*
+7	BIRC3	FBgn0260635	NF-κB related gene	0.2357145324452	*
+8	EEF1A1	FBgn0000557	genomic instability	0.613264387442512	***
+9	GCLC	FBgn0040319	loss of proteostasis	0.258930669867362	***
+10	HSPA1A	FBgn0001217	loss of proteostasis	0.930324039299727	*
+11	HSPA1A	FBgn0001230	loss of proteostasis	0.512633949045927	*
+12	HSPA1A	FBgn0013278	loss of proteostasis	1.0812545972094	*
+13	HSPA1B	FBgn0001217	loss of proteostasis	0.930324039299727	*
+14	HSPA1B	FBgn0001230	loss of proteostasis	0.512633949045927	*
+15	HSPA1B	FBgn0013278	loss of proteostasis	1.0812545972094	*
+16	HSPA8	FBgn0001217	loss of proteostasis	0.930324039299727	*
+17	HSPA8	FBgn0001230	loss of proteostasis	0.512633949045927	*
+18	HSPA8	FBgn0013278	loss of proteostasis	1.0812545972094	*
+19	HSPA9	FBgn0001217	epigenetic alterations	0.930324039299727	*
+20	HSPA9	FBgn0001230	epigenetic alterations	0.512633949045927	*
+21	KL	FBgn0036659	others	0.780942627195898	**
+22	LRP2	FBgn0000119	deregulated nutrient sensing	0.325355919699653	*
+23	MAPK14	FBgn0024846	stem cell exhaustion	-0.184746508305704	*
+24	NFKB1	FBgn0014018	altered intercellular communication	0.423675484276665	*
+25	NFKB2	FBgn0014018	others	0.423675484276665	*
+26	PRDX1	FBgn0033518	others	0.540190961627639	*
+27	PRDX1	FBgn0033521	others	0.586333771797453	***
+28	PTGS2	FBgn0038469	altered intercellular communication	-3.80562811522057	*
+29	SERPINB2	FBgn0028988	senescence-associated secretory phenotype	0.602912594472626	**
+30	SERPINE1	FBgn0002930	cellular senescence	0.85008308112627	**
+31	SERPINE1	FBgn0028988	cellular senescence	0.602912594472626	**
+32	SERPINE1	FBgn0033574	cellular senescence	0.829944111520459	***
+33	SQSTM1	FBgn0003231	deregulated nutrient sensing	0.15307030443219	*
+34	TIMP1	FBgn0025879	loss of proteostasis	0.38503033362826	*
+35	TIMP2	FBgn0025879	senescence-associated secretory phenotype	0.38503033362826	*
+36	WNT2	FBgn0004360	senescence-associated secretory phenotype	0.760108711952038	*
+37	XIAP	FBgn0260635	NF-κB related gene	0.2357145324452	*

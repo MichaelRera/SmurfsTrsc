@@ -1,0 +1,484 @@
+---
+title: "RNA-seq Analysis Smurf/non-Smurf"
+author: "Flaminia Zane"
+date: "May 23, 2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+#RNA-seq Analysis Smurf/non-Smurf
+
+## The data
+After pre-processing of the data (quality check of the reads, alignment on the genome and count), a matrix with raw counts is obtained. Each row is a gene (indicated by rownames) and each column is a sample. The name of the sample specifies its condition:
+
+* s/n: Smurf/non-Smurf
+* 20/30/40: chronological age at the moment of sampling. Note that one sample is indicated as 32, as not enough Smurfs could have been collected at 30 days. The 32 days old     will be considered as 30 days old in our analysis
+* M/5h/1d: moment of sampling after the smurf transition. M = mixed, not known; 5h = 5 hours within the transition, 1d = 24 hours within the transition. Note that for the  non-Smurfs such annotations simply indicate the 'matched' samples.
+
+The rest of the sample acronym does not have biological meaning, and simply specifies the sample. 
+
+
+```{r}
+#set the working directory if needed
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) #setting current working directory
+#load here libraries that are needed all along
+library(org.Dm.eg.db); library(tidyverse); library(DESeq2)
+```
+
+```{r dataset}
+require(data.table)
+#assign the dataset to an object
+raw_data <- fread("../data/RNAseq_raw_data_matrix.tabular") %>% 
+  column_to_rownames(var="Geneid") 
+#remove the genes that are never detected
+raw_data = raw_data[which(rowSums(raw_data) > 0),] 
+#explorre briefly the dataset
+head(raw_data)
+tail(raw_data)
+dim(raw_data)
+```
+
+
+##Aim of the analysis presented
+
+Here, we want to characterize the transcriptome of a Smurf in comparison to the one of a non-Smurf. In order to address this question, the following steps are followed:
+
+*Dataset exploration*: exploring how the samples groups in terms of gene expression profile. Typical analysis that are performed in such context are Principal Component Analysis (PCA), t-SNE, Hierarchical clustering.
+*Differential gene expression analysis*: quantifify the gene expression differences at a gene level amongst two different conditions. Examples of R packages/software commonly used are DESeq2 and edgeR.
+*Gene set enrichment analysis*: Interpretation of the list of differentially expressed genes (DEGs) by identifying enrichment in biological processes or pathways in the deregulated genes. Different tools are avaiable and implement in R or online to perform such analysis. The analysis can also be performed on the whole list of genes without applying a previous threshold.
+
+The three steps will be carried in the following paragraphs.
+
+##Dataset exploration
+
+PCA is a dimensionality-reduction technique suitable for exploring the behaviour of the variables when those are specified by a large number of features. In the case of transcriptome data, where each sample is defined by thousands of genes and their expression, PCA helps visualize the behaviour of the samples by "grouping" genes with similar profile into a single principal component. Here, PCA is performed and samples plotted in the space of the first two components.
+
+
+```{r PCA}
+
+###Here is reported the code for generation of figure 2a (PCA on the data)
+
+library(ggrepel)
+
+#As the differential gene expression analysis will be perform with DESeq2, the PCA will be performed in the same framework. 
+#For more information and details on the DESeq2 framework, check the vignette: http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html
+
+#creation of the colData object with data annotation, needed for the DESeq2 framework
+colData = data.frame(samples = colnames(raw_data)) %>% 
+  mutate(days = ifelse(str_starts(samples, "20"), 20, ifelse(str_starts(samples, "40"), 40, 30))) %>% #chronological age
+  mutate(condition = ifelse(str_detect(samples, "s"), "S", "NS")) %>% #condition (smurfs or non-smurfs)
+  mutate(time = ifelse(str_detect(samples, "M"), "mixed", ifelse(str_detect(samples, "1d"), "24h", "5h"))) %>% #moment of sampling after the smurf transition
+  column_to_rownames(var="samples") #respect the format required by Deseq2 by putting samples as rownames
+
+#Create dds object, which will also be used in further analysis (differential gene expression) 
+#this step also performs data normalization
+#design the matrix to keep into consideration the different biological variables
+dds1 <- DESeqDataSetFromMatrix(countData = raw_data, colData = colData, design = ~ condition + days) #warning message reports automatic conversion of variables to factor
+
+#apply a transformation to stabilize the variance prior to perform PCA on gene expression data
+vst <- vst(dds1)
+#run PCA, on the top 5000 genes in terms of variance. The ntop parameter can change depending on the needs of the analysis, default is 500.
+pca = plotPCA(vst, intgroup = c("condition", "days"), ntop =1000, returnData = TRUE)
+percentVar <- round(100 * attr(pca, "percentVar"))
+#visualize coordinates
+pca
+
+##modify the names for the pca, so that in the graph I do not repeat the information about the age and the condition
+names_samples_pca = substring(rownames(pca),4)
+names_samples_pca_final = sub("_", "-", names_samples_pca)
+pca2 = pca %>% mutate(names_graph = names_samples_pca_final)
+
+
+###compute centroids
+condition_centroid = pca2 %>% select(-c( group, days, name, names_graph)) %>% group_by(condition) %>% summarize_at(vars("PC1", "PC2"), mean)
+age_centroid = pca2 %>% select(-c( group, condition, name, names_graph)) %>% group_by(days) %>% summarize_at(vars("PC1", "PC2"), mean)
+
+
+
+#plot the PCA manually with ggplot2 for better customization
+#pca_plot = 
+  ggplot() +
+  geom_point(data = pca2, aes(PC1, PC2, color=condition, shape=as.factor(days)), size = 4, alpha = 0.9) +
+    geom_point(data = condition_centroid, aes(PC1, PC2), shape = 7, size = 5, color =  c("azure4", "deepskyblue2")) +
+     geom_point(data = age_centroid, aes(PC1, PC2), shape = 9, size = 4.5, color =  c("darkgoldenrod1", "chocolate1", "brown")) +
+    xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) +
+  geom_hline(yintercept = 0, linetype = "dotted", alpha = 0.8) +
+  geom_vline(xintercept = 0, linetype = "dotted", alpha = 0.8) +
+  geom_text_repel(data = pca2, aes(x = PC1, y = PC2, label = pca2$names_graph, col = condition), size = 5) +
+  scale_color_manual(values = c("azure4", "deepskyblue2"), name = "Condition", labels = c("non-Smurf", "Smurf")) +
+  scale_shape_discrete(name = "Age", labels = c("20 days", "30 days", "40 days")) +
+  theme_light() +
+  theme(legend.position = "top", legend.direction = "horizontal", legend.text = element_text(size = 14), plot.title = element_text(hjust = 0.5), axis.text.x = element_text(size = 14, color = "black"),
+        axis.text.y = element_text(size = 14, color = "black"), axis.title.x = element_text(size = 14, color = "black"), axis.title.y = element_text(size = 14, color = "black"))  
+
+#ggsave("../figures/Fig2a_PCA.pdf", width = 7, height = 6)
+
+
+
+###factominer analysis fof quantification of the effect of smurfness and age on the PC
+require(FactoMineR)
+##generate the dataframe
+vst_df = vst %>% assay %>% as.data.frame()
+df_hcpc = t(vst_df) %>% as.data.frame() %>%  mutate(age = colData$days, smurfness = colData$condition, time = colData$time)
+
+##select the top genes
+require(matrixStats)
+rv <- rowVars(vst_df %>% as.matrix())
+# select the ntop genes by variance
+ntop= 1000
+index <- order(rv, decreasing=TRUE)[seq_len(ntop)]
+
+index_quali = c(1002) #smurfness
+index_quanti = c(1001) #age 
+res.hcpc<- PCA(df_hcpc[,c(index, 15365:15366)], quali.sup = index_quali, quanti.sup = index_quanti,  ncp = 4)
+#checking significant association with Smurfness and age
+sup_var_interpretation = dimdesc(res.hcpc, axes=c(1:4)) 
+
+##for interpreting the correlation coefficient in the quantitative variable, check the code:
+##of the function dimdesc: https://rdrr.io/cran/FactoMineR/src/R/dimdesc.r
+##which calls condes: https://rdrr.io/cran/FactoMineR/src/R/condes.r
+##which calls cov.wt: https://rdrr.io/r/stats/cov.wt.html
+
+
+```
+
+
+The PCA shows how 45% of the variance of the dataset is recapitulated by the PC1, which almost perfectly separates Smurfs from non-Smurfs.  Interestingly, 40 days samples groups around values close to 0 for PC1, idependently of the group they belong. Samples distribute instead according to chronological age along the second component. 
+This analysis shows that Smurfness is the biological variable with the biggest effect on the transcriptome in our dataset (a young Smurf is more similar to an old Smurf than to an age-matched non-Smurf). Age has also an effect, especially in the non-Smurfs. We confirmed the PCA results by performing tsne and hierarchical clustering on sample-to-sample distance (Fig. S3 and S4). 
+
+```{supplementary_analysis r}
+
+###tSNE
+library(Rtsne)
+data_tsne = t(vst_df) %>% 
+                    as.data.frame() %>% 
+                          mutate(condition = colData$condition, days = colData$days)
+
+
+rownames(data_tsne) <- colnames(vst_df)
+#run analysis
+set.seed(42)
+tsne_out <- Rtsne(data_tsne[,-c(15365, 15366)],pca=FALSE,perplexity=10,theta=0.0)
+##for the customized plot 
+tsne_ggplot = data.frame(tsne1 = tsne_out$Y[,1], tsne2 = tsne_out$Y[,2], 
+                         samples = colnames(vst_df), condition = colData$condition, days = colData$days)
+
+ggplot(tsne_ggplot %>% mutate(new_names = pca2$names_graph), aes(tsne1, tsne2, color = condition , shape= days %>% as.character(), label = colnames(vst_df))) +
+  geom_point(size = 4, alpha = 0.9) +
+  xlab("Dimension 1") +
+  ylab("Dimension 2") +
+  geom_text_repel(aes(label = new_names), size = 4.5) +
+  #geom_text(hjust = 0, nudge_x = 0.5, size = 2) +
+  scale_color_manual(values = c("azure4", "deepskyblue2"), name = "Condition", labels = c("non-Smurf", "Smurf")) +
+  #ggtitle("PCA RNAseq samples") +
+  #scale_color_discrete(name = "Condition", labels = c("non-Smurf", "Smurf")) + 
+  scale_shape_discrete(name = "Age", labels = c("20 days", "30 days", "40 days")) +
+  theme_light() +
+  theme(legend.position = "top", legend.direction = "horizontal") +
+  theme(legend.position = "top", legend.direction = "horizontal", legend.text = element_text(size = 14), plot.title = element_text(hjust = 0.5), axis.text.x = element_text(size = 14, color = "black"),
+        axis.text.y = element_text(size = 14, color = "black"), axis.title.x = element_text(size = 14, color = "black"), axis.title.y = element_text(size = 14, color = "black")) 
+ggsave("../figures/supplementary/Fig_S3_tsne.pdf", width = 8, height = 7)
+
+
+
+#############################sample to sample distance 
+###on all the genes
+
+sampleDists <- dist(t(assay(vst)), method = "euclidean")
+sampleDistMatrix <- as.matrix(sampleDists)
+rownames(sampleDistMatrix) = pca2$names_graph
+colnames(sampleDistMatrix) <- NULL
+
+#annotation
+annotation <- data.frame(Condition = ifelse(grepl("n", colnames(vst_df)), "non-Smurf", "Smurf"), Age = ifelse(grepl("20", colnames(vst_df)), "20 days", ifelse(grepl("40", colnames(vst_df)), "40 days", "30 days" )))
+rownames(annotation) <- rownames(sampleDistMatrix) # check out the row names of annotation
+annot_colors = list(Condition = c(`non-Smurf` = "grey", Smurf = "cornflowerblue"), Age =  c(`20 days` = "darkgoldenrod1", `30 days` = "chocolate1", `40 days` = "brown"))
+#colors heatmpa
+require("RColorBrewer")
+colors <- colorRampPalette( rev(brewer.pal(9, "BuPu")) )(255)
+
+require(pheatmap)
+#function to save - from Github https://gist.github.com/timedreamer/eee213cca917bdf35fb0b24f8cb6932d
+save_pheatmap_pdf <- function(x, filename, width=7, height=7) {
+    stopifnot(!missing(x))
+    stopifnot(!missing(filename))
+    pdf(filename, width=width, height=height)
+    grid::grid.newpage()
+    grid::grid.draw(x$gtable)
+    dev.off()
+}
+
+###
+x = pheatmap(sampleDistMatrix,
+         clustering_distance_rows= sampleDists,
+         clustering_distance_cols= sampleDists, 
+         col = colors,
+         cutree_rows = 3, annotation_row  = annotation, 
+         annotation_colors = annot_colors, fontsize_row = 9)
+save_pheatmap_pdf(x, filename = "../figures/supplementary/Fig_S4_HC_samples.pdf", width = 8, height = 7)
+```
+
+
+In order to quantify the transcriptional differnces identified, differential gene expression is performed.
+
+
+## Differential gene expression analysis
+
+Differential gene expression is here performed by using DESeq2. In order to identify a Smurf specific transcriptional signature, independently of the age of the individuals, the whole group of non-Smurf is compared to the whole group of Smurfs. 
+
+```{r DEG, echo=FALSE}
+
+########DIFFERENTIAL GENE EXPRESSION RESULTS#########
+
+#use the same dds object generated before for the PCA, and perform the second step
+dds2 = DESeq(dds1)
+#compute the results object and set the alpha for the FDR at the threshold that I want to choose after
+res = results(dds2, contrast = c("condition", "S", "NS"), alpha = 0.05) 
+write.table(res %>% as.data.frame, "../data/differential_expression/res_DEGS_SvsNS.txt", row.names = TRUE, col.names = TRUE, sep = "\t", quote = FALSE)
+#significant genes
+sign = res %>% filter(padj <= 0.05)
+dim(sign)
+#with the current p-value threshold, Smurfs present 2638 differentially expressed genes
+
+##########################VISUALIZATION#############
+
+#visualization through Volcano plot
+#shirk the log2fold change for visualization
+lfc_apeglm =lfcShrink(dds2, res = res, coef = "condition_S_vs_NS" , type="apeglm")
+#write.table(lfc_apeglm %>% as.data.frame, "../tables_and_files/supplementary/res_DEGS_apeglm.txt", row.names = TRUE, col.names = TRUE, sep = "\t", quote = FALSE)
+#add information that needs to be displayed in the plot
+apeglm_for_plot = lfc_apeglm %>% as.data.frame() %>%  
+  rownames_to_column(var = "flybase") %>% dplyr::select(c("flybase", "log2FoldChange", "padj")) %>% na.omit() %>% 
+  mutate(significance = ifelse(padj <= 0.05, "signif", "non_signif")) %>% 
+  mutate(symbol = mapIds(org.Dm.eg.db, 
+                         keys= .$flybase,
+                         column="SYMBOL", 
+                         keytype="ENSEMBL",
+                         multiVals="first")) %>% 
+  mutate(annot = ifelse(log2FoldChange < -2, symbol, ifelse(log2FoldChange > 2, symbol, ""))) %>% 
+  mutate(annot = ifelse(is.na(annot), flybase, annot))
+#plot, label for the genes that have a log2FC > |2|
+
+ggplot(apeglm_for_plot, aes(log2FoldChange, -log10(padj)))+ geom_point(aes(col = significance), alpha = 0.5, size = 2) + theme_light() +
+  scale_color_manual(name = "FDR 5%", labels = c("Non significant", "Significant"), values = c("lightgrey", "red")) +
+ # theme(legend.position = "bottom", legend.direction = "horizontal")
+  geom_text_repel(aes(label = annot), size = 4.3, max.overlaps = 30) +
+  ylab("-log10(FDR)") + xlab("log2FoldChange Smurfs/non-Smurfs") +
+  theme(legend.position = "top", legend.direction = "horizontal", legend.text = element_text(size = 14), plot.title = element_text(hjust = 0.5), axis.text.x = element_text(size = 14, color = "black"),
+        axis.text.y = element_text(size = 14, color = "black"), axis.title.x = element_text(size = 14, color = "black"), axis.title.y = element_text(size = 14, color = "black"))
+  ggsave("../figures/Fig2b_volcanoplot.pdf", width = 6, height = 5)
+
+#plot without the label
+# ggplot(apeglm_for_plot, aes(log2FoldChange, -log10(padj)))+ geom_point(aes(col = significance), alpha = 0.5) + theme_light() +
+#   scale_color_manual(name = "FDR 5%", labels = c("Non significant", "Significant"), values = c("lightgrey", "red")) +
+#   theme(legend.position = "top", legend.direction = "horizontal") + #geom_text_repel(aes(label = annot), size = 4.3) + 
+#   ylab("-log10(FDR)") + xlab("log2FoldChange Smurfs/non-Smurfs")
+# ggsave("../pcitures/results/section1/volcano_plot.pdf", width = 6, height = 5)
+
+#################UNSUPERVISED HIERARCHICAL CLUSTERING ON THE SMURF GENES#################
+
+##use the same dataset used for the PCA, vst (stabilized variance) rather than simply the normalized counts
+#filter for the DEGs
+#vst_df = vst %>% assay %>% as.data.frame()
+vst_diff = vst_df[rownames(vst_df) %in% rownames(sign),]
+
+require(heatmap3)
+##prepare annotation for the heatmap plot
+vst_mat_005 = vst_diff %>% as.matrix
+annot = data.frame(samples = colnames(vst_mat_005)) %>% 
+  mutate(condition = ifelse(grepl("n", .$samples), "NS", "S")) %>% 
+  mutate(age = ifelse(grepl("20", .$samples), "20", 
+                      ifelse(grepl("40", .$samples), "40", 
+                             ifelse(grepl("30", .$samples), "30", "32")))) %>% 
+  mutate(smurfness = ifelse(condition == "NS", "grey83", "deepskyblue2")) %>% 
+  mutate(days = ifelse(age == "20", "darkgoldenrod1", ifelse(age == "40", "brown", "chocolate1")))
+annot_hp = annot %>% select(c("smurfness", "days")) %>% as.matrix
+#rownames(annot_hp) = annot$samples
+#use the same names as the pca graph
+pca2 %>% rownames
+rownames(annot_hp) = pca2$names_graph
+colnames(vst_mat_005) = pca2$names_graph
+#plot with heatmap3, default for computing the matrix is correlation
+  pdf("../figures/Fig2c_heatmap.pdf")
+heatmap3(vst_mat_005 , scale = "row", ColSideColors = annot_hp, 
+         labRow   = FALSE, showRowDendro = F, legendfun = function()
+         showLegend(legend = c("smurf", "non-smurf", "20 days", "30 days", "40 days"),
+                    fill = c("deepskyblue2", "grey83", "darkgoldenrod1", "chocolate1", "brown"), lwd = 0, 
+         col=colorRampPalette(c("green","black","red"))(1024)))
+dev.off()
+
+
+```
+
+Results show how young and midlife flies do show a very distinct signature, while the old Smurfs and the old non-Smurfs tend to mix together, showing more hetereogeneity in their signal.
+Interestingly, this looks like a general feature of the transcriptome, and it is conserved also for the genes differentially expressed. 
+Given the way the cluster, what might occur is that not only the old non-Smurfs are more similar to a Smurf than the young ones, but also the old Smurfs are "less or differently Smurfs" than the young ones. The old samples would then present a more hetereougenous signature compared to the young ones.
+
+##Gene Set Enrichment Analysis (GSEA)
+
+In order to investigate the Smurf signature, we can perform Gene Set Enrichment analysis on list of DEGs. More specifically, DEGs are ranked by l2FC and the enrichment in a certain part of the list is then tested by the algorithm. Here we use the fgsea (fast gene set enrichment analysis) R wrapping of GSEA, called by the package clusterProfiler. Using clusterProfiler allows to have data set in a format that can be inputed to the functions of the "enrichplot" package (https://yulab-smu.top/biomedical-knowledge-mining-book/enrichplot.html), offering many different kind of GSEA data visualization, depending on our needs.
+
+Note that the fgsea algorithm has an empirical p-value computation, implying randomness. Therefore, for the analysis to be reproducible, set.seed() needs to be used. The use of two different seeds might imply a slight different result in the deregulated categories. In order to try to take this into account, here we are performing the analysis 50 times, starting from a given seed, and extracting the categories occurring as deregulated in 80% of them. However, the authors only reccomend the use of the seed, for the analysis to be reproducible on a single run: further checks or decisions are left to the users.
+
+Additional filter on the log2 fold-change can be applied if considered necessary/useful for the aim of the analysis.
+
+```{r GSEA}
+require(clusterProfiler)
+
+
+##list of genes to use: as reccomended in the DESeq2 guidelines, use of the shrinked log2FC for ranking
+lfc_apeglm = lfc_apeglm %>% as.data.frame() %>% rownames_to_column(var = "gene_flybase") %>% 
+                         mutate(entrez = mapIds(org.Dm.eg.db,
+                         keys = .$gene_flybase,
+                         column = "ENTREZID", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                         keytype = "ENSEMBL",
+                         multiVals = "first"))
+#filter only the genes we are interested in 
+res_apeg <- lfc_apeglm  %>% filter(padj <= 0.05) %>%  dplyr::select(c("gene_flybase", "log2FoldChange", "entrez"))
+#creating the gene list and ranking it
+#getting the sorted gene list
+gene_list <- as.numeric(res_apeg$log2FoldChange)
+names(gene_list) <- as.character(res_apeg$gene_flybase)
+gene_list = gene_list[!is.na(names(gene_list))] %>% .[!duplicated(names(.))] %>% sort(., decreasing = TRUE)
+
+#run the analysis
+n = 50 #number of times repeating
+P = 80 #percentage for selection
+pval = 0.05 #threshold to apply
+gse_go = vector("list", n)
+organism = "org.Dm.eg.db"
+#library(organism, character.only = TRUE) #library is already loaded
+set.seed(123) #important!
+#this step can take up to 20 minutes to be performed. For a fast check, set n = 2
+for (i in 1:length(gse_go)) {
+  gse_go[[i]] <- gseGO(geneList= gene_list,
+                       ont ="BP", 
+                       keyType = "ENSEMBL", 
+                       nPerm = 15000, 
+                       minGSSize = 10, 
+                       maxGSSize = 600, 
+                       pvalueCutoff = 0.05, #change the significance level
+                       verbose = TRUE, 
+                       OrgDb = organism, 
+                       pAdjustMethod = "fdr") # %>% as.data.frame()
+}
+
+#perform the filtering with the 80% threshold
+#transform the objects in the list to dataframe
+df_gse = lapply(gse_go, function(x) as.data.frame(x))
+#save(df_gse, file = "df_gse_svsns.RData")
+#extract the categories of interest
+categories = lapply(df_gse, function(x) x$Description)
+#IF I WANT TO KEEP ONLY THE ONES THAT ARE OCCURING EVERYTIME
+#Reduce(intersect, a )
+#IF I WANT TO FILTER FOR P% PRESENCE OF THE CATEGORY
+filtering_vector = tibble(category = unlist(categories)) %>% #unlist the list and making it a tibble
+  group_by(category) %>% 
+  summarise(count = n()) %>% #group by category and generate a new column counting how many times a category occurs
+  mutate(percentage_presence = count/n*100) %>% #adding a column with the persentage 
+  #arrange(desc(count)) %>% #adding this only if we want to visualize
+  filter(percentage_presence >= P) #filter the ones that have more than a certain P percentage
+
+##find a gse_go that has all of them
+df_gse[[3]]$Description %in% filtering_vector$category %>% sum
+#use the number three in this case as it has all the categories chosen
+
+##FOR THE PLOT
+plot_gse = gse_go[[3]]
+pdf("Fig3_GSEA_SvsNS.pdf", width = 16, height = 14)
+emapplot(plot_gse, showCategory = filtering_vector$category, color = "NES", 
+         layout = "kk", cex_label_category = 0.1) + scale_color_gradient(low = "blue" , high = "red" ) #selecting the categories we want with "showCategory"
+dev.off()
+
+
+####generate tables with the categories
+df_enrich_table = df_gse[[3]][df_gse[[3]]$Description %in% filtering_vector$category,] %>% 
+                    mutate(`GO category` = paste(ID, Description)) %>% arrange(desc(NES)) %>% 
+                      mutate(`adj p-value` = ifelse(p.adjust < 0.001, "***", 
+                                                    ifelse(p.adjust > 0.001 & p.adjust < 0.01, "**", "*")))
+
+df_enrich_table_cut = df_enrich_table %>% select(c("GO category", "setSize", "NES", "adj p-value"))
+write.table(df_enrich_table_cut, "../data/differential_expression/GSEA/TABLE_S1_Smurf_vs_nonSmurf_BP.txt", row.names = TRUE, col.names = TRUE, sep = "\t", quote = FALSE)
+
+###generate the pdf table for supplementary material (find in the paper supplementary tables)
+library(kableExtra)
+table_colnames = c("GO BP category", "size", "NES", "p.adjust")
+kbl_en = kbl(df_enrich_table_cut, col.names = table_colnames, row.names = F) %>% kable_classic_2(full_width = F, html_font = "Helvetica")%>% 
+  row_spec(row = 0, bold = T, font_size = 14) 
+# save_kable(kbl_en, "../tables_and_files/kbl_svsns.html")
+# save_kable(kbl_en, "../tables_and_files/kbl_svsns.pdf")
+
+```
+
+
+
+#Summary
+
+In conclusion, we show here an example of typical workflow of RNA-Seq analysis (after preprocessing). Initial data exploration is here carried by PCA, followed by differential gene expression (DESeq2) and Gene Set Enrichment Analysis (GSEA, through fgsea R wrapping). Finally, an example of pathway analysis, analyzing deregulation of pathways instead than genes, is performed (GAGE).
+
+
+
+#edgeR analysis as DESeq2 results validation
+
+```{edgeR r}
+require(edgeR)
+#use the raw data object already present in the environment 
+#creating DGEList
+dgList <- DGEList(counts=raw_data, genes=rownames(counts))
+dgList$samples
+head(dgList$counts)
+head(dgList$genes)
+
+#filtering
+#in the manual they keep all the genes that have at least 1cpm in 2 samples
+#here I just cut for genes that have no counts for none of the genes
+#I keep this setting for it to be compareable with the DESeq analysis
+
+#Normalization
+dgList<- calcNormFactors(dgList, method = "TMM")
+#explore data
+plotMDS(dgList)
+#setting up model 
+sampleType <- rep("N", ncol(dgList))
+sampleType[grep("s", colnames(dgList))] <- "S"
+
+days <- rep("20", ncol(dgList))
+days[grep("30|32", colnames(dgList))] <- "30"
+days[grep("40", colnames(dgList))] <- "40"
+
+designMat <- model.matrix(~days + sampleType)
+designMat
+
+#Computing a genewise dispersion (tagwise dispersion)
+dgList1 <- estimateGLMCommonDisp(dgList, design=designMat)
+#Computing a genewise dispersion (tagwise dispersion)
+dgList2 <- estimateGLMTagwiseDisp(dgList1, design=designMat)
+#as suggested in the manual I use the "tagwise" gene dispersion
+fit <- glmFit(dgList2, designMat)
+lrt <- glmLRT(fit, coef = 4)
+edgeR_result <- topTags(lrt, n= 4000, p.value = 0.05)
+
+##results
+res_edgeR = edgeR_result$table
+
+##compare with DESeq2
+length(intersect(rownames(sign), rownames(res_edgeR))) 
+##join the two files
+sign_deseq = sign %>% rownames_to_column(var = "genes")
+sign_edge_deseq = inner_join(sign_deseq, base::as.data.frame(res_edgeR, stringsAsFactors = FALSE) %>% rownames_to_column(var = "genes"), by = "genes")
+
+##plot
+ggplot(sign_edge_deseq, aes(log2FoldChange, logFC)) + geom_point(alpha = 0.5) + 
+  geom_smooth(colour = "red", size = 0.3) +
+  xlab("DESeq2 log2FC") + ylab("edgeR log2FC") + theme_light() +
+  theme(axis.text.x = element_text(size = 14, color = "black"),
+        axis.text.y = element_text(size = 14, color = "black"), axis.title.x = element_text(size = 14, color = "black"), axis.title.y = element_text(size = 14, color = "black"))  
+ggsave("../figures/supplementary/Fig_S5_edgeR_deseq2_comparison.pdf", width = 4, height = 4) 
+
+##compute correlation
+cor(sign_edge_deseq$log2FoldChange, sign_edge_deseq$logFC, method = "pearson")
+
+```
+

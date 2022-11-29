@@ -1,0 +1,876 @@
+---
+title: "Longevity screening analysis"
+author: "F. Zane"
+date: "November 28, 2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+Here the analysis of the longevity screening (Fig S13 and Table S14) are reported.
+```{r setup, include=FALSE}
+#set working directory
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) #setting current working directory
+#load the packages to use
+library(tidyverse); library(readxl)
+library(survival); library(survminer)
+##source code with some of the functions used
+source("function_get_deaths_effect_pval.R")
+
+```
+
+Experiments results are stored in different files, as more round of longevity experiments were conducted. All the files that are here uploaded and analyzed can be find in the subfolder data/longevity/screening.
+```{r analysis_longevity_round1}
+
+####################################################
+
+##open file and rename colnames
+adultonly1 <- read_excel("../data/longevity/screening/Adult_only_bloom1st - final.xlsm", range = "Somme!A9:DC48", col_names = FALSE) %>% 
+  select(-c("...3", "...4")) 
+colnames(adultonly1) <- c("gene", "concentration", seq(1, ncol(adultonly1)-2, by = 1))
+wholelife1 <- read_excel("../data/longevity/screening/Whole_life_bloom1st - final.xlsm", range = "Somme!A9:DC46", col_names = FALSE) %>% 
+  select(-c("...3", "...4"))
+colnames(wholelife1) <- c("gene", "concentration", seq(1, ncol(wholelife1)-2, by = 1))
+
+#########################ADULT ONLY
+##get the deaths for each of them
+adultonly1_DC <- apply(as.matrix(adultonly1[,3:ncol(adultonly1)]), 1, gettingDeathsCounts) %>% 
+  as.data.frame() %>% 
+  mutate(time = rownames(.))
+#colnames(adultonly1_DC) <- c(adultonly1$gene, "time")
+#gather to get all the death counts in 1 column
+adultonly1_DC2 = adultonly1_DC %>% gather(., key = "gene", value = "death_count", -time) %>% 
+  mutate(gene = as.character(sapply(adultonly1$gene, function(i) rep(i, nrow(adultonly1_DC))))) %>% 
+  mutate(concentration = as.character(sapply(adultonly1$concentration, function(i) rep(i, nrow(adultonly1_DC)))))
+#filter where death counts are 0
+adultonly1_DC3 = adultonly1_DC2 %>% filter(death_count != 0) 
+#vectors for reshaped data
+n_deaths_as_time_ad = as.integer(unlist(mapply(function(i,z) rep(i,z), adultonly1_DC3$time, adultonly1_DC3$death_count)))
+genes_ad = unlist(mapply(function(i,z) rep(i,z), adultonly1_DC3$gene, adultonly1_DC3$death_count))
+concentration_ad = unlist(mapply(function(i,z) rep(i,z), adultonly1_DC3$concentration, adultonly1_DC3$death_count))
+#final_data_frame 
+adultonly1_final = data.frame(time_death =n_deaths_as_time_ad, gene = genes_ad, concentration = concentration_ad) %>%  mutate(experiment = "AD")
+#now splitting into list
+adultonly1_list <- adultonly1_final %>% group_by(gene) %>% group_split() 
+names(adultonly1_list) <- as.factor(adultonly1$gene) %>% levels()
+
+###############WHOLE LIFE
+
+
+##get the deaths for each of them
+wholelife1_DC <- apply(as.matrix(wholelife1[,3:ncol(wholelife1)]), 1, gettingDeathsCounts) %>% 
+  as.data.frame() %>% 
+  mutate(time = rownames(.))
+#colnames(wholelife1_DC) <- c(wholelife1$gene, "time")
+#gather to get all the death counts in 1 column
+wholelife1_DC2 = wholelife1_DC %>% gather(., key = "gene", value = "death_count", -time) %>% 
+  mutate(gene = as.character(sapply(wholelife1$gene, function(i) rep(i, nrow(wholelife1_DC))))) %>% 
+  mutate(concentration = as.character(sapply(wholelife1$concentration, function(i) rep(i, nrow(wholelife1_DC)))))
+#filter where death counts are 0
+wholelife1_DC3 = wholelife1_DC2 %>% filter(death_count != 0) 
+#vectors for reshaped data
+n_deaths_as_time_wl = as.integer(unlist(mapply(function(i,z) rep(i,z), wholelife1_DC3$time, wholelife1_DC3$death_count)))
+genes_wl = unlist(mapply(function(i,z) rep(i,z), wholelife1_DC3$gene, wholelife1_DC3$death_count))
+concentration_wl = unlist(mapply(function(i,z) rep(i,z), wholelife1_DC3$concentration, wholelife1_DC3$death_count))
+#final_data_frame 
+wholelife1_final = data.frame(time_death =n_deaths_as_time_wl, gene = genes_wl, concentration = concentration_wl) %>%  mutate(experiment = "WL")
+#now splitting into list
+wholelife1_list <- wholelife1_final %>% group_by(gene) %>% group_split() 
+names(wholelife1_list) <- as.factor(wholelife1$gene) %>% levels()
+
+###LIFESPAN 
+
+#lifespan as
+lifespan_df_ad1 <- adultonly1_list %>% lapply(function(a) a %>% dplyr::group_by(concentration) %>% dplyr::summarise(mean = mean(time_death)))
+
+#lifespan wl
+lifespan_df_wl1 <- wholelife1_list %>% lapply(function(a) a %>% dplyr::group_by(concentration) %>% dplyr::summarise(mean = mean(time_death))) 
+
+require(plyr)
+#compute effect
+#AD
+effect_ad1 = lapply(lifespan_df_ad1, get_longevity_effect) 
+effect_ad1 = ldply(effect_ad1, data.frame) %>%  mutate(concentration = unlist(lapply(effect_ad1, function(i) as.vector(names(i))))) 
+#WL
+effect_wl1 = lapply(lifespan_df_wl1, get_longevity_effect) 
+effect_wl1 = ldply (effect_wl1, data.frame) %>% 
+  mutate(concentration = unlist(lapply(effect_wl1, function(i) as.vector(names(i))))) 
+#compute sign
+sign_ad1 = lapply(adultonly1_list, get_effect_significance)
+sign_ad1 = ldply(sign_ad1, data.frame) %>%  mutate(concentration = unlist(lapply(sign_ad1, function(i) as.vector(names(i)))))
+sign_wl1 = lapply(wholelife1_list, get_effect_significance)
+sign_wl1 = ldply(sign_wl1, data.frame) %>%  mutate(concentration = unlist(lapply(sign_wl1, function(i) as.vector(names(i)))))
+
+
+###get final dataframe 
+
+#adult only
+
+ad1_final = effect_ad1 %>% cbind(sign_ad1$X..i..) %>% mutate(experiment = "AD")
+colnames(ad1_final) = c("gene", "effect", "concentration", "pval", "experiment")
+wl1_final = effect_wl1 %>% cbind(sign_wl1$X..i..) %>% mutate(experiment = "WL")
+colnames(wl1_final) = c("gene", "effect", "concentration", "pval", "experiment")
+
+final_round1 = rbind(ad1_final, wl1_final) %>% mutate(sign = ifelse(pval <= 0.5, "yes", "no")) %>% mutate(direction = ifelse(effect > 0, "positive", "negative"))
+final_round1$concentration = factor(final_round1$concentration, levels = c("RU0", "RU10", "RU50", "RU100", "RU200"))
+
+save(file = "../data/longevity/screening/final_round1.RData", final_round1)
+###this file will be used later for the final plot
+
+```
+
+
+
+
+```{r analysis_longevity_round2_3}
+##open file and rename colnames
+adultonly2 <- read_excel("../data/longevity/screening/Adultonly2ndround - final.xlsm", range = "Somme!A9:CY13", col_names = FALSE) %>% 
+  select(-c("...3", "...4")) 
+colnames(adultonly2) <- c("gene", "concentration", seq(1, ncol(adultonly2)-2, by = 1))
+wholelife2 <- read_excel("../data/longevity/screening/WholeLife2ndround - final.xlsm", range = "Somme!A9:DC13", col_names = FALSE) %>% 
+  select(-c("...3", "...4"))
+colnames(wholelife2) <- c("gene", "concentration", seq(1, ncol(wholelife2)-2, by = 1))
+
+#########################ADULT ONLY
+##get the deaths for each of them
+adultonly2_DC <- apply(as.matrix(adultonly2[,3:ncol(adultonly2)]), 1, gettingDeathsCounts) %>% 
+  as.data.frame() %>% 
+  mutate(time = rownames(.))
+#colnames(adultonly2_DC) <- c(adultonly2$gene, "time")
+#gather to get all the death counts in 1 column
+adultonly2_DC2 = adultonly2_DC %>% gather(., key = "gene", value = "death_count", -time) %>% 
+  mutate(gene = as.character(sapply(adultonly2$gene, function(i) rep(i, nrow(adultonly2_DC))))) %>% 
+  mutate(concentration = as.character(sapply(adultonly2$concentration, function(i) rep(i, nrow(adultonly2_DC)))))
+#filter where death counts are 0
+adultonly2_DC3 = adultonly2_DC2 %>% filter(death_count != 0) 
+#vectors for reshaped data
+n_deaths_as_time_ad = as.integer(unlist(mapply(function(i,z) rep(i,z), adultonly2_DC3$time, adultonly2_DC3$death_count)))
+genes_ad = unlist(mapply(function(i,z) rep(i,z), adultonly2_DC3$gene, adultonly2_DC3$death_count))
+concentration_ad = unlist(mapply(function(i,z) rep(i,z), adultonly2_DC3$concentration, adultonly2_DC3$death_count))
+#final_data_frame 
+adultonly2_final = data.frame(time_death =n_deaths_as_time_ad, gene = genes_ad, concentration = concentration_ad) %>%  mutate(experiment = "AD")
+#now splitting into list
+adultonly2_list <- adultonly2_final %>% group_by(gene) %>% group_split() 
+names(adultonly2_list) <- as.factor(adultonly2$gene) %>% levels()
+
+###############WHOLE LIFE
+
+
+##get the deaths for each of them
+wholelife2_DC <- apply(as.matrix(wholelife2[,3:ncol(wholelife2)]), 1, gettingDeathsCounts) %>% 
+  as.data.frame() %>% 
+  mutate(time = rownames(.))
+#colnames(wholelife2_DC) <- c(wholelife2$gene, "time")
+#gather to get all the death counts in 1 column
+wholelife2_DC2 = wholelife2_DC %>% gather(., key = "gene", value = "death_count", -time) %>% 
+  mutate(gene = as.character(sapply(wholelife2$gene, function(i) rep(i, nrow(wholelife2_DC))))) %>% 
+  mutate(concentration = as.character(sapply(wholelife2$concentration, function(i) rep(i, nrow(wholelife2_DC)))))
+#filter where death counts are 0
+wholelife2_DC3 = wholelife2_DC2 %>% filter(death_count != 0) 
+#vectors for reshaped data
+n_deaths_as_time_wl = as.integer(unlist(mapply(function(i,z) rep(i,z), wholelife2_DC3$time, wholelife2_DC3$death_count)))
+genes_wl = unlist(mapply(function(i,z) rep(i,z), wholelife2_DC3$gene, wholelife2_DC3$death_count))
+concentration_wl = unlist(mapply(function(i,z) rep(i,z), wholelife2_DC3$concentration, wholelife2_DC3$death_count))
+#final_data_frame 
+wholelife2_final = data.frame(time_death =n_deaths_as_time_wl, gene = genes_wl, concentration = concentration_wl) %>%  mutate(experiment = "WL")
+#now splitting into list
+wholelife2_list <- wholelife2_final %>% group_by(gene) %>% group_split() 
+names(wholelife2_list) <- as.factor(wholelife2$gene) %>% levels()
+
+###LIFESPAN 
+#lifespan as
+lifespan_df_ad2 <- adultonly2_list %>% lapply(function(a) a %>% dplyr::group_by(concentration) %>% dplyr::summarise(mean = mean(time_death)))
+#lifespan wl
+lifespan_df_wl2 <- wholelife2_list %>% lapply(function(a) a %>% dplyr::group_by(concentration) %>% dplyr::summarise(mean = mean(time_death))) 
+
+
+
+#############"-----------------------ROUND3-------------------------######################
+
+##open file and rename colnames
+adultonly3 <- read_excel("../data/longevity/screening/Adultonly3rdround - final.xlsm", range = "Somme!A9:DB33", col_names = FALSE) %>% 
+  select(-c("...3", "...4"))
+colnames(adultonly3) <- c("gene", "concentration", seq(1, ncol(adultonly3)-2, by = 1))
+wholelife3 <- read_excel("../data/longevity/screening/Adultonly3rdround - final.xlsm", range = "Somme!A9:DC31", col_names = FALSE) %>% 
+  select(-c("...3", "...4"))
+colnames(wholelife3) <- c("gene", "concentration", seq(1, ncol(wholelife3)-2, by = 1))
+
+
+#########################ADULT ONLY
+##get the deaths for each of them
+adultonly3_DC <- apply(as.matrix(adultonly3[,3:ncol(adultonly3)]), 1, gettingDeathsCounts) %>% 
+  as.data.frame() %>% 
+  mutate(time = rownames(.))
+#colnames(adultonly3_DC) <- c(adultonly3$gene, "time")
+#gather to get all the death counts in 1 column
+adultonly3_DC2 = adultonly3_DC %>% gather(., key = "gene", value = "death_count", -time) %>% 
+  mutate(gene = as.character(sapply(adultonly3$gene, function(i) rep(i, nrow(adultonly3_DC))))) %>% 
+  mutate(concentration = as.character(sapply(adultonly3$concentration, function(i) rep(i, nrow(adultonly3_DC)))))
+#filter where death counts are 0
+adultonly3_DC3 = adultonly3_DC2 %>% filter(death_count != 0) 
+#vectors for reshaped data
+n_deaths_as_time_ad = as.integer(unlist(mapply(function(i,z) rep(i,z), adultonly3_DC3$time, adultonly3_DC3$death_count)))
+genes_ad = unlist(mapply(function(i,z) rep(i,z), adultonly3_DC3$gene, adultonly3_DC3$death_count))
+concentration_ad = unlist(mapply(function(i,z) rep(i,z), adultonly3_DC3$concentration, adultonly3_DC3$death_count))
+#final_data_frame 
+adultonly3_final = data.frame(time_death =n_deaths_as_time_ad, gene = genes_ad, concentration = concentration_ad) %>%  mutate(experiment = "AD")
+#now splitting into list
+adultonly3_list <- adultonly3_final %>% group_by(gene) %>% group_split() 
+names(adultonly3_list) <- as.factor(adultonly3$gene) %>% levels()
+
+###############WHOLE LIFE
+
+##get the deaths for each of them
+wholelife3_DC <- apply(as.matrix(wholelife3[,3:ncol(wholelife3)]), 1, gettingDeathsCounts) %>% 
+  as.data.frame() %>% 
+  mutate(time = rownames(.))
+#colnames(wholelife3_DC) <- c(wholelife3$gene, "time")
+#gather to get all the death counts in 1 column
+wholelife3_DC2 = wholelife3_DC %>% gather(., key = "gene", value = "death_count", -time) %>% 
+  mutate(gene = as.character(sapply(wholelife3$gene, function(i) rep(i, nrow(wholelife3_DC))))) %>% 
+  mutate(concentration = as.character(sapply(wholelife3$concentration, function(i) rep(i, nrow(wholelife3_DC)))))
+#filter where death counts are 0
+wholelife3_DC3 = wholelife3_DC2 %>% filter(death_count != 0) 
+#vectors for reshaped data
+n_deaths_as_time_wl = as.integer(unlist(mapply(function(i,z) rep(i,z), wholelife3_DC3$time, wholelife3_DC3$death_count)))
+genes_wl = unlist(mapply(function(i,z) rep(i,z), wholelife3_DC3$gene, wholelife3_DC3$death_count))
+concentration_wl = unlist(mapply(function(i,z) rep(i,z), wholelife3_DC3$concentration, wholelife3_DC3$death_count))
+#final_data_frame 
+wholelife3_final = data.frame(time_death =n_deaths_as_time_wl, gene = genes_wl, concentration = concentration_wl) %>%  mutate(experiment = "WL")
+#now splitting into list
+wholelife3_list <- wholelife3_final %>% group_by(gene) %>% group_split() 
+names(wholelife3_list) <- as.factor(wholelife3$gene) %>% levels()
+
+###LIFESPAN 
+#lifespan as
+lifespan_df_ad3 <- adultonly3_list %>% lapply(function(a) a %>% dplyr::group_by(concentration) %>% dplyr::summarise(mean = mean(time_death)))
+#lifespan wl
+lifespan_df_wl3 <- wholelife3_list %>% lapply(function(a) a %>% dplyr::group_by(concentration) %>% dplyr::summarise(mean = mean(time_death))) 
+
+
+
+
+##############BIND ROUND 2 AND ROUND 3 AND GET THE FINAL FILES 
+adultonly_list_2_3 = append(adultonly2_list, adultonly3_list)
+wholelife_list_2_3 = append(wholelife2_list, wholelife3_list)
+lifespan_ad_2_3 = append(lifespan_df_ad2, lifespan_df_ad3)
+lifespan_wl_2_3 = append(lifespan_df_wl2, lifespan_df_wl3)
+
+
+#compute effect
+#compute effect
+#AD
+effect_ad_2_3 = lapply(lifespan_ad_2_3, get_longevity_effect) 
+effect_ad_2_3 = ldply(effect_ad_2_3, data.frame) %>%  mutate(concentration = unlist(lapply(effect_ad_2_3, function(i) as.vector(names(i))))) 
+#WL
+effect_wl_2_3 = lapply(lifespan_wl_2_3, get_longevity_effect) 
+effect_wl_2_3 = ldply (effect_wl_2_3, data.frame) %>% 
+  mutate(concentration = unlist(lapply(effect_wl_2_3, function(i) as.vector(names(i))))) 
+#compute sign
+sign_ad_2_3 = lapply(adultonly_list_2_3, get_effect_significance)
+sign_ad_2_3 = ldply(sign_ad_2_3, data.frame) %>%  mutate(concentration = unlist(lapply(sign_ad_2_3, function(i) as.vector(names(i)))))
+sign_wl_2_3 = lapply(wholelife_list_2_3, get_effect_significance)
+sign_wl_2_3 = ldply(sign_wl_2_3, data.frame) %>%  mutate(concentration = unlist(lapply(sign_wl_2_3, function(i) as.vector(names(i)))))
+
+
+#adult only
+ad2_3_final = effect_ad_2_3 %>% cbind(sign_ad_2_3$X..i..) %>% mutate(experiment = "AD")
+colnames(ad2_3_final) = c("gene", "effect", "concentration", "pval", "experiment")
+wl2_3_final = effect_wl_2_3 %>% cbind(sign_wl_2_3$X..i..) %>% mutate(experiment = "WL")
+colnames(wl2_3_final) = c("gene", "effect", "concentration", "pval", "experiment")
+
+final_round2_3 = rbind(ad2_3_final, wl2_3_final) %>% mutate(sign = ifelse(pval <= 0.5, "yes", "no")) %>% mutate(direction = ifelse(effect > 0, "positive", "negative"))
+final_round2_3$concentration = factor(final_round2_3$concentration, levels = c("RU0", "RU10", "RU50", "RU100", "RU200"))
+
+ggplot(final_round2_3, aes(x = gene, y = concentration)) +
+  theme_light()+
+  geom_point(aes(size = effect, color = sign, shape = direction)) +
+  facet_grid(~experiment) +
+  scale_size_continuous(limits = c(min(final_round2_3$effect), 0.2), range = c(0.5,7)) +
+  theme(axis.text.x = element_text(angle=90)) 
+
+save(file = "../data/longevity/screening/final_round_2_3.RData", final_round2_3)
+
+```
+
+```{r analysis_experiment_performed_by_JuliaLisaMolina}
+
+adultonlyJ_1 <- read_excel("../data/longevity/screening/Longevity_J_AD1stRound_24_02_2020_GoodChAC.xlsm", range = "Somme!A9:DA28", col_names = FALSE) %>% 
+  select(-c("...3", "...4"))
+colnames(adultonlyJ_1) <- c("gene", "concentration", seq(1, ncol(adultonlyJ_1)-2, by = 1))
+wholelifeJ_1 <- read_excel("../data/longevity/screening/Longevity_J_WL1stRound_27_02_2020_GoogChAC.xlsm", range = "Somme!A9:CX28", col_names = FALSE) %>% 
+  select(-c("...3", "...4"))
+colnames(wholelifeJ_1) <- c("gene", "concentration", seq(1, ncol(wholelifeJ_1)-2, by = 1))
+
+###ADULT ONLY
+
+##get the deaths for each of them
+adultonlyJ_1_DC <- apply(as.matrix(adultonlyJ_1[,3:ncol(adultonlyJ_1)]), 1, gettingDeathsCounts) %>% 
+  as.data.frame() %>% 
+  mutate(time = rownames(.))
+#colnames(adultonlyJ_1_DC) <- c(adultonlyJ_1$gene, "time")
+#gather to get all the death counts in 1 column
+adultonlyJ_1_DC2 = adultonlyJ_1_DC %>% gather(., key = "gene", value = "death_count", -time) %>% 
+  mutate(gene = as.character(sapply(adultonlyJ_1$gene, function(i) rep(i, nrow(adultonlyJ_1_DC))))) %>% 
+  mutate(concentration = as.character(sapply(adultonlyJ_1$concentration, function(i) rep(i, nrow(adultonlyJ_1_DC)))))
+#filter where death counts are 0
+adultonlyJ_1_DC3 = adultonlyJ_1_DC2 %>% filter(death_count != 0) 
+#vectors for reshaped data
+n_deaths_as_time = as.integer(unlist(mapply(function(i,z) rep(i,z), adultonlyJ_1_DC3$time, adultonlyJ_1_DC3$death_count)))
+genes_ = unlist(mapply(function(i,z) rep(i,z), adultonlyJ_1_DC3$gene, adultonlyJ_1_DC3$death_count))
+concentration_ = unlist(mapply(function(i,z) rep(i,z), adultonlyJ_1_DC3$concentration, adultonlyJ_1_DC3$death_count))
+#final_data_frame 
+adultonlyJ_1_final = data.frame(time_death =n_deaths_as_time, gene = genes_, concentration = concentration_)
+#now splitting into list
+adultonlyJ_1_list <- adultonlyJ_1_final %>% group_by(gene) %>% group_split() 
+names(adultonlyJ_1_list) <- as.factor(adultonlyJ_1$gene) %>% levels()
+
+###WHOLE LIFE
+##get the deaths for each of them
+wholelifeJ_1_DC <- apply(as.matrix(wholelifeJ_1[,3:ncol(wholelifeJ_1)]), 1, gettingDeathsCounts) %>% 
+  as.data.frame() %>% 
+  mutate(time = rownames(.))
+#colnames(wholelifeJ_1_DC) <- c(wholelifeJ_1$gene, "time")
+#gather to get all the death counts in 1 column
+wholelifeJ_1_DC2 = wholelifeJ_1_DC %>% gather(., key = "gene", value = "death_count", -time) %>% 
+  mutate(gene = as.character(sapply(wholelifeJ_1$gene, function(i) rep(i, nrow(wholelifeJ_1_DC))))) %>% 
+  mutate(concentration = as.character(sapply(wholelifeJ_1$concentration, function(i) rep(i, nrow(wholelifeJ_1_DC)))))
+#filter where death counts are 0
+wholelifeJ_1_DC3 = wholelifeJ_1_DC2 %>% filter(death_count != 0) 
+#vectors for reshaped data
+n_deaths_as_time = as.integer(unlist(mapply(function(i,z) rep(i,z), wholelifeJ_1_DC3$time, wholelifeJ_1_DC3$death_count)))
+genes_ = unlist(mapply(function(i,z) rep(i,z), wholelifeJ_1_DC3$gene, wholelifeJ_1_DC3$death_count))
+concentration_ = unlist(mapply(function(i,z) rep(i,z), wholelifeJ_1_DC3$concentration, wholelifeJ_1_DC3$death_count))
+#final_data_frame 
+wholelifeJ_1_final = data.frame(time_death =n_deaths_as_time, gene = genes_, concentration = concentration_)
+#now splitting into list
+wholelifeJ_1_list <- wholelifeJ_1_final %>% group_by(gene) %>% group_split() 
+names(wholelifeJ_1_list) <- as.factor(wholelifeJ_1$gene) %>% levels()
+
+###LIFESPAN 
+#lifespan ad
+lifespan_df_adJ_1 <- adultonlyJ_1_list %>% lapply(function(a) a %>% dplyr::group_by(concentration) %>% dplyr::summarise(mean = mean(time_death)))
+#lifespan wl
+lifespan_df_wlJ_1 <- wholelifeJ_1_list %>% lapply(function(a) a %>% dplyr::group_by(concentration) %>% dplyr::summarise(mean = mean(time_death))) 
+
+
+#################################--------------------------------------roundJULIA2---------------------##############################
+
+adultonlyJ_2 <- read_excel("../data/longevity/screening/Longevity_J_AD2ndRound_02_03_2020_GoodChAC.xlsm", range = "Somme!A9:DA33", col_names = FALSE) %>% 
+  select(-c("...3", "...4"))
+colnames(adultonlyJ_2) <- c("gene", "concentration", seq(1, ncol(adultonlyJ_2)-2, by = 1))
+wholelifeJ_2 <- read_excel("../data/longevity/screening/Longevity_J_WL2ndRound_05_03_2020_GoodCHnC.xlsm", range = "Somme!A9:CZ33", col_names = FALSE) %>% 
+  select(-c("...3", "...4"))
+colnames(wholelifeJ_2) <- c("gene", "concentration", seq(1, ncol(wholelifeJ_2)-2, by = 1))
+
+##adult only
+##get the deaths for each of them
+adultonlyJ_2_DC <- apply(as.matrix(adultonlyJ_2[,3:ncol(adultonlyJ_2)]), 1, gettingDeathsCounts) %>% 
+  as.data.frame() %>% 
+  mutate(time = rownames(.))
+#colnames(adultonlyJ_2_DC) <- c(adultonlyJ_2$gene, "time")
+#gather to get all the death counts in 1 column
+adultonlyJ_2_DC2 = adultonlyJ_2_DC %>% gather(., key = "gene", value = "death_count", -time) %>% 
+  mutate(gene = as.character(sapply(adultonlyJ_2$gene, function(i) rep(i, nrow(adultonlyJ_2_DC))))) %>% 
+  mutate(concentration = as.character(sapply(adultonlyJ_2$concentration, function(i) rep(i, nrow(adultonlyJ_2_DC)))))
+#filter where death counts are 0
+adultonlyJ_2_DC3 = adultonlyJ_2_DC2 %>% filter(death_count != 0) 
+#vectors for reshaped data
+n_deaths_as_time = as.integer(unlist(mapply(function(i,z) rep(i,z), adultonlyJ_2_DC3$time, adultonlyJ_2_DC3$death_count)))
+genes_ = unlist(mapply(function(i,z) rep(i,z), adultonlyJ_2_DC3$gene, adultonlyJ_2_DC3$death_count))
+concentration_ = unlist(mapply(function(i,z) rep(i,z), adultonlyJ_2_DC3$concentration, adultonlyJ_2_DC3$death_count))
+#final_data_frame 
+adultonlyJ_2_final = data.frame(time_death =n_deaths_as_time, gene = genes_, concentration = concentration_)
+#now splitting into list
+adultonlyJ_2_list <- adultonlyJ_2_final %>% group_by(gene) %>% group_split() 
+names(adultonlyJ_2_list) <- as.factor(adultonlyJ_2$gene) %>% levels()
+
+#whole life
+##get the deaths for each of them
+wholelifeJ_2_DC <- apply(as.matrix(wholelifeJ_2[,3:ncol(wholelifeJ_2)]), 1, gettingDeathsCounts) %>% 
+  as.data.frame() %>% 
+  mutate(time = rownames(.))
+#colnames(wholelifeJ_2_DC) <- c(wholelifeJ_2$gene, "time")
+#gather to get all the death counts in 1 column
+wholelifeJ_2_DC2 = wholelifeJ_2_DC %>% gather(., key = "gene", value = "death_count", -time) %>% 
+  mutate(gene = as.character(sapply(wholelifeJ_2$gene, function(i) rep(i, nrow(wholelifeJ_2_DC))))) %>% 
+  mutate(concentration = as.character(sapply(wholelifeJ_2$concentration, function(i) rep(i, nrow(wholelifeJ_2_DC)))))
+#filter where death counts are 0
+wholelifeJ_2_DC3 = wholelifeJ_2_DC2 %>% filter(death_count != 0) 
+#vectors for reshaped data
+n_deaths_as_time = as.integer(unlist(mapply(function(i,z) rep(i,z), wholelifeJ_2_DC3$time, wholelifeJ_2_DC3$death_count)))
+genes_ = unlist(mapply(function(i,z) rep(i,z), wholelifeJ_2_DC3$gene, wholelifeJ_2_DC3$death_count))
+concentration_ = unlist(mapply(function(i,z) rep(i,z), wholelifeJ_2_DC3$concentration, wholelifeJ_2_DC3$death_count))
+#final_data_frame 
+wholelifeJ_2_final = data.frame(time_death =n_deaths_as_time, gene = genes_, concentration = concentration_)
+#now splitting into list
+wholelifeJ_2_list <- wholelifeJ_2_final %>% group_by(gene) %>% group_split() 
+names(wholelifeJ_2_list) <- as.factor(wholelifeJ_2$gene) %>% levels()
+
+###LIFESPAN 
+#lifespan ad
+lifespan_df_adJ_2 <- adultonlyJ_2_list %>% lapply(function(a) a %>% dplyr::group_by(concentration) %>% dplyr::summarise(mean = mean(time_death)))
+#lifespan wl
+lifespan_df_wlJ_2 <- wholelifeJ_2_list %>% lapply(function(a) a %>% dplyr::group_by(concentration) %>% dplyr::summarise(mean = mean(time_death))) 
+
+
+
+
+##############BIND ROUND 1 AND ROUND 2 AND GET THE FINAL FILES 
+adultonly_list_J_1_2 = append(adultonlyJ_1_list, adultonlyJ_2_list)
+wholelife_list_J_1_2 = append(wholelifeJ_1_list, wholelifeJ_2_list)
+lifespan_adJ_1_2 = append(lifespan_df_adJ_1, lifespan_df_adJ_2)
+lifespan_wlJ_1_2 = append(lifespan_df_wlJ_1, lifespan_df_wlJ_2)
+
+
+#compute effect
+#compute effect
+#AD
+effect_adJ_1_2 = lapply(lifespan_adJ_1_2, get_longevity_effect) 
+effect_adJ_1_2 = ldply(effect_adJ_1_2, data.frame) %>%  mutate(concentration = unlist(lapply(effect_adJ_1_2, function(i) as.vector(names(i))))) 
+#WL
+effect_wlJ_1_2 = lapply(lifespan_wlJ_1_2, get_longevity_effect) 
+effect_wlJ_1_2 = ldply (effect_wlJ_1_2, data.frame) %>% 
+  mutate(concentration = unlist(lapply(effect_wlJ_1_2, function(i) as.vector(names(i))))) 
+#compute sign
+sign_adJ_1_2 = lapply(adultonly_list_J_1_2, get_effect_significance)
+sign_adJ_1_2 = ldply(sign_adJ_1_2, data.frame) %>%  mutate(concentration = unlist(lapply(sign_adJ_1_2, function(i) as.vector(names(i)))))
+sign_wlJ_1_2 = lapply(wholelife_list_J_1_2, get_effect_significance)
+sign_wlJ_1_2 = ldply(sign_wlJ_1_2, data.frame) %>%  mutate(concentration = unlist(lapply(sign_wlJ_1_2, function(i) as.vector(names(i)))))
+
+
+#adult only
+adJ_1_2_final = effect_adJ_1_2 %>% cbind(sign_adJ_1_2$X..i..) %>% mutate(experiment = "AD")
+colnames(adJ_1_2_final) = c("gene", "effect", "concentration", "pval", "experiment")
+wlJ_1_2_final = effect_wlJ_1_2%>% cbind(sign_wlJ_1_2$X..i..) %>% mutate(experiment = "WL")
+colnames(wlJ_1_2_final) = c("gene", "effect", "concentration", "pval", "experiment")
+
+final_J_round1_2 = rbind(adJ_1_2_final, wlJ_1_2_final) %>% mutate(sign = ifelse(pval <= 0.5, "yes", "no")) %>% mutate(direction = ifelse(effect > 0, "positive", "negative"))
+final_J_round1_2$concentration = factor(final_J_round1_2$concentration, levels = c("RU0", "RU10", "RU50", "RU100", "RU200"))
+
+
+save(file = "final_J_round1_2.RData", final_J_round1_2)
+
+
+```
+
+
+```{r adf1KD_hsfKD_added_manually}
+###longevity data can be found in the same data/longevity/screening folder 
+###add all those info on the "genes predicted up in smurfs"
+
+#####RUN THZ 
+###logranks
+concentrations = list(RU10 = c("RU0", "RU10"), RU50 = c("RU0", "RU50"), RU100 = c("RU0", "RU100"), RU200 = c("RU0", "RU200"))
+#writing the function. group is concentrations and df is the dataset with 4 columuns: time_of_death, gene-line, number of deaths, RU concentration
+logrank_auto = function(group, df) {
+  tmp = df %>% filter(concentration %in% group)
+  logrank = survdiff(formula = Surv(time_death) ~ concentration, data = tmp)
+  return(logrank)
+}
+
+
+##Adf1 adult only 
+adf <- read_excel("../data/longevity/screening/AdultOnly_screening_adf1.xlsm", range = "A9:DH33", col_names = FALSE) %>% 
+  select(-c("...3", "...4", "...5")) %>% 
+  mutate(across(everything(), ~ replace_na(.x, 0))) 
+colnames(adf) <- c("gene", "concentration", "initial_number", seq(1, ncol(adf)-3, by = 1))
+adf = adf %>% select(-gene) %>%  group_by(concentration) %>% 
+  summarise(across(.cols = everything(), sum)) #%>% mutate(gene = genes[1])
+adf2 <-adf %>% select(-c(concentration, initial_number)) %>% t() %>% as_tibble() %>% mutate(time = rownames(.))
+colnames(adf2) <- c(adf$concentration , "time")
+adf3 <- adf2 %>% gather(., key = "concentration", value = "death_count", -time) %>% mutate(gene = genes[1]) %>% filter(death_count != 0) 
+adf_n_deaths_as_time = as.integer(unlist(mapply(function(i,z) rep(i,z), adf3$time, adf3$death_count)))
+adf_genes_ = unlist(mapply(function(i,z) rep(i,z), adf3$gene, adf3$death_count))
+adf_concentration_ = unlist(mapply(function(i,z) rep(i,z), adf3$concentration, adf3$death_count))
+adf_final = data.frame(time_death = adf_n_deaths_as_time, gene = adf_genes_, concentration = adf_concentration_)
+fit_adf = survfit(formula = Surv(time_death) ~ concentration, data = adf_final , conf.type = "log")
+p = ggsurvplot(fit_adf , linetype = 1, title = "Adf1 KD Adult Only")
+p$plot + geom_hline(yintercept = 0.5, linetype = "dashed")
+###mean lifespan and concentrations
+adf_mean_lifespan = adf_final %>% group_by(concentration) %>% summarise(mean = mean(time_death))
+adf_t50 = adf_final %>% group_by(concentration) %>% summarise(t50 = median(time_death))
+###logrank
+adf_LR = lapply(concentrations, logrank_auto, df =  adf_final)
+
+
+##Adf1 whole life
+WL_val1 <- read_excel("../data/longevity/screening/WholeLife_screening_adf1.xlsm", range = "A9:DH31", col_names = FALSE) %>% 
+  select(-c("...3", "...4", "...5")) %>% 
+  mutate(across(everything(), ~ replace_na(.x, 0))) 
+colnames(WL_val1) <- c("gene", "concentration", "initial_number", seq(1, ncol(WL_val1)-3, by = 1))
+
+
+##Adf1 whole life
+adfWL <-read_excel("../data/longevity/screening/WholeLife_screening_adf1.xlsm", range = "A9:DH31", col_names = FALSE) %>% 
+  select(-c("...3", "...4", "...5")) %>% 
+  mutate(across(everything(), ~ replace_na(.x, 0))) 
+colnames(adfWL) <- c("gene", "concentration", "initial_number", seq(1, ncol(WL_val1)-3, by = 1))
+adfWL = adfWL %>% select(-gene) %>%  group_by(concentration) %>% 
+  summarise(across(.cols = everything(), sum)) #%>% mutate(gene = genes[1])
+adfWL2 <-adfWL %>% select(-c(concentration, initial_number)) %>% t() %>% as_tibble() %>% mutate(time = rownames(.))
+colnames(adfWL2) <- c(adfWL$concentration , "time")
+adfWL3 <- adfWL2 %>% gather(., key = "concentration", value = "death_count", -time) %>% mutate(gene = genes_WL[1]) %>% filter(death_count != 0) 
+adfWL_n_deaths_as_time = as.integer(unlist(mapply(function(i,z) rep(i,z), adfWL3$time, adfWL3$death_count)))
+adfWL_genes_ = unlist(mapply(function(i,z) rep(i,z), adfWL3$gene, adfWL3$death_count))
+adfWL_concentration_ = unlist(mapply(function(i,z) rep(i,z), adfWL3$concentration, adfWL3$death_count))
+adfWL_final = data.frame(time_death = adfWL_n_deaths_as_time, gene = adfWL_genes_, concentration = adfWL_concentration_)
+fit_adfWL = survfit(formula = Surv(time_death) ~ concentration, data = adfWL_final , conf.type = "log")
+p = ggsurvplot(fit_adfWL, linetype = 1, title = "Adf1 KD Whole Life")
+p$plot + geom_hline(yintercept = 0.5, linetype = "dashed")
+###get effect and 
+adf_mean_lifespan = adfWL_final %>% group_by(concentration) %>% summarise(mean = mean(time_death))
+adf_t50 = adfWL_final %>% group_by(concentration) %>% summarise(t50 = median(time_death))
+###get infos about the data
+adf_LR = lapply(concentrations, logrank_auto, df =  adfWL_final)
+get_effect_significance(adfWL_final)
+get_longevity_effect(adf_mean_lifespan)
+
+
+
+#################Hsf KD
+hsfKD <- read_excel("../data/longevity/screening/AdultOnly_screening_Hsf_kD.xlsm", range = "A9:DA122", col_names = FALSE) %>% 
+  select(-c("...3", "...4", "...5")) %>% 
+  mutate(across(everything(), ~ replace_na(.x, 0))) 
+colnames(hsfKD) <- c("gene", "concentration", "initial_number", seq(1, ncol(hsfKD)-3, by = 1))
+hsfKD = hsfKD %>% select(-gene) %>%  group_by(concentration) %>% 
+  summarise(across(.cols = everything(), sum)) #%>% mutate(gene = genes[1])
+hsfKD2 <-hsfKD %>% select(-c(concentration, initial_number)) %>% t() %>% as_tibble() %>% mutate(time = rownames(.))
+colnames(hsfKD2) <- c(hsfKD$concentration , "time")
+hsfKD3 <- hsfKD2 %>% gather(., key = "concentration", value = "death_count", -time) %>% mutate(gene = genes[1]) %>% filter(death_count != 0) 
+hsfKD_n_deaths_as_time = as.integer(unlist(mapply(function(i,z) rep(i,z), hsfKD3$time, hsfKD3$death_count)))
+hsfKD_genes_ = unlist(mapply(function(i,z) rep(i,z), hsfKD3$gene, hsfKD3$death_count))
+hsfKD_concentration_ = unlist(mapply(function(i,z) rep(i,z), hsfKD3$concentration, hsfKD3$death_count))
+hsfKD_final = data.frame(time_death = hsfKD_n_deaths_as_time, gene = hsfKD_genes_, concentration = hsfKD_concentration_)
+fit_hsfKD = survfit(formula = Surv(time_death) ~ concentration, data = hsfKD_final , conf.type = "log")
+ggsurvplot(fit_hsfKD, linetype = 1, title = "Hsf KD Adult Only")
+####effect and significance
+hsfKD_mean_lifespan <- hsfKD_final %>% group_by(concentration) %>% summarise(mean = mean(time_death))
+hsfKD_t50 <- hsfKD_final %>% group_by(concentration) %>% summarise(t50 = median(time_death))
+get_effect_significance(hsfKD_final)
+get_longevity_effect(hsfKD_mean_lifespan)
+
+###whole life
+
+hsf_wl_KD <- read_excel("../data/longevity/screening/WholeLife_screening_Hsf_kD.xlsm", range = "A9:DD31", col_names = FALSE) %>% 
+  select(-c("...3", "...4", "...5")) %>% 
+  mutate(across(everything(), ~ replace_na(.x, 0))) 
+colnames(WL_val2) <- c("gene", "concentration", "initial_number", seq(1, ncol(WL_val2)-3, by = 1))
+
+hsf_wl_KD = hsf_wl_KD %>% select(-gene) %>%  group_by(concentration) %>% 
+  summarise(across(.cols = everything(), sum)) #%>% mutate(gene = genes[1])
+hsf_wl_KD2 <-hsf_wl_KD %>% select(-c(concentration, initial_number)) %>% t() %>% as_tibble() %>% mutate(time = rownames(.))
+colnames(hsf_wl_KD2) <- c(hsf_wl_KD$concentration , "time")
+hsf_wl_KD3 <- hsf_wl_KD2 %>% gather(., key = "concentration", value = "death_count", -time) %>% mutate(gene = genes[1]) %>% filter(death_count != 0) 
+hsf_wl_KD_n_deaths_as_time = as.integer(unlist(mapply(function(i,z) rep(i,z), hsf_wl_KD3$time, hsf_wl_KD3$death_count)))
+hsf_wl_KD_genes_ = unlist(mapply(function(i,z) rep(i,z), hsf_wl_KD3$gene, hsf_wl_KD3$death_count))
+hsf_wl_KD_concentration_ = unlist(mapply(function(i,z) rep(i,z), hsf_wl_KD3$concentration, hsf_wl_KD3$death_count))
+hsf_wl_KD_final = data.frame(time_death = hsf_wl_KD_n_deaths_as_time, gene = hsf_wl_KD_genes_, concentration = hsf_wl_KD_concentration_)
+fit_hsf_wl_KD = survfit(formula = Surv(time_death) ~ concentration, data = hsf_wl_KD_final , conf.type = "log")
+ggsurvplot(fit_hsf_wl_KD, linetype = 1, title = "hsf whole life knock down females")
+
+################
+hsf_wl_KD_mean_lifespan <- hsf_wl_KD_final %>% group_by(concentration) %>% summarise(mean = mean(time_death))
+hsf_wl_KD_t50 <- hsf_wl_KD_final %>% group_by(concentration) %>% summarise(t50 = median(time_death))
+get_effect_significance(hsf_wl_KD_final)
+get_longevity_effect(hsf_wl_KD_mean_lifespan)
+
+
+
+################manually implement
+
+
+adf1_data_ = data.frame(gene = rep("Adf1", 8), effect = c(0.07566142, 0.01806084, 0.03393011, 0.03245254,0.075180176, -0.101744038, -0.127474983, -0.008527876),
+                        pval = c(0.0432246, 0.9680421, 0.0597463, 0.7307710, 0.0000514056, 0.0034962545, 0.0164737420, 0.4363907813),
+                        concentration = rep(c("RU10", "RU100", "RU200", "RU50"), 2), experiment = c(rep("AD",4), rep("WL",4)))
+
+hsf_data = data.frame(gene = rep("Hsf KD", 8), effect = c(-0.09026531,  0.06352028,  0.04256785,  0.06533014, -0.08720915, -0.11505856, -0.14240121, -0.04055611),
+                      pval = c(0.000606665, 0.595748949, 0.923938248, 0.225353561, 1.118446e-02, 1.159150e-01, 3.385532e-05, 8.541697e-01),
+                      concentration = rep(c("RU10", "RU100", "RU200", "RU50"), 2), experiment = c(rep("AD",4), rep("WL",4)))
+
+add_data = rbind(adf1_data_, hsf_data) %>% mutate(sign = ifelse(pval < 0.05, "yes", "no"), direction = ifelse(effect > 0, "positive", "negative"), 
+                                                  effect_per = effect*100)
+```
+
+```{r combine_data}
+
+all_rounds_combined = rbind(final_round1, final_round2_3, final_J_round1_2) %>% mutate(effect_per = effect*100)
+#genes up in smurfs amongst the tested
+genes_up <- c("rib", "Hey", "dmrt93B", "kay", "Ets21C", "Ets21c", 
+              "Mef2")
+#genes regulating genes up in smurfs
+genes_regulating_up <- c("Aef1", "Trl", "CG4360", "FoxP", "Hsf")
+#genes down in smurfs amongst the tested
+genes_down <- c("Ets96B")
+#genes regulating genes down in smurfs 
+genes_regulating_down <- c("GATAd", "GATAe", "srp", "NFyB")
+
+
+###new dataframes
+##new dataframes
+genes_up_df = dplyr::filter(all_rounds_combined, all_rounds_combined$gene %in% all_rounds_combined$gene[grep(paste(genes_up,collapse="|"), all_rounds_combined$gene)])
+genes_down_df = dplyr::filter(all_rounds_combined, all_rounds_combined$gene %in% all_rounds_combined$gene[grep(paste(genes_down,collapse="|"), all_rounds_combined$gene)])
+genes_regulating_up_df = dplyr::filter(all_rounds_combined, all_rounds_combined$gene %in% all_rounds_combined$gene[grep(paste(genes_regulating_up,collapse="|"), all_rounds_combined$gene)])
+genes_regulating_down_df = dplyr::filter(all_rounds_combined, all_rounds_combined$gene %in% all_rounds_combined$gene[grep(paste(genes_regulating_down,collapse="|"), all_rounds_combined$gene)])
+
+#####Prepare the plot
+supp.labs <- c("Adulthood only", "Development and Adulthood" )
+names(supp.labs) <- c("AD", "WL")
+
+###rename the genes 
+#write.table(all_rounds_combined$gene %>% unique, "gene_names.txt", col.names = FALSE, row.names = FALSE, quote = FALSE)
+names_correspondence = read.table("../data/longevity/screening/gene_names.txt", header = FALSE, stringsAsFactors = FALSE, sep = ",")
+colnames(names_correspondence) = c("gene", "gene_plot") 
+
+##plots
+ggplot_genes_up = ggplot(genes_up_df %>% left_join(names_correspondence) %>% 
+                           filter(!(gene_plot %in% c("upd2 KD", "upd3 KD")))  , aes(x = gene_plot, y = concentration)) +
+  theme_light()+
+  geom_point(aes(size = sign, color = direction)) +
+  scale_size_manual(values = c(3,8), labels = c("> 0.05", "< 0.05")) +
+  facet_grid(~experiment, labeller = labeller(experiment = supp.labs)) +
+  #scale_size_continuous(limits = c(-0.8, 0.1), range = c(0.5,7)) +
+  theme(axis.text.x = element_text(angle=90, face = "italic"), strip.text.x = element_text(
+    size = 10, color = "black", face = "bold")) +
+  scale_color_manual(values = c( "dodgerblue1", "firebrick2"), labels = c("decrease", "increase")) +
+  ggtitle("Genes up in Smurf") +
+  labs( size = "log-rank pvalue", colour = "mean lifespan") + xlab("gene alteration") +ylab("RU486 concentration")
+#ggsave("gg_genes_up.pdf", width = 6, height = 5)
+  ggplot_genes_down = ggplot(genes_down_df %>% left_join(names_correspondence) , aes(x = gene_plot, y = concentration)) +
+  theme_light()+
+    geom_point(aes(size = sign, color = direction)) +
+    scale_size_manual(values = c(3,8), labels = c("> 0.05", "< 0.05")) +
+    facet_grid(~experiment, labeller = labeller(experiment = supp.labs)) +
+    #scale_size_continuous(limits = c(-0.8, 0.1), range = c(0.5,7)) +
+    theme(axis.text.x = element_text(angle=90, face = "italic"), strip.text.x = element_text(
+      size = 10, color = "black", face = "bold")) +
+    scale_color_manual(values = c( "dodgerblue1", "firebrick2"), labels = c("decrease", "increase")) +
+  ggtitle("Genes down in Smurf") +
+  labs( size = "log-rank pvalue", colour = "mean lifespan") + xlab("gene alteration") +ylab("RU486 concentration")
+
+
+ggplot_regulatin_genes_up = ggplot(genes_regulating_up_df %>% rbind(add_data) %>% left_join(names_correspondence) %>% 
+                           mutate(gene_plot = ifelse(gene == "Adf1", 'Adf1 KD', ifelse(gene == "Hsf KD", "Hsf KD", gene_plot))) , aes(x = gene_plot, y = concentration)) +
+  theme_light()+
+  geom_point(aes(size = sign, color = direction)) +
+  scale_size_manual(values = c(3,8), labels = c("> 0.05", "< 0.05")) +
+  facet_grid(~experiment, labeller = labeller(experiment = supp.labs)) +
+  #scale_size_continuous(limits = c(-0.8, 0.1), range = c(0.5,7)) +
+  theme(axis.text.x = element_text(angle=90, face = "italic"), strip.text.x = element_text(
+    size = 10, color = "black", face = "bold")) +
+  scale_color_manual(values = c( "dodgerblue1", "firebrick2"), labels = c("decrease", "increase")) +
+  ggtitle("Genes regulating genes up in Smurf") +
+  labs( size = "log-rank pvalue", colour = "mean lifespan") + xlab("gene alteration") +ylab("RU486 concentration")
+
+ggplot_regulatin_genes_down = ggplot(genes_regulating_down_df %>% left_join(names_correspondence) , aes(x = gene_plot, y = concentration)) +
+  theme_light()+
+  geom_point(aes(size = sign, color = direction)) +
+  scale_size_manual(values = c(3,8), labels = c("> 0.05", "< 0.05")) +
+  facet_grid(~experiment, labeller = labeller(experiment = supp.labs)) +
+  #scale_size_continuous(limits = c(-0.8, 0.1), range = c(0.5,7)) +
+  theme(axis.text.x = element_text(angle=90,  face = "italic"), strip.text.x = element_text(
+    size = 10, color = "black", face = "bold")) +
+  scale_color_manual(values = c( "dodgerblue1", "firebrick2"), labels = c("decrease", "increase")) +
+  ggtitle("Genes regulating genes down in Smurf") +
+  labs( size = "log-rank pvalue", colour = "mean lifespan") + xlab("gene alteration") +ylab("RU486 concentration")
+
+  require(ggpubr)
+  ggarrange(ggplot_genes_up, ggplot_regulatin_genes_up, ggplot_genes_down, ggplot_regulatin_genes_down, ncol = 2, nrow = 2)
+  ggsave("../figures/supplementary/Fig_S13_longevity_screen.pdf", width = 15, height = 10)
+
+  
+
+```
+
+
+
+
+
+
+```{r table}
+###STRUCTURE OF THE TABLE: EACH LINE IS A GENE, AND I NEED THE EXPERIMENT AND LINE INFO, AND THEN THE INFOS OF THE EXPERIMENT FOR EACH CONCENTRATION
+
+##from the ad_wl_1.R file
+effect_ad1_spread = effect_ad1 %>% spread(concentration, X..i..) %>%  mutate(experiment = "adulthood")
+colnames(effect_ad1_spread) = c("gene", "effect_10", "effect_100", "effect_200", "effect_50", "experiment")
+effect_wl1_spread = effect_wl1 %>%  spread(concentration, X..i..) %>%  mutate(experiment = "development & adulthood")
+colnames(effect_wl1_spread) = c("gene", "effect_10", "effect_100", "effect_200", "effect_50", "experiment")
+sign_ad1_spread = sign_ad1 %>% spread(concentration, X..i..) %>% mutate(experiment = "adulthood")
+colnames(sign_ad1_spread) = c("gene", "sign_10", "sign_100", "sign_200", "sign_50", "experiment")
+sign_wl1_spread = sign_wl1 %>%  spread(concentration, X..i..) %>%  mutate(experiment = "development & adulthood")
+colnames(sign_wl1_spread) = c("gene", "sign_10", "sign_100", "sign_200", "sign_50", "experiment")
+ml_1_spread_ad =  ldply(lifespan_df_ad1, data.frame) %>% spread(concentration, mean) %>% filter(!(.id %in% c("28575 upd3 KD", "33949 upd2 KD")))  %>% mutate(experiment = "adulthood")
+colnames(ml_1_spread_ad) = c("gene", "ml_0", "ml_10", "ml_100", "ml_200", "ml_50", "experiment")
+ml_1_spread_wl =  ldply(lifespan_df_wl1, data.frame) %>% spread(concentration, mean) %>% filter(!(.id %in% c("28575 upd3 KD", "33949 upd2 KD")))  %>% mutate(experiment = "development & adulthood")
+colnames(ml_1_spread_wl) = c("gene", "ml_0", "ml_10", "ml_100", "ml_200", "ml_50", "experiment")
+
+
+##from the file final_round_2_3
+
+effect_ad_2_3_spread = effect_ad_2_3 %>% spread(concentration, X..i..) %>%  mutate(experiment = "adulthood")
+colnames(effect_ad_2_3_spread) = c("gene", "effect_10", "effect_100", "effect_200", "effect_50", "experiment")
+effect_wl_2_3_spread = effect_wl_2_3 %>% spread(concentration, X..i..) %>%  mutate(experiment = "adulthood & development")
+colnames(effect_wl_2_3_spread) = c("gene", "effect_10", "effect_100", "effect_200", "effect_50", "experiment")
+
+sign_ad_2_3_spread = sign_ad_2_3 %>% spread(concentration, X..i..) %>%  mutate(experiment = "adulthood")
+colnames(sign_ad_2_3_spread) = c("gene", "sign_10", "sign_100", "sign_200", "sign_50", "experiment")
+sign_wl_2_3_spread = sign_wl_2_3 %>% spread(concentration, X..i..) %>%  mutate(experiment = "adulthood")
+colnames(sign_wl_2_3_spread) = c("gene", "sign_10", "sign_100", "sign_200", "sign_50", "experiment")
+
+ml_2_3_spread_ad =  ldply(lifespan_ad_2_3, data.frame) %>% spread(concentration, mean)  %>% mutate(experiment = "adulthood")
+colnames(ml_2_3_spread_ad) = c("gene", "ml_0", "ml_10", "ml_100", "ml_200", "ml_50", "experiment")
+ml_2_3_spread_wl =  ldply(lifespan_wl_2_3, data.frame) %>% spread(concentration, mean)   %>% mutate(experiment = "development & adulthood")
+colnames(ml_2_3_spread_wl) = c("gene", "ml_0","ml_10", "ml_100", "ml_200", "ml_50", "experiment")
+
+##from the file julia_ad_and_wl.R
+
+effect_ad_j_spread = effect_adJ_1_2 %>% spread(concentration, X..i..) %>%  mutate(experiment = "adulthood")
+colnames(effect_ad_j_spread) = c("gene", "effect_10", "effect_100", "effect_200", "effect_50", "experiment")
+effect_wl_j_spread = effect_wlJ_1_2 %>% spread(concentration, X..i..) %>%  mutate(experiment = "adulthood & development")
+colnames(effect_wl_j_spread) = c("gene", "effect_10", "effect_100", "effect_200", "effect_50", "experiment")
+
+sign_ad_j_spread = sign_adJ_1_2 %>% spread(concentration, X..i..) %>%  mutate(experiment = "adulthood")
+colnames(sign_ad_j_spread) = c("gene", "sign_10", "sign_100", "sign_200", "sign_50", "experiment")
+sign_wl_j_spread = sign_wlJ_1_2 %>% spread(concentration, X..i..) %>%  mutate(experiment = "adulthood")
+colnames(sign_wl_j_spread) = c("gene", "sign_10", "sign_100", "sign_200", "sign_50", "experiment")
+
+ml_j_spread_ad =  ldply(lifespan_adJ_1_2, data.frame) %>% spread(concentration, mean)  %>% mutate(experiment = "adulthood")
+colnames(ml_j_spread_ad) = c("gene", "ml_0", "ml_10", "ml_100", "ml_200", "ml_50", "experiment")
+ml_j_spread_wl =  ldply(lifespan_wlJ_1_2, data.frame) %>% spread(concentration, mean)   %>% mutate(experiment = "development & adulthood")
+colnames(ml_j_spread_wl) = c("gene", "ml_0","ml_10", "ml_100", "ml_200", "ml_50", "experiment")
+
+##data to add 
+effect_add_spread = data.frame(gene = c(rep("Adf1", 2), rep("Hsf KD",2)), 
+                               effect_10 = c(0.07566142, 0.075180176, -0.09026531, -0.08720915),
+                               effect_100 = c(0.01806084, -0.101744038, 0.06352028, -0.11505856),
+                               effect_200 = c(0.03393011, -0.127474983, 0.04256785, -0.14240121),
+                               effect_50 = c(0.03245254, -0.008527876 , 0.06533014, -0.04055611),
+                               experiment = rep(c("adulthood", "development&adulthood"), 2)) 
+
+sign_add_spred = data.frame(gene = c(rep("Adf1", 2), rep("Hsf KD",2)), 
+                            sign_10 = c(0.0432246, 0.0000514056, 0.000606665, 1.118446e-02),
+                            sign_100 = c(0.9680421, 0.0034962545, 0.595748949, 1.159150e-01),
+                            sign_200 = c(0.0597463, 0.0164737420, 0.923938248, 3.385532e-05),
+                            sign_50 = c(0.7307710, 0.4363907813, 0.225353561, 8.541697e-01),
+                            experiment = rep(c("adulthood", "development&adulthood"), 2))
+
+ml_sign_spread = data.frame(gene = c(rep("Adf1", 2), rep("Hsf KD",2)), 
+                            ml_0 = c(70.5 ,74.9,68.2,65.3), 
+                            ml_10 = c(75.8, 80.6,62.0,59.6),
+                            ml_100 = c(71.8, 67.3,72.5,57.8),
+                            ml_200 = c(72.9, 65.4,71.1,56.0),
+                            ml_50 = c(72.8, 74.3, 72.7, 62.7),
+                            experiment = rep(c("adulthood", "development&adulthood"), 2))
+
+
+
+
+#####
+###NOW PUT ALL TOGETHER
+
+#bind the sigle ones that are divided in experiments (adult only and whole life)
+effect1 = rbind(effect_ad1_spread, effect_wl1_spread)
+sign1 = rbind(sign_ad1_spread, sign_wl1_spread)
+ml1 = rbind(ml_1_spread_ad, ml_1_spread_wl)
+
+effect2_3 = rbind(effect_ad_2_3_spread, effect_wl_2_3_spread)
+sign2_3 = rbind(sign_ad_2_3_spread, sign_wl_2_3_spread)
+ml2_3 = rbind(ml_2_3_spread_ad, ml_2_3_spread_wl)
+
+effect_j = rbind(effect_ad_j_spread, effect_wl_j_spread)
+sign_j = rbind(sign_ad_j_spread, sign_wl_j_spread)
+ml_j = rbind(ml_j_spread_ad, ml_j_spread_wl)
+
+
+####
+###now bind all together 
+
+all_data_table = cbind( 
+  rbind(effect1, effect2_3, effect_j, effect_add_spread),
+  rbind(sign1, sign2_3, sign_j, sign_add_spred),
+  rbind(ml1, ml2_3, ml_j, ml_sign_spread)) %>% 
+  .[!duplicated(as.list(.))] %>% 
+  select(-c("experiment.1", "experiment.2"))
+
+names_correspondence = read.table("gene_names.txt", header = FALSE, stringsAsFactors = FALSE, sep = ",")
+colnames(names_correspondence) = c("gene", "gene_plot") 
+line_correspondacence = read.table("gene_to_get_lines.txt", header = TRUE, sep = ",", stringsAsFactors = FALSE)
+colnames(line_correspondacence) = c("gene2", "line", "stock")
+
+all_data_table2 = left_join(all_data_table, names_correspondence) %>% 
+  mutate(gene_names = c(gene_plot[1:46], "Adf1 KD", "Adf1 KD", "Hsf KD", "Hsf KD")) %>% 
+  select(-gene_plot)  %>% cbind(line_correspondacence) %>% select(-gene2)
+sign_data = all_data_table2 %>% select(grep("sign", colnames(.))) %>% as.matrix() %>% 
+  formatC(., format = "e", digits = 1) %>% as.data.frame()
+effect_data = all_data_table2 %>% select(grep("effect", colnames(.))) %>% as.matrix() %>% apply(2, function(x) x*100) %>% apply(2, function(x) round(x,2)) %>% as.data.frame()
+ml_data = all_data_table2 %>% select(grep("ml", colnames(.))) %>% as.matrix %>% apply(2, function(x) round(x,2)) %>% as.data.frame()
+
+
+all_data_table3 = cbind(all_data_table2 %>% select("gene_names", "line", "stock", "experiment"), effect_data, sign_data, ml_data)
+
+
+#now try to get the right order in the table. First separate into the different categories
+genes_up <- c("rib", "Hey", "dmrt93B", "kay", "Ets21C", "Ets21c",
+              "Mef2")
+#genes regulating genes up in smurfs
+genes_regulating_up <- c("Aef1", "Trl", "CG4360", "FoxP", "Hsf", "Adf1")
+#genes down in smurfs amongst the tested
+genes_down <- c("Ets96B")
+#genes regulating genes down in smurfs 
+genes_regulating_down <- c("GATAd", "GATAe", "srp", "NFyB")
+ 
+genes_up_df = dplyr::filter(all_data_table3, all_data_table3$gene %in% all_data_table3$gene[grep(paste(genes_up,collapse="|"), all_data_table3$gene)])
+genes_down_df = dplyr::filter(all_data_table3, all_data_table3$gene %in% all_data_table3$gene[grep(paste(genes_down,collapse="|"), all_data_table3$gene)])
+genes_regulating_up_df = dplyr::filter(all_data_table3, all_data_table3$gene %in% all_data_table3$gene[grep(paste(genes_regulating_up,collapse="|"), all_data_table3$gene)])
+genes_regulating_down_df = dplyr::filter(all_data_table3, all_data_table3$gene %in% all_data_table3$gene[grep(paste(genes_regulating_down,collapse="|"), all_data_table3$gene)])
+
+#costumize the table for genes_up_df
+GU_df = genes_up_df %>% arrange(gene_names)
+GD_df = genes_down_df %>% arrange(gene_names)
+GU_r_df = genes_regulating_up_df %>% arrange(gene_names)
+GU_d_df = genes_regulating_down_df %>% arrange(gene_names)
+
+new_order = c("gene_names", "line", "stock", "experiment", "ml_0", "ml_10","effect_10", "sign_10", "ml_50","effect_50", "sign_50",
+              "ml_100","effect_100", "sign_100","ml_200","effect_200", "sign_200")
+
+GU_df = GU_df[new_order] 
+GD_df = GD_df[new_order]  
+GU_r_df = GU_r_df[new_order] 
+GU_d_df = GU_d_df[new_order] 
+
+table_colnames = c("gene", "line", "stock", "temporal control", "ML", "ML", "% effect", "pval", "ML", "% effect", "pval",
+                   "ML", "% effect", "pval", "ML", "% effect", "pval")
+
+###now the table
+require(kableExtra)
+
+kbl_up = kbl(GU_df, col.names = table_colnames) %>% kable_classic %>% 
+  row_spec(row = 0, bold = T, font_size = 14) %>%  
+  row_spec(row = 1:nrow(GU_df), bold = F, font_size = 12) %>% 
+  add_header_above(c(" ", " ", " ", " " , "RU0" = 1, "RU10" = 3, "RU50" = 3, "RU100" = 3, "RU200" = 3), bold = T) %>% 
+  add_header_above(c("Up in Smurfs" = 17), bold = T, font_size = "large")
+#save_kable(kbl_up, "Table_S14_screening_up_1.pdf")
+#save_kable(kbl_up, "kbl_up.pdf")
+
+kbl_down = kbl(GD_df, col.names = table_colnames) %>% kable_classic %>% 
+  row_spec(row = 0, bold = T, font_size = 14) %>%  
+  row_spec(row = 1:nrow(GD_df), bold = F, font_size = 12) %>% 
+  add_header_above(c(" ", " ", " ", " " , "RU0" = 1, "RU10" = 3, "RU50" = 3, "RU100" = 3, "RU200" = 3), bold = T) %>% 
+  add_header_above(c("Down in Smurfs" = 17), bold = T, font_size = "large")
+#save_kable(kbl_down, 'Table_S14_screening_down_1.pdf')
+kbl_r_up = kbl(GU_r_df, col.names = table_colnames) %>% kable_classic %>% 
+  row_spec(row = 0, bold = T, font_size = 14) %>%  
+  row_spec(row = 1:nrow(GU_r_df), bold = F, font_size = 12) %>% 
+  add_header_above(c(" ", " ", " ", " " , "RU0" = 1, "RU10" = 3, "RU50" = 3, "RU100" = 3, "RU200" = 3), bold = T) %>% 
+  add_header_above(c("Regulating genes up in Smurfs" = 17), bold = T, font_size = "large")
+#save_kable(kbl_r_up, 'Table_S14_screening_up_2.pdf')
+kbl_r_down = kbl(GU_d_df, col.names = table_colnames) %>% kable_classic %>% 
+  row_spec(row = 0, bold = T, font_size = 14) %>%  
+  row_spec(row = 1:nrow(GU_d_df), bold = F, font_size = 12) %>% 
+  add_header_above(c(" ", " ", " ", " " , "RU0" = 1, "RU10" = 3, "RU50" = 3, "RU100" = 3, "RU200" = 3), bold = T) %>% 
+  add_header_above(c("Regulating TFs down in Smurfs" = 17), bold = T, font_size = "large")
+#save_kable(kbl_r_down, 'Table_S14_screening_down_2.pdf')
+
+
+###Tables are then manually merged to generate Table S14, that can be found in data/longevity/screening/Table_S14_screening_summary.pdf
+```
+

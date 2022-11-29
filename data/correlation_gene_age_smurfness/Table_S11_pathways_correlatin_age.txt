@@ -1,0 +1,39 @@
+name_path	avg_age	avg_smurf	adj.p
+1	dme00052 Galactose metabolism	0.273	-0.087	2.0e-04
+2	dme00670 One carbon pool by folate	0.261	-0.207	2.0e-03
+3	dme00260 Glycine, serine and threonine metabolism	0.252	-0.196	1.8e-06
+4	dme00830 Retinol metabolism	0.24	-0.099	3.9e-05
+5	dme00053 Ascorbate and aldarate metabolism	0.232	-0.125	1.9e-05
+6	dme00040 Pentose and glucuronate interconversions	0.227	-0.182	6.1e-07
+7	dme00500 Starch and sucrose metabolism	0.219	-0.129	6.6e-05
+8	dme00350 Tyrosine metabolism	0.201	-0.175	1.5e-03
+9	dme02010 ABC transporters	0.177	-0.004	6.0e-03
+10	dme04080 Neuroactive ligand-receptor interaction	0.166	0.027	1.7e-05
+11	dme00051 Fructose and mannose metabolism	0.165	-0.121	1.2e-02
+12	dme00983 Drug metabolism - other enzymes	0.165	0.005	3.3e-08
+13	dme00770 Pantothenate and CoA biosynthesis	0.157	-0.151	1.4e-02
+14	dme00980 Metabolism of xenobiotics by cytochrome P450	0.157	0.05	1.7e-07
+15	dme00561 Glycerolipid metabolism	0.151	-0.071	9.9e-04
+16	dme00982 Drug metabolism - cytochrome P450	0.151	0.069	1.8e-07
+17	dme04142 Lysosome	0.148	-0.128	4.3e-08
+18	dme00230 Purine metabolism	0.144	-0.013	7.8e-03
+19	dme00730 Thiamine metabolism	0.135	0.015	1.4e-02
+20	dme00520 Amino sugar and nucleotide sugar metabolism	0.129	-0.051	8.6e-03
+21	dme00790 Folate biosynthesis	0.123	0.027	3.7e-02
+22	dme00860 Porphyrin and chlorophyll metabolism	0.114	-0.062	3.1e-03
+23	dme04120 Ubiquitin mediated proteolysis	-0.154	0.012	1.8e-06
+24	dme03015 mRNA surveillance pathway	-0.177	-0.066	2.1e-06
+25	dme03018 RNA degradation	-0.191	-0.136	1.1e-08
+26	dme00970 Aminoacyl-tRNA biosynthesis	-0.238	-0.087	1.6e-04
+27	dme03410 Base excision repair	-0.239	0.024	3.5e-03
+28	dme00563 Glycosylphosphatidylinositol (GPI)-anchor biosynthesis	-0.272	-0.118	3.6e-04
+29	dme04330 Notch signaling pathway	-0.275	0.104	1.5e-04
+30	dme03050 Proteasome	-0.276	-0.166	4.1e-09
+31	dme03013 RNA transport	-0.288	-0.117	1.6e-15
+32	dme03040 Spliceosome	-0.288	-0.124	1.8e-17
+33	dme03460 Fanconi anemia pathway	-0.312	0.02	1.5e-06
+34	dme03022 Basal transcription factors	-0.318	-0.096	3.6e-08
+35	dme03420 Nucleotide excision repair	-0.338	-0.073	2.0e-09
+36	dme03440 Homologous recombination	-0.341	-0.005	1.9e-07
+37	dme03430 Mismatch repair	-0.387	-0.081	1.8e-08
+38	dme03030 DNA replication	-0.393	-0.07	2.6e-09

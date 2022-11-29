@@ -1,0 +1,552 @@
+---
+title: "Smurf analysis"
+author: "Flaminia Zane"
+date: "May 27, 2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#set the working directory if needed
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) #setting current working directory
+#load here libraries that are needed all along
+library(org.Dm.eg.db); library(tidyverse); library(DESeq2)
+```
+
+
+```{r dataset}
+library(data.table)
+#assign the dataset to an object
+raw_data <- fread("../data/RNAseq_raw_data_matrix.tabular") %>% 
+  column_to_rownames(var="Geneid") %>% select(contains("s")) #select only the non-smurf ones
+#remove the genes that are never detected
+raw_data = raw_data[which(rowSums(raw_data) > 0),] 
+#explorre briefly the dataset
+head(raw_data)
+tail(raw_data)
+dim(raw_data)
+
+
+```
+
+```{r PCA}
+library(ggrepel)
+
+#As the differential gene expression analysis will be perform with DESeq2, the PCA will be performed in the same framework. 
+#For more information and details on the DESeq2 framework, check the vignette: http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html
+
+#creation of the colData object with data annotation, needed for the DESeq2 framework
+colData = data.frame(samples = colnames(raw_data)) %>% 
+  mutate(days = ifelse(str_starts(samples, "20"), "20", ifelse(str_starts(samples, "40"), "40", "30"))) %>% #chronological age
+  mutate(time = ifelse(str_detect(samples, "M"), "mixed", ifelse(str_detect(samples, "1d"), "24h", "5h"))) %>% #moment of sampling after the smurf transition
+  column_to_rownames(var="samples")  #respect the format required by Deseq2 by putting samples as rownames
+colData$days = as.factor(colData$days)
+#Create dds object, which will also be used in further analysis (differential gene expression) 
+#this step also implies data normalization
+#design the matrix to keep into consideration the different biological variables
+dds1 <- DESeqDataSetFromMatrix(countData = raw_data, colData = colData, design = ~ days)
+
+#apply a transformation to stabilize the variance prior to perform PCA on gene expression data
+vst <- vst(dds1)
+#run PCA, on the top 5000 genes in terms of variance. The ntop parameter can change depending on the needs of the analysis, default is 500.
+pca = plotPCA(vst, intgroup = c( "days"), ntop =5000, returnData = TRUE)
+percentVar <- round(100 * attr(pca, "percentVar"))
+#visualize coordinates
+pca
+
+#plot the PCA manually with ggplot2 for better customization
+pca_plot = ggplot(pca, aes(PC1, PC2, color= as.factor(days))) +
+  geom_point(size=3.8, alpha = 0.9) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) +
+  geom_hline(yintercept = 0, linetype = "dotted", alpha = 0.5) +
+  geom_vline(xintercept = 0, linetype = "dotted", alpha = 0.5) +
+  geom_text_repel(aes(label = rownames(pca)), size = 3.5) +
+  coord_fixed() +
+  scale_color_manual(values = c("darkgoldenrod1", "chocolate1", "brown"), name = "Age", labels = c("20 days", "30 days", "40 days")) +
+  scale_shape_discrete(name = "Age", labels = c("20 days", "30 days", "40 days")) +
+  theme_light() +
+  theme(legend.position = "top", legend.direction = "horizontal", plot.title = element_text(hjust = 0.5)) 
+
+```
+
+```{r DEG}
+
+########DIFFERENTIAL GENE EXPRESSION RESULTS#########
+
+#use the same dds object generated before for the PCA, and perform the second step
+dds2 = DESeq(dds1)
+#compute the results object and set the alpha for the FDR at the threshold that I want to choose after
+res_s = results(dds2, contrast = c("days", "40", "20"), alpha = 0.05)
+
+write.table(res_s %>% as.data.frame, "../data/differential_expression/res_DEGS_S_40days_20days.txt", row.names = TRUE, col.names = TRUE, sep = "\t", quote = FALSE)
+
+sign_s = res_s %>% as.data.frame() %>% filter(padj <= 0.05)
+
+##########################VISUALIZATION#############
+
+#visualization through Volcano plot
+#shirk the log2fold change for visualization
+lfc_apeglm =lfcShrink(dds2, res = res_s, coef = "days_40_vs_20" , type="apeglm")
+
+#add information that needs to be displayed in the plot
+apeglm_for_plot = lfc_apeglm %>% as.data.frame() %>%  
+  rownames_to_column(var = "flybase") %>% dplyr::select(c("flybase", "log2FoldChange", "padj")) %>% na.omit() %>% 
+  mutate(significance = ifelse(padj <= 0.05, "signif", "non_signif")) %>% 
+  mutate(symbol = mapIds(org.Dm.eg.db, 
+                         keys= .$flybase,
+                         column="SYMBOL", 
+                         keytype="ENSEMBL",
+                         multiVals="first")) %>% 
+  mutate(annot = ifelse(log2FoldChange < -2, symbol, ifelse(log2FoldChange > 2, symbol, ""))) %>% 
+  mutate(annot = ifelse(is.na(annot), flybase, annot))
+#plot, label for the genes that have a log2FC > |2|
+ggplot(apeglm_for_plot, aes(log2FoldChange, -log10(padj)))+ geom_point(aes(col = significance), alpha = 0.5) + theme_light() +
+  scale_color_manual(name = "FDR 5%", labels = c("Non significant", "Significant"), values = c("lightgrey", "red")) +
+  theme(legend.position = "bottom", legend.direction = "horizontal") + geom_text_repel(aes(label = annot), size = 4.3) + 
+  ylab("-log10(FDR)") + xlab("log2FoldChange Smurfs/non-Smurfs")
+
+#################UNSUPERVISED HIERARCHICAL CLUSTERING ON THE SMURF GENES#################
+
+##use the same dataset used for the PCA, vst (stabilized variance) rather than simply the normalized counts
+#filter for the DEGs
+vst_df = vst %>% assay %>% as.data.frame()
+vst_diff = vst_df[rownames(vst_df) %in% rownames(sign_s),]
+
+require(heatmap3)
+##prepare annotation for the heatmap plot
+vst_mat_005 = vst_diff %>% as.matrix
+annot = data.frame(samples = colnames(vst_mat_005)) %>% 
+  mutate(condition = ifelse(grepl("n", .$samples), "NS", "S")) %>% 
+  mutate(age = ifelse(grepl("20", .$samples), "20", 
+                      ifelse(grepl("40", .$samples), "40", 
+                             ifelse(grepl("30", .$samples), "30", "32")))) %>% 
+  #mutate(smurfness = ifelse(condition == "NS", "lightgrey", "blue")) %>% 
+  mutate(days = ifelse(age == "20", "darkgoldenrod1", ifelse(age == "40", "brown", "chocolate1")))
+annot_hp = annot %>% select(c("days")) %>% as.matrix
+rownames(annot_hp) = annot$samples
+
+#plot with heatmap3, default for computing the matrix is correlation
+heatmap3(vst_mat_005 , scale = "row", ColSideColors = annot_hp, 
+         labRow   = FALSE, labCol = FALSE, showRowDendro = F, legendfun = function()
+         showLegend(legend = c("20 days", "30 days", "40 days"),
+                    fill = c("darkgoldenrod1", "chocolate1", "brown"), lwd = 0,
+         col=colorRampPalette(c("green","black","red"))(1024)))
+
+
+```
+
+
+```{r GSEA}
+
+require(clusterProfiler)
+# ##load the ontology (from GAGE package)
+# gset_go = go.gsets(species = "dme", pkg.name = "org.Dm.eg.db",id.type = "eg" )
+# #select the ontology you are interest in. Here we select BP, biological process
+# go_sets = gset_go$go.sets[gset_go$go.subs$BP]
+
+##list of genes to use: as reccomended in the DESeq2 guidelines, use of the shrinked log2FC for ranking
+lfc_apeglm = lfc_apeglm %>% as.data.frame() %>% rownames_to_column(var = "gene_flybase") %>% 
+                         mutate(entrez = mapIds(org.Dm.eg.db,
+                         keys = .$gene_flybase,
+                         column = "ENTREZID", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                         keytype = "ENSEMBL",
+                         multiVals = "first"))
+#filter only the genes we are interested in 
+res_apeg <- lfc_apeglm  %>% filter(padj <= 0.05) %>%  dplyr::select(c("gene_flybase", "log2FoldChange", "entrez"))
+#creating the gene list and ranking it
+#getting the sorted gene list
+gene_list <- as.numeric(res_apeg$log2FoldChange)
+names(gene_list) <- as.character(res_apeg$gene_flybase)
+gene_list = gene_list[!is.na(names(gene_list))] %>% .[!duplicated(names(.))] %>% sort(., decreasing = TRUE)
+
+#run the analysis
+n = 50 #number of times repeating
+P = 80 #percentage for selection
+pval = 0.05 #threshold to apply
+gse_go = vector("list", n)
+organism = "org.Dm.eg.db"
+library(organism, character.only = TRUE) #library is already loaded
+set.seed(123)
+for (i in 1:length(gse_go)) {
+  gse_go[[i]] <- gseGO(geneList= gene_list,
+                       ont ="BP", 
+                       keyType = "ENSEMBL", 
+                       nPerm = 15000, 
+                       minGSSize = 10, 
+                       maxGSSize = 600, 
+                       pvalueCutoff = 0.05, #change the significance level
+                       verbose = TRUE, 
+                       OrgDb = organism, 
+                       pAdjustMethod = "fdr") # %>% as.data.frame()
+}
+#perform the filtering with the 80% threshold
+#transform the objects in the list to dataframe
+df_gse = lapply(gse_go, function(x) as.data.frame(x))
+#extract the categories of interest
+categories = lapply(df_gse, function(x) x$Description)
+#IF I WANT TO KEEP ONLY THE ONES THAT ARE OCCURING EVERYTIME
+#Reduce(intersect, a )
+#IF I WANT TO FILTER FOR P% PRESENCE OF THE CATEGORY
+filtering_vector = tibble(category = unlist(categories)) %>% #unlist the list and making it a tibble
+  group_by(category) %>% 
+  summarise(count = n()) %>% #group by category and generate a new column counting how many times a category occurs
+  mutate(percentage_presence = count/n*100) %>% #adding a column with the persentage 
+  #arrange(desc(count)) %>% #adding this only if we want to visualize
+  filter(percentage_presence >= P)
+
+##find a gse_go that has all of them
+df_gse[[1]]$Description %in% filtering_vector$category %>% sum
+df_to_plot = df_gse[[1]][df_gse[[1]]$Description %in% filtering_vector$category,]
+
+#use the number one in this case as it has all the categories chosen
+
+
+##FOR THE PLOT
+plot_gse = gse_go[[1]]
+pdf("Fig5_GSEA_S_40d_20d.pdf", width = 16, height = 14)emapplot(plot_gse, showCategory = filtering_vector$category, color = "NES", 
+         layout = "fr", cex_label_category = 0.1) + scale_color_gradient(low = "blue" , high = "red" )
+dev.off()
+#selecting the categories we want with "showCategory"
+
+
+####generate tables with the categories
+df_enrich_table = df_gse[[1]][df_gse[[1]]$Description %in% filtering_vector$category,] %>% 
+                    mutate(`GO category` = paste(ID, Description)) %>% arrange(desc(NES)) %>% 
+                      mutate(`adj p-value` = ifelse(p.adjust < 0.001, "***", 
+                                                    ifelse(p.adjust > 0.001 & p.adjust < 0.01, "**", "*")))
+
+df_enrich_table_cut = df_enrich_table %>% select(c("GO category", "setSize", "NES", "adj p-value"))
+
+write.table(df_enrich_table_cut, "../data/differential_expression/GSEA/TABLE_S8_Smurf_40vs20_BP.txt", row.names = TRUE, col.names = TRUE, sep = "\t", quote = FALSE)
+
+library(kableExtra)
+table_colnames = c("GO BP category", "size", "NES", "p.adjust")
+kbl_en = kbl(df_enrich_table_cut, col.names = table_colnames, row.names = F) %>% kable_classic_2(full_width = F, html_font = "Helvetica")%>% 
+  row_spec(row = 0, bold = T, font_size = 14) 
+# save_kable(kbl_en, "../tables_and_files/kbl_s4020.html")
+# save_kable(kbl_en, "../tables_and_files/kbl_s4020.pdf")
+
+
+
+
+```
+
+
+```{check_categories r}
+library(gage)
+gset_go = go.gsets(species = "dme", pkg.name = "org.Dm.eg.db",id.type = "eg" )
+##select the ontology you are interest in. Here we select BP, biological process
+go_sets = gset_go$go.sets[gset_go$go.subs$BP]
+#####mRNA metabolic process
+df_to_plot2 = df_to_plot %>% mutate(complete_name = paste(ID, Description))
+
+
+
+
+##################################################RNA related####################################
+
+#splicing
+splicing_names = c(filtering_vector$category[grepl("splic", filtering_vector$category)], filtering_vector$category[grepl("regulation of mRNA", filtering_vector$category)])
+splicing_df = df_to_plot2 %>% filter(Description %in% splicing_names)
+splicing_list = go_sets[splicing_df$complete_name]
+
+to_df = function(n, list_core) {
+  data.frame(genes_core = list_core[[n]], category = rep(names(list_core)[n], length(list_core[[n]])))
+}
+
+n = seq(1, length(splicing_list), by = 1)
+splicing_to_select = lapply(n, function(n) to_df(n = n, list_core = splicing_list)) %>% bind_rows() %>% 
+             mutate(flybase = mapIds(org.Dm.eg.db,
+                keys = .$genes_core %>% as.character,
+                column = "ENSEMBL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENTREZID",
+                multiVals = "first"))
+
+
+splicing_df_for_heatmap = vst_diff %>% filter(rownames(.) %in% splicing_to_select$flybase) %>%  mutate(symbol = mapIds(org.Dm.eg.db,
+                keys = rownames(.),
+                column = "SYMBOL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENSEMBL",
+                multiVals = "first"))
+splicing_df_for_heatmap2 = splicing_df_for_heatmap
+rownames(splicing_df_for_heatmap2) = NULL
+splicing_df_for_heatmap2 = splicing_df_for_heatmap2 %>% column_to_rownames(var = 'symbol')
+heatmap3(splicing_df_for_heatmap2 %>% as.matrix(), scale = "row", showRowDendro = F)
+
+
+#####transcription
+transcription_names = c(filtering_vector$category[grepl("transcription", filtering_vector$category)])
+transcription_df = df_to_plot2 %>% filter(Description %in% transcription_names)
+transcription_list = go_sets[transcription_df$complete_name]
+
+# to_df = function(n, list_core) {
+#   data.frame(genes_core = list_core[[n]], category = rep(names(list_core)[n], length(list_core[[n]])))
+# }
+
+n = seq(1, length(transcription_list), by = 1)
+transcription_to_select = lapply(n, function(n) to_df(n = n, list_core = transcription_list)) %>% bind_rows() %>% 
+             mutate(flybase = mapIds(org.Dm.eg.db,
+                keys = .$genes_core %>% as.character,
+                column = "ENSEMBL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENTREZID",
+                multiVals = "first"))
+
+
+transcription_df_for_heatmap = vst_diff %>% filter(rownames(.) %in% transcription_to_select$flybase) %>%  mutate(symbol = mapIds(org.Dm.eg.db,
+                keys = rownames(.),
+                column = "SYMBOL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENSEMBL",
+                multiVals = "first"))
+transcription_df_for_heatmap2 = transcription_df_for_heatmap
+rownames(transcription_df_for_heatmap2) = NULL
+transcription_df_for_heatmap2 = transcription_df_for_heatmap2 %>% column_to_rownames(var = 'symbol')
+heatmap3(transcription_df_for_heatmap2 %>% as.matrix(), scale = "row", showRowDendro = F)
+
+
+#####rna_metabolism
+rna_metabolism_names = c(filtering_vector$category[grepl("RNA catabolic|RNA localization", filtering_vector$category)],
+                         filtering_vector$category[grepl("RNA 3|ncRNA|tRNA", filtering_vector$category)])
+rna_metabolism_df = df_to_plot2 %>% filter(Description %in% rna_metabolism_names)
+rna_metabolism_list = go_sets[rna_metabolism_df$complete_name]
+
+# to_df = function(n, list_core) {
+#   data.frame(genes_core = list_core[[n]], category = rep(names(list_core)[n], length(list_core[[n]])))
+# }
+
+n = seq(1, length(rna_metabolism_list), by = 1)
+rna_metabolism_to_select = lapply(n, function(n) to_df(n = n, list_core = rna_metabolism_list)) %>% bind_rows() %>% 
+             mutate(flybase = mapIds(org.Dm.eg.db,
+                keys = .$genes_core %>% as.character,
+                column = "ENSEMBL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENTREZID",
+                multiVals = "first"))
+
+
+rna_metabolism_df_for_heatmap = vst_diff %>% filter(rownames(.) %in% rna_metabolism_to_select$flybase) %>%  mutate(symbol = mapIds(org.Dm.eg.db,
+                keys = rownames(.),
+                column = "SYMBOL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENSEMBL",
+                multiVals = "first"))
+rna_metabolism_df_for_heatmap2 = rna_metabolism_df_for_heatmap
+rownames(rna_metabolism_df_for_heatmap2) = NULL
+rna_metabolism_df_for_heatmap2 = rna_metabolism_df_for_heatmap2 %>% column_to_rownames(var = 'symbol')
+heatmap3(rna_metabolism_df_for_heatmap2 %>% as.matrix(), scale = "row", showRowDendro = F)
+
+
+#ribonucleoprotein complex
+ribonucleoprotein_names = c(filtering_vector$category[grepl("ribonucleoprotein", filtering_vector$category)])
+ribonucleoprotein_df = df_to_plot2 %>% filter(Description %in% ribonucleoprotein_names)
+ribonucleoprotein_list = go_sets[ribonucleoprotein_df$complete_name]
+
+to_df = function(n, list_core) {
+  data.frame(genes_core = list_core[[n]], category = rep(names(list_core)[n], length(list_core[[n]])))
+}
+
+n = seq(1, length(ribonucleoprotein_list), by = 1)
+ribonucleoprotein_to_select = lapply(n, function(n) to_df(n = n, list_core = ribonucleoprotein_list)) %>% bind_rows() %>% 
+             mutate(flybase = mapIds(org.Dm.eg.db,
+                keys = .$genes_core %>% as.character,
+                column = "ENSEMBL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENTREZID",
+                multiVals = "first"))
+
+
+ribonucleoprotein_df_for_heatmap = vst_diff %>% filter(rownames(.) %in% ribonucleoprotein_to_select$flybase) %>%  mutate(symbol = mapIds(org.Dm.eg.db,
+                keys = rownames(.),
+                column = "SYMBOL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENSEMBL",
+                multiVals = "first"))
+ribonucleoprotein_df_for_heatmap2 = ribonucleoprotein_df_for_heatmap
+rownames(ribonucleoprotein_df_for_heatmap2) = NULL
+ribonucleoprotein_df_for_heatmap2 = ribonucleoprotein_df_for_heatmap2 %>% column_to_rownames(var = 'symbol')
+heatmap3(ribonucleoprotein_df_for_heatmap2 %>% as.matrix(), scale = "row", showRowDendro = F)
+
+ribo_and_splicing = rbind(ribonucleoprotein_df_for_heatmap2, splicing_df_for_heatmap2)
+heatmap3(ribo_and_splicing %>% as.matrix(), scale = "row", showRowDendro = F)
+
+
+
+
+##################################################DNA damage related####################################
+#dna damage
+dna_damage_names = c(filtering_vector$category[grepl("repair|double-strand", filtering_vector$category)])
+dna_damage_df = df_to_plot2 %>% filter(Description %in% dna_damage_names)
+dna_damage_list = go_sets[dna_damage_df$complete_name]
+
+to_df = function(n, list_core) {
+  data.frame(genes_core = list_core[[n]], category = rep(names(list_core)[n], length(list_core[[n]])))
+}
+
+n = seq(1, length(dna_damage_list), by = 1)
+dna_damage_to_select = lapply(n, function(n) to_df(n = n, list_core = dna_damage_list)) %>% bind_rows() %>% 
+             mutate(flybase = mapIds(org.Dm.eg.db,
+                keys = .$genes_core %>% as.character,
+                column = "ENSEMBL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENTREZID",
+                multiVals = "first"))
+
+
+dna_damage_df_for_heatmap = vst_diff %>% filter(rownames(.) %in% dna_damage_to_select$flybase) %>%  mutate(symbol = mapIds(org.Dm.eg.db,
+                keys = rownames(.),
+                column = "SYMBOL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENSEMBL",
+                multiVals = "first"))
+dna_damage_df_for_heatmap2 = dna_damage_df_for_heatmap
+rownames(dna_damage_df_for_heatmap2) = NULL
+dna_damage_df_for_heatmap2 = dna_damage_df_for_heatmap2 %>% column_to_rownames(var = 'symbol')
+heatmap3(dna_damage_df_for_heatmap2 %>% as.matrix(), scale = "row", showRowDendro = F)
+
+
+######################################Histone#######################
+
+
+####histone methylation
+hist_meth_names = c(filtering_vector$category[grepl("histone methylation", filtering_vector$category)])
+hist_meth_df = df_to_plot2 %>% filter(Description %in% hist_meth_names)
+hist_meth_list = go_sets[hist_meth_df$complete_name]
+
+to_df = function(n, list_core) {
+  data.frame(genes_core = list_core[[n]], category = rep(names(list_core)[n], length(list_core[[n]])))
+}
+
+n = seq(1, length(hist_meth_list), by = 1)
+hist_meth_to_select = lapply(n, function(n) to_df(n = n, list_core = hist_meth_list)) %>% bind_rows() %>% 
+             mutate(flybase = mapIds(org.Dm.eg.db,
+                keys = .$genes_core %>% as.character,
+                column = "ENSEMBL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENTREZID",
+                multiVals = "first"))
+
+
+hist_meth_df_for_heatmap = vst_diff %>% filter(rownames(.) %in% hist_meth_to_select$flybase) %>%  mutate(symbol = mapIds(org.Dm.eg.db,
+                keys = rownames(.),
+                column = "SYMBOL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENSEMBL",
+                multiVals = "first"))
+hist_meth_df_for_heatmap2 = hist_meth_df_for_heatmap
+rownames(hist_meth_df_for_heatmap2) = NULL
+hist_meth_df_for_heatmap2 = hist_meth_df_for_heatmap2 %>% column_to_rownames(var = 'symbol')
+heatmap3(hist_meth_df_for_heatmap2 %>% as.matrix(), scale = "row", showRowDendro = F)
+
+
+###check in the sign_s dataframe
+sign_s[rownames(sign_s) %in% rownames(hist_acet_df_for_heatmap),]
+
+
+####histone acetylation
+
+hist_acet_names = c(filtering_vector$category[grepl("histone acetylation", filtering_vector$category)])
+hist_acet_df = df_to_plot2 %>% filter(Description %in% hist_acet_names)
+hist_acet_list = go_sets[hist_acet_df$complete_name]
+
+to_df = function(n, list_core) {
+  data.frame(genes_core = list_core[[n]], category = rep(names(list_core)[n], length(list_core[[n]])))
+}
+
+n = seq(1, length(hist_acet_list), by = 1)
+hist_acet_to_select = lapply(n, function(n) to_df(n = n, list_core = hist_acet_list)) %>% bind_rows() %>% 
+             mutate(flybase = mapIds(org.Dm.eg.db,
+                keys = .$genes_core %>% as.character,
+                column = "ENSEMBL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENTREZID",
+                multiVals = "first"))
+
+
+hist_acet_df_for_heatmap = vst_diff %>% filter(rownames(.) %in% hist_acet_to_select$flybase) %>%  mutate(symbol = mapIds(org.Dm.eg.db,
+                keys = rownames(.),
+                column = "SYMBOL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENSEMBL",
+                multiVals = "first"))
+hist_acet_df_for_heatmap2 = hist_acet_df_for_heatmap
+rownames(hist_acet_df_for_heatmap2) = NULL
+hist_acet_df_for_heatmap2 = hist_acet_df_for_heatmap2 %>% column_to_rownames(var = 'symbol')
+heatmap3(hist_acet_df_for_heatmap2 %>% as.matrix(), scale = "row", showRowDendro = F)
+
+
+######cell cycle genes
+mitosis_names = c(filtering_vector$category[grepl("spindle", filtering_vector$category)])
+mitosis_df = df_to_plot2 %>% filter(Description %in% mitosis_names)
+mitosis_list = go_sets[mitosis_df$complete_name]
+
+to_df = function(n, list_core) {
+  data.frame(genes_core = list_core[[n]], category = rep(names(list_core)[n], length(list_core[[n]])))
+}
+
+n = seq(1, length(mitosis_list), by = 1)
+mitosis_to_select = lapply(n, function(n) to_df(n = n, list_core = mitosis_list)) %>% bind_rows() %>% 
+             mutate(flybase = mapIds(org.Dm.eg.db,
+                keys = .$genes_core %>% as.character,
+                column = "ENSEMBL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENTREZID",
+                multiVals = "first"))
+
+
+mitosis_df_for_heatmap = vst_diff %>% filter(rownames(.) %in% mitosis_to_select$flybase) %>%  mutate(symbol = mapIds(org.Dm.eg.db,
+                keys = rownames(.),
+                column = "SYMBOL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENSEMBL",
+                multiVals = "first"))
+mitosis_df_for_heatmap2 = mitosis_df_for_heatmap
+rownames(mitosis_df_for_heatmap2) = NULL
+mitosis_df_for_heatmap2 = mitosis_df_for_heatmap2 %>% column_to_rownames(var = 'symbol')
+heatmap3(mitosis_df_for_heatmap2 %>% as.matrix(), scale = "row", showRowDendro = F)
+
+###check the genes belonging to the GO cateogory double strand break (GO:0006302 double-strand break repair)
+double_strand_break = go_sets$`GO:0006302 double-strand break repair`
+res_s = res_s %>% mutate(entrez = mapIds(org.Dm.eg.db,
+                keys = rownames(res_s),
+                column = "ENTREZID", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENSEMBL",
+                multiVals = "first"))
+sign_s = res_s %>% filter(padj <= 0.05)
+sign_s$entrez %in% double_strand_break %>% sum
+
+
+
+```
+
+```{r}
+
+###for the human diseases
+#https://www.biotools.fr/drosophila/human_disease_model_network
+
+
+sign_s = sign_s %>% mutate(symbol = mapIds(org.Dm.eg.db,
+                keys = rownames(.),
+                column = "SYMBOL", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                keytype = "ENSEMBL",
+                multiVals = "first"))
+write.table(sign_s %>% filter(log2FoldChange < 0) %>%  .$symbol , "list_neg_sign_s_symbol.txt", sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+
+write.table(sign_s %>% filter(log2FoldChange > 0) %>%  .$symbol , "list_pos_sign_s_symbol.txt", sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
+
+
+
+
+
+```
+
+
+
+
+```{fold_changes r}
+
+sign_s %>% filter(rownames(sign_s) %in% hist_meth_to_select$flybase)
+
+###growth factor
+library(readODS)
+egf = read_ods("../../RNAseq_Analysis/ENSEMBL_annotation/growth_factors/egf_modified.ods")
+fgr = read_ods("../../RNAseq_Analysis/ENSEMBL_annotation/growth_factors/fgr_modified.ods")
+
+sign_s %>% filter(rownames(.) %in% egf$flybase)
+sign_s %>% filter(rownames(.) %in% fgr$flybase)
+
+
+sign_s %>% filter(symbol %in% c("trr", "Cfp1", "Dpy-30L1", "Smyd5", "NSD", "CoRest", "Lpt"))
+sign_s %>% filter(symbol %in% c("esc", "E(z)", "Su(z)12"))
+sign_s %>% filter(symbol %in% c("CG12316", "Ing3", "Ing5", "Taf1", "Atac3", "Brd8", "Spt20", "mof")) %>% select(log2FoldChange) %>% unlist %>% mean
+sign_s %>% filter(symbol %in% c("Mtor", "Chro")) %>% .$log2FoldChange %>% mean
+```
+

@@ -1,0 +1,409 @@
+---
+title: "Hetereogeneity in gene expression"
+author: "F. Zane"
+date: "May 25, 2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+##Hetereogeneity in gene expression and ageing
+
+It has been shown that gene expression hetereogeneity increases with age, possibly reflecting a loss in precise regulation of the genome. Here, we would like to check if this feature is carried by Smurf samples or it is correlating we age.
+
+We used the following workflow:
+
+- Computing the standard deviation across our samples per condition per chronological age (for each gene)
+- Obtaining a relative standard deviation for each sample by dividing the obtained standard deviation for the sample (So for instance: we compute a standard deviation for Smurfs a 20 days. This value will then be divided for each Smurf sample at  20 days, to obtain a relative standard devation for each sample.)
+- Plotting the distribution of the relative standards deviation for visualization
+- Statistically comparing them using the Kolmogrov-Smirnov test
+
+
+```{r packages, include=FALSE}
+#set the working directory
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+library(tidyverse)
+
+```
+
+```{r data, include=FALSE}
+#upload the data, prepare the normalized counts for downstream analysis: use the DESeq2 workflow for consistency
+##upload raw data
+require(data.table);library(DESeq2)
+raw_data <- fread("../data/RNAseq_raw_data_matrix.tabular") %>% 
+  column_to_rownames(var="Geneid") 
+
+##with outliers but removing genes with 0 counts
+raw_data = raw_data[which(rowSums(raw_data) > 0),] 
+
+#creation of the colData object with data annotation, needed for the DESeq2 framework
+colData = data.frame(samples = colnames(raw_data)) %>% 
+  mutate(days = ifelse(str_starts(samples, "20"), 20, ifelse(str_starts(samples, "40"), 40, 30))) %>% #chronological age
+  mutate(condition = ifelse(str_detect(samples, "s"), "S", "NS")) %>% #condition (smurfs or non-smurfs)
+  mutate(time = ifelse(str_detect(samples, "M"), "mixed", ifelse(str_detect(samples, "1d"), "24h", "5h"))) %>% #moment of sampling after the smurf transition
+  column_to_rownames(var="samples") #respect the format required by Deseq2 by putting samples as rownames
+
+#Create dds object, which will also be used in further analysis (differential gene expression) 
+#design the matrix to keep into consideration the different biological variables
+dds1 <- DESeqDataSetFromMatrix(countData = raw_data, colData = colData, design = ~ condition + days)
+#obtain the normamlized counts from the object
+dds_norm <- estimateSizeFactors(dds1)
+norm_data = DESeq2::counts(dds_norm, normalized = TRUE) %>% as.data.frame() %>% mutate(mean = rowMeans(.)) %>% filter(mean > quantile(mean, 0.25)) %>% select(-mean)
+#compute the quantile and cut off the first one
+
+
+```
+
+
+```{r RelativeSd, include=FALSE}
+#separate the samples by age and condition
+
+##separate the data in different datasets (age and conditon)
+day_20 = norm_data %>%  dplyr::select(contains("20"))
+day_30 = norm_data %>%  dplyr::select(matches("30|32"))
+day_40 = norm_data %>%  dplyr::select(contains("40"))
+
+#day 20, smurfs and non-smurfs
+day_20_s = day_20 %>% dplyr::select(contains("s"))
+day_20_ns = day_20 %>% dplyr::select(contains("n"))
+
+#day 30, smurfs and non-smurfs
+day_30_s = day_30 %>% dplyr::select(contains("s"))
+day_30_ns = day_30 %>% dplyr::select(contains("n"))
+
+#day 40, smurfs and non-smurfs
+day_40_s =  day_40 %>% dplyr::select(contains("s"))
+day_40_ns = day_40 %>% dplyr::select(contains("n"))
+
+
+###compute the sd and then divide by the mean (relative standard deviation)
+require(genefilter)
+
+#day 20 sd, smurf and non-smurf
+day_20_s_sd = day_20_s %>% mutate(var20s = rowSds(.)) %>% mutate(mean = rowMeans(day_20_s)) %>% mutate(var20s2 = var20s/mean)
+day_20_ns_sd = day_20_ns %>% mutate(var20ns = rowSds(.)) %>% mutate(mean = rowMeans(day_20_ns)) %>% mutate(var20ns2 = var20ns/mean) 
+#day 30 sd, smurf and non-smurf
+day_30_s_sd = day_30_s %>% mutate(var30s = rowSds(.)) %>% mutate(mean = rowMeans(day_30_s)) %>% mutate(var30s2 = var30s/mean)
+day_30_ns_sd = day_30_ns %>% mutate(var30ns = rowSds(.)) %>% mutate(mean = rowMeans(day_30_ns))  %>% mutate(var30ns2 = var30ns/mean)
+#day 40 sd, smurf and non-smurf
+day_40_s_sd =  day_40_s %>% mutate(var40s = rowSds(.)) %>% mutate(mean = rowMeans(day_40_s)) %>% mutate(var40s2 = var40s/mean)
+day_40_ns_sd = day_40_ns %>% mutate(var40ns = rowSds(.)) %>% mutate(mean = rowMeans(day_40_ns)) %>% mutate(var40ns2 = var40ns/mean) 
+
+```
+
+
+
+```{RelativeSd_mean r}
+
+###plot the variance smurf vs non smurf 
+data_var20 = data.frame(smurf = day_20_s_sd$var20s2, n_smurf = day_20_ns_sd$var20ns2) %>% 
+  gather(value = "value", key = 'smurfness')
+
+#a = ggplot(data_var20 %>% filter(sd < 0.5), aes(x=sd)) + geom_density(alpha=.2, aes(fill= smurfness)) 
+
+data_var30 = data.frame(smurf = day_30_s_sd$var30s2, n_smurf = day_30_ns_sd$var30ns2) %>% 
+  gather(value = "value", key = 'smurfness')
+
+#b = ggplot(data_var30 %>% filter(sd < 0.5), aes(x=sd)) + geom_density(alpha=.2, aes(fill= smurfness)) +ylim(0,15)
+
+
+data_var40 = data.frame(smurf = day_40_s_sd$var40s2, n_smurf = day_40_ns_sd$var40ns2) %>% 
+  gather(value = "value", key = 'smurfness')
+
+
+```
+
+
+```{plots_by_age r}
+
+##plot and estimation
+data_var_all_mean = rbind(data_var20 %>% mutate(age = 20), data_var30 %>% mutate(age = 30), data_var40 %>% mutate(age = 40))
+
+#plot all the values, by filter <1 to remove infinite values that were generated by the previous computation
+#labs = c(`20` = "20 days", `30` = "30 days", `40` = "40 days")
+
+#20 days
+gg_graph20 = ggplot(data_var_all_mean %>% filter(age == 20), aes(x = value)) + scale_fill_manual(name = "Smurfness", labels = c('non-Smurfs', "Smurfs"), values = c( "darkgrey", "deepskyblue")) +
+  geom_density(alpha=.2, aes(fill= smurfness)) + ylim(c(0,10))  + theme_minimal() +xlab("Relative standard deviation") +
+ # geom_vline(linetype = 'dotted', xintercept = peak_s_40 ) + geom_vline(linetype = 'dotted', xintercept = 0.09672575, col = "red" )+ 
+   #facet_grid(rows = vars(age), labeller = as_labeller(labs))  + 
+  xlim(c(0, 0.5))#+ coord_flip()
+
+gg_build20 = ggplot_build(gg_graph20)
+gg_data20 =gg_build20$data[[1]]
+gg_peak_ns_20 = gg_data20 %>% filter(fill == "darkgrey") %>% filter(y == max(.$y)) %>% select(x) %>% unlist()
+gg_peak_s_20 = gg_data20 %>% filter(fill == "deepskyblue") %>% filter(y == max(.$y)) %>% select(x) %>% unlist()
+
+###graph ##cutting at 0.5 for representatin purposes
+gg20 = ggplot(data_var_all_mean %>% filter(age == 20), aes(x = value)) + scale_fill_manual(name = "Smurfness", labels = c('non-Smurfs', "Smurfs"), values = c( "darkgrey", "deepskyblue")) +
+  geom_density(alpha=.2, aes(fill= smurfness)) + ylim(c(0,10))  + theme_minimal() +xlab("Relative standard deviation") +
+   geom_vline(linetype = 'dotted', xintercept = gg_peak_ns_20, color = "black" ) + geom_vline(linetype = 'dotted', xintercept = gg_peak_s_20, col = "blue" )+ 
+   #facet_grid(rows = vars(age), labeller = as_labeller(labs))  + 
+  xlim(c(0, 0.5))
+
+
+
+#30 days
+gg_graph30 = ggplot(data_var_all_mean %>% filter(age == 30), aes(x = value)) + scale_fill_manual(name = "Smurfness", labels = c('non-Smurfs', "Smurfs"), values = c( "darkgrey", "deepskyblue")) +
+  geom_density(alpha=.2, aes(fill= smurfness)) + ylim(c(0,10))  + theme_minimal() +xlab("Relative standard deviation") +
+ # geom_vline(linetype = 'dotted', xintercept = peak_s_40 ) + geom_vline(linetype = 'dotted', xintercept = 0.09672575, col = "red" )+ 
+   #facet_grid(rows = vars(age), labeller = as_labeller(labs))  + 
+  xlim(c(0, 0.5))#+ coord_flip()
+
+gg_build30 = ggplot_build(gg_graph30)
+gg_data30 =gg_build30$data[[1]]
+gg_peak_ns_30 = gg_data30 %>% filter(fill == "darkgrey") %>% filter(y == max(.$y)) %>% select(x) %>% unlist()
+gg_peak_s_30 = gg_data30 %>% filter(fill == "deepskyblue") %>% filter(y == max(.$y)) %>% select(x) %>% unlist()
+
+###graph ##cutting at 0.5 for representatin purposes
+gg30 = ggplot(data_var_all_mean %>% filter(age == 30), aes(x = value)) + scale_fill_manual(name = "Smurfness", labels = c('non-Smurfs', "Smurfs"), values = c( "darkgrey", "deepskyblue")) +
+  geom_density(alpha=.2, aes(fill= smurfness)) + ylim(c(0,10))  + theme_minimal() +xlab("Relative standard deviation") +
+   geom_vline(linetype = 'dotted', xintercept = gg_peak_ns_30, color = "black" ) + geom_vline(linetype = 'dotted', xintercept = gg_peak_s_30, col = "blue" )+ 
+   #facet_grid(rows = vars(age), labeller = as_labeller(labs))  + 
+  xlim(c(0, 0.5))
+
+
+
+
+#40 days
+gg_graph40 = ggplot(data_var_all_mean %>% filter(age == 40), aes(x = value)) + scale_fill_manual(name = "Smurfness", labels = c('non-Smurfs', "Smurfs"), values = c( "darkgrey", "deepskyblue")) +
+  geom_density(alpha=.2, aes(fill= smurfness)) + ylim(c(0,10))  + theme_minimal() +xlab("Relative standard deviation") +
+ # geom_vline(linetype = 'dotted', xintercept = peak_s_40 ) + geom_vline(linetype = 'dotted', xintercept = 0.09672575, col = "red" )+ 
+   #facet_grid(rows = vars(age), labeller = as_labeller(labs))  + 
+  xlim(c(0, 0.5))#+ coord_flip()
+
+gg_build40 = ggplot_build(gg_graph40)
+gg_data40 =gg_build40$data[[1]]
+gg_peak_ns_40 = gg_data40 %>% filter(fill == "darkgrey") %>% filter(y == max(.$y)) %>% select(x) %>% unlist()
+gg_peak_s_40 = gg_data40 %>% filter(fill == "deepskyblue") %>% filter(y == max(.$y)) %>% select(x) %>% unlist()
+
+###graph ##cutting at 0.5 for representatin purposes
+gg40 = ggplot(data_var_all_mean %>% filter(age == 40), aes(x = value)) + scale_fill_manual(name = "Smurfness", labels = c('non-Smurfs', "Smurfs"), values = c( "darkgrey", "deepskyblue")) +
+  geom_density(alpha=.2, aes(fill= smurfness)) + ylim(c(0,10))  + theme_minimal() +xlab("Relative standard deviation") +
+   geom_vline(linetype = 'dotted', xintercept = gg_peak_ns_40, color = "black" ) + geom_vline(linetype = 'dotted', xintercept = gg_peak_s_40, col = "blue" )+ 
+   #facet_grid(rows = vars(age), labeller = as_labeller(labs))  + 
+  xlim(c(0, 0.5))
+
+library(ggpubr)
+ggarrange(gg20, gg30, gg40, ncol = 1)
+
+```
+
+
+```{plots_by_condition r}
+
+##plot and estimation
+data_var_all_mean = rbind(data_var20 %>% mutate(age = 20), data_var30 %>% mutate(age = 30), data_var40 %>% mutate(age = 40))
+data_var_all_mean$age = as.factor(data_var_all_mean$age)
+#plot all the values, by filter <1 to remove infinite values that were generated by the previous computation
+#labs = c(`20` = "20 days", `30` = "30 days", `40` = "40 days")
+
+#SMURFS
+gg_graph_s = ggplot(data_var_all_mean %>% filter(smurfness == "smurf"), aes(x = value)) +  geom_density(alpha=.4, aes(fill= age)) +scale_fill_manual(name = "Age", labels = c('20 days', "30 days", "40 days"), values = c( "darkgoldenrod1", "chocolate1", "brown")) +
+   ylim(c(0,8))  + theme_minimal() +xlab("Relative standard deviation") 
+ # geom_vline(linetype = 'dotted', xintercept = peak_s_40 ) + geom_vline(linetype = 'dotted', xintercept = 0.09672575, col = "red" )+ 
+   #facet_grid(rows = vars(age), labeller = as_labeller(labs))  + 
+ # xlim(c(0, 0.5))#+ coord_flip()
+
+gg_build_s = ggplot_build(gg_graph_s)
+gg_data_s =gg_build_s$data[[1]]
+gg_peak_s_20 = gg_data_s %>% filter(fill == "darkgoldenrod1") %>% filter(y == max(.$y)) %>% dplyr::select(x) %>% unlist()
+gg_peak_s_30 = gg_data_s %>% filter(fill == "chocolate1") %>% filter(y == max(.$y)) %>% dplyr::select(x) %>% unlist()
+gg_peak_s_40 = gg_data_s %>% filter(fill == "brown") %>% filter(y == max(.$y)) %>% dplyr::select(x) %>% unlist()
+
+gg_peak_s_20_y = gg_data_s %>% filter(fill == "darkgoldenrod1") %>% filter(y == max(.$y)) %>% dplyr::select(y) %>% unlist()
+gg_peak_s_30_y = gg_data_s %>% filter(fill == "chocolate1") %>% filter(y == max(.$y)) %>% dplyr::select(y) %>% unlist()
+gg_peak_s_40_y = gg_data_s %>% filter(fill == "brown") %>% filter(y == max(.$y)) %>% dplyr::select(y) %>% unlist()
+
+
+
+###graph 
+gg_s = 
+  ggplot(data_var_all_mean %>% filter(smurfness == "smurf"), aes(x = value)) +  geom_density(alpha=.4, aes(fill= age)) +scale_fill_manual(name = "Age", labels = c('20 days', "30 days", "40 days"), values = c( "darkgoldenrod1", "chocolate1", "brown")) +
+   ylim(c(0,8))  + theme_minimal() +xlab("Relative standard deviation") + ylab("density") + 
+    geom_point(aes(x = gg_peak_s_20 , y = gg_peak_s_20_y) , size = 4.5 )+
+    geom_point(aes(x = gg_peak_s_40 , y = gg_peak_s_40_y) , size = 4.5 ) +
+    #geom_segment(data = filter(data_var_all_mean, smurfness=="smurf"), aes(x = gg_peak_s_20, y = gg_peak_s_20_y, xend = gg_peak_s_20, yend = 8), linetype = "dotted", color = "darkgoldenrod1", size = 1.2)+
+     #   geom_segment(data = filter(data_var_all_mean, smurfness=="smurf"), aes(x = gg_peak_s_40, y = gg_peak_s_40_y, xend = gg_peak_s_40, yend = 8), linetype = "dotted", color = "brown", size = 1.2) +
+    coord_cartesian(xlim = c(0, 0.6)) +  theme(axis.text.x = element_text(size=14), axis.text.y = element_text(size=14), axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 14)) +
+  theme( legend.text = element_text(size = 14), plot.title = element_text(hjust = 0.5), axis.text.x = element_text(size = 14, color = "black"),
+        axis.text.y = element_text(size = 14, color = "black"), axis.title.x = element_text(size = 14, color = "black"), axis.title.y = element_text(size = 14, color = "black"))
+
+
+
+
+#ns graph 
+gg_graph_ns = ggplot(data_var_all_mean %>% filter(smurfness == "n_smurf"), aes(x = value)) +  geom_density(alpha=.4, aes(fill= age)) +scale_fill_manual(name = "Age", labels = c('20 days', "30 days", "40 days"), values = c( "darkgoldenrod1", "chocolate1", "brown")) +
+   ylim(c(0,8))  + theme_minimal() +xlab("Relative standard deviation") 
+ # geom_vline(linetype = 'dotted', xintercept = peak_s_40 ) + geom_vline(linetype = 'dotted', xintercept = 0.09672575, col = "red" )+ 
+   #facet_grid(rows = vars(age), labeller = as_labeller(labs))  + 
+  #xlim(c(0, 0.5))#+ coord_flip()
+
+gg_build_ns = ggplot_build(gg_graph_ns)
+gg_data_ns =gg_build_ns$data[[1]]
+gg_peak_ns_20 = gg_data_ns %>% filter(fill == "darkgoldenrod1") %>% filter(y == max(.$y)) %>% dplyr::select(x) %>% unlist()
+gg_peak_ns_30 = gg_data_ns %>% filter(fill == "chocolate1") %>% filter(y == max(.$y)) %>% dplyr::select(x) %>% unlist()
+gg_peak_ns_40 = gg_data_ns %>% filter(fill == "brown") %>% filter(y == max(.$y)) %>% dplyr::select(x) %>% unlist()
+
+gg_peak_ns_20_y = gg_data_ns %>% filter(fill == "darkgoldenrod1") %>% filter(y == max(.$y)) %>% dplyr::select(y) %>% unlist()
+gg_peak_ns_30_y = gg_data_ns %>% filter(fill == "chocolate1") %>% filter(y == max(.$y)) %>% dplyr::select(y) %>% unlist()
+gg_peak_ns_40_y = gg_data_ns %>% filter(fill == "brown") %>% filter(y == max(.$y)) %>% dplyr::select(y) %>% unlist()
+
+###graph 
+gg_ns = 
+  ggplot(data_var_all_mean %>% filter(smurfness == "n_smurf"), aes(x = value)) +  geom_density(alpha=.4, aes(fill= age)) + scale_fill_manual(name = "Age", labels = c('20 days', "30 days", "40 days"), values = c( "darkgoldenrod1", "chocolate1", "brown")) +
+   ylim(c(0,8))  + theme_minimal() +xlab("Relative standard deviation") + ylab("density") + 
+   geom_point(aes(x = gg_peak_ns_20 , y = gg_peak_ns_20_y) , size = 4.5 )+
+    geom_point(aes(x = gg_peak_ns_40 , y = gg_peak_ns_40_y) , size = 4.5 ) +
+  # geom_segment(data = filter(data_var_all_mean, smurfness=="smurf"), aes(x = gg_peak_ns_20, y = gg_peak_ns_20_y, xend = gg_peak_ns_20, yend = 8), linetype = "dotted", color = "darkgoldenrod1", size = 1.2)+
+       #geom_segment(data = filter(data_var_all_mean, smurfness=="smurf"), aes(x = gg_peak_ns_40, y = gg_peak_ns_40_y, xend = gg_peak_ns_40, yend = 8), linetype = "dotted", color = "brown", size = 1.2) +
+    coord_cartesian(xlim = c(0, 0.6)) + theme(axis.text.x = element_text(size=14), axis.text.y = element_text(size=14), axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 14) ) +
+  theme( legend.text = element_text(size = 14), plot.title = element_text(hjust = 0.5), axis.text.x = element_text(size = 14, color = "black"),
+        axis.text.y = element_text(size = 14, color = "black"), axis.title.x = element_text(size = 14, color = "black"), axis.title.y = element_text(size = 14, color = "black"))  
+
+#save separetely if needed
+# ggsave("gg_ns_noise_with_peaks_new.pdf", plot = gg_ns, width = 8, height = 3)
+# ggsave("gg_s_noise_with_peaks_new.pdf", plot = gg_s, width = 8, height = 3)
+
+
+library(ggpubr)
+ggarrange(gg_s, gg_ns,ncol = 1)
+ggsave("../figures/Fig6b_hetereogeneity_transcription.pdf", width = 10, height = 8)
+
+
+
+###########compare the distribution
+
+require(Matching) #ks.test impletementation to use in presence of ties
+
+#smurfs: day 20 vs day 40
+
+ks.boot(data_var_all_mean %>% filter(smurfness == "smurf") %>%  filter(age == 30) %>% dplyr::select(value) %>% unlist,
+        data_var_all_mean %>% filter(smurfness == "smurf") %>%  filter(age == 40) %>% dplyr::select(value) %>% unlist)
+#pvalue < 2.2e-16 --> pvalue really close to 0
+#20-40
+#D = 0.27 and p-value < 2.2e-16
+#20-30
+#D = 0.11 and p-value < 2.2e-16
+#30-40
+#D = 0.17 and p-value < 2.2e-16
+#non_smurfs: day 20 vs day 40
+
+ks.boot(data_var_all_mean %>% filter(smurfness == "n_smurf") %>%  filter(age == 30) %>% dplyr::select(value) %>% unlist,
+        data_var_all_mean %>% filter(smurfness == "n_smurf") %>%  filter(age == 40) %>% dplyr::select(value) %>% unlist)
+
+#pvalue < 2.2e-16 --> pvalue really close to 0
+#D = 0.23 
+#20-30
+#D = 0.16 and p-value < 2.2e-16
+#30-40
+#D = 0.09 and p-value < 2.2e-16
+
+
+
+##if I compare the Smurfs and non-Smurfs I still obtain different distributions. Example for 20 and 40 days
+#20 days
+ks.boot(data_var_all_mean %>% filter(smurfness == "n_smurf") %>%  filter(age == 40) %>% dplyr::select(value) %>% unlist,
+        data_var_all_mean %>% filter(smurfness == "smurf") %>%  filter(age == 40) %>% dplyr::select(value) %>% unlist)
+#pvalue < 2.2e-16 --> pvalue really close to 0
+
+#20
+#D = 0.06
+#30
+#0.10
+#40
+# D = 0.05 p-value 1.332e-15
+
+ks.boot(data_var_all_mean %>% filter(smurfness == "n_smurf") %>%  filter(age == 40) %>% dplyr::select(value) %>% unlist,
+        data_var_all_mean %>% filter(smurfness == "smurf") %>%  filter(age == 40) %>% dplyr::select(value) %>% unlist)
+#pvalue 1.332e-15
+
+
+
+
+
+```
+
+
+After checking the behaviour of the gene expression RSD with time and Smurfness, we did a brief checking to investigate how the genes distribute in the RSD distribution. Does the expression value affects on average the  
+
+```{check_distribution_tail r}
+
+
+
+##check out the value of expression - avarage and how it changes 
+ns_bins_20 = day_20_ns_sd %>% arrange(var20ns2) %>% mutate(bins = ifelse(var20ns2 < 0.053888781, "first", ifelse(var20ns2 > 0.053888781 & var20ns2 < 0.099879128, "second", ifelse(var20ns2 > 0.099879128 & var20ns2 < 0.224399363, "third", "fourth"))))
+
+
+ns_bins_20$bins = factor(ns_bins_20$bins, levels = c("first", "second", "third", "fourth", "NA"))
+
+first = ns_bins_20 %>% filter(bins == "first") %>% dplyr::select(mean) %>% unlist()
+second = ns_bins_20 %>% filter(bins == "second") %>% dplyr::select(mean) %>% unlist()
+third = ns_bins_20 %>% filter(bins == "third") %>% dplyr::select(mean) %>% unlist()
+fourth = ns_bins_20 %>% filter(bins == "fourth") %>% dplyr::select(mean) %>% unlist()
+
+wilcox.test(first,fourth)
+
+# ggplot(ns_bins_20 %>% na.omit(), aes(bins, mean)) + geom_boxplot(fill = "grey", alpha = 0.3) +   coord_cartesian(ylim = c(0, 20000)) + theme_bw() + theme(axis.text.x = element_text(size=14), axis.text.y = element_text(size=14), axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 14) ) + scale_x_discrete(labels=c("first" = "first quartile", "second" = "second quartile", "third" = "third quartile", "fourth" = "fourth quartile")) + xlab("quartiles") + ylab("mean gene expression (non-Smurfs 20 days)") 
+
+#try40
+
+ns_bins_40 = day_40_ns_sd %>% arrange(var40ns2) %>% mutate(bins = ifelse(var40ns2 < 0.091361118, "first", ifelse(var40ns2 > 0.091361118 & var40ns2 < 0.148349825, "second", ifelse(var40ns2 > 0.148349825 & var40ns2 < 0.278178830, "third", "fourth"))))
+ns_bins_40$bins = factor(ns_bins_40$bins, levels = c("first", "second", "third", "fourth", "NA"))
+
+first = ns_bins_40 %>% filter(bins == "first") %>% dplyr::select(mean) %>% unlist()
+second = ns_bins_40 %>% filter(bins == "second") %>% dplyr::select(mean) %>% unlist()
+third = ns_bins_40 %>% filter(bins == "third") %>% dplyr::select(mean) %>% unlist()
+fourth = ns_bins_40 %>% filter(bins == "fourth") %>% dplyr::select(mean) %>% unlist()
+
+wilcox.test(first,fourth)
+
+# ggplot(ns_bins_40 %>% na.omit(), aes(bins, mean)) + geom_boxplot(fill = "grey", alpha = 0.3) +   coord_cartesian(ylim = c(0, 20000)) + theme_bw() + theme(axis.text.x = element_text(size=14), axis.text.y = element_text(size=14), axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 14) ) + scale_x_discrete(labels=c("first" = "first quartile", "second" = "second quartile", "third" = "third quartile", "fourth" = "fourth quartile")) + xlab("quartiles") + ylab("mean gene expression (non-Smurf 40 days)") 
+
+###smurf 20 days
+s_bins_20 = day_20_s_sd %>% arrange(var20s2) %>% mutate(bins = ifelse(var20s2 < 0.047486164, "first", ifelse(var20s2 > 0.047486164 & var20s2 < 0.092346619, "second", ifelse(var20s2 > 0.092346619 & var20s2 <0.247651793, "third", "fourth"))))
+
+s_bins_20$bins = factor(s_bins_20$bins, levels = c("first", "second", "third", "fourth", "NA"))
+
+first = s_bins_20 %>% filter(bins == "first") %>% dplyr::select(mean) %>% unlist()
+second = s_bins_20 %>% filter(bins == "second") %>% dplyr::select(mean) %>% unlist()
+third = s_bins_20 %>% filter(bins == "third") %>% dplyr::select(mean) %>% unlist()
+fourth = s_bins_20 %>% filter(bins == "fourth") %>% dplyr::select(mean) %>% unlist()
+
+wilcox.test(first,fourth)
+
+# ggplot(s_bins_20 %>% na.omit(), aes(bins, mean)) + geom_boxplot(fill = "deepskyblue1", alpha = 0.3) +   coord_cartesian(ylim = c(0, 20000)) + theme_bw() + theme(axis.text.x = element_text(size=14), axis.text.y = element_text(size=14), axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 14) ) + scale_x_discrete(labels=c("first" = "first quartile", "second" = "second quartile", "third" = "third quartile", "fourth" = "fourth quartile")) + xlab("quartiles") + ylab("mean gene expression (Smurfs 20 days)") 
+# 
+
+##smurf 40 days
+s_bins_40 = day_40_s_sd %>% arrange(var40s2) %>% mutate(bins = ifelse(var40s2 < 0.09025297, "first", ifelse(var40s2 > 0.09025297 & var40s2 < 0.15727439, "second", ifelse(var40s2 > 0.15727439 & var40s2 <0.32909861, "third", "fourth"))))
+
+s_bins_40$bins = factor(s_bins_40$bins, levels = c("first", "second", "third", "fourth", "NA"))
+
+first = s_bins_40 %>% filter(bins == "first") %>% dplyr::select(mean) %>% unlist()
+second = s_bins_40 %>% filter(bins == "second") %>% dplyr::select(mean) %>% unlist()
+third = s_bins_40 %>% filter(bins == "third") %>% dplyr::select(mean) %>% unlist()
+fourth = s_bins_40 %>% filter(bins == "fourth") %>% dplyr::select(mean) %>% unlist()
+
+wilcox.test(first,fourth)
+
+# ggplot(s_bins_40 %>% na.omit(), aes(bins, mean)) + geom_boxplot(fill = "deepskyblue1", alpha = 0.3) +   coord_cartesian(ylim = c(0, 20000)) + theme_bw() + theme(axis.text.x = element_text(size=14), axis.text.y = element_text(size=14), axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 14) ) + scale_x_discrete(labels=c("first" = "first quartile", "second" = "second quartile", "third" = "third quartile", "fourth" = "fourth quartile")) + xlab("quartiles") + ylab("mean gene expression (non-Smurfs 40 days)") 
+# 
+
+
+###plot for the supplementary data
+gg_boxplot_20 = rbind(ns_bins_20 %>% dplyr::select(mean, bins), s_bins_20 %>% dplyr::select(mean, bins)) %>% mutate(smurfness = c(rep("non-Smurf", nrow(ns_bins_20)), rep("Smurf", nrow(s_bins_20)))) %>% mutate(Age = "20")
+gg_boxplot_40 = rbind(ns_bins_40 %>% dplyr::select(mean, bins), s_bins_40 %>% dplyr::select(mean, bins)) %>% mutate(smurfness = c(rep("non-Smurf", nrow(ns_bins_40)), rep("Smurf", nrow(s_bins_40)))) %>% mutate(Age = "40")
+gg_boxplot_all = rbind(gg_boxplot_20, gg_boxplot_40)
+
+
+ggplot(gg_boxplot_all %>% na.omit(), aes(bins, mean)) + geom_boxplot(aes(fill = smurfness), alpha = 0.4) + scale_fill_manual(values = c("grey", "deepskyblue"))  + coord_cartesian(ylim = c(0, 20000)) + theme_bw() + theme(axis.text.x = element_text(size=14, color = "black", angle = 70, vjust =  0.6, hjust = 0.5), axis.text.y = element_text(size=14, color = "black"), axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 14), legend.position = "top", legend.direction = "horizontal", legend.text = element_text(size = 14)) + scale_x_discrete(labels=c("first" = "first quartile", "second" = "second quartile", "third" = "third quartile", "fourth" = "fourth quartile")) + xlab("quartiles") + ylab("mean gene expression") + facet_wrap(~ Age) 
+
+ggsave("../figures/supplementary/Fig_S12_distribution_gene_expression.pdf", width = 9, height = 7)
+
+###put them together
+
+
+
+```
+

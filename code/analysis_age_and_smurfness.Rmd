@@ -1,0 +1,290 @@
+---
+title: "Age and Smurfness"
+author: "F. Zane"
+date: "May 27, 2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r libraries}
+#set the working directory
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+#load here libraries that are needed all along
+library(org.Dm.eg.db); library(tidyverse); library(DESeq2)
+```
+
+
+```{r data}
+library(data.table)
+#assign the dataset to an object
+raw_data <- fread("../data/RNAseq_raw_data_matrix.tabular") %>% 
+  column_to_rownames(var="Geneid")  #select only the non-smurf ones
+#remove the genes that are never detected
+raw_data = raw_data[which(rowSums(raw_data) > 0),] 
+#explorre briefly the dataset
+head(raw_data)
+tail(raw_data)
+dim(raw_data)
+
+##get the vst data through the DESeq2 framework, to use downstream 
+colData = data.frame(samples = colnames(raw_data)) %>% 
+  mutate(days = ifelse(str_starts(samples, "20"), 20, ifelse(str_starts(samples, "40"), 40, 30))) %>% #chronological age
+  mutate(condition = ifelse(str_detect(samples, "s"), "S", "NS")) %>% #condition (smurfs or non-smurfs)
+  mutate(time = ifelse(str_detect(samples, "M"), "mixed", ifelse(str_detect(samples, "1d"), "24h", "5h"))) %>% #moment of sampling after the smurf transition
+  column_to_rownames(var="samples") #respect the format required by Deseq2 by putting samples as rownames
+
+#Create dds object, which will also be used in further analysis (differential gene expression) 
+dds1 <- DESeqDataSetFromMatrix(countData = raw_data, colData = colData, design = ~ condition + days)
+#apply a transformation to stabilize the variance prior to perform PCA on gene expression data
+vst <- vst(dds1)
+vst_df = vst %>% assay %>% as.data.frame()
+
+```
+
+## Including Plots
+
+
+
+```{r}
+##compute the correlation of each gene with Smurfness and age. For doing so, indicate the Smurf and non Smurf with 0 and 1 
+data_annot = vst_df %>% rownames_to_column(var = 'flybase') %>% 
+  gather(key = "samples", value = "expression", -flybase) %>% #reshape the dataframe
+  mutate(smurfness = ifelse(grepl("n", .$samples), 0, 1), #add the Smurf/non-Smurf annotation as O and 1
+        age = ifelse(grepl("20", .$samples), 20,    #add time annotation
+              ifelse(grepl("40", .$samples), 40, 30))) 
+data_annot$expression = as.numeric(data_annot$expression)
+
+
+#compute the correlation
+correlation_data = left_join(data_annot %>% dplyr::select(-samples) %>% group_by(flybase) %>% summarise(r_age = cor(expression, age)),
+                         data_annot %>% dplyr::select(-samples) %>% group_by(flybase) %>% summarise(r_smurf = cor(expression, smurfness))) 
+#write.table(correlation_data, 'correlation_data.txt', sep = "\t", quote = FALSE, col.names = TRUE, row.names = FALSE)
+
+
+
+
+```
+
+```{plot_pathways_and_distribution r}
+##plot certain pathways and observe the distribution
+library(gage) #to extract the kegg pathways
+gset = kegg.gsets(species = "dme", id.type = "entrez", check.new = FALSE)
+kegg.gs = gset$kg.sets
+
+###EXAMPLE: GENES FROM THE ETC 
+
+oxi_pho = kegg.gs$`dme00190 Oxidative phosphorylation`
+df_oxi = data.frame(entrez = oxi_pho, stringsAsFactors = FALSE) %>% mutate(flybase = mapIds(org.Dm.eg.db,
+                                                                                        keys = .$entrez,
+                                                                                        keytype="ENTREZID",
+                                                                                        column="ENSEMBL", multiVals = "first")) %>% 
+                                                                  mutate(symbol = mapIds(org.Dm.eg.db,
+                                                                                        keys = .$entrez,
+                                                                                        keytype="ENTREZID",
+                                                                                        column="SYMBOL", multiVals = "first"))
+data_oxi= left_join(df_oxi, correlation_data) %>% mutate(mapping = "ETC")
+
+
+ggplot() + geom_point(data = correlation_data, aes(r_smurf, r_age), alpha = 0.05) + 
+  geom_point(data = data_oxi, aes(r_smurf, r_age), col = "red", alpha = 0.5) + 
+  geom_density_2d(data = data_oxi, aes(r_smurf, r_age), col = "red", linetype = "dashed") + 
+  theme_light() +
+  xlab("gene expression correlation with smurfness") +
+  ylab("gene expression correlation with age")
+
+#to plot independently simply comment out the lines of the pathway you are not interested in 
+#run the test individually
+##statistical test
+
+#for oxi
+fasano.franceschini.test(S1 = data_oxi %>% na.omit() %>% dplyr::select(r_age,r_smurf) , 
+                         S2 = final_corr_for_test %>% na.omit() %>% as.data.frame() %>% dplyr::select(r_age, r_smurf))
+
+```
+
+
+```{automatization r}
+
+#####Generalize the code to plot all the pathways and observe their behaviour
+##automatization for different pathways
+paths = kegg.gs %>% names
+paths_n = seq(1, length(paths), by=1)
+
+#function to generate the plots for each pahtway
+path_plotting_cor = function(n, paths){
+                                  path = kegg.gs[[n]]
+                                  df_path = data.frame(entrez = path, stringsAsFactors = FALSE) %>% mutate(flybase = mapIds(org.Dm.eg.db,
+                                                                                        keys = .$entrez,
+                                                                                        keytype="ENTREZID",
+                                                                                        column="ENSEMBL", multiVals = "first")) %>% 
+                                                                  mutate(symbol = mapIds(org.Dm.eg.db,
+                                                                                        keys = .$entrez,
+                                                                                        keytype="ENTREZID",
+                                                                                        column="SYMBOL", multiVals = "first"))
+                                  data_path = left_join(df_path, correlation_data) %>% mutate(mapping = paths[[1]])
+                                  ggplot() + geom_density_2d(data = correlation_data, aes(r_smurf, r_age), alpha = 0.4, linetype = "dashed", color = 'black') + 
+                                  geom_point(data = data_path, aes(r_smurf, r_age), col = "red", alpha = 0.5) + 
+                                  geom_density_2d(data = data_path, aes(r_smurf, r_age), col = "red") + 
+                                  theme_light() +
+                                  xlab("gene expression correlation with smurfness") +
+                                  ylab("gene expression correlation with age") +
+                                  ggtitle(paths[[n]])
+
+                                  if (str_detect(paths[[n]], "/")) {
+                                  path_name = gsub("/", "_", paths[[n]])
+                                  } else {
+                                  path_name = paths[[n]]
+                                  }
+                                  ggsave(paste0("./path_age/", path_name, ".pdf" ), width = 5, height = 4)
+                                  
+                                  
+}
+
+###the function generate one pdf for each pathway. Results were manually merged and can be found at Fig6c_age_and_smurfness_correlation.pdf
+```
+
+
+```{automatization_test r}
+require(fasano.franceschini.test)
+
+###test running for all of them
+final_corr_for_test = correlation_data %>% dplyr::select(r_age,r_smurf) %>% na.omit()
+
+
+paths = kegg.gs %>% names
+names(n_genes_path) = paths
+
+paths_n = seq(1, length(paths), by = 1)
+
+test_fasano_franceschini_auto = function(n, paths, final_corr_for_test) { 
+                                  path = kegg.gs[[n]]
+                                  df_path = data.frame(entrez = path, stringsAsFactors = FALSE) %>% mutate(flybase = mapIds(org.Dm.eg.db,
+                                                                                        keys = .$entrez,
+                                                                                        keytype="ENTREZID",
+                                                                                        column="ENSEMBL", multiVals = "first")) %>% 
+                                                                  mutate(symbol = mapIds(org.Dm.eg.db,
+                                                                                        keys = .$entrez,
+                                                                                        keytype="ENTREZID",
+                                                                                        column="SYMBOL", multiVals = "first"))
+                                  data_path = left_join(df_path, correlation_data) %>% mutate(mapping = paths[[n]])
+                                    if (str_detect(paths[[n]], "/")) {
+                                  path_name = gsub("/", "_", paths[[n]])
+                                  } else {
+                                  path_name = paths[[n]]
+                                  }
+                                  test = fasano.franceschini.test(S1 = data_path  %>% na.omit() %>%  dplyr::select(r_age,r_smurf), 
+                                                     S2 = final_corr_for_test %>% na.omit() %>% as.data.frame())
+                                  p_val = test$p.value
+                                  names(p_val) = path_name
+                                  return(p_val)
+} 
+
+
+
+
+p_val_store = sapply(paths_n, function(n) test_fasano_franceschini_auto(n, paths = new_paths, final_corr_for_test = final_corr_for_test))
+df_pval_store = data.frame(p_val = p_val_store, paths = names(p_val_store))  %>% mutate(adj.p = p.adjust(.$p_val, method = "BH"))
+
+```
+
+```{r}
+
+####USE THE AVG CORRELATION AS A STATISTIC TO CHECK IF A PATH CORRELATES MORE WITH SMURFNESS OR CHRONOLOGICAL AGE
+
+correlation_data = correlation_data %>% 
+  mutate(entrez = mapIds(org.Dm.eg.db, keys = flybase, keytype="ENSEMBL", column="ENTREZID", multiVals = "first"))
+
+
+df = data.frame()
+for (n in 1:length(paths)) {
+  path_genes = kegg.gs[n] %>% unlist
+  corr_data = correlation_data %>% filter(entrez %in% path_genes)
+  avg_age = corr_data$r_age %>% mean()
+  avg_smurf = corr_data$r_smurf %>% mean()
+  df[n, 1] = kegg.gs[n] %>% names
+  df[n, 2] = corr_data$r_age %>% mean()
+  df[n, 3] = corr_data$r_smurf %>% mean()
+}
+colnames(df) = c("name_path", "avg_age", "avg_smurf")
+
+###filter out the pathways with less than 10 genes
+##compute the amount of genes in a pathway
+###check how many genes per pathway
+
+n = seq(1, nrow(df_pval_store), by = 1)
+path_ngenes = function(n, paths){
+                                  path = kegg.gs[[n]]
+                                  df_path = data.frame(entrez = path, stringsAsFactors = FALSE) %>% mutate(flybase = mapIds(org.Dm.eg.db,
+                                                                                        keys = .$entrez,
+                                                                                        keytype="ENTREZID",
+                                                                                        column="ENSEMBL", multiVals = "first"))
+                                  data_path = left_join(df_path, correlation_data) %>% mutate(mapping = paths[[n]])
+                                  ngenes = nrow(data_path)
+                                  return(ngenes)
+                                  
+}
+
+
+n_genes = sapply(n, function(n) path_ngenes(n, paths = paths ))
+
+#now filter
+df_pval_store = df_pval_store[which(n_genes >= 10),]
+
+df = df[which(n_genes >= 10),] 
+dim(df)
+dim(df_pval_store)
+
+pval_and_avg = cbind(df_pval_store, df) %>% dplyr::select(c("name_path", "avg_age", "avg_smurf", "adj.p")) %>% 
+ mutate(avg_age = round(.$avg_age, 3) , avg_smurf = round(.$avg_smurf, 3), adj.p = format(.$adj.p, scientific = TRUE, digits = 2))
+
+###make general table
+library(kableExtra)
+table_colnames = c("KEGG path", "Avg age correlation", "Avg smurf correlation", "adjust pval (Fasano-Franceschini)")
+kbl_en = kbl(pval_and_avg, col.names = table_colnames, row.names = F) %>% kable_classic_2(full_width = F, html_font = "Helvetica")%>% 
+  row_spec(row = 0, bold = T, font_size = 14) 
+#save_kable(kbl_en, "../tables_and_files/kbl_ns4020.html")
+#save_kable(kbl_en, "./age_smurfness/kbl_avg_pvalue.pdf")
+
+
+
+####paths with higher smurf corr
+smurf_corr_more = pval_and_avg %>% filter(as.numeric(adj.p) < 0.05) %>%  filter(abs(avg_smurf) > abs(avg_age))  %>% arrange(desc(avg_smurf))
+pos_smurf = smurf_corr_more %>% filter(avg_smurf > 0) %>% arrange(desc(avg_smurf))
+neg_smurf = smurf_corr_more %>% filter(avg_smurf < 0) %>% arrange(avg_smurf)
+dim(smurf_corr_more)
+
+write.table(smurf_corr_more, "../data/correlation_gene_age_smurfness/Table_S10_pathways_correlatin_smurfness.txt", row.names = TRUE, col.names = TRUE, sep = "\t", quote = FALSE)
+
+
+#code that generates the table S10 of the paper
+table_colnames = c("KEGG path", "Avg age correlation", "Avg Smurf correlation", "adjust p-val (Fasano-Franceschini)")
+kbl_en = kbl(smurf_corr_more, col.names = table_colnames, row.names = F) %>% kable_classic_2(full_width = F, html_font = "Helvetica")%>% 
+  row_spec(row = 0, bold = T, font_size = 14) 
+#save_kable(kbl_en, "./age_smurfness/smurf_correlation_NEW.pdf")
+
+
+##paths with higher age correlation
+age_corr_more = pval_and_avg %>% filter(as.numeric(adj.p) < 0.05) %>% filter(abs(avg_smurf) < abs(avg_age))%>% arrange(desc(avg_age))
+pos_age = age_corr_more %>% filter(avg_age > 0) %>% arrange(desc(avg_age))
+neg_age = age_corr_more %>% filter(avg_age < 0) %>% arrange(avg_age)
+
+write.table(age_corr_more, "../data/correlation_gene_age_smurfness/Table_S11_pathways_correlatin_age.txt", row.names = TRUE, col.names = TRUE, sep = "\t", quote = FALSE)
+
+table_colnames = c("KEGG path", "Avg age correlation", "Avg Smurf correlation", "adjust p-val (Fasano-Franceschini)")
+kbl_en = kbl(age_corr_more, col.names = table_colnames, row.names = F) %>% kable_classic_2(full_width = F, html_font = "Helvetica")%>% 
+  row_spec(row = 0, bold = T, font_size = 14) 
+#save_kable(kbl_en, "./age_smurfness/age_correlationNEW.pdf")
+
+
+
+
+```
+
+
+
+
+
+
+
+

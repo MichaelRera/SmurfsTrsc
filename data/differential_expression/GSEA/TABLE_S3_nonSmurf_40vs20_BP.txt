@@ -1,0 +1,23 @@
+GO category	setSize	NES	adj p-value
+GO:0009617	GO:0009617 response to bacterium	44	2.07757001755619	**
+GO:0009607	GO:0009607 response to biotic stimulus	52	2.01007819185067	**
+GO:0043207	GO:0043207 response to external biotic stimulus	52	2.01007819185067	**
+GO:0051707	GO:0051707 response to other organism	52	2.01007819185067	**
+GO:0019731	GO:0019731 antibacterial humoral response	16	1.95458226626201	**
+GO:0042742	GO:0042742 defense response to bacterium	35	1.95395334404734	**
+GO:0009605	GO:0009605 response to external stimulus	67	1.94205433691495	**
+GO:0050830	GO:0050830 defense response to Gram-positive bacterium	20	1.92647432099342	**
+GO:0050829	GO:0050829 defense response to Gram-negative bacterium	15	1.92564353410233	**
+GO:0098542	GO:0098542 defense response to other organism	41	1.89313887122	**
+GO:0006952	GO:0006952 defense response	53	1.88983005172309	**
+GO:0002376	GO:0002376 immune system process	43	1.82236042969828	**
+GO:0051704	GO:0051704 multi-organism process	75	1.80034279962038	**
+GO:0006950	GO:0006950 response to stress	90	1.78348393627355	**
+GO:0019730	GO:0019730 antimicrobial humoral response	23	1.76025408012432	*
+GO:0006955	GO:0006955 immune response	35	1.75508130126206	*
+GO:0006959	GO:0006959 humoral immune response	26	1.73977320659755	*
+GO:0007292	GO:0007292 female gamete generation	11	-2.12022287423817	**
+GO:0048477	GO:0048477 oogenesis	11	-2.12022287423817	**
+GO:0022412	GO:0022412 cellular process involved in reproduction in multicellular organism	15	-2.14295238760633	*
+GO:0007276	GO:0007276 gamete generation	16	-2.20290712909756	*
+GO:0007281	GO:0007281 germ cell development	13	-2.27347632341678	*

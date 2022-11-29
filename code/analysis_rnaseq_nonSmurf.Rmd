@@ -1,0 +1,355 @@
+---
+title: "non-Smurfs analysis"
+author: "Flaminia Zane"
+date: "May 25, 2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+#non-Smurf samples analysis through time 
+```{r}
+#set the working directory if needed
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path)) #setting current working directory
+#load here libraries that are needed all along
+library(org.Dm.eg.db); library(tidyverse); library(DESeq2)
+```
+
+```{r dataset}
+
+library(data.table)
+#assign the dataset to an object
+raw_data <- fread("../data/RNAseq_raw_data_matrix.tabular") %>% 
+  column_to_rownames(var="Geneid") %>% select(contains("n")) #select only the non-smurf ones
+
+#remove the genes that are never detected
+#take the same genes that are present in the smurf analysis 
+res_s = read.table("../data/differential_expression/res_DEGS_SvsNS.txt", header = TRUE)
+raw_data = raw_data %>% filter(rownames(.) %in% rownames(res_s))
+#explorre briefly the dataset
+head(raw_data)
+tail(raw_data)
+dim(raw_data) #15364 as in the other dataset
+```
+
+Run the PCA to check if samples distribute with age, as expected.
+```{r PCA}
+library(ggrepel)
+
+#As the differential gene expression analysis will be perform with DESeq2, the PCA will be performed in the same framework. 
+#For more information and details on the DESeq2 framework, check the vignette: http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html
+
+#creation of the colData object with data annotation, needed for the DESeq2 framework
+colData = data.frame(samples = colnames(raw_data)) %>% 
+  mutate(days = ifelse(str_starts(samples, "20"), "20", ifelse(str_starts(samples, "40"), "40", "30"))) %>% 
+  mutate(time = ifelse(str_detect(samples, "M"), "mixed", ifelse(str_detect(samples, "1d"), "24h", "5h"))) %>% #moment of sampling after the smurf transition
+  column_to_rownames(var="samples")  #respect the format required by Deseq2 by putting samples as rownames
+colData$days = as.factor(colData$days)
+#Create dds object, which will also be used in further analysis (differential gene expression) 
+#this step also implies data normalization
+#design the matrix to keep into consideration the different biological variables
+dds1 <- DESeqDataSetFromMatrix(countData = raw_data, colData = colData, design = ~ days)
+
+#apply a transformation to stabilize the variance prior to perform PCA on gene expression data
+vst <- vst(dds1)
+#run PCA, on the top 5000 genes in terms of variance. The ntop parameter can change depending on the needs of the analysis, default is 500.
+pca = plotPCA(vst, intgroup = c( "days"), ntop =5000, returnData = TRUE)
+percentVar <- round(100 * attr(pca, "percentVar"))
+#visualize coordinates
+pca
+
+#plot the PCA manually with ggplot2 for better customization
+pca_plot = ggplot(pca, aes(PC1, PC2, color= as.factor(days))) +
+  geom_point(size=3.8, alpha = 0.9) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) +
+  geom_hline(yintercept = 0, linetype = "dotted", alpha = 0.5) +
+  geom_vline(xintercept = 0, linetype = "dotted", alpha = 0.5) +
+  geom_text_repel(aes(label = rownames(pca)), size = 3.5) +
+  coord_fixed() +
+  scale_color_manual(values = c("darkgoldenrod1", "chocolate1", "brown"), name = "Age", labels = c("20 days", "30 days", "40 days")) +
+  ggtitle("PCA RNAseq samples - non-Smurfs") +
+  scale_shape_discrete(name = "Age", labels = c("20 days", "30 days", "40 days")) +
+  theme_light() +
+  theme(legend.position = "top", legend.direction = "horizontal", plot.title = element_text(hjust = 0.5)) 
+
+```
+
+```{r DEG}
+
+########DIFFERENTIAL GENE EXPRESSION RESULTS#########
+
+#use the same dds object generated before for the PCA, and perform the second step
+dds2 = DESeq(dds1)
+#compute the results object and set the alpha for the FDR at the threshold that I want to choose after
+res_ns =results(dds2, contrast = c("days", "40", "20"), alpha = 0.05) 
+
+#write down results
+write.table(res_ns %>% as.data.frame, "../data/differential_expression/res_DEGS_NS_40days_20days.txt", row.names = TRUE, col.names = TRUE, sep = "\t", quote = FALSE)
+##significant one
+sign_ns = res_ns %>% as.data.frame() %>% filter(padj <= 0.05)
+
+###check how many genes are significantly differentially expressed at 30 days
+res30 = results(dds2, contrast = c("days", "30", "20"), alpha = 0.05) %>% as.data.frame() %>% 
+   mutate(symbol = mapIds(org.Dm.eg.db, 
+                         keys= rownames(.),
+                         column="SYMBOL", 
+                         keytype="ENSEMBL",
+                         multiVals="first"))
+sign_30 = res30 %>% as.data.frame() %>% filter(padj <= 0.05)
+
+##########################VISUALIZATION#############
+
+#visualization through Volcano plot
+#shirk the log2fold change for visualization
+lfc_apeglm =lfcShrink(dds2, res = res_ns, coef = "days_40_vs_20" , type="apeglm")
+
+#add information that needs to be displayed in the plot
+apeglm_for_plot = lfc_apeglm %>% as.data.frame() %>%  
+  rownames_to_column(var = "flybase") %>% dplyr::select(c("flybase", "log2FoldChange", "padj")) %>% na.omit() %>% 
+  mutate(significance = ifelse(padj <= 0.05, "signif", "non_signif")) %>% 
+  mutate(symbol = mapIds(org.Dm.eg.db, 
+                         keys= .$flybase,
+                         column="SYMBOL", 
+                         keytype="ENSEMBL",
+                         multiVals="first")) %>% 
+  mutate(annot = ifelse(log2FoldChange < -2, symbol, ifelse(log2FoldChange > 2, symbol, ""))) %>% 
+  mutate(annot = ifelse(is.na(annot), flybase, annot))
+#plot, label for the genes that have a log2FC > |2|
+ggplot(apeglm_for_plot, aes(log2FoldChange, -log10(padj)))+ geom_point(aes(col = significance), alpha = 0.5) + theme_light() +
+  scale_color_manual(name = "FDR 5%", labels = c("Non significant", "Significant"), values = c("lightgrey", "red")) +
+  theme(legend.position = "bottom", legend.direction = "horizontal") + geom_text_repel(aes(label = annot), size = 4.3) + 
+  ylab("-log10(FDR)") + xlab("log2FoldChange Smurfs/non-Smurfs")
+
+#################UNSUPERVISED HIERARCHICAL CLUSTERING ON THE NON-SMURF GENES#################
+
+##use the same dataset used for the PCA, vst (stabilized variance) rather than simply the normalized counts
+#filter for the DEGs
+vst_df = vst %>% assay %>% as.data.frame()
+vst_diff = vst_df[rownames(vst_df) %in% rownames(sign_ns),]
+
+require(heatmap3)
+##prepare annotation for the heatmap plot
+vst_mat_005 = vst_diff %>% as.matrix
+annot = data.frame(samples = colnames(vst_mat_005)) %>% 
+  mutate(condition = ifelse(grepl("n", .$samples), "NS", "S")) %>% 
+  mutate(age = ifelse(grepl("20", .$samples), "20", 
+                      ifelse(grepl("40", .$samples), "40", 
+                             ifelse(grepl("30", .$samples), "30", "32")))) %>% 
+  #mutate(smurfness = ifelse(condition == "NS", "lightgrey", "blue")) %>% 
+  mutate(days = ifelse(age == "20", "darkgoldenrod1", ifelse(age == "40", "brown", "chocolate1")))
+annot_hp = annot %>% select(c("days")) %>% as.matrix
+rownames(annot_hp) = annot$samples
+
+#plot with heatmap3, default for computing the matrix is correlation
+heatmap3(vst_mat_005 , scale = "row", ColSideColors = annot_hp, 
+         labRow   = FALSE, labCol = FALSE, showRowDendro = F, legendfun = function()
+         showLegend(legend = c("20 days", "30 days", "40 days"),
+                    fill = c("darkgoldenrod1", "chocolate1", "brown"), lwd = 0,
+         col=colorRampPalette(c("green","black","red"))(1024)))
+
+###as expected, I have a chronological age distribution
+
+
+##compare the results of the NS with the results of the Smurfs 
+sign_s = res_s %>% filter(padj <= 0.05)
+rownames(sign_ns) %in% rownames(sign_s) %>% sum ###310 genes are shared, corresponding to 59%  
+
+
+```
+
+
+```{r GSEA}
+
+require(clusterProfiler)
+
+##list of genes to use: as reccomended in the DESeq2 guidelines, use of the shrinked log2FC for ranking
+lfc_apeglm = lfc_apeglm %>% as.data.frame() %>% rownames_to_column(var = "gene_flybase") %>% 
+                         mutate(entrez = mapIds(org.Dm.eg.db,
+                         keys = .$gene_flybase,
+                         column = "ENTREZID", #add the entrez nomenclature that is required (as the downloaded GO are annotated this way)
+                         keytype = "ENSEMBL",
+                         multiVals = "first"))
+#filter only the genes we are interested in 
+res_apeg <- lfc_apeglm  %>% filter(padj <= 0.05) %>%  dplyr::select(c("gene_flybase", "log2FoldChange", "entrez"))
+#creating the gene list and ranking it
+#getting the sorted gene list
+gene_list <- as.numeric(res_apeg$log2FoldChange)
+names(gene_list) <- as.character(res_apeg$gene_flybase)
+gene_list = gene_list[!is.na(names(gene_list))] %>% .[!duplicated(names(.))] %>% sort(., decreasing = TRUE)
+
+#run the analysis
+n = 50 #number of times repeating
+P = 80 #percentage for selection
+pval = 0.05 #threshold to apply
+gse_go = vector("list", n)
+organism = "org.Dm.eg.db"
+library(organism, character.only = TRUE) #library is already loaded
+set.seed(123)
+for (i in 1:length(gse_go)) {
+  gse_go[[i]] <- gseGO(geneList= gene_list,
+                       ont ="BP", 
+                       keyType = "ENSEMBL", 
+                       nPerm = 15000, 
+                       minGSSize = 10, 
+                       maxGSSize = 600, 
+                       pvalueCutoff = 0.05, #change the significance level
+                       verbose = TRUE, 
+                       OrgDb = organism, 
+                       pAdjustMethod = "fdr") # %>% as.data.frame()
+}
+
+#perform the filtering with the 80% threshold
+#transform the objects in the list to dataframe
+df_gse = lapply(gse_go, function(x) as.data.frame(x))
+#extract the categories of interest
+categories = lapply(df_gse, function(x) x$Description)
+#IF I WANT TO KEEP ONLY THE ONES THAT ARE OCCURING EVERYTIME
+#Reduce(intersect, a )
+#IF I WANT TO FILTER FOR P% PRESENCE OF THE CATEGORY
+filtering_vector = tibble(category = unlist(categories)) %>% #unlist the list and making it a tibble
+  group_by(category) %>% 
+  summarise(count = n()) %>% #group by category and generate a new column counting how many times a category occurs
+  mutate(percentage_presence = count/n*100) %>% #adding a column with the persentage 
+  #arrange(desc(count)) %>% #adding this only if we want to visualize
+  filter(percentage_presence >= P)
+
+##find a gse_go that has all of them
+df_gse[[1]]$Description %in% filtering_vector$category %>% sum
+#use the number three in this case as it has all the categories chosen
+
+##FOR THE PLOT
+plot_gse = gse_go[[1]]
+pdf("Fig4a_GSEA_NS_40d_20d.pdf", width = 16, height = 14)
+emapplot(plot_gse, showCategory = filtering_vector$category, color = "NES", 
+         layout = "fr", cex_label_category = 0.1) + scale_color_gradient(low = "blue" , high = "red" ) #selecting the categories we want with "showCategory"
+dev.off()
+
+
+####generate tables with the categories
+df_enrich_table = df_gse[[1]][df_gse[[1]]$Description %in% filtering_vector$category,] %>% 
+                    mutate(`GO category` = paste(ID, Description)) %>% arrange(desc(NES)) %>% 
+                      mutate(`adj p-value` = ifelse(p.adjust < 0.001, "***", 
+                                                    ifelse(p.adjust > 0.001 & p.adjust < 0.01, "**", "*")))
+
+df_enrich_table_cut = df_enrich_table %>% select(c("GO category", "setSize", "NES", "adj p-value"))
+
+write.table(df_enrich_table_cut, "../data/differential_expression/GSEA/TABLE_S3_nonSmurf_40vs20_BP.txt", row.names = TRUE, col.names = TRUE, sep = "\t", quote = FALSE)
+
+#####generation of tables for supplementary table file: Table S3
+library(kableExtra)
+table_colnames = c("GO BP category", "size", "NES", "p.adjust")
+kbl_en = kbl(df_enrich_table_cut, col.names = table_colnames, row.names = F) %>% kable_classic_2(full_width = F, html_font = "Helvetica")%>% 
+  row_spec(row = 0, bold = T, font_size = 14) 
+# save_kable(kbl_en, "../tables_and_files/kbl_ns4020.html")
+# save_kable(kbl_en, "../tables_and_files/kbl_ns4020.pdf")
+
+
+
+
+```
+
+
+
+
+##Exploring the correlation over time of the genes in the non-Smurf
+
+Here we explore if a stronger signal can be identified when studiying an expression trend in non-Smurf with time, independently of the DESeq2 results. For that, we infer a linear model and test for statistically significance of the time coeffiencient. We filter on the genes presenting a r*2* > 0.5, with a focus on the genes not differentially expressed in the Smurfs. The code generates Fig. 6a and Table S9.
+
+
+```{exploring_correlation_time r}
+#use the vst data
+vst_df = vst %>% assay %>%as.data.frame()
+vst_for_lm = vst_df %>% rownames_to_column("flybase") %>%  gather(., value = 'expression', key = 'sample', -flybase) %>% 
+  mutate(time = ifelse(grepl("20",.$sample), "20", 
+                       ifelse(grepl("40",.$sample), "40", "30"))) 
+vst_for_lm$time = as.factor(vst_for_lm$time)  
+
+#compute the correlation
+res_lm = data.frame(gene = character(), slope = numeric(), pval = numeric(), r2 = numeric(),stringsAsFactors = FALSE)
+gene_names = vst_for_lm$flybase %>% as.character %>% unique() 
+for (pos in 1:length(gene_names)) {
+  i = gene_names[pos]
+  model = lm(expression ~ time, data = vst_for_lm  %>% filter(flybase == i)) %>% summary()
+  res_lm[pos,] = c(i, model$coefficients[2,1], model$coefficients[2,4], model$r.squared)
+}
+
+
+###add the symbol annotation
+res_lm = res_lm %>% mutate(symbol = mapIds(org.Dm.eg.db, 
+                         keys= .$gene,
+                         column="SYMBOL", 
+                         keytype="ENSEMBL",
+                         multiVals="first"))
+#filter - significance
+res_lm_sign = res_lm %>% filter(as.numeric(pval) < 0.05)
+
+
+#filter for r2 > 0.5
+r2_fil = res_lm_sign %>% filter(r2 > 0.5)
+
+
+##generate the table S9
+
+table_df = r2_fil %>% mutate(DEGs = ifelse(gene %in% rownames(sign_s), "Smurf", ifelse(gene %in% rownames(sign_ns), " old non-Smurf", "none"))) %>% 
+                        mutate(DEGs = ifelse(gene %in% rownames(sign_ns) & gene %in% rownames(sign_s), "Smurf & old non-Smurf", DEGs )) %>% 
+                        mutate(slope = round(slope %>% as.numeric(),3), pval = round(pval %>% as.numeric(), 5) %>% format(., scientific = TRUE), r2 = round(r2 %>% as.numeric(), 3)) %>% 
+                      arrange(desc(slope)) %>% mutate(symbol = ifelse(is.na(symbol), "-", symbol))
+                                                                            
+table_colnames_lm = c("Flybase", "slope", "p-value", "R squared", "symbol", "DEGs overlap")
+
+require(kableExtra)
+#generate the kbl pdf
+kbl_lm = kbl(table_df, col.names = table_colnames_lm, row.names = F) %>% kable_classic_2(full_width = F, html_font = "Helvetica")%>% 
+  row_spec(row = 0, bold = T, font_size = 14) %>% 
+  row_spec(row = 1:301, font_size = 11) 
+
+#save_kable(kbl_lm, "../tables_and_files/kbl_lm_r2_05.pdf")
+
+##generate the file table
+write.table(table_df, "../data/nonSmurf_lm/TABLE_S9_nonSmurf_lm_over_time.txt", row.names = TRUE, col.names = TRUE, sep = "\t", quote = FALSE)
+
+
+#filter out the ones that are also S
+res2_fil_no_smurf = r2_fil %>% filter(!(gene %in% rownames(sign_s))) %>% mutate(symbol = ifelse(is.na(symbol), gene, symbol)) #145
+
+##put the FBgn name if the symbol is NA
+
+#for the background, take also the ones that are not in S amongst the whole sets
+all_res_no_smurf = res_lm %>% filter(as.numeric(pval) > 0.05) %>%  filter(!(gene %in% rownames(sign_s))) %>% filter(r2 > 0.5) %>% mutate(symbol = mapIds(org.Dm.eg.db, 
+                         keys= .$gene,
+                         column="SYMBOL", 
+                         keytype="ENSEMBL",
+                         multiVals="first")) 
+
+
+###############GRAPH
+##take the first and the last quantile 
+res2_fil_no_smurf %>% select(slope) %>% unlist() %>% as.numeric() %>%  quantile
+res2_fil_no_smurf %>% filter(as.numeric(slope) > 0.2382768)
+res2_fil_no_smurf %>% filter(as.numeric(slope) < -0.1538587)
+
+significant_first_fourth_quartile = rbind(res2_fil_no_smurf %>% filter(as.numeric(slope) > 0.2382768), res2_fil_no_smurf %>% filter(as.numeric(slope) < -0.1538587))
+write.table(significant_first_fourth_quartile %>% arrange(desc(slope)), "../data/nonSmurf_lm/significant_genes_figure6a.txt", sep = "\t", quote = FALSE, col.names = TRUE, row.names = FALSE)
+
+library(ggbreak)
+library(ggrepel)
+##################THIS ONE IS THE ONE USED!!!
+ggplot() +
+  geom_point(data = all_res_no_smurf, mapping = aes(as.numeric(slope), as.numeric(r2)), col = "grey", alpha = 0.3, size = 3) +
+  geom_point(data = res2_fil_no_smurf, mapping = aes(x = as.numeric(slope), y = as.numeric(r2)), col = "red", alpha = 0.8, size = 3) + 
+  ylim(c(0.5, 1))  + 
+  scale_y_break(c(0.80, 0.95), scales = 0.05) +
+  geom_text_repel(data = to_label, aes(x = as.numeric(slope), y = as.numeric(r2), label = symbol), size = 5, max.overlaps = 40) +
+  theme_bw() 
+ggsave("../figures/Fig6a_nonSmurf_lm.pdf", width = 9, height = 7)
+
+
+
+
+
+```
+
+
+
+
+

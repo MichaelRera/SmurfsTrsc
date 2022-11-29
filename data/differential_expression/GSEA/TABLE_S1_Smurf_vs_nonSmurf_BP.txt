@@ -1,0 +1,60 @@
+GO category	setSize	NES	adj p-value
+GO:0050829	GO:0050829 defense response to Gram-negative bacterium	39	2.34391016291	**
+GO:0019731	GO:0019731 antibacterial humoral response	29	2.33539564603225	**
+GO:0070482	GO:0070482 response to oxygen levels	35	2.32251263079561	**
+GO:0006457	GO:0006457 protein folding	44	2.27367103763037	**
+GO:0019730	GO:0019730 antimicrobial humoral response	53	2.27231174015978	**
+GO:0006458	GO:0006458 'de novo' protein folding	15	2.25348309494012	**
+GO:0051084	GO:0051084 'de novo' posttranslational protein folding	15	2.25348309494012	**
+GO:0051085	GO:0051085 chaperone cofactor-dependent protein refolding	15	2.25348309494012	**
+GO:0061077	GO:0061077 chaperone-mediated protein folding	25	2.24974466087966	**
+GO:0006986	GO:0006986 response to unfolded protein	16	2.24183895546162	**
+GO:0035966	GO:0035966 response to topologically incorrect protein	16	2.24183895546162	**
+GO:0034620	GO:0034620 cellular response to unfolded protein	15	2.23499383033579	**
+GO:0035967	GO:0035967 cellular response to topologically incorrect protein	15	2.23499383033579	**
+GO:0042026	GO:0042026 protein refolding	15	2.11667058073219	**
+GO:0006959	GO:0006959 humoral immune response	63	2.09219725722387	**
+GO:0001666	GO:0001666 response to hypoxia	23	2.08278566453833	*
+GO:0036293	GO:0036293 response to decreased oxygen levels	26	2.05751034262263	**
+GO:0042742	GO:0042742 defense response to bacterium	80	2.04255490110625	**
+GO:0051276	GO:0051276 chromosome organization	61	2.02708273719049	**
+GO:0050830	GO:0050830 defense response to Gram-positive bacterium	32	2.01191984923184	*
+GO:0031347	GO:0031347 regulation of defense response	33	1.97186020174546	*
+GO:0006955	GO:0006955 immune response	107	1.95174964988022	**
+GO:0061057	GO:0061057 peptidoglycan recognition protein signaling pathway	10	1.93515655415665	*
+GO:0006952	GO:0006952 defense response	138	1.90515873422536	**
+GO:0098542	GO:0098542 defense response to other organism	103	1.86938762052446	*
+GO:0009617	GO:0009617 response to bacterium	97	1.84411949991446	*
+GO:0009266	GO:0009266 response to temperature stimulus	48	1.78930930621621	*
+GO:0002376	GO:0002376 immune system process	137	1.78908931626744	**
+GO:0009628	GO:0009628 response to abiotic stimulus	125	1.74965303534827	*
+GO:0071310	GO:0071310 cellular response to organic substance	75	1.74514591821417	*
+GO:0009607	GO:0009607 response to biotic stimulus	138	1.73252753103267	**
+GO:0043207	GO:0043207 response to external biotic stimulus	138	1.73252753103267	**
+GO:0051707	GO:0051707 response to other organism	138	1.73252753103267	**
+GO:0006950	GO:0006950 response to stress	356	1.73166392644151	**
+GO:0019538	GO:0019538 protein metabolic process	534	-1.39543367518759	*
+GO:0055086	GO:0055086 nucleobase-containing small molecule metabolic process	117	-1.61425667198308	*
+GO:0055114	GO:0055114 oxidation-reduction process	225	-1.61884190745898	*
+GO:0008610	GO:0008610 lipid biosynthetic process	68	-1.72876122466334	*
+GO:0015980	GO:0015980 energy derivation by oxidation of organic compounds	52	-1.79725583675649	*
+GO:0006091	GO:0006091 generation of precursor metabolites and energy	73	-1.81185309356056	*
+GO:0016054	GO:0016054 organic acid catabolic process	54	-1.81739930930926	*
+GO:0046395	GO:0046395 carboxylic acid catabolic process	54	-1.81739930930926	*
+GO:0044281	GO:0044281 small molecule metabolic process	314	-1.85055374043794	*
+GO:0007304	GO:0007304 chorion-containing eggshell formation	30	-1.87896484410961	*
+GO:0042254	GO:0042254 ribosome biogenesis	46	-1.90200018193933	*
+GO:0042180	GO:0042180 cellular ketone metabolic process	20	-1.90447854595623	*
+GO:0042775	GO:0042775 mitochondrial ATP synthesis coupled electron transport	25	-1.91183756036692	*
+GO:0030703	GO:0030703 eggshell formation	31	-1.9245178034061	*
+GO:0022904	GO:0022904 respiratory electron transport chain	26	-1.93356363579565	*
+GO:0042773	GO:0042773 ATP synthesis coupled electron transport	26	-1.93356363579565	*
+GO:0044282	GO:0044282 small molecule catabolic process	72	-1.9373460609435	*
+GO:0022900	GO:0022900 electron transport chain	27	-1.95690671260383	*
+GO:0034754	GO:0034754 cellular hormone metabolic process	13	-1.98651005346645	*
+GO:0045455	GO:0045455 ecdysteroid metabolic process	13	-1.98651005346645	*
+GO:0045333	GO:0045333 cellular respiration	39	-1.99870490959905	*
+GO:0006508	GO:0006508 proteolysis	267	-2.02916484901472	*
+GO:0042445	GO:0042445 hormone metabolic process	21	-2.03953852692511	*
+GO:0016125	GO:0016125 sterol metabolic process	11	-2.12565366760378	**
+GO:0008202	GO:0008202 steroid metabolic process	19	-2.17909158621158	**

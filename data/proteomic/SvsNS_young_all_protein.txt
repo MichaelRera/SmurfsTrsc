@@ -1,0 +1,2346 @@
+GI number	Uniprot	log2FoldChange	Anova p-value	Description
+12039038	Q9GPJ1	-6.12911812808932	0.33	SKELETOR [Drosophila melanogaster]
+117935474	P11449	-2.90872322489675	0.14	IP02742p [Drosophila melanogaster]
+158413	C0HKF7	-2.41682454736985	0.000174	serine protease 1 [Drosophila melanogaster]
+85815873	Q9VAC2	2.28095631383106	0.00755	CG7912 [Drosophila melanogaster]
+24647295	Q960T2	-2.20686825173773	0.12	Synapse-associated protein 47kD, isoform A [Drosophila melanogaster]
+157036	Q03017	2.13028850556585	0.02	cactus zygotic protein [Drosophila melanogaster]
+544735062	T2GG67	-1.98110309396813	0.04	FI21455p1 [Drosophila melanogaster]
+21357287	Q9VG44	1.92635209969108	0.03	CG6225, isoform A [Drosophila melanogaster]
+386766681	A0A0B4K7B3	1.9242005254802	0.00927	CG9990, isoform E [Drosophila melanogaster]
+21429816	Q8MSK6	-1.8894887738892	0.02	GH02222p [Drosophila melanogaster]
+24642613	Q9VXC7	-1.86364896566715	0.00232	CG9673 [Drosophila melanogaster]
+146189014	A4VA01	1.8518409217007	0.03	CG6687 protein [Drosophila melanogaster]
+221330295	A1ZA38	-1.83240442613424	0.45	CG30088 [Drosophila melanogaster]
+223890343	C0HDP3	-1.8220658957849	0.07	MIP05512p [Drosophila melanogaster]
+19921716	Q7K332	-1.79213281468603	0.2	CG30159, isoform A [Drosophila melanogaster]
+20130321	Q9W1H5	-1.71925573806039	0.13	decapping protein 1, isoform A [Drosophila melanogaster]
+21357171	Q9VG69	-1.72241078386003	0.07	CG5844 [Drosophila melanogaster]
+20129157	Q9VQ22	1.70560142325687	0.02	CG10869 [Drosophila melanogaster]
+386763881	Q9W443	1.69411011520441	0.01	CG5921, isoform D [Drosophila melanogaster]
+4704760	Q9VVX5	1.66382918019287	0.09	putative transmembrane protein nessy [Drosophila melanogaster]
+24586301	Q95RV5	-1.61272393521989	0.53	CG30499, isoform A [Drosophila melanogaster]
+19920758	Q9VMQ7	1.58375971285003	0.03	CG6907 [Drosophila melanogaster]
+19920758	X2J4N6	1.58375971285003	0.03	CG6907 [Drosophila melanogaster]
+24653791	Q5U156	-1.57537645189196	0.02	relative of woc, isoform A [Drosophila melanogaster]
+202028539	B5RJP0	-1.57744255223917	0.07	FI07842p [Drosophila melanogaster]
+24640291	Q9W3T2	-1.50526728911004	0.04	CG4593 [Drosophila melanogaster]
+21358267	Q9W0B2	1.48933290479637	0.02	CG7970, isoform A [Drosophila melanogaster]
+19528295	Q9VMA2	-1.48382205617466	0.08	HL01018p [Drosophila melanogaster]
+24646169	Q9VGE7	1.45441805679057	0.08	Ectoderm-expressed 3 [Drosophila melanogaster]
+78706594	Q95T35	-1.45100860907642	0.24	CG33791, isoform B [Drosophila melanogaster]
+21356299	Q9VNP8	-1.38237412150017	0.72	Ssl1, isoform A [Drosophila melanogaster]
+162944784	A9UN56	1.37705784704716	0.09	IP19441p [Drosophila melanogaster]
+386765418	A0A0B4K648	1.36315075761388	0.00476	CG9492, isoform F [Drosophila melanogaster]
+24641052	Q7KVQ8	-1.3514043981521	0.00151	CG1628, isoform B [Drosophila melanogaster]
+24582811	Q9VLM7	-1.3365299017902	0.02	CG13392, isoform A [Drosophila melanogaster]
+24654573	Q8IRJ9	-1.34094741429265	0.22	glycerol kinase, isoform B [Drosophila melanogaster]
+17737553	M9NE68	-1.32956815708949	0.91	heat shock protein 23, isoform A [Drosophila melanogaster]
+17737553	P02516	-1.32956815708949	0.91	heat shock protein 23, isoform A [Drosophila melanogaster]
+17136612	P23380	-1.31397984691728	0.32	vacuolar H[+] ATPase subunit 16-1, isoform A [Drosophila melanogaster]
+24639869	Q9W4C1	1.30104072841354	0.02	CG15784 [Drosophila melanogaster]
+45552813	A0A0F7J3E9	-1.29609085320924	0.26	lethal (2) tumorous imaginal discs, isoform B [Drosophila melanogaster]
+45552813	Q27237	-1.29609085320924	0.26	lethal (2) tumorous imaginal discs, isoform B [Drosophila melanogaster]
+21355271	Q9VT15	-1.27906896409912	0.34	CG3088 [Drosophila melanogaster]
+28571714	Q9VFC9	1.27909231464063	0.05	CG3987 [Drosophila melanogaster]
+17864562	H1ZYB5	-1.265344566521	0.86	target of rapamycin, isoform A [Drosophila melanogaster]
+17864562	Q9VK45	-1.265344566521	0.86	target of rapamycin, isoform A [Drosophila melanogaster]
+260099743	C9QP20	-1.26459281701592	0.23	MIP13910p [Drosophila melanogaster]
+10959	P35415	0.139403056665416	0.05	paramyosin
+7211777	Q9NH01	-1.24317398347295	0.02	DID [Drosophila melanogaster]
+17137442	O76767	1.23522253225748	0.02	KDEL receptor, isoform A [Drosophila melanogaster]
+27447605	Q8I8U7	-1.23876876826926	0.2	transformation/transcription domain-associated protein [Drosophila melanogaster]
+19922428	Q7K533	1.23376639449666	0.36	CG11395 [Drosophila melanogaster]
+28317069	Q86P04	-1.21673478647452	0.03	RE01362p, partial [Drosophila melanogaster]
+158416	P22700	0.161105300552302	0.000978	sarco/endoplasmic reticulum-type Ca-2+-ATPase
+17944482	Q8SZM1	1.20356823635097	0.08	RH04336p [Drosophila melanogaster]
+442626722	M9PF50	1.20211225263974	0.11	piezo, isoform K [Drosophila melanogaster]
+329112641	F3YDI3	1.19489702970219	0.11	MIP30431p [Drosophila melanogaster]
+161077530	A8JUV4	-1.17659876499365	0.07	vitelline membrane-like [Drosophila melanogaster]
+6735406	Q9NFT2	-1.16878767774061	0.00731	fatty acid desaturase [Drosophila melanogaster]
+24642609	Q9VXC9	-1.17467853141295	0.08	CG9676 [Drosophila melanogaster]
+2827169	O44386	1.1591253418596	0.82	integrin alpha subunit [Drosophila melanogaster]
+401834984	M9NVU6	1.14265207129221	0.09	ATP synthase F0 subunit 6, partial (mitochondrion) [Drosophila melanogaster]
+78706758	Q9VG86	-1.1019114564539	0.09	CG10097, isoform B [Drosophila melanogaster]
+24657351	Q9W2C5	-1.08975465275833	0.00188	CG4363 [Drosophila melanogaster]
+320545506	M9MRZ7	-1.07893963125533	0.06	shaker cognate b, isoform M [Drosophila melanogaster]
+24652901	A0A1B2AJH4	-1.07528812730424	0.02	small ribonucleoprotein particle protein SmD3 [Drosophila melanogaster]
+24652901	O44437	-1.07528812730424	0.02	small ribonucleoprotein particle protein SmD3 [Drosophila melanogaster]
+24666045	Q9VVJ7	-1.06767560878077	0.36	CG7484 [Drosophila melanogaster]
+45551956	Q9VCI3	-1.0560528052195	0.11	lipid storage droplet-1, isoform A [Drosophila melanogaster]
+194859949	B3N9P9	-1.04478792174684	0.04	GG23931 [Drosophila erecta]
+85857654	Q29QU0	-1.04044414537016	0.26	IP12389p [Drosophila melanogaster]
+17647425	E4NKN3	-1.03441003078583	0.09	fibrillarin [Drosophila melanogaster]
+17647425	Q9W1V3	-1.03441003078583	0.09	fibrillarin [Drosophila melanogaster]
+21357667	A0A0B4KI38	-1.02692361941617	0.23	CG11334, isoform B [Drosophila melanogaster]
+21357667	Q9V9X4	-1.02692361941617	0.23	CG11334, isoform B [Drosophila melanogaster]
+21358365	Q9VNZ3	-1.00416362494154	0.00946	Rpb8 [Drosophila melanogaster]
+419961	NA	-0.439497691268538	0.05	polyadenylate-binding protein - fruit fly (Drosophila melanogaster)
+28574508	Q8T0E7	1.00220388666353	0.56	CG10984, isoform C [Drosophila melanogaster]
+28557557	Q86NM8	-0.992121427555597	0.12	SD25413p [Drosophila melanogaster]
+790585	Q09332	0.147845467971394	0.03	UDP-glucose:glycoprotein glucosyltransferase precursor
+20129163	Q9VQ62	-0.984679200716244	0.18	Niemann-Pick type C-2a [Drosophila melanogaster]
+21356599	Q9VV99	-0.983605561749331	0.02	CG13025, isoform A [Drosophila melanogaster]
+24641361	Q961E7	-0.988999205054345	0.14	phosphorylase kinase gamma, isoform B [Drosophila melanogaster]
+806545	P46223	-0.521768674233962	0.02	ribosomal protein L7a
+281360236	A1Z6P3	0.983385286149104	0.02	Eb1, isoform F [Drosophila melanogaster]
+21356415	Q9VPH6	-0.978235085723798	0.31	CG5618, isoform A [Drosophila melanogaster]
+24654665	Q9W0S6	-0.981710420331806	0.12	mitochondrial ribosomal protein L17, isoform A [Drosophila melanogaster]
+19921704	Q9V9A8	-0.961046365655424	0.00432	phtf [Drosophila melanogaster]
+297372436	D7FAJ6	-0.964993550172087	0.0078	gustatory receptor 93c [Drosophila melanogaster]
+21358061	M9PC96	0.954914617851445	0.12	RhoGAP68F, isoform A [Drosophila melanogaster]
+21358061	Q9VTU3	0.954914617851445	0.12	RhoGAP68F, isoform A [Drosophila melanogaster]
+221330889	G4LTX1	-0.955330950666272	0.29	Pmi, isoform C [Drosophila melanogaster]
+221330889	Q8IQ56	-0.955330950666272	0.29	Pmi, isoform C [Drosophila melanogaster]
+21355857	Q9VHD3	-0.949451668445434	0.02	glutathione S transferase Z1 [Drosophila melanogaster]
+24658602	Q9VRP4	-0.950335641744298	0.41	bifunctional phosphopantetheine adenylyltransferase - Dephospho-CoA kinase [Drosophila melanogaster]
+281360460	Q9VPK3	-0.94619663627275	0.44	CG31974, isoform B [Drosophila melanogaster]
+24654848	Q9W0N5	0.941322975656096	0.82	CG13894 [Drosophila melanogaster]
+24662435	Q9VTE1	-0.946289413255232	0.19	CG32069 [Drosophila melanogaster]
+17136556	P20659	-0.939458458064949	0.00824	trithorax, isoform D [Drosophila melanogaster]
+24639833	A8JUY0	0.927819221451494	0.14	RNA-binding protein 4F, isoform A [Drosophila melanogaster]
+24639833	Q9W4D2	0.927819221451494	0.14	RNA-binding protein 4F, isoform A [Drosophila melanogaster]
+21358089	Q9VRS7	-0.922694273832551	0.05	jonah 65Aiii [Drosophila melanogaster]
+24762794	Q9W0Y1	-0.921498977376259	0.33	troponin C-akin-1, isoform A [Drosophila melanogaster]
+19921976	Q7K2L7	0.90850372803082	0.21	CG17765 [Drosophila melanogaster]
+21483210	Q8MR83	0.911072091470542	0.24	AT11715p [Drosophila melanogaster]
+24649486	Q8IMX8	-0.911342380179603	0.000625	LSm3, isoform A [Drosophila melanogaster]
+62484204	Q9W3G7	0.908138938968643	0.15	CG1636 [Drosophila melanogaster]
+320541934	NA	-0.902901311894919	0.16	CG32686, isoform D [Drosophila melanogaster]
+20129491	Q9VK31	-0.907289626185226	0.24	CG5439 [Drosophila melanogaster]
+829184	P48810	-0.467932447710969	0.02	heterogeneous nuclear ribonucleoprotein
+19920456	Q9VPN0	-0.894131364893177	0.24	CG3625, isoform B [Drosophila melanogaster]
+24665264	Q9VV47	-0.884006809790719	0.71	CG4842 [Drosophila melanogaster]
+969094	P48605	-0.201192062041749	0.01	chaperonin containing T-complex protein gamma subunit-like protein
+24580572	Q7K1C0	-0.874987420433262	0.07	CG11455, isoform A [Drosophila melanogaster]
+24647481	Q9VET3	-0.869124232295785	0.07	CG14903 [Drosophila melanogaster]
+780747	P14199	0.864485029343519	0.01	Ref(2)P protein [Drosophila melanogaster]
+3694982	Q9VW60	-0.867042662245497	0.2	adenylyl cyclase 76E [Drosophila melanogaster]
+1296517	Q27597	-0.137371172477801	0.03	NADPH--ferrihemoprotein reductase
+281359881	Q9W4D3	-0.863008615307618	0.51	CG15930 [Drosophila melanogaster]
+386769147	M9ND31	-0.853375086281517	0.03	oscillin, isoform D [Drosophila melanogaster]
+3550815	O77466	-0.270089163367744	0.02	thiolase
+20129125	Q9VPL0	0.847150603743503	0.17	CG3436, isoform A [Drosophila melanogaster]
+24648076	B5RIU6	0.852023971391332	0.1	endophilin A, isoform A [Drosophila melanogaster]
+24648076	Q8T390	0.852023971391332	0.1	endophilin A, isoform A [Drosophila melanogaster]
+4504279	B2R4P9	-0.285621090901034	0.02	histone H3.3 [Homo sapiens]
+4504279	P84243	-0.285621090901034	0.02	histone H3.3 [Homo sapiens]
+161082301	Q5U126	0.846753739704318	0.09	CG34461, isoform A [Drosophila melanogaster]
+10765475	Q9GNE4	-0.382188619704837	0.01	hexokinase-C
+17136562	P04814	-0.824913293441909	0.08	alphaTrypsin [Drosophila melanogaster]
+17862526	Q8T034	-0.818287157094327	0.05	LD34564p [Drosophila melanogaster]
+18859657	Q9Y162	-0.814032062980414	0.09	vacuolar protein sorting 4 [Drosophila melanogaster]
+15292561	Q960C6	-0.384937892413163	0.03	SD07650p
+16768502	Q95S79	0.330406248811667	0.05	GM06507p
+19922666	Q9W2L6	0.812253721470443	0.05	CG9394 [Drosophila melanogaster]
+24650924	P13678	-0.811274499248376	0.00957	protein C kinase 98E, isoform A [Drosophila melanogaster]
+24651179	Q9VAF2	0.806252365610446	0.56	CG15514, isoform A [Drosophila melanogaster]
+24661184	Q8T0R3	0.808888344743213	0.22	CG32026 [Drosophila melanogaster]
+21355477	Q95T98	-0.797434208258912	0.23	CG31523, isoform A [Drosophila melanogaster]
+17136320	M9PBK5	-0.44555944405574	0.04	ribosomal protein LP1, isoform A
+17136320	P08570	-0.44555944405574	0.04	ribosomal protein LP1, isoform A
+24646975	Q9VFD0	0.799262671174163	0.41	CG3984 [Drosophila melanogaster]
+17864390	Q9NHD5	-0.791846522681734	0.11	separation anxiety [Drosophila melanogaster]
+24585795	Q9W5Y4	0.788050079407789	0.04	CG17018, isoform A [Drosophila melanogaster]
+24646857	Q9VFI3	-0.792123045912272	0.1	CG8066, isoform A [Drosophila melanogaster]
+6946672	Q9NEF8	-0.782934073083095	0.09	EG:BACR25B3.2 [Drosophila melanogaster]
+17737899	Q9VGU6	-0.790402138819279	0.12	adenylate kinase-3, isoform A [Drosophila melanogaster]
+24642023	Q8SXQ5	-0.784697757215231	0.26	CG14407 [Drosophila melanogaster]
+24651187	A4V3L8	0.785102115210476	0.22	CG7816, isoform A [Drosophila melanogaster]
+24651187	Q9VAF0	0.785102115210476	0.22	CG7816, isoform A [Drosophila melanogaster]
+24664029	Q9VUB8	-0.776621794517996	0.01	endosulfine, isoform A [Drosophila melanogaster]
+221330055	B7YZT0	-0.779364216342287	0.2	mangetout, isoform D [Drosophila melanogaster]
+386770604	M9NFN0	0.776245610999892	0.7	axotactin, isoform B [Drosophila melanogaster]
+17647193	P45437	0.773229138152978	0.05	beta-coatomer protein [Drosophila melanogaster]
+18860089	Q9VXK6	0.774904142255075	0.16	eIF5, isoform B [Drosophila melanogaster]
+18921203	Q9VWN5	0.773645405008676	0.12	CG7332 [Drosophila melanogaster]
+18921203	X2JL49	0.773645405008676	0.12	CG7332 [Drosophila melanogaster]
+21355883	Q9VPD3	0.775068585061321	0.2	CG4825, isoform A [Drosophila melanogaster]
+21358147	O97066	-0.774610368551338	0.2	twisted bristles roughened eye [Drosophila melanogaster]
+17136378	P21187	-0.411426245726465	0.04	polyA-binding protein, isoform A
+17137000	P29742	0.191911814881686	0.00493	clathrin heavy chain, isoform A
+17137000	X2JC31	0.191911814881686	0.00493	clathrin heavy chain, isoform A
+17945870	Q9VU02	-0.771522816202575	0.04	RE39488p [Drosophila melanogaster]
+24646928	Q9VFF6	-0.759508162817294	0.04	CG3610 [Drosophila melanogaster]
+17137152	P50887	-0.583651555568809	0.00966	ribosomal protein L22
+386766061	A0A0B4K6N7	0.766756066221913	0.05	CG14299, isoform D [Drosophila melanogaster]
+17137292	P35421	0.291090690964769	0.03	adenosine 2, isoform A
+17137300	A0A0B4LEY6	-0.411724765238008	0.01	nascent polypeptide associated complex protein alpha subunit, isoform B
+17137300	Q94518	-0.411724765238008	0.01	nascent polypeptide associated complex protein alpha subunit, isoform B
+21358103	Q9VRS6	-0.759402983285961	0.15	jonah 65Aiv [Drosophila melanogaster]
+17137396	M9PCC1	-0.495527417139212	0.05	receptor of activated protein kinase C 1, isoform A
+17137396	O18640	-0.495527417139212	0.05	receptor of activated protein kinase C 1, isoform A
+24645728	Q8INL3	0.754551395440731	0.83	CG31373 [Drosophila melanogaster]
+24653035	A1Z8Z9	-0.758991900496205	0.4	CG8834, isoform A [Drosophila melanogaster]
+17137546	O61491	-0.749025200904415	0.09	Flotillin-1, isoform A [Drosophila melanogaster]
+21358587	Q9VEJ3	-0.751376037090372	0.07	CG5840, isoform A [Drosophila melanogaster]
+24651315	Q8IMJ0	-0.746154807508093	0.17	CG31030, isoform A [Drosophila melanogaster]
+45550800	Q9VCI4	0.748951209766885	0.05	CG10217, isoform A [Drosophila melanogaster]
+17137572	P08736	-0.299743725821376	0.03	elongation factor 1alpha48D, isoform A
+3065729	Q9VWA1	-0.736965594166206	0.2	clathrin light chain [Drosophila melanogaster]
+19922002	Q7JZK1	-0.742458010259373	0.82	CG7712, isoform A [Drosophila melanogaster]
+19922352	Q7K1Z5	-0.742084547202284	0.14	CG8386 [Drosophila melanogaster]
+17530795	P47938	-0.809193921721385	0.01	deadhead
+17530795	X2JDR5	-0.809193921721385	0.01	deadhead
+17647277	P07185	-0.83884520818542	0.04	chorion protein 15
+17647601	P11997	0.892265548451656	0.02	larval serum protein 1 gamma
+442631079	M9PET1	0.739271941506634	0.13	CG43078, isoform K [Drosophila melanogaster]
+17864394	M9MRF2	-0.727854543466453	0.48	ribosomal protein L37A, isoform A [Drosophila melanogaster]
+17864394	Q9VMU4	-0.727854543466453	0.48	ribosomal protein L37A, isoform A [Drosophila melanogaster]
+17647881	A0A1B2AIV7	-0.583871615950171	0.05	ribosomal protein L14
+17647881	P55841	-0.583871615950171	0.05	ribosomal protein L14
+17647885	P41093	-0.396594894325379	0.03	ribosomal protein L18A
+19922412	Q7JY07	-0.718087583960517	0.00858	CG9010 [Drosophila melanogaster]
+24650270	Q9VBG7	-0.71902342345585	0.02	CG31086, isoform A [Drosophila melanogaster]
+161076484	A1Z814	0.723061311033188	0.23	CG1513, isoform A [Drosophila melanogaster]
+229608977	C4IXX0	0.722466024471091	0.03	RT02374p [Drosophila melanogaster]
+17647891	E2QD65	-0.329064276168991	0.05	ribosomal protein S19a, isoform A
+17647891	P39018	-0.329064276168991	0.05	ribosomal protein S19a, isoform A
+442634489	L7EEU0	-0.724786457780681	0.16	dead box protein 80, isoform E [Drosophila melanogaster]
+17737290	H1ZYF1	-0.638112207239921	0.03	ribosomal protein S6, isoform B
+17737290	P29327	-0.638112207239921	0.03	ribosomal protein S6, isoform B
+17737895	P46415	-0.349149563622387	0.02	formaldehyde dehydrogenase
+17862964	Q8T9D5	-0.283792966000591	0.05	SD05601p
+17530815	F6J1D0	0.711394505438901	0.00637	spaghetti squash [Drosophila melanogaster]
+17530815	P40423	0.711394505438901	0.00637	spaghetti squash [Drosophila melanogaster]
+17864256	Q9VXN2	-0.701658725430253	0.07	stunted, isoform A [Drosophila melanogaster]
+19921078	Q9VKW1	-0.704993204427926	0.54	CG5168, isoform A [Drosophila melanogaster]
+161076949	A8DZ14	-0.700102901779566	0.46	fasciclin 3, isoform D [Drosophila melanogaster]
+221307696	B9EQT5	-0.703341942094854	0.24	GM22210p [Drosophila melanogaster]
+442627278	M9PB92	-0.699918607410886	0.48	cnot 4 homologue, isoform K [Drosophila melanogaster]
+17864162	P55830	-0.398163680714448	0.00282	ribosomal protein S3A, isoform A
+21356345	Q9Y114	-0.699219679978836	0.34	CG8042 [Drosophila melanogaster]
+24644107	Q9VN71	-0.692844735545139	0.77	CG14661, isoform A [Drosophila melanogaster]
+24666814	Q9VW09	-0.701341684435485	0.12	l(3)76BDr [Drosophila melanogaster]
+38047707	Q6XI13	-0.699163561453822	0.09	similar to Drosophila melanogaster CG9091, partial [Drosophila yakuba]
+17865634	Q9W283	-0.687615677783509	0.00744	arc, isoform B [Drosophila melanogaster]
+54650606	Q7JR71	-0.688798311705696	0.04	RE42883p [Drosophila melanogaster]
+62862480	Q8MRW1	-0.69134323932431	0.24	CG40042 [Drosophila melanogaster]
+165972515	B0BNN6	-0.684512812080104	0.32	GH21972p [Drosophila melanogaster]
+17864292	Q9VIE8	0.216575094741134	0.03	aconitase, isoform B
+442621201	A0A0B4KH03	-0.685506871421473	0.46	tetraspanin 96F, isoform B [Drosophila melanogaster]
+17864458	M9PGW0	-0.398084365997647	0.03	optic ganglion reduced, isoform A
+17864458	P27716	-0.398084365997647	0.03	optic ganglion reduced, isoform A
+2935517	O61540	-0.677156198930903	0.27	methionine aminopeptidase [Drosophila melanogaster]
+17944396	Q8SZP0	0.678071905112638	0.15	RE72002p [Drosophila melanogaster]
+18859805	Q9VY46	0.681049604912533	0.96	F box and leucine-rich-repeat gene 4 [Drosophila melanogaster]
+17933498	Q9V3S0	-0.510830771143941	0.04	cytochrome P450-4g1
+19922030	Q7KLX3	-0.688641146822825	0.41	Translocon-associated protein delta [Drosophila melanogaster]
+19922038	Q95TS2	-0.682370618893293	0.19	CG7777, isoform B [Drosophila melanogaster]
+24648619	Q9VDE8	0.675820937561662	0.22	CG7044 [Drosophila melanogaster]
+24650005	Q9VBT4	-0.685126662646588	0.38	CG31104 [Drosophila melanogaster]
+28317175	Q0KHU5	-0.679478659214648	0.28	HL01250p [Drosophila melanogaster]
+66771787	Q4V567	-0.682103659131688	0.33	IP13460p [Drosophila melanogaster]
+119638221	A1YK78	0.681282777443856	0.14	Nup133 [Drosophila melanogaster]
+19921636	Q9V9R2	-0.671844113538648	0.04	Cullin-2, isoform B [Drosophila melanogaster]
+17945344	P48375	-0.719700525998394	0.04	RE16407p
+17975542	A0A0B4KFZ9	-0.537728828840165	0.05	histone H4 replacement, isoform C
+17975542	P84040	-0.537728828840165	0.05	histone H4 replacement, isoform C
+261278425	D3DME7	0.669938909340775	0.39	GH17693p [Drosophila melanogaster]
+17985987	A0A0H4XWW0	0.503238103286702	0.02	belle, isoform A
+17985987	Q9VHP0	0.503238103286702	0.02	belle, isoform A
+17737419	Q9V426	0.662558905741313	0.03	vasa intronic gene, isoform A [Drosophila melanogaster]
+20130215	Q9W2E8	-0.660084275181059	0.06	CG10320, isoform A [Drosophila melanogaster]
+18543299	A0A0S0X8K7	-0.446256229889564	0.02	tiny tim 50
+18543299	Q9W4V8	-0.446256229889564	0.02	tiny tim 50
+24659804	Q9VS22	-0.658348384652059	0.06	CG8628, isoform A [Drosophila melanogaster]
+28557563	Q05344	-0.661177556758586	0.15	SD06504p [Drosophila melanogaster]
+18859841	Q9VXG9	-0.617912922522443	0.01	CG4239, isoform C
+189182166	B3DN57	-0.660348983964307	0.06	LD39332p [Drosophila melanogaster]
+17137576	O77477	-0.648594489928442	0.46	CG4882 [Drosophila melanogaster]
+18860055	Q9V3P3	-0.652939294537163	0.17	REG, isoform A [Drosophila melanogaster]
+19920658	Q9VQT8	-0.651902046734932	0.03	CG16712 [Drosophila melanogaster]
+20129649	Q9VIM0	0.646503598915569	0.44	CG2493, isoform A [Drosophila melanogaster]
+18859983	Q9VXK7	-0.424139706386096	0.03	CG9172, isoform A
+24640268	Q9W3U0	-0.652597811601511	0.43	CG4586 [Drosophila melanogaster]
+28574402	Q8IGQ3	-0.649327943848087	0.22	CG13284, isoform B [Drosophila melanogaster]
+78706460	Q9NHE5	0.650415562209772	0.03	calcium activated protein for secretion, isoform A [Drosophila melanogaster]
+18859993	Q9VY05	0.374927285904691	0.02	CG9512
+19920720	M9PCL4	-0.64015077708239	0.26	CG3887, isoform A [Drosophila melanogaster]
+19920720	Q9VMV6	-0.64015077708239	0.26	CG3887, isoform A [Drosophila melanogaster]
+23397609	Q9U1L2	-0.644341047800088	0.04	CG3699 [Drosophila melanogaster]
+24586311	Q9V4P1	0.640269872400253	0.46	scraps, isoform B [Drosophila melanogaster]
+24641546	Q9VYM2	0.644868252279146	0.0025	CG2556 [Drosophila melanogaster]
+24641669	Q9VYH3	-0.645478152330003	0.32	CG2200 [Drosophila melanogaster]
+24641669	X2JER0	-0.645478152330003	0.32	CG2200 [Drosophila melanogaster]
+18860087	P41374	-0.680822516128672	0.03	eukaryotic translation initiation factor 2alpha
+18860087	X2JFR6	-0.680822516128672	0.03	eukaryotic translation initiation factor 2alpha
+24663511	Q9VU17	-0.639568831371627	0.08	CG10960, isoform B [Drosophila melanogaster]
+19920408	O18413	-0.253360705797613	0.03	Pros45
+51091987	Q9VM75	0.645107141764852	0.17	SD11791p [Drosophila melanogaster]
+161076580	A8DRW0	-0.642328720028131	0.11	cuticular protein 49Aa [Drosophila melanogaster]
+221307612	B9EQP8	-0.649092838140872	0.18	AT19807p [Drosophila melanogaster]
+19921088	Q9VKV1	-0.244484009462014	0.04	lysosomal alpha-mannosidase, isoform A
+19920494	Q9VPX3	-0.626321530482214	0.16	CG4749 [Drosophila melanogaster]
+28573019	Q9VG23	-0.637865582717618	0.35	CG10126, isoform A [Drosophila melanogaster]
+386769834	M9NDT0	-0.633651993635745	0.07	CG43338, isoform B [Drosophila melanogaster]
+17137316	P32748	-0.625490525348328	0.25	dihydroorotate dehydrogenase, isoform A [Drosophila melanogaster]
+19921950	A0A0B4LF26	-0.626247988166437	0.32	adam [Drosophila melanogaster]
+19921950	Q7K550	-0.626247988166437	0.32	adam [Drosophila melanogaster]
+19922138	Q7K0S9	-0.626703610222781	0.06	sugarbabe, isoform A [Drosophila melanogaster]
+24645339	Q9VHE5	-0.61849212428635	0.05	ribosomal protein L34b, isoform A [Drosophila melanogaster]
+24647013	Q8MRT7	-0.618773055306139	0.16	CG4210 [Drosophila melanogaster]
+19921244	Q9VJZ4	-0.291634172573763	0.05	CG9306
+19921314	Q9V419	0.398827272097585	0.03	Cyp28a5
+19922382	Q7K127	-0.474237135749716	0.05	CG7997, isoform A
+24584097	Q9VJZ5	-0.60989867722465	0.34	Two A-associated protein of 42kDa [Drosophila melanogaster]
+24762424	Q9W1H4	0.606463569932078	0.16	DNA ligase I [Drosophila melanogaster]
+19922390	Q7JZW2	-0.41577188211012	0.05	ribosomal protein S15, isoform A
+189181761	B3DMK5	0.619998361579339	0.53	AT17875p [Drosophila melanogaster]
+19922626	Q7K3B7	-0.477773254626807	0.000228	CG11208
+19922716	Q9W2C4	-0.694234568614384	0.00355	CG4377
+320543347	Q9VB64	-0.610105147764608	0.04	CG42813 [Drosophila melanogaster]
+442621449	A0A0B4KI46	-0.610787176306819	0.54	CG18437, isoform G [Drosophila melanogaster]
+19922746	A0A0B4LG52	-0.534336427651188	0.01	ribosomal protein S16
+19922746	Q9W237	-0.534336427651188	0.01	ribosomal protein S16
+21430884	Q8MRU8	-0.596239209910215	0.32	SD22712p [Drosophila melanogaster]
+20128923	O46067	0.376671059481794	0.02	CG2918, isoform A
+442624383	NA	0.602143079048106	0.44	glycogenin, isoform E [Drosophila melanogaster]
+20129261	Q9VMH2	-0.44287170747557	0.05	Actin-related protein 2/3 complex, subunit 4
+20129705	Q9V9M7	-0.756120547189244	0.04	ribosomal protein L21, isoform A
+21711707	Q8MQQ5	-0.596715682146834	0.08	LD44814p [Drosophila melanogaster]
+24652789	A1Z8N1	0.597828676479111	0.08	trehalose transporter 1-1, isoform A [Drosophila melanogaster]
+24663552	Q9VU22	0.59442452987536	0.77	CG14120 [Drosophila melanogaster]
+27819913	Q7JVX4	-0.598259323334614	0.08	LD40776p, partial [Drosophila melanogaster]
+20130085	Q7JXC4	-0.344648171387446	0.04	P32
+28573949	Q8T0Q4	-0.597343302478789	0.32	shrub [Drosophila melanogaster]
+16768150	Q95SK1	0.587262880675089	0.67	GH19680p [Drosophila melanogaster]
+20130403	Q9W0S7	-0.21377929103174	0.02	Tudor-SN, isoform A
+21355081	Q9W555	-0.394278939112046	0.02	delta-coatomer protein, isoform A
+21355265	Q9VRL1	-0.82781902461732	0.03	Uev1A, isoform A
+21356029	Q9VU35	-0.864883069086943	0.04	CG11267
+21355305	Q9VCJ4	-0.588230214555067	0.18	CG31148 [Drosophila melanogaster]
+21356175	Q9VH02	0.585819462457603	0.15	CG6293, isoform A [Drosophila melanogaster]
+21356863	Q95TZ4	-0.586403343725642	0.63	CG14740 [Drosophila melanogaster]
+24580667	Q9VPR2	-0.58991171669289	0.32	CG11835, isoform A [Drosophila melanogaster]
+161077186	A8DYH1	-0.586973225842303	0.43	muscle wasted, isoform C [Drosophila melanogaster]
+209945036	B6UVQ3	-0.591194454432671	0.24	crossover suppressor on 3 of Gowen [Drosophila melanogaster]
+21356475	Q9VTU2	-0.64803553135783	0.04	lethal (3) neo18, isoform A
+15010470	Q961U7	-0.574368217438902	0.25	GH06154p [Drosophila melanogaster]
+21356589	Q9VAN0	-0.326520231520667	0.03	CG11899
+17946702	Q8SY66	-0.577907743187206	0.16	RH62992p [Drosophila melanogaster]
+21356905	Q9VNC0	-0.572710134188926	0.17	CG12162, isoform A [Drosophila melanogaster]
+24644923	Q9VHY6	-0.582242999367564	0.24	CG2943 [Drosophila melanogaster]
+66771621	Q4V5F0	-0.574934351457915	0.51	RH74717p [Drosophila melanogaster]
+221475535	B7YZW3	-0.575584168405295	0.14	CG42389, isoform E [Drosophila melanogaster]
+442617340	A0A0B4KGG6	0.571415968883208	0.16	CG1090, isoform G [Drosophila melanogaster]
+442617340	Q9VN12	0.571415968883208	0.16	CG1090, isoform G [Drosophila melanogaster]
+1502306	P54367	0.561489869735261	0.17	casein kinase I [Drosophila melanogaster]
+4165193	O96739	0.558534375443511	0.35	Gag protein [Drosophila melanogaster]
+4584569	Q9UB78	-0.566717619462277	0.26	importin alpha-3 [Drosophila melanogaster]
+5457112	P40793	-0.565556315349347	0.06	CDC42 protein [Drosophila melanogaster]
+21357053	Q9VNE9	-0.563667722357928	0.03	ribosomal protein L13A, isoform B
+21357329	Q7KTW5	-0.498195437174628	0.02	CG9391, isoform A
+21357643	Q9VNW6	-0.344648171387446	0.03	CG7470, isoform A
+21357159	Q9V9W4	-0.566700294328428	0.27	CG1774 [Drosophila melanogaster]
+21357455	Q9VF82	-0.574908836057233	0.27	CG6196 [Drosophila melanogaster]
+28572029	Q8MS59	-0.568150998395628	0.29	CG1443 [Drosophila melanogaster]
+21357837	Q9VFE4	-0.364317741670975	0.05	ribosomal protein S5b, isoform A
+311343	P32234	-0.549915553621956	0.11	GTP-binding protein [Drosophila melanogaster]
+1050970	P49021	-0.555731789397402	0.14	TIM [Drosophila melanogaster]
+21357853	Q9VVU2	-0.45647021826619	0.04	ribosomal protein L26, isoform A
+17137156	A0A1B2AJ64	0.554610123434605	0.02	single stranded-binding protein c31A [Drosophila melanogaster]
+17137156	Q9VLR5	0.554610123434605	0.02	single stranded-binding protein c31A [Drosophila melanogaster]
+17647939	Q9VV74	-0.560426444316355	0.1	survival motor neuron, isoform A [Drosophila melanogaster]
+19920556	Q9VQ86	-0.557128292524431	0.08	CG15385, isoform A [Drosophila melanogaster]
+21355085	A0A0B4LGT4	-0.554902929658408	0.3	GTPase indispensable for equal segregation of chromosomes [Drosophila melanogaster]
+21355085	Q9VHV5	-0.554902929658408	0.3	GTPase indispensable for equal segregation of chromosomes [Drosophila melanogaster]
+21355605	Q9XZ16	0.559491883779456	0.29	Ubiquitin-like domain-containing C-terminal domain phosphatase 1 [Drosophila melanogaster]
+38047895	Q6XIK3	-0.555799320912003	0.26	similar to Drosophila melanogaster SsRbeta, partial [Drosophila yakuba]
+41617394	NA	0.551241882877155	0.41	TPA_inf: HDC07401 [Drosophila melanogaster]
+295124202	F6J7V5	-0.557995453120887	0.52	CG6788 [Drosophila melanogaster]
+17648095	Q9XZ61	-0.54432051622381	0.07	ubiquitin C-terminal hydrolase, isoform A [Drosophila melanogaster]
+21358457	Q9VAJ9	-0.223964841155202	0.02	CG1907
+21358459	Q8IMI7	-0.547873181985936	0.01	ribosomal protein S7, isoform A
+21358459	Q9VA91	-0.547873181985936	0.01	ribosomal protein S7, isoform A
+24581117	Q9VQB4	-0.420575682820274	0.00858	CG3609, isoform A
+24648277	Q9VDT4	-0.543142325026529	0.21	CG4686, isoform A [Drosophila melanogaster]
+40353195	Q6NNW3	-0.552541023028779	0.14	GH09630p [Drosophila melanogaster]
+24581262	M9PEA6	-0.998406741924333	0.00184	ribosomal protein S21, isoform A
+24581262	O76927	-0.998406741924333	0.00184	ribosomal protein S21, isoform A
+221330792	Q9VZY7	-0.541146268428667	0.3	CG42304 [Drosophila melanogaster]
+320541861	F0JAP7	0.547446446706273	0.25	CG15347, isoform B [Drosophila melanogaster]
+432560	NA	-0.535596423400176	0.25	Cdc2E10 product {P element-induced L to Q mutation at residue 176} [Drosophila melanogaster, Peptide Mutagenesis, 297 aa]
+17647893	M9PG47	-0.53605290024021	0.04	ribosomal protein S26, isoform B [Drosophila melanogaster]
+17647893	P13008	-0.53605290024021	0.04	ribosomal protein S26, isoform B [Drosophila melanogaster]
+24585081	Q9VJ28	-0.65782170944647	0.00676	CG10639
+24585282	Q9VIT9	0.323198632213767	0.03	Thioester-containing protein 4, isoform A
+24585720	Q9V9Q4	-0.452512204697507	0.04	CG1416, isoform A
+24585801	A0A0B4K6P6	-0.756396124115107	0.05	troponin C at 41C, isoform A
+24585801	P47947	-0.756396124115107	0.05	troponin C at 41C, isoform A
+24648279	Q9VDT3	0.535667204464382	0.15	CG4562, isoform A [Drosophila melanogaster]
+45552883	NA	-0.536492130335891	0.12	CG33232, isoform A [Drosophila melanogaster]
+66771263	Q4V5X9	-0.543897252309702	0.16	IP07888p [Drosophila melanogaster]
+66803791	Q3YMW0	-0.533438548424478	0.33	ecdysone inducible protein L2 [Drosophila melanogaster]
+162951787	A9UNH8	0.531124349093606	0.05	RE26910p [Drosophila melanogaster]
+223950515	C0P8M5	-0.535100140904356	0.29	MIP05689p [Drosophila melanogaster]
+24638795	L0MPS3	-0.301890341650817	0.01	Retinoid- and fatty acid-binding glycoprotein, isoform A
+24638795	Q9V496	-0.301890341650817	0.01	Retinoid- and fatty acid-binding glycoprotein, isoform A
+3953609	Q9V461	0.526481759817156	0.05	MCM6 [Drosophila melanogaster]
+24640442	Q9W3N1	-0.671781425406069	0.00834	CG1444
+17944997	Q8SZD9	-0.53090959696425	0.27	RE03785p [Drosophila melanogaster]
+24641071	A4V488	-0.674444509608148	0.05	raspberry, isoform A
+24641071	Q07152	-0.674444509608148	0.05	raspberry, isoform A
+19922182	Q7JWE2	0.527411478158998	0.09	CG42807 [Drosophila melanogaster]
+24643375	Q9VWD1	-0.601450623509725	0.04	cytochrome c oxidase subunit VIb, isoform A
+21356723	Q7K3W4	-0.5264751665249	0.00215	quasimodo [Drosophila melanogaster]
+24643394	Q9VWC8	-0.408962984869159	0.05	Pmp70, isoform A
+78706622	P02515	0.527619448883935	0.18	heat shock protein 22, isoform B [Drosophila melanogaster]
+166033627	B0LQU2	0.524567579717764	0.15	henna mutant bp [Drosophila melanogaster]
+254939745	C6SV02	-0.527931555684777	0.18	GH20886p [Drosophila melanogaster]
+442624024	A0A0B4KG54	-0.530052228300542	0.38	CG4802, isoform B [Drosophila melanogaster]
+442626280	M9PCA6	-0.53317995861861	0.03	beta galactosidase, isoform B [Drosophila melanogaster]
+24645515	A0A0C4DHE8	-0.710493382805015	0.03	ribosomal protein S29, isoform A
+24645515	Q9VH69	-0.710493382805015	0.03	ribosomal protein S29, isoform A
+24647110	P54397	-0.330301275912367	0.05	FK506-binding protein 1
+24649014	O62530	0.505401526931508	0.0049	AP-50, isoform A
+24649466	NA	0.241375524704021	0.00503	Glutamyl-prolyl-tRNA synthetase, isoform A
+24650973	Q9VAP0	0.763084655130088	0.04	CG14516, isoform A
+19920962	Q9VLJ7	-0.52414065292924	0.51	CG13091, isoform A [Drosophila melanogaster]
+24651498	Q9VA42	-0.983385286149104	0.00699	Niemann-Pick type C-2g, isoform A
+24653618	Q7K1U0	0.363015286930562	0.04	Activity-regulated cytoskeleton associated protein 1
+21358121	Q9W350	0.51876932821771	0.19	c11.1 [Drosophila melanogaster]
+24639550	Q962I2	-0.520436470747976	0.17	Ras-related protein, isoform B [Drosophila melanogaster]
+24655085	P20007	-0.880647692845265	0.02	phosphoenolpyruvate carboxykinase, isoform A
+24641388	Q9VYU9	-0.50681792821851	0.4	CG9360 [Drosophila melanogaster]
+24659379	Q0E8X7	-0.469913827798917	0.00607	CG30415, isoform A
+24645455	A0A0B4K6D2	-0.515699838284042	0.06	CG16817, isoform A [Drosophila melanogaster]
+24645455	Q9VH95	-0.515699838284042	0.06	CG16817, isoform A [Drosophila melanogaster]
+28573391	Q95RB2	-0.515819023546981	0.11	cuticular protein 49Ae [Drosophila melanogaster]
+24660351	G3KKP7	-0.405992359675837	0.00176	CG12262
+24660351	Q9VSA3	-0.405992359675837	0.00176	CG12262
+24660849	Q9VSI6	-0.290515142255901	0.00232	isocitrate dehydrogenase, isoform B
+229462532	C3KKC3	-0.511809388381279	0.1	MIP06744p [Drosophila melanogaster]
+11148	P18431	0.510194732319184	0.38	protein kinase [Drosophila melanogaster]
+17864424	O76932	-0.502532400775207	0.38	protein phosphatase 19C, isoform A [Drosophila melanogaster]
+17864424	X2JG90	-0.502532400775207	0.38	protein phosphatase 19C, isoform A [Drosophila melanogaster]
+17946507	Q8SYB3	-0.507487442052519	0.25	RE75088p [Drosophila melanogaster]
+18859699	Q9VXV4	0.501676595627053	0.46	CG11655 [Drosophila melanogaster]
+19922144	Q7JZZ3	0.50182126542091	0.11	CG13321 [Drosophila melanogaster]
+21355963	Q9V7Y2	0.509142086275544	0.85	Sphingosine-1-phosphate lyase, isoform A [Drosophila melanogaster]
+21356685	Q9VE01	0.510416286101579	0.16	Cyp12a5 [Drosophila melanogaster]
+24581924	Q9VMR6	-0.501488663657235	0.33	CG12512 [Drosophila melanogaster]
+24661707	C6SUW3	-0.774440299584869	0.04	ribosomal protein S9, isoform A
+24661707	P55935	-0.774440299584869	0.04	ribosomal protein S9, isoform A
+85725072	Q9I7V0	0.503432615224558	0.14	CG33988, isoform A [Drosophila melanogaster]
+116008309	A1Z9M5	0.502038052693264	0.41	CG30069 [Drosophila melanogaster]
+284005991	D2NUJ3	0.503190130186545	0.38	GH22911p [Drosophila melanogaster]
+467231	P42283	-0.499104642620177	0.18	Lola protein long isoform [Drosophila melanogaster]
+24667955	Q59E09	-0.182176131344411	0.03	acetyl coenzyme A synthase, isoform A
+24667955	Q9VP61	-0.182176131344411	0.03	acetyl coenzyme A synthase, isoform A
+5901826	Q9U4G9	-0.498026863949875	0.3	BcDNA.GH06717 [Drosophila melanogaster]
+25013110	Q8IGA2	-0.644717243241579	0.00353	SD12036p, partial
+28573937	Q8T0L3	0.164386817900882	0.05	ubiquitin activating enzyme 1, isoform A
+28574889	Q95RI5	0.738225039938805	0.03	failed axon connections, isoform A
+19920728	Q9V3H2	-0.49346414623566	0.39	regulatory particle non-ATPase 11 [Drosophila melanogaster]
+20129101	Q9VRD9	-0.489203517915725	0.08	cystathionine beta-synthase, isoform A [Drosophila melanogaster]
+20129481	Q9VK46	0.496425826119499	0.1	CG12404 [Drosophila melanogaster]
+38048145	Q6XI79	-0.739235767791033	0.04	similar to Drosophila melanogaster CG9762, partial [Drosophila yakuba]
+40215525	P07190	-0.426264754702098	0.000928	RE72980p
+40882449	A1ZAB5	-0.239465934695389	0.04	RH51925p
+21358097	Q9V3W7	-0.504472582860788	0.26	SF2, isoform A [Drosophila melanogaster]
+24641342	Q9VYW4	0.491184921014764	0.04	CG1703 [Drosophila melanogaster]
+24648329	Q9VDQ7	0.498206457881674	0.54	phagocyte signaling impaired [Drosophila melanogaster]
+24648329	U3Q053	0.498206457881674	0.54	phagocyte signaling impaired [Drosophila melanogaster]
+24653660	Q8MKJ5	-0.492274861417724	0.4	CG30197 [Drosophila melanogaster]
+24664469	Q9VUL1	-0.49725052896384	0.07	CTP synthase, isoform C [Drosophila melanogaster]
+24664469	X2JCY2	-0.49725052896384	0.07	CTP synthase, isoform C [Drosophila melanogaster]
+45552629	Q5BI33	-0.499429686569216	0.21	CG7639 [Drosophila melanogaster]
+45552629	Q9V784	-0.499429686569216	0.21	CG7639 [Drosophila melanogaster]
+45554875	Q7KV34	0.493040011280117	0.15	CG1561 [Drosophila melanogaster]
+78706766	D2NUJ1	-0.490924560241402	0.1	primo-1, isoform B [Drosophila melanogaster]
+78706766	P82890	-0.490924560241402	0.1	primo-1, isoform B [Drosophila melanogaster]
+442616458	NA	-0.497662556218112	0.26	CG15599 [Drosophila melanogaster]
+442633556	Q9VW71	-0.491303393506911	0.3	kugelei, isoform C [Drosophila melanogaster]
+442633556	X2JCN4	-0.491303393506911	0.3	kugelei, isoform C [Drosophila melanogaster]
+17738125	Q9VCY3	-0.483641313277867	0.5	COP9 complex homolog subunit 6 [Drosophila melanogaster]
+17945802	Q8SYT3	-0.480481852180228	0.52	RE34731p [Drosophila melanogaster]
+19921132	Q9VKJ6	0.489006717446043	0.69	CG6230 [Drosophila melanogaster]
+20129007	Q9VZ58	0.48276642415136	0.13	CG1637, isoform C [Drosophila melanogaster]
+21355991	Q9VSH3	-0.488486987489892	0.61	Bax Inhibitor-1, isoform A [Drosophila melanogaster]
+21356285	Q9VNP7	-0.482951080577912	0.57	slimfast, isoform C [Drosophila melanogaster]
+21357195	Q9VZS1	-0.492047318350416	0.14	CG17746, isoform A [Drosophila melanogaster]
+21357311	Q9VNI4	-0.484458900236323	0.1	CG2046 [Drosophila melanogaster]
+24581316	Q0E8U4	0.490701769210916	0.23	CG17224, isoform A [Drosophila melanogaster]
+24644201	Q9VNA5	-0.489911118595489	0.18	proteasome beta7 subunit, isoform A [Drosophila melanogaster]
+45549139	A8E774	-0.442004546879113	0.00702	cyclophilin 1
+45549139	P25007	-0.442004546879113	0.00702	cyclophilin 1
+24655679	Q9W077	0.48934305800753	0.23	cuticular protein 62Bc, isoform A [Drosophila melanogaster]
+78706922	P00334	-0.282692931604262	0.05	alcohol dehydrogenase, isoform C
+28557603	Q9VH48	-0.488410685609063	0.2	RE68504p [Drosophila melanogaster]
+28574422	Q95R98	-0.481276178452761	0.3	CG5068, isoform A [Drosophila melanogaster]
+29841386	Q86E39	-0.485409284105206	0.12	similar to GenBank Accession Number M61127 GTP-binding protein in Drosophila melanogaster [Schistosoma japonicum]
+33303492	Q6WAR9	-0.482392767080608	0.05	CG1740 protein [Drosophila melanogaster]
+45553429	A0A0B4KHS7	0.488176847544856	0.3	Signal-transducer and activator of transcription protein at 92E, isoform F [Drosophila melanogaster]
+45553429	Q24151	0.488176847544856	0.3	Signal-transducer and activator of transcription protein at 92E, isoform F [Drosophila melanogaster]
+223029533	B9EQX1	0.487743021050649	0.91	FI10950p [Drosophila melanogaster]
+85857566	Q29QY4	-0.308122295362332	0.05	IP15846p
+442615216	M9PGQ4	0.491999481093728	0.29	CG42492, isoform D [Drosophila melanogaster]
+85861021	Q29QJ2	-0.736965594166206	0.02	IP05065p
+11999128	Q9GQM7	-0.475833251664924	0.94	adaptor protein complex AP-2 small chain sigma2 [Drosophila melanogaster]
+91178059	Q0ZHI2	-0.659163442562573	0.05	L23A ribosomal protein natural variant
+17737413	Q9V396	-0.478191228070378	0.05	carbonic anhydrase 1 [Drosophila melanogaster]
+18860035	Q9VZ20	0.475809015277526	0.56	dynein light intermediate chain, isoform A [Drosophila melanogaster]
+116007382	Q9W5R8	-0.370562870138239	0.04	ribosomal protein L5, isoform A
+116007382	R9Q794	-0.370562870138239	0.04	ribosomal protein L5, isoform A
+116008032	Q9VDW6	0.522678222466814	0.03	dystrophin, isoform A
+19922816	Q9W1Q8	-0.475247750338945	0.3	eIF2B-delta, isoform A [Drosophila melanogaster]
+20130331	Q9W1E5	-0.472584037800655	0.15	morula [Drosophila melanogaster]
+21355923	Q9VZG2	0.479690457621097	0.26	cuticular protein 64Aa [Drosophila melanogaster]
+21355997	Q9VDH3	0.478985203368833	0.33	CG10830 [Drosophila melanogaster]
+161077121	A1ZA47	0.326729081151183	0.02	Z band alternatively spliced PDZ-motif protein 52, isoform F
+24585112	Q9VJ11	-0.467126010427298	0.12	CG10470 [Drosophila melanogaster]
+189458943	B3DNA9	-0.449485946101128	0.02	IP19109p
+201065557	B5RIJ9	-0.380795372805984	0.01	FI02875p
+24663135	Q9VTT6	-0.475037572506012	0.26	ionotropic receptor 68b [Drosophila melanogaster]
+24668448	Q9VNX0	-0.469063380961355	0.31	CG14562, isoform A [Drosophila melanogaster]
+161077710	Q8IRL5	0.471504450937872	0.05	CG34408, isoform B [Drosophila melanogaster]
+189458996	B3DND4	0.473026070457941	0.16	IP20148p [Drosophila melanogaster]
+225543686	C0PVD4	-0.485426827170242	0.04	TA01510p
+255982648	C6TPB6	-0.650836912738668	0.03	RE68005p
+7660	P25171	-0.46948528330122	0.13	BJ1 chromatin binding protein [Drosophila melanogaster]
+281360222	E1JGY7	0.712995890008185	0.03	lethal (2) 01289, isoform G
+6646844	Q9U1H6	0.460913067262481	0.23	Importin-alpha1 [Drosophila melanogaster]
+17933552	Q8MSS1	0.461391566267868	0.71	lava lamp [Drosophila melanogaster]
+17933552	X2JAF1	0.461391566267868	0.71	lava lamp [Drosophila melanogaster]
+21357759	Q9VVW8	0.460257745814278	0.49	CG10424 [Drosophila melanogaster]
+24643243	Q9VWI2	0.460664515770489	0.36	Nat1 [Drosophila melanogaster]
+281360228	E1JGY6	0.443988872974973	0.05	lethal (2) 01289, isoform F
+24661787	Q9VT23	-0.4623432140572	0.1	CG8329 [Drosophila melanogaster]
+45550188	Q9V428	-0.458290697232728	0.12	icarus [Drosophila melanogaster]
+295317452	D5SHQ0	-0.685531993765173	0.01	MIP22185p
+161077567	NA	-0.461904104316818	0.35	rugose, isoform C [Drosophila melanogaster]
+281366085	P0DKM0	0.462343214057201	0.09	Coiled-coil domain containing 56 [Drosophila melanogaster]
+288806618	D3DMZ8	-0.467126010427298	0.09	RE57382p [Drosophila melanogaster]
+6636407	Q9U4L6	-0.453447622639173	0.1	membrane import protein [Drosophila melanogaster]
+17136246	Q94515	0.45523632756294	0.28	infertile crescent, isoform A [Drosophila melanogaster]
+298360827	D9HRZ9	-0.470791480801845	0.04	Smp-30 protein
+19921282	Q9V3N6	0.457609207972174	0.67	TM9SF4 [Drosophila melanogaster]
+19921428	Q9V3I6	-0.45594544285905	0.4	CG5861 [Drosophila melanogaster]
+19921806	Q7K084	0.455137599330485	0.25	Odorant-binding protein 44a [Drosophila melanogaster]
+20129495	Q9VK12	-0.451106753986366	0.17	CG5945, isoform A [Drosophila melanogaster]
+299891106	D9IWU3	-0.720122084002792	0.02	CYP6G1
+21355925	Q9VTB0	-0.451547521599408	0.43	CG8003, isoform A [Drosophila melanogaster]
+21356575	Q9VU95	-0.458853017236033	0.11	CG8745 [Drosophila melanogaster]
+313661527	E4NKL2	-0.442943495848728	0.05	AT09325p
+320541587	E6EK15	0.254289378011999	0.03	plasma membrane calcium ATPase, isoform P
+386767614	A0A0B4K7K9	1.21892440274124	0.02	bruchpilot, isoform J
+24651247	Q9VAC4	-0.453910390923134	0.13	CG7911, isoform A [Drosophila melanogaster]
+24654209	A1ZAI5	0.452940520904985	0.08	CG5065, isoform A [Drosophila melanogaster]
+24654209	E1JH83	0.452940520904985	0.08	CG5065, isoform A [Drosophila melanogaster]
+24661073	Q9VSN3	0.460004230290335	0.09	cuticular protein 66D [Drosophila melanogaster]
+24666583	Q9VVV8	0.45443612602695	0.21	CG18136 [Drosophila melanogaster]
+24668758	Q9VNQ3	-0.452320260132249	0.31	CG11137 [Drosophila melanogaster]
+386769973	M9ND00	0.744567316899544	0.00978	dynamin associated protein 160, isoform D
+82540261	Q7RSB2	0.450252191862902	0.32	hypothetical protein [Plasmodium yoelii yoelii 17XNL]
+442623838	A0A0B4KER6	0.2642421874371	0.01	Z band alternatively spliced PDZ-motif protein 52, isoform N
+189459186	B3DNM6	0.452792421274262	0.29	RH09294p [Drosophila melanogaster]
+16797814	Q95X10	0.437808806937502	0.12	phosphomannomutase 45A [Drosophila melanogaster]
+442631983	M9PF20	0.333900736553438	0.03	trailer hitch, isoform H
+7724	P22977	-0.424551302278019	0.19	chorion protein s16
+7726	P07182	-0.270876280606094	0.11	chorion protein S36
+8380	P18053	-0.211504105193712	0.26	unnamed protein product
+18858095	Q9W334	-0.448095787858139	0.18	ribosomal protein S28b [Drosophila melanogaster]
+18858095	X2JEM4	-0.448095787858139	0.18	ribosomal protein S28b [Drosophila melanogaster]
+11042	P48809	-0.170699187154955	0.3	hrp48.1
+156763	P02574	-0.16179359663786	0.32	actin
+20269634	Q8STG6	0.441876486730148	0.59	plexin A [Drosophila melanogaster]
+21356733	Q9VBQ4	-0.445924544662747	0.14	CG5107 [Drosophila melanogaster]
+21357109	Q9VG73	-0.448023798370582	0.02	CG5641 [Drosophila melanogaster]
+156773	NA	0.260764232208967	0.32	actin
+21358275	Q9VFN9	-0.43952935702487	0.35	CG9922, isoform A [Drosophila melanogaster]
+21358593	O77134	-0.447027613523281	0.23	CG3321, isoform A [Drosophila melanogaster]
+24581591	Q9VQX4	-0.439285045525521	0.26	CG3714, isoform C [Drosophila melanogaster]
+157212	Q03043	-0.351329011327922	0.27	cGMP-dependent protein kinase
+157476	P07486	-0.15014034942786	0.4	glyceraldehyde-3-phosphate dehydrogenase (Gadph-1) protein (EC 1.2.1.12)
+28572011	P20348	-0.447726117985018	0.06	janus A, isoform A [Drosophila melanogaster]
+157541	P16378	-0.206450877467426	0.31	G protein alpha subunit
+161076629	Q6IHY5	0.442121378481468	0.31	CG34172, isoform A [Drosophila melanogaster]
+221511043	Q9V9M8	0.441969920305211	0.57	CG3262, isoform D [Drosophila melanogaster]
+157658	P29844	-0.17493487588642	0.19	heat shock protein cognate 72
+297372348	D7FAF2	-0.445625819112267	0.28	gustatory receptor 93a [Drosophila melanogaster]
+157804	P15215	0.194071088774015	0.26	laminin B2 chain
+157963	P10676	0.336952185599304	0.08	ninaC long protein
+1621615	Q94535	-0.433343633125023	0.05	U2 snRNP auxiliary factor [Drosophila melanogaster]
+158158	P19107	0.140444132936511	0.44	phosphoprotein
+158186	P22769	-0.370368449945115	0.08	proteasome beta-subunit
+17647581	Q94901	-0.427890669422829	0.22	lark, isoform A [Drosophila melanogaster]
+17933742	Q9V3Y2	-0.436236367421803	0.46	lethal (2) 35Bg [Drosophila melanogaster]
+19920736	Q9VMT5	-0.433349377555786	0.04	Cyp28d1 [Drosophila melanogaster]
+158330	P48159	-0.46273424131014	0.13	ribosomal protein L17A
+20129061	Q9VWD9	0.43038546361228	0.03	ubiquilin [Drosophila melanogaster]
+21356481	Q9VN91	-0.43444141667979	0.3	retinophilin [Drosophila melanogaster]
+21357223	Q9VV60	0.436570660828485	0.32	Tyrosyl-tRNA synthetase [Drosophila melanogaster]
+24648255	Q9VDU3	0.434285809847241	0.24	CG11659 [Drosophila melanogaster]
+158489	P13395	0.251707988161004	0.13	alpha-spectrin
+158763	Q7JPZ3	-0.301496194982549	0.13	ubiquitin, partial
+24665524	Q9VVA1	0.432440545540289	0.0096	CG9706, isoform A [Drosophila melanogaster]
+24666596	Q9VVW3	-0.432227260576359	0.04	CG6812 [Drosophila melanogaster]
+24666733	Q9VVZ4	-0.437753871219497	0.5	CG14095 [Drosophila melanogaster]
+28574468	M9NE73	0.430820496519772	0.1	Calpain-B, isoform A [Drosophila melanogaster]
+28574468	Q9VT65	0.430820496519772	0.1	Calpain-B, isoform A [Drosophila melanogaster]
+41617616	NA	0.433101712010508	0.55	TPA_inf: HDC08196 [Drosophila melanogaster]
+297085	P33438	0.209505009416999	0.53	glutactin
+77454942	Q2XYI8	-0.431767736591	0.36	CG9617 [Drosophila melanogaster]
+311370	Q07327	-0.379493382421177	0.06	Rop
+158703570	A9QHS4	-0.432780276823917	0.17	odorant-binding protein 56e [Drosophila melanogaster]
+223968711	C0MLD8	-0.430781822686862	0.15	CG15717-PA [Drosophila melanogaster]
+311997	Q02748	-0.202816882999687	0.06	eukaryotic translation initiation factor 4A (eIF-4A)
+392868	P40304	-0.378805182119508	0.1	proteasome subunit
+775231	Q24073	-0.422233000683048	0.62	L71-3 [Drosophila melanogaster]
+17137010	A8DYJ3	0.420862767106416	0.09	Calpain-A, isoform B [Drosophila melanogaster]
+17137010	Q11002	0.420862767106416	0.09	Calpain-A, isoform B [Drosophila melanogaster]
+397852	P41092	-0.528264331722133	0.33	ribosomal protein L27a
+400448	P36241	-0.36341499597746	0.22	ribosomal protein L19
+440294	Q9V8R9	0.184424571137428	0.33	product of alternative splicing; homologue to membrane-skeleton protein 4.1
+464020	P40796	-0.523484226737154	0.06	La/SS-B
+466258	Q23979	-0.215728691055437	0.31	myosin-IB
+19922870	Q95SH0	0.42449782852791	0.66	PAS kinase [Drosophila melanogaster]
+475576	NA	-0.150242635580613	0.78	ejaculatory bulb specific protein III, partial
+20130123	Q7JVZ8	-0.42484778085123	0.32	glutathione S transferase E11 [Drosophila melanogaster]
+21355207	A0A0B4K7R1	-0.426281804781237	0.23	spase 22/23-subunit, isoform A [Drosophila melanogaster]
+21355207	Q9VCA9	-0.426281804781237	0.23	spase 22/23-subunit, isoform A [Drosophila melanogaster]
+21357365	Q9VB81	-0.42405244822315	0.37	cuticular protein 97Eb [Drosophila melanogaster]
+494737	P62152	-0.321928094887362	0.21	Chain A, Solution Structure Of A Calmodulin-Target Peptide Complex By Multidimensional Nmr
+24644413	Q0KIB3	-0.418052537034276	0.3	CG2051, isoform A [Drosophila melanogaster]
+557084	Q24241	0.301169534720565	0.33	ankyrin
+24652542	Q9V5P6	-0.421923884864084	0.31	CG7637 [Drosophila melanogaster]
+24657284	C0MJA0	-0.422355198284914	0.59	high mobility group protein D, isoform A [Drosophila melanogaster]
+24657284	Q05783	-0.422355198284914	0.59	high mobility group protein D, isoform A [Drosophila melanogaster]
+24657414	Q9VZF3	-0.424698387511561	0.28	CG1265 [Drosophila melanogaster]
+28573887	Q867Z4	0.42449782852791	0.16	longitudinals lacking, isoform U [Drosophila melanogaster]
+1066065	P48601	-0.155278225477911	0.43	P26s4
+62862344	Q7PLL3	0.418357857570455	0.61	eukaryotic initiation factor 4B, isoform B [Drosophila melanogaster]
+66772007	Q4V4V7	0.42793798798665	0.17	IP12565p [Drosophila melanogaster]
+162951731	Q9VZ49	-0.423807708906576	0.43	GH21533p [Drosophila melanogaster]
+1072120	Q24150	-0.285965881710164	0.27	nucleosome assembly protein NAP-1
+442626474	M9PCE3	-0.419376435003181	0.42	CG18304, isoform D [Drosophila melanogaster]
+1141790	Q99323	0.169925001442312	0.43	nonmuscle myosin-II heavy chain
+1208910	P50882	-0.68000970935413	0.09	ribosomal protein L9
+17136678	P27864	0.406983864840135	0.31	recombination repair protein 1, isoform A [Drosophila melanogaster]
+17137220	O18334	-0.408280133103535	0.53	Rab6 [Drosophila melanogaster]
+17137220	X2J5T3	-0.408280133103535	0.53	Rab6 [Drosophila melanogaster]
+1279384	Q24593	0.398973063034358	0.16	hypothetical protein
+1280434	Q24160	-0.227233684405947	0.38	hemomucin
+17737457	P25228	-0.405729757052616	0.54	Rab3 [Drosophila melanogaster]
+21355293	Q9VCI7	0.412053640840022	0.28	Ran binding protein 3, isoform A [Drosophila melanogaster]
+1304682	P12646	-0.211874549422449	0.42	glucose-6-phosphate 1-dehydrogenase
+24643849	Q9VMY9	-0.415037499278844	0.14	dihydropterin deaminase [Drosophila melanogaster]
+24644404	E2QD00	-0.410330496601316	0.25	jagunal, isoform A [Drosophila melanogaster]
+24644404	Q7K1V5	-0.410330496601316	0.25	jagunal, isoform A [Drosophila melanogaster]
+24644446	Q7JVN6	0.403792742111221	0.26	CG1213, isoform A [Drosophila melanogaster]
+1321805	Q24388	-0.282513413774019	0.8	larval serum protein 2
+1359610	Q24506	-0.33746894578314	0.1	sterol carrier protein x
+24668515	Q9VNV3	-0.415966422961052	0.34	Dead-box-1 [Drosophila melanogaster]
+40457594	Q6S015	-0.412323114581808	0.41	reverse transcriptase [Drosophila melanogaster]
+66771617	Q4V5F2	0.408704886170149	0.21	IP12319p [Drosophila melanogaster]
+189458941	B3DNA8	-0.405564746658562	0.06	IP19105p [Drosophila melanogaster]
+442618841	A0A0B4KGI5	-0.406727406816447	0.3	acetylcholine esterase, isoform C [Drosophila melanogaster]
+1359614	P52486	-0.496535613300037	0.06	ubiquitin conjugating enzyme
+6468017	Q9U617	0.401862110531111	0.36	pericardine [Drosophila melanogaster]
+16198011	Q95TT3	-0.409143081591953	0.32	LD24726p [Drosophila melanogaster]
+17137218	O18336	-0.396832903901253	0.52	Rab14, isoform A [Drosophila melanogaster]
+1498589	Q95083	-0.138519864081428	0.73	20S proteasome alpha subunit PSMA5
+1621653	Q94541	-0.236198220861478	0.37	fatty acid desaturase
+1857602	Q7JND6	0.335541584288172	0.3	cuticle protein ACP65A
+2546937	NA	0.320259274526744	0.11	muscle myosin heavy chain
+2773363	NA	0.249647852218883	0.41	microtubule binding protein D-CLIP-190
+19921434	Q9V438	0.39821988121857	0.36	calcium-binding protein 1 [Drosophila melanogaster]
+19921788	Q7K2X5	0.401020920897543	0.34	CG14762, isoform A [Drosophila melanogaster]
+3115387	NA	-0.224431566610046	0.33	flotillin-2
+21358311	Q9TVP3	0.405229681142832	0.38	jdp, isoform A [Drosophila melanogaster]
+24638958	Q9V3T2	-0.404390255079335	0.09	CG5254 [Drosophila melanogaster]
+24645112	Q9VHN9	0.403970460740868	0.54	pink [Drosophila melanogaster]
+24645112	U3PV63	0.403970460740868	0.54	pink [Drosophila melanogaster]
+24645325	Q9VHF2	0.398275921832188	0.05	CG18473 [Drosophila melanogaster]
+3337431	O76281	0.144194726348895	0.54	projectin
+24657549	Q9W299	-0.400537929583729	0.09	CG11474, isoform A [Drosophila melanogaster]
+3355742	Q9W596	0.226662016168832	0.46	EG:49E4.1
+3676167	O77285	0.253215344803348	0.2	coatomer alpha subunit
+62008693	P13096	-0.404198266917379	0.14	enhancer of split m5 protein [Drosophila melanogaster]
+4071031	Q24238	0.172209554636866	0.51	alkaline phosphatase
+161077411	Q9W1Z6	-0.401472771697041	0.35	stall, isoform C [Drosophila melanogaster]
+4105503	Q9VV72	-0.143297785860698	0.63	multiple inositol polyphosphate phosphatase 1
+442624031	A0A0B4KFT9	0.398709329374843	0.09	quaking related 54B, isoform E [Drosophila melanogaster]
+2313043	O18337	-0.391020618160308	0.59	rab-related protein 4 [Drosophila melanogaster]
+4426611	Q9VLT5	0.152490408106292	0.47	pushover
+17136674	A0A0B4LFM0	0.387755406625502	0.42	calbindin 53E [Drosophila melanogaster]
+17136674	P41044	0.387755406625502	0.42	calbindin 53E [Drosophila melanogaster]
+5911472	Q9U5W6	0.199661711804787	0.36	microtubule associated protein
+6002112	Q9U5W7	0.290410844765099	0.06	serpin, putative
+6517192	Q9U5D5	-0.440041505408738	0.18	Drab2
+6561479	P54622	-0.597352481239956	0.06	single-strand specific DNA-binding protein
+19920498	Q9VPX5	-0.395019605701886	0.45	CG4764 [Drosophila melanogaster]
+6694276	Q7KJV5	-0.325456906367609	0.41	ubiquitin-like protein activating enzyme N subunit
+6716512	NA	-0.217417605921156	0.34	translation elongation factor 1 gamma
+19921810	Q7K519	-0.385598390074403	1	RagC [Drosophila melanogaster]
+19922710	Q8MLV1	-0.39140160784042	0.36	lamin B receptor, isoform A [Drosophila melanogaster]
+6716514	NA	-0.252692461612335	0.27	translation elongation factor 1 gamma
+7579901	Q26433	0.411255858736417	0.17	myosin heavy chain
+7672773	Q7KMR7	-0.192883914966514	0.41	thioredoxin-like protein TXL
+22024078	N0A733	-0.394860803921521	0.85	COP9 complex homolog subunit 7 [Drosophila melanogaster]
+22024078	Q9V4S8	-0.394860803921521	0.85	COP9 complex homolog subunit 7 [Drosophila melanogaster]
+8886088	Q9GU68	-0.190190945215797	0.59	eukaryotic initiation factor 5A
+11125712	Q9GV29	-0.144679752639191	0.75	prophenoloxidase
+11321422	Q9GSE0	-0.578385566317903	0.06	focal contact protein paxillin
+11993642	NA	-0.142511644467752	0.64	integral membrane pore glycoprotein gp210
+13560842	Q8INI8	-0.221663971413934	0.19	heat shock protein Hsp70Ba
+13958630	Q95NR4	-0.278301162487104	0.2	bicoid mRNA stability factor
+15291801	Q9VJ39	-0.172836596862216	0.62	LD27070p
+15292445	Q960H1	-0.662227627047859	0.34	LP12301p
+281364600	Q9VLT1	-0.387785177026546	0.24	mon2 [Drosophila melanogaster]
+281364600	X2J564	-0.387785177026546	0.24	mon2 [Drosophila melanogaster]
+16197915	P13706	-0.185555653156077	0.23	GM14480p
+442616752	M9PHV3	0.388333420557822	0.37	RhoGAPp190, isoform F [Drosophila melanogaster]
+442632849	M9PFR6	-0.395137941841139	0.17	multiprotein bridging factor 1, isoform E [Drosophila melanogaster]
+16768432	Q95SA6	-0.24716032648539	0.48	GM04535p
+17136292	Q00174	0.324839690307266	0.2	laminin A
+17136706	M9MRT6	-0.369013230957104	0.2	roughened, isoform A [Drosophila melanogaster]
+17136706	P08645	-0.369013230957104	0.2	roughened, isoform A [Drosophila melanogaster]
+17136294	P11046	0.312493813882709	0.06	LanB1, isoform A
+17648049	Q9VTZ5	0.388479287795968	0.27	transferrin 2 [Drosophila melanogaster]
+17136306	P11996	-0.297522782219085	0.49	larval serum protein 1 beta
+17136306	X2J8F5	-0.297522782219085	0.49	larval serum protein 1 beta
+17136324	G3M3A2	-0.485426827170242	0.06	ribosomal protein S3
+17136324	Q06559	-0.485426827170242	0.06	ribosomal protein S3
+17136334	P12426	-0.453365617937943	0.36	adenine phosphoribosyltransferase
+17136334	X2J8L3	-0.453365617937943	0.36	adenine phosphoribosyltransferase
+17136400	M9NES0	-0.133266530863464	0.89	arrestin 1, isoform A
+17136400	P15372	-0.133266530863464	0.89	arrestin 1, isoform A
+17136518	P38979	-0.207941265038908	0.17	stubarista, isoform A
+17136574	P15357	-0.301599689183005	0.15	ribosomal protein S27A
+17136574	Q8IGR0	-0.301599689183005	0.15	ribosomal protein S27A
+21357105	Q9VNC1	-0.378906247310381	0.09	mitochondrial ribosomal protein L44 [Drosophila melanogaster]
+21357525	Q9VW12	0.373617571898863	0.57	CG9231 [Drosophila melanogaster]
+21357525	X2JGV8	0.373617571898863	0.57	CG9231 [Drosophila melanogaster]
+17136594	Q24062	0.280401537803882	0.68	black, isoform A
+24642713	Q9VX84	0.373805311181571	0.48	CG16700 [Drosophila melanogaster]
+24644434	Q8IPQ7	0.383328639551506	0.32	CG42675, isoform D [Drosophila melanogaster]
+17136620	P23696	-0.158527446185196	0.57	microtubule star
+17136620	X2JDI1	-0.158527446185196	0.57	microtubule star
+24649976	Q9VBU9	-0.375509135092206	0.11	ribosomal protein S27, isoform A [Drosophila melanogaster]
+17136630	Q7K2W6	-0.327839057376974	0.25	prophenol oxidase A1
+28557579	Q86NM2	-0.37851162325373	0.13	RH24769p [Drosophila melanogaster]
+28571932	NA	-0.378705286592619	0.3	dj-1beta [Drosophila melanogaster]
+82705742	A0A077Y8R9	-0.380393347261144	0.51	hypothetical protein [Plasmodium yoelii yoelii 17XNL]
+82705742	Q7RAQ8	-0.380393347261144	0.51	hypothetical protein [Plasmodium yoelii yoelii 17XNL]
+116805876	A0ANZ0	-0.367933264151801	0.36	CG10206 [Drosophila melanogaster]
+161077044	A2RVI0	-0.384392181834016	0.41	CG42319, isoform D [Drosophila melanogaster]
+17136632	M9PD75	-0.204538756523649	0.2	porin, isoform A
+17136632	Q94920	-0.204538756523649	0.2	porin, isoform A
+221330619	NA	-0.382469636822413	0.4	eyes shut, isoform C [Drosophila melanogaster]
+259013607	C8VV29	0.377451114066014	0.43	AT19585p [Drosophila melanogaster]
+17136646	O46037	0.152352371994363	0.14	vinculin
+17136646	X2JAB9	0.152352371994363	0.14	vinculin
+17136734	M9PB84	-0.44120786001839	0.11	ribosomal protein S2, isoform A
+17136734	P31009	-0.44120786001839	0.11	ribosomal protein S2, isoform A
+442625344	M9PBQ4	0.377811215613486	0.17	apoptosis inducing factor, isoform C [Drosophila melanogaster]
+17136742	A0A0B4LGZ3	-0.201139872107851	0.27	twins, isoform A
+17136742	P36872	-0.201139872107851	0.27	twins, isoform A
+17136792	Q9VKE2	0.191406535836662	0.13	crystallin
+17136796	E1JIJ5	-0.149681781534929	0.19	vacuolar H[+]-ATPase 55kD B subunit, isoform B
+17136796	P31409	-0.149681781534929	0.19	vacuolar H[+]-ATPase 55kD B subunit, isoform B
+1079121	NA	-0.370368449945115	0.33	probable ribosomal protein - fruit fly (Drosophila melanogaster)
+17136812	A0A0B4LGQ1	0.241277434899124	0.34	superoxide dismutase 2 (Mn)
+17136812	Q00637	0.241277434899124	0.34	superoxide dismutase 2 (Mn)
+17136832	Q03334	-0.43076185157186	0.09	ribosomal protein S13, isoform A
+17136832	X2J950	-0.43076185157186	0.09	ribosomal protein S13, isoform A
+17136836	M9MRD0	0.263866170077582	0.35	ubiquitin carboxy-terminal hydrolase, isoform A
+17136836	P35122	0.263866170077582	0.35	ubiquitin carboxy-terminal hydrolase, isoform A
+17136866	M9PG22	-0.495679683146589	0.17	ADP ribosylation factor 79F, isoform B
+17136866	P61209	-0.495679683146589	0.17	ADP ribosylation factor 79F, isoform B
+17136882	P41094	-0.228477183797425	0.22	ribosomal protein S18, isoform A
+17136898	Q7KN94	-0.306888695423221	0.08	walrus, isoform B
+17136958	M9NEU5	-0.326228232320988	0.06	chickadee, isoform A
+17136958	P25843	-0.326228232320988	0.06	chickadee, isoform A
+20151307	Q8T3P8	-0.372524701175957	0.1	AT23778p [Drosophila melanogaster]
+21355217	Q9VC94	0.368282160472893	0.3	CG5728 [Drosophila melanogaster]
+21356023	Q9VU34	-0.370368449945115	0.46	MICAL-like [Drosophila melanogaster]
+17136986	A0A1B2AKQ4	-0.375699351328343	0.13	twinstar
+17136986	P45594	-0.375699351328343	0.13	twinstar
+17137026	A0A0B4LGZ5	-0.713764271748204	0.06	ribosomal protein L11
+17137026	P46222	-0.713764271748204	0.06	ribosomal protein L11
+17137100	P48148	-0.556179600092127	0.1	Rho1, isoform A
+17137132	P49735	-0.201298389701824	0.06	minichromosome maintenance 2
+24665247	Q9VV42	-0.372176284764646	0.51	photoreceptor dehydrogenase, isoform A [Drosophila melanogaster]
+28317156	Q7KLW6	-0.366674477717445	0.21	LD06837p, partial [Drosophila melanogaster]
+28571526	Q8SX57	-0.37851162325373	0.39	CG31549, isoform A [Drosophila melanogaster]
+45552331	Q8SXD5	0.371665075322896	0.4	virus-induced RNA 1, isoform C [Drosophila melanogaster]
+46409110	Q6NL96	-0.367809605157843	0.31	RH07858p [Drosophila melanogaster]
+66772781	Q4V3L0	0.364449200511186	0.93	IP10101p [Drosophila melanogaster]
+85724746	Q8SXX1	-0.370982319200908	0.3	CG17471, isoform B [Drosophila melanogaster]
+17137200	O62602	-0.17725162381902	0.72	licorne
+324096364	F0JAH0	-0.362570079384708	0.1	DI01061p [Drosophila melanogaster]
+386765708	A0A0C4DHG5	-0.373592780981492	0.04	B52, isoform M [Drosophila melanogaster]
+386765708	P26686	-0.373592780981492	0.04	B52, isoform M [Drosophila melanogaster]
+386770742	M9ND57	-0.369492223576114	0.16	CG7546, isoform E [Drosophila melanogaster]
+17137212	A4V0B5	0.208878635786888	0.51	nervana 2, isoform C
+17137212	Q24048	0.208878635786888	0.51	nervana 2, isoform C
+17137242	A0A0B4LEV2	0.192003166901377	0.06	disc proliferation abnormal
+17137242	Q26454	0.192003166901377	0.06	disc proliferation abnormal
+158723	P35004	-0.349584437790228	0.37	trypsin-beta [Drosophila melanogaster]
+18860079	Q9VX14	-0.361026532555294	0.35	Ucp4A, isoform A [Drosophila melanogaster]
+18921123	Q9W4K0	-0.352652228356687	0.53	CHOp24 [Drosophila melanogaster]
+17137260	D1Z3A2	0.256277039658485	0.14	ATPase coupling factor 6, isoform A
+17137260	Q24407	0.256277039658485	0.14	ATPase coupling factor 6, isoform A
+19923000	Q94915	-0.352734141668537	0.28	rhythmically expressed gene 2 [Drosophila melanogaster]
+20129463	Q9VKD3	-0.358655029381325	0.37	CG12264 [Drosophila melanogaster]
+20129611	Q9VJ14	-0.354052297943001	0.34	mind bomb 2, isoform A [Drosophila melanogaster]
+21064635	Q8MYW6	-0.358942937207918	0.43	RE61589p [Drosophila melanogaster]
+21356001	Q9VKM3	-0.358453970912476	0.12	lethal (2) 06225, isoform A [Drosophila melanogaster]
+21358417	Q9W380	-0.353109750135642	0.43	CG9034 [Drosophila melanogaster]
+24581544	M9NDE3	-0.355936987052261	0.38	CG3921, isoform A [Drosophila melanogaster]
+17137262	M9PCE8	-0.293344239991053	0.26	Angiotensin-converting enzyme-related, isoform A
+17137262	Q9VLJ6	-0.293344239991053	0.26	Angiotensin-converting enzyme-related, isoform A
+24641180	Q9VZ34	0.35453276031929	0.43	CG2076 [Drosophila melanogaster]
+24644341	Q9VNF5	-0.360683832297134	0.56	CG12170 [Drosophila melanogaster]
+17137540	Q9VPN5	-0.375967934600251	0.14	Hsp70/Hsp90 organizing protein homolog
+17137592	O77410	-0.240379200173483	0.08	Int6 homologue
+17137740	A0A0B4K7Z5	-0.148341851325563	0.49	regulatory particle non-ATPase 6, isoform B
+17137740	Q7KLV9	-0.148341851325563	0.49	regulatory particle non-ATPase 6, isoform B
+28574898	Q9VUV9	0.352452961900821	0.09	lethal (3) 72Ab [Drosophila melanogaster]
+42415447	Q6NMU8	0.361678683738107	0.9	AT20004p [Drosophila melanogaster]
+161077005	A8DZ24	-0.351018771787751	0.27	CG42748, isoform D [Drosophila melanogaster]
+17137758	M9PGA7	0.159738742224655	0.25	alpha actinin, isoform C
+17137758	P18091	0.159738742224655	0.25	alpha actinin, isoform C
+386770414	NA	0.356934544715276	0.07	Myocardin-related transcription factor, isoform E [Drosophila melanogaster]
+442625910	M9PBZ0	-0.357153468089242	0.61	dumpy, isoform R [Drosophila melanogaster]
+17137782	M9NDC3	0.169281084876886	0.17	female sterile (2) ketel, isoform A
+17137782	O18388	0.169281084876886	0.17	female sterile (2) ketel, isoform A
+2286211	O18358	-0.337034987277571	0.36	putative ARF1 GTPase activating protein [Drosophila melanogaster]
+17157991	Q9V3P0	-0.299789117618114	0.12	thioredoxin peroxidase 1, isoform A
+17157991	X2JF59	-0.299789117618114	0.12	thioredoxin peroxidase 1, isoform A
+17352481	P48591	0.328948522565135	0.27	ribonucleoside diphosphate reductase large subunit
+17530823	Q9W3Z3	-0.204819791888498	0.36	serine pyruvate aminotransferase
+17933586	Q9W3C4	0.342261096984369	0.18	hexosaminidase 2 [Drosophila melanogaster]
+19921102	Q9VKT9	-0.339946452289713	0.8	lipase 4, isoform A [Drosophila melanogaster]
+19922222	Q7JZE8	-0.350367115810454	0.36	CG8323 [Drosophila melanogaster]
+17530861	E1JJF9	0.165554519333217	0.18	neuroglian, isoform A
+17530861	P20241	0.165554519333217	0.18	neuroglian, isoform A
+20128959	A4V3W8	-0.3456125478884	0.36	CG32795, isoform B [Drosophila melanogaster]
+20128959	Q9U1M2	-0.3456125478884	0.36	CG32795, isoform B [Drosophila melanogaster]
+17530883	P36951	-0.840933514032381	0.24	GIP-like
+17647141	Q9VTV3	-0.290296485838251	0.18	adenylate kinase-1, isoform A
+21355399	Q9VCJ8	0.343766003259366	0.33	Spatzle-Processing enzyme [Drosophila melanogaster]
+17647191	Q00963	0.184839675453596	0.2	beta spectrin, isoform A
+21358169	Q9VTU8	-0.349856930301987	0.72	carbonic anhydrase 2, isoform A [Drosophila melanogaster]
+24580965	Q9VQ58	0.337034987277571	0.1	CG15356 [Drosophila melanogaster]
+24642588	Q9VXD4	-0.342086819521203	0.75	CG15865 [Drosophila melanogaster]
+24644339	Q8IPP8	-0.348494894172986	0.34	CG31548 [Drosophila melanogaster]
+24645648	Q9VH09	-0.347165386386385	0.37	CG3999, isoform A [Drosophila melanogaster]
+24646251	Q9VGA0	0.342392197447078	0.41	glutathione S transferase D9 [Drosophila melanogaster]
+17647469	P13496	0.567888987362215	0.08	glued
+17647515	P29843	-0.15200309344505	0.06	heat shock protein cognate 1, isoform A
+24653139	A1Z934	-0.346590149121631	0.14	CG8778 [Drosophila melanogaster]
+17647521	P02518	-0.267772324840457	0.18	heat shock protein 27
+17647521	X2JC82	-0.267772324840457	0.18	heat shock protein 27
+45550506	Q9W1F7	-0.339357901013739	0.33	CG2970, isoform A [Drosophila melanogaster]
+17647529	M9PBL3	-0.18322182405577	0.25	heat shock protein 83, isoform A
+17647529	P02828	-0.18322182405577	0.25	heat shock protein 83, isoform A
+68051607	Q4QPU9	-0.350497247084133	0.44	IP04554p [Drosophila melanogaster]
+209944514	B6UXE4	0.34268665505416	0.23	non-claret disjunctional [Drosophila melanogaster]
+261824080	D0IQ98	0.347923303420307	0.03	LD11952p [Drosophila melanogaster]
+17647709	Q23978	0.293358942690592	0.07	myosin 31DF, isoform A
+17647799	P54399	-0.343204754517777	0.13	protein disulfide isomerase, isoform A
+17647799	X2JGP4	-0.343204754517777	0.13	protein disulfide isomerase, isoform A
+17647815	P81900	-0.411426245726465	0.3	cAMP-dependent protein kinase R2, isoform A
+17647849	Q7KY04	-0.359384441786967	0.51	Rab4, isoform B
+17647879	M9PFF0	-0.52083216330144	0.07	ribosomal protein L13, isoform A
+17647879	P41126	-0.52083216330144	0.07	ribosomal protein L13, isoform A
+17647889	P17704	-0.572932811859957	0.17	ribosomal protein S17
+17737463	Q24368	-0.337935644633471	0.49	imitation SWI, isoform A [Drosophila melanogaster]
+17647897	Q24186	-0.325986311461716	0.09	ribosomal protein S5a
+17647897	X2JKU5	-0.325986311461716	0.09	ribosomal protein S5a
+18857987	Q9W4A6	0.332575339086871	0.96	CG42492, isoform A [Drosophila melanogaster]
+18921153	Q9W335	0.335888500608413	0.2	lethal (1) G0320 [Drosophila melanogaster]
+19920826	Q8STG9	-0.329064276168991	0.17	Sec61alpha [Drosophila melanogaster]
+20129743	A1Z6X6	-0.330148601692331	0.37	CG1707 [Drosophila melanogaster]
+21355443	E2QCZ9	-0.343652866042079	0.34	CG1129, isoform A [Drosophila melanogaster]
+21355443	Q7JZB4	-0.343652866042079	0.34	CG1129, isoform A [Drosophila melanogaster]
+17648041	O02195	-0.339403061441993	0.21	Trip1
+17648123	Q9W029	-0.205557982473188	0.42	yellow-g
+17648125	Q9VL70	-0.209671180235069	0.16	yippee interacting protein 2
+17737369	O15971	-0.442943495848728	0.44	Rab10
+24583531	Q9VKQ2	-0.333423733725192	0.29	CG17127, isoform A [Drosophila melanogaster]
+17737397	Q9V447	-0.318230906231616	0.15	kruppel homolog 2, isoform A
+17737397	X2J4W8	-0.318230906231616	0.15	kruppel homolog 2, isoform A
+24646155	Q9VGF3	-0.332775477124355	0.67	CG18547 [Drosophila melanogaster]
+17737433	O16043	-0.19426882042206	0.69	decondensation factor 31, isoform A
+24649473	Q9VCF2	0.327757081149192	0.26	CG31140, isoform A [Drosophila melanogaster]
+24651577	Q9VA09	0.329545741768268	0.59	guanylyl cyclase beta-subunit at 100B [Drosophila melanogaster]
+24661375	Q8IQB7	0.339100509355839	0.25	CG32032 [Drosophila melanogaster]
+17737439	Q9V4I1	0.136419198226595	0.51	cytochrome P450-9b2
+45551633	D0IQJ2	-0.334628183427887	0.67	I'm not dead yet, isoform B [Drosophila melanogaster]
+45551633	Q9VVT2	-0.334628183427887	0.67	I'm not dead yet, isoform B [Drosophila melanogaster]
+46409174	Q8MSG8	-0.332123861993251	0.56	RE18645p [Drosophila melanogaster]
+146188982	A4V9Y5	-0.330685707840088	0.65	CG9080 protein [Drosophila melanogaster]
+17737499	A0A0B4KEY5	-0.232559447493447	0.29	lethal (2) essential for life, isoform A
+17737499	P82147	-0.232559447493447	0.29	lethal (2) essential for life, isoform A
+221377917	Q8IPQ2	-0.336348610633534	0.27	collapsin response mediator protein, isoform E [Drosophila melanogaster]
+17737543	P32392	-0.334721121439324	0.15	Actin-related protein 3, isoform A
+17737635	M9PFN1	-0.170409208542306	0.32	reptin, isoform A
+17737635	Q9V3K3	-0.170409208542306	0.32	reptin, isoform A
+386765104	A0A0B4K6I7	0.33761852545363	0.63	transforming acidic coiled-coil protein, isoform L [Drosophila melanogaster]
+386765228	A0A0B4K602	-0.330916878114617	0.95	TBP-associated factor 1, isoform E [Drosophila melanogaster]
+386771014	M9NE87	-0.335574735759812	0.32	CG10616, isoform B [Drosophila melanogaster]
+442623875	A0A0B4KF84	-0.339368542829801	0.38	Stretchin-Mlck, isoform S [Drosophila melanogaster]
+17737663	O18338	-0.419744501956371	0.4	Rab8, isoform A
+17737731	M9PG76	-0.184271896917391	0.25	ribosomal protein LP0, isoform A
+17737731	P19889	-0.184271896917391	0.25	ribosomal protein LP0, isoform A
+1575599	Q94918	0.328785898654513	0.98	epidermal growth factor-like protein [Drosophila melanogaster]
+17737741	Q9VNT5	-0.160753355544062	0.65	thioredoxin reductase 2
+17737775	A0A0B4LGS4	-0.194931803799005	0.42	vacuolar H[+]-ATPase 26kD E subunit, isoform B
+17737775	P54611	-0.194931803799005	0.42	vacuolar H[+]-ATPase 26kD E subunit, isoform B
+10190801	Q9U1L3	-0.324434950497937	0.45	EG:BACR7A4.5 [Drosophila melanogaster]
+13124684	P04146	-0.321017589940202	0.41	RecName: Full=Copia protein; AltName: Full=Gag-int-pol protein; Contains: RecName: Full=Copia VLP protein; Contains: RecName: Full=Copia protease
+17737777	Q9VNE2	0.258239556595549	0.18	extra bases, isoform G
+17737817	Q9VIB5	-0.154974659976341	0.33	alpha-Esterase-7
+17737841	Q24492	-0.175086706558091	0.33	replication protein A 70
+17737897	O96299	-0.296493047511092	0.48	sorbitol dehydrogenase-2
+18859751	Q9VZ71	-0.316414102214857	0.27	CG15211, isoform A [Drosophila melanogaster]
+17737907	O16797	-0.295455883526171	0.19	ribosomal protein L3, isoform A
+17737927	P40301	-0.532495080827021	0.08	proteasome 25kD subunit
+17737937	P10351	0.19921930823635	0.53	rosy
+17737941	P11146	-0.214124805352848	0.09	heat shock protein cognate 2
+17737967	C7LA75	-0.195920209975257	0.16	heat shock protein cognate 4, isoform A
+17737967	P11147	-0.195920209975257	0.16	heat shock protein cognate 4, isoform A
+24655327	Q7KB18	-0.321347416658195	0.4	juvenile hormone epoxide hydrolase 2, isoform A [Drosophila melanogaster]
+24658164	Q9W246	-0.3298477581836	0.32	CG4554 [Drosophila melanogaster]
+25012345	Q8IGY6	0.320333075331982	0.36	RE05346p, partial [Drosophila melanogaster]
+28571792	Q8MRN5	-0.32130324511989	0.47	CG31233 [Drosophila melanogaster]
+28573446	Q8MSU3	-0.321137360397362	0.34	CG8399 [Drosophila melanogaster]
+17738015	Q9VEJ0	-0.366556698040433	0.11	peroxiredoxin 3
+45550973	Q9VK25	0.31673542566704	0.28	phosphoethanolamine cytidylyltransferase, isoform B [Drosophila melanogaster]
+66771323	Q4V5U9	0.325630560113344	0.41	IP06576p [Drosophila melanogaster]
+161015969	A9LRV8	-0.319068440748122	0.56	monovalent cation/nutrient amino acid symporter NAT3 [Drosophila melanogaster]
+17738177	A0A0B4KHS9	-0.263034405833794	0.1	protein phosphatase 1alpha at 96A, isoform A
+17738177	P48461	-0.263034405833794	0.1	protein phosphatase 1alpha at 96A, isoform A
+161077430	Q8MLS1	-0.324434950497937	0.47	CG34424 [Drosophila melanogaster]
+161077904	A8JV30	-0.316462627696084	0.46	CG34327 [Drosophila melanogaster]
+17738283	A0A0B4KI24	-0.551499741828116	0.08	nucleoplasmin, isoform A
+17738283	Q27415	-0.551499741828116	0.08	nucleoplasmin, isoform A
+17862990	Q8T9C5	0.240263098175136	0.18	SD07655p
+17863020	Q8T9B4	0.304209369066464	0.25	SD08921p
+281361618	Q7KSN8	-0.325372652928517	0.13	CG31368, isoform D [Drosophila melanogaster]
+17864154	A4V3Q6	-0.391578526454855	0.06	elongation factor 1alpha100E, isoform A
+17864154	P05303	-0.391578526454855	0.06	elongation factor 1alpha100E, isoform A
+442614664	M9PGI6	-0.314635602321006	0.15	Sec22, isoform B [Drosophila melanogaster]
+442625336	M9PE28	0.330959736705008	0.21	tho2, isoform C [Drosophila melanogaster]
+429076	P47949	-0.312503082098094	0.78	troponin-C [Drosophila melanogaster]
+5835240	NA	-0.310424122768912	0.54	NADH dehydrogenase subunit 3 (mitochondrion) [Drosophila melanogaster]
+17864160	P23226	0.284260447629026	0.58	Microtubule-associated protein 205, isoform A
+17136758	M9PCM4	0.31034012061215	0.23	transcription factor IIB, isoform A [Drosophila melanogaster]
+17136758	P29052	0.31034012061215	0.23	transcription factor IIB, isoform A [Drosophila melanogaster]
+17864306	Q9VF27	-0.374395514781498	0.09	NADH:ubiquinone reductase 23kD subunit precursor
+17864318	Q9V3G1	-0.385147927359918	0.12	ribosomal protein L8, isoform A
+19922796	Q7K274	-0.307471259683013	0.12	lethal (2) k09913, isoform C [Drosophila melanogaster]
+17864332	H5V895	-0.267480310864986	0.07	flapwing, isoform B
+17864332	P48462	-0.267480310864986	0.07	flapwing, isoform B
+17864388	Q9V3D2	-0.230368216913472	0.68	coproporphyrinogen oxidase
+17864388	X2J9R2	-0.230368216913472	0.68	coproporphyrinogen oxidase
+17864488	Q9Y105	-0.318224126123944	0.45	Glutaminyl-tRNA synthetase
+17864602	A4V2B8	-0.186495764645676	0.43	casein kinase IIalpha, isoform B
+17864602	P08181	-0.186495764645676	0.43	casein kinase IIalpha, isoform B
+24581165	Q9VQD7	-0.310340120612151	0.38	CG3214, isoform A [Drosophila melanogaster]
+24640631	Q9W3D6	0.3184475261524	0.41	CG12065, isoform A [Drosophila melanogaster]
+17864668	Q9VEX6	0.23288479515409	0.43	belphegor, isoform A
+17865652	Q9U616	-0.601037263579227	0.07	pumpless
+17865835	O76742	-0.301169534720565	0.33	Rab7, isoform A
+17933554	O97428	-0.201033488692868	0.16	ciboulot, isoform B
+17933648	C0MJE4	-0.394278939112046	0.45	chromatin assembly factor 1 subunit, isoform A
+17933648	Q24572	-0.394278939112046	0.45	chromatin assembly factor 1 subunit, isoform A
+28316937	Q86P47	0.31315788525963	0.27	SD17909p, partial [Drosophila melanogaster]
+28571445	Q8IRR5	-0.31540113977092	0.84	Sirt4, isoform C [Drosophila melanogaster]
+17933656	A4V383	-0.133266530863464	0.53	NADH:ubiquinone reductase 42kD subunit precursor, isoform A
+17933656	P91929	-0.133266530863464	0.53	NADH:ubiquinone reductase 42kD subunit precursor, isoform A
+41615602	NA	0.308122295362332	0.15	TPA_inf: HDC01575 [Drosophila melanogaster]
+66770993	Q4V4S5	0.306888695423221	0.54	IP11537p [Drosophila melanogaster]
+80979041	Q9VUQ5	-0.316227344999387	0.2	Argonaute-2 [Drosophila melanogaster]
+17933686	Q9VLT3	0.375509135092206	0.7	macroglobulin complement-related
+116007492	A0A0B4K7S5	-0.312939311660108	0.48	Ste20-like kinase, isoform A [Drosophila melanogaster]
+116007492	P83098	-0.312939311660108	0.48	Ste20-like kinase, isoform A [Drosophila melanogaster]
+116008420	Q9VCH5	-0.308233651091776	0.38	nucleoporin 98-96, isoform A [Drosophila melanogaster]
+17933722	Q7KRU8	-0.216317906926763	0.2	ferritin 1 heavy chain homologue, isoform A
+161078170	Q9VGY8	-0.309230194472741	0.39	CG14688 [Drosophila melanogaster]
+221468633	B7YZQ1	-0.306838758764422	0.93	Sterile20-like kinase, isoform F [Drosophila melanogaster]
+281364636	E1JHB6	0.311253543221577	0.34	PDGF- and VEGF-receptor related, isoform I [Drosophila melanogaster]
+386764548	M9NF89	0.306253159715814	0.44	U2 small nuclear riboprotein auxiliary factor 50, isoform B [Drosophila melanogaster]
+17933740	P12982	-0.236261086586292	0.21	protein phosphatase 1 at 87B
+442617848	A0A0B4KGC6	0.314873337353412	0.31	like-AP180, isoform H [Drosophila melanogaster]
+157012	P25439	-0.29685607293053	0.36	brahma protein [Drosophila melanogaster]
+17945584	Q8SYZ8	-0.222392421336448	0.56	RE26342p
+17975567	E1JJM9	-0.581571911520382	0.23	ribosomal protein S15Aa, isoform D
+17975567	P48149	-0.581571911520382	0.23	ribosomal protein S15Aa, isoform D
+2411487	O18373	0.296981737757132	0.36	selenophosphate synthetase [Drosophila melanogaster]
+6006748	Q9V948	-0.296393002780225	0.58	hnRNP K protein homolog [Drosophila melanogaster]
+6690786	NA	0.293311051603901	0.99	Short stop/Kakapo truncated isoform [Drosophila melanogaster]
+16198299	Q95TI3	0.29506148903468	0.3	SD01790p [Drosophila melanogaster]
+17975579	C0HKA0	-0.594776790548112	0.12	ribosomal protein S14a, isoform B
+17975579	C0HKA1	-0.594776790548112	0.12	ribosomal protein S14a, isoform B
+17975579	X2JCX8	-0.594776790548112	0.12	ribosomal protein S14a, isoform B
+17981717	P17336	-0.199444088362367	0.07	catalase
+17136690	B5X0J6	0.294277109652741	0.66	Src oncogene at 42A, isoform A [Drosophila melanogaster]
+17136690	Q9V9J3	0.294277109652741	0.66	Src oncogene at 42A, isoform A [Drosophila melanogaster]
+18079273	Q26365	-0.222392421336448	0.26	stress-sensitive B, isoform A
+18079273	X2JB48	-0.222392421336448	0.26	stress-sensitive B, isoform A
+18079297	Q9W330	0.133025418630783	0.4	hexokinase A, isoform A
+17137634	O97102	-0.296837113924532	0.51	smt3 [Drosophila melanogaster]
+18461323	Q8WSN4	-0.282189830719867	0.24	GMP synthetase
+18497296	Q5U0V7	0.248820546614093	0.29	synaptojanin, isoform B
+18858089	Q9W2X6	-0.215728691055437	0.09	lethal (1) G0230, isoform A
+17738077	A0A1B2AL12	-0.293292226926475	0.38	ribosomal protein S20 [Drosophila melanogaster]
+17738077	P55828	-0.293292226926475	0.38	ribosomal protein S20 [Drosophila melanogaster]
+18858091	E2QD64	-0.421772333307572	0.34	CG2982
+18858091	Q7K4H4	-0.421772333307572	0.34	CG2982
+18858127	Q9W402	-0.149009949133066	0.7	CG3446
+19921126	Q9V3I1	-0.304854581528421	0.51	deoxyuridine triphosphatase, isoform A [Drosophila melanogaster]
+19922704	Q9W2D9	-0.300477735015988	0.29	CG10306 [Drosophila melanogaster]
+21356311	Q9VP77	0.304473680411654	0.4	CG10565, isoform A [Drosophila melanogaster]
+18858217	NA	-0.16459718463221	0.7	suppressor of rudimentary, isoform B
+24584058	Q9Y143	-0.292875815303611	0.89	CG5867 [Drosophila melanogaster]
+18858897	E1JJF3	-0.274174963438994	0.41	innexin 2, isoform A
+18858897	Q9V427	-0.274174963438994	0.41	innexin 2, isoform A
+18859837	Q9VXJ0	-0.522421034652443	0.06	peroxisomal multifunctional enzyme type 2
+18859837	X2JFD6	-0.522421034652443	0.06	peroxisomal multifunctional enzyme type 2
+24642533	Q9VXF8	-0.298081352932995	0.48	RNA-binding protein 2, isoform A [Drosophila melanogaster]
+18859851	Q9VXF9	-0.372745777562405	0.28	rings lost
+18859877	Q9VX36	-0.398031073973154	0.15	CG5703
+18859933	Q9VXQ5	-0.211504105193712	0.22	T-cp1zeta
+24650033	Q9VBS6	0.29176612437711	0.11	CG31087, isoform A [Drosophila melanogaster]
+24650422	A4V3G9	-0.299771681235195	0.18	ribonuclear protein at 97D, isoform A [Drosophila melanogaster]
+24650422	Q02926	-0.299771681235195	0.18	ribonuclear protein at 97D, isoform A [Drosophila melanogaster]
+24653362	Q8ML70	-0.294719250862279	0.49	immune induced molecule 10, isoform A [Drosophila melanogaster]
+18859963	Q9VXN4	-0.246218435062701	0.41	Arginyl-tRNA synthetase
+25012460	Q8IGV2	-0.299560281858908	0.59	RE23981p [Drosophila melanogaster]
+38048179	Q6XI63	-0.301081551724396	0.55	similar to Drosophila melanogaster Aats-asp, partial [Drosophila yakuba]
+41618020	NA	0.298375481439228	0.33	TPA_inf: HDC09867 [Drosophila melanogaster]
+45552501	A1Z709	-0.303605845786269	0.36	corin, isoform B [Drosophila melanogaster]
+115646317	Q058Y6	0.304854581528421	0.59	IP10675p [Drosophila melanogaster]
+221460167	Q86B73	-0.308328184099375	0.67	darkener of apricot, isoform P [Drosophila melanogaster]
+18859969	Q9VXM4	-0.213023531390913	0.4	membrane steroid binding protein, isoform A
+418207482	Q9VKM1	-0.300173542246841	0.42	piwi, partial [Drosophila melanogaster]
+442622538	A0A0B4KEE4	0.298230929231703	0.36	klaroid, isoform A [Drosophila melanogaster]
+442626732	M9PCI5	0.298844481774321	0.75	CG8475, isoform C [Drosophila melanogaster]
+18859989	Q9VXR5	-0.395160172547586	0.35	CG9281, isoform B
+442632169	M9PCE5	-0.301806498966589	0.47	hemolectin, isoform B [Drosophila melanogaster]
+18860049	M9PJP0	-0.19426882042206	0.47	nipsnap, isoform B
+18860049	Q9VXK0	-0.19426882042206	0.47	nipsnap, isoform B
+18860539	Q9VWI0	-0.216811389073148	0.43	CG12203
+19920346	Q9VWG1	0.136482508108672	0.35	CG14207, isoform A
+4928709	Q9XZE0	-0.288175840381791	0.45	DHR23 [Drosophila melanogaster]
+5052612	Q9Y111	-0.287029886902772	0.78	BcDNA.GH10646 [Drosophila melanogaster]
+19920382	Q9W5W8	-0.18416263600658	0.4	CG9577
+19920472	Q9VPR1	0.195256291398934	0.28	CG2789
+19920502	Q7K3E2	0.433687556386508	0.22	CG5080, isoform B
+17136698	Q7KM15	0.290102649031964	0.52	bicaudal, isoform A [Drosophila melanogaster]
+19920632	Q9VQL7	-0.153805336079035	0.38	CG3523, isoform A
+17137696	E1JH01	-0.284676901205824	0.23	COP9 complex homolog subunit 4, isoform A [Drosophila melanogaster]
+17137696	Q9V345	-0.284676901205824	0.23	COP9 complex homolog subunit 4, isoform A [Drosophila melanogaster]
+19921000	Q9V397	-0.138383484155922	0.4	mitochondrial trifunctional protein alpha subunit, isoform A
+17647555	M9PF24	-0.289777485192568	0.47	kinesin light chain, isoform A [Drosophila melanogaster]
+17647555	P46824	-0.289777485192568	0.47	kinesin light chain, isoform A [Drosophila melanogaster]
+19921068	M9PB90	0.382333334206138	0.08	Cullin-associated and neddylation-dissociated 1, isoform A
+19921068	Q9VKY2	0.382333334206138	0.08	Cullin-associated and neddylation-dissociated 1, isoform A
+17738187	Q9XZ53	-0.286051058558766	0.45	oligosaccharyl transferase 3 [Drosophila melanogaster]
+19921140	Q9VKI8	-0.280753131654692	0.19	CG6287
+19921242	Q9VJZ6	-0.432524926007685	0.08	CG6523
+19921254	Q9VJY6	-0.514343426027634	0.15	ribosomal protein L24
+19921254	X2JE06	-0.514343426027634	0.15	ribosomal protein L24
+18859973	Q9VX98	-0.283117207416415	0.44	CG9099, isoform A [Drosophila melanogaster]
+19921376	Q9V3W0	-0.39231742277876	0.11	UK114, isoform A
+19921784	Q7K2X8	-0.287105247763414	0.5	nucleoporin 44A, isoform A [Drosophila melanogaster]
+19921400	Q9V3W2	-0.273648079858646	0.44	lethal (2) 35Di, isoform A
+21355903	Q9VHB8	-0.295890233985839	0.61	CG8199 [Drosophila melanogaster]
+21357415	Q9VW26	-0.288830406711131	0.33	ornithine aminotransferase precursor [Drosophila melanogaster]
+22026947	Q9W1G5	0.280587299506463	0.24	kazachoc, isoform C [Drosophila melanogaster]
+24581506	Q9VQT7	-0.283593991682227	0.54	CG16713 [Drosophila melanogaster]
+24583745	Q9VKE6	-0.286453293217431	0.4	maltase B1 [Drosophila melanogaster]
+19921418	Q9V3V9	-0.270357746639653	0.24	endonuclease G inhibitor, isoform A
+19921464	Q9VJD1	0.37632039170599	0.18	CG6453, isoform A
+19921484	Q9VJ75	-0.381695423412303	0.45	CG10413
+24646383	Q9VG33	0.289506617194985	0.04	CG12279 [Drosophila melanogaster]
+19921528	Q9V434	-0.254183488251528	0.2	Asparaginyl-tRNA synthetase, isoform A
+24651333	Q9VA93	-0.284976958714471	0.14	CG15531 [Drosophila melanogaster]
+19921536	Q9VIW5	-0.414280377749586	0.2	CG10237, isoform B
+24660036	Q9VS57	0.294061301454418	0.76	sec63 [Drosophila melanogaster]
+19921562	Q9VIS3	-0.244783378400659	0.09	fructose-1,6-bisphosphatase, isoform A
+19921584	Q9VIM5	-0.209263149392813	0.41	Actin-related protein 2/3 complex, subunit 2
+19921584	X2JAI2	-0.209263149392813	0.41	Actin-related protein 2/3 complex, subunit 2
+19921688	Q6NMY2	-0.514573172829758	0.29	CG8343
+19921734	Q7K3Z3	0.141276686851992	0.55	p47
+190608812	B4YUS0	-0.288721049497443	0.45	coiled-coil Y protein [Drosophila melanogaster]
+221378492	Q9VHB4	0.278975949702815	0.4	CG16789, isoform A [Drosophila melanogaster]
+19921834	A0A0B4LEV3	-0.172908859881134	0.6	CG8635
+19921834	Q7JWR9	-0.172908859881134	0.6	CG8635
+320544622	C9QPE7	-0.290990200710453	0.4	CG5171, isoform D [Drosophila melanogaster]
+19921848	Q7K3J0	-0.289506617194985	0.18	CG8258
+19921922	Q9V597	-0.531381460516312	0.09	ribosomal protein L31, isoform B
+442620161	A0A0B4KHI4	0.290687474066937	0.81	syncrip, isoform Q [Drosophila melanogaster]
+442626696	M9PCC3	-0.280987075247296	0.22	mediator complex subunit 20, isoform B [Drosophila melanogaster]
+19921924	Q7K1M4	-0.547298427967328	0.09	CG1902, isoform A
+19922080	Q9V677	0.360997659565955	0.19	CG8858
+560827	P45889	-0.276891836624414	0.83	actin related protein [Drosophila melanogaster]
+8953897	Q9NDJ2	-0.269234554236266	0.55	helicase DOMINO A [Drosophila melanogaster]
+17933598	A4V4I0	-0.280107919192735	0.4	G protein beta-subunit 13F, isoform A [Drosophila melanogaster]
+17933598	P26308	-0.280107919192735	0.4	G protein beta-subunit 13F, isoform A [Drosophila melanogaster]
+19922142	Q8SZ28	-0.175496796111986	0.4	CG3884, isoform B
+19922220	A0A0B4LFB3	-0.271950543331749	0.27	transport and golgi organization 7
+19922220	Q7JVI3	-0.271950543331749	0.27	transport and golgi organization 7
+19922414	Q7K172	0.216317906926764	0.49	prenyl protease type I
+19922210	Q7K1S1	-0.277853120545339	0.78	CG8067, isoform A [Drosophila melanogaster]
+19922486	Q7K110	-0.347489801301393	0.17	oligosaccharide transferase delta subunit
+19922742	Q9W258	-0.27794692714425	0.76	babos [Drosophila melanogaster]
+19922532	A1ZB71	-0.369565175318948	0.12	glutathione S transferase E6
+21355797	Q9VSK4	-0.281570357271221	0.68	CG6983 [Drosophila melanogaster]
+19922554	Q7JXZ2	0.178385239097355	0.43	Eip55E
+21356979	Q9V9U3	-0.276831621114158	0.66	CG1910, isoform A [Drosophila melanogaster]
+21357653	Q9VB23	-0.277437019984277	0.42	widerborst, isoform C [Drosophila melanogaster]
+24583165	Q9VL68	-0.280147362872211	0.55	CG4598, isoform A [Drosophila melanogaster]
+24583749	Q8IPA2	0.276961363875871	0.21	maltase B2, isoform A [Drosophila melanogaster]
+24640785	Q9W363	0.278535499373982	0.79	multi sex combs [Drosophila melanogaster]
+19922568	A0A0B4JCU8	-0.199564491882187	0.24	CG15093, isoform B
+19922568	Q9V8M5	-0.199564491882187	0.24	CG15093, isoform B
+19922662	Q9W2N0	-0.245112497836531	0.39	capping protein alpha
+19922680	Q9W2J4	-0.237039197300849	0.22	CG4302
+19922902	P91927	0.189270351161739	0.38	Letm1, isoform B
+24662918	Q9VTN9	0.271742337719145	0.51	CG10361 [Drosophila melanogaster]
+19922916	Q9W141	-0.343033727899014	0.3	CG4692, isoform B
+19922932	Q9XYZ9	-0.189250136713818	0.13	glutathione S transferase E12, isoform A
+60677729	Q5BIK1	-0.269442316382254	0.09	RH52407p [Drosophila melanogaster]
+19923042	Q9W0H3	0.18286405714981	0.48	CG9186, isoform B
+78707188	A1Z8D3	-0.275807789905115	0.9	CG18003, isoform B [Drosophila melanogaster]
+241669024	C5WLN8	-0.273018494406416	0.41	TA01007p [Drosophila melanogaster]
+442616119	M9PHF1	-0.271871769092971	0.32	Sec16, isoform F [Drosophila melanogaster]
+442617622	A0A0B4KG70	-0.273681650033302	0.64	MTA1-like, isoform D [Drosophila melanogaster]
+442620260	A0A0B4KHK1	-0.278327636265321	0.53	supernumerary limbs, isoform B [Drosophila melanogaster]
+442622046	A0A0B4KI68	0.270000302843502	0.75	spn-F, isoform B [Drosophila melanogaster]
+20128875	O76894	-0.415037499278844	0.09	mucin related 2B, isoform A
+442625570	P21521	0.272028215960339	0.37	synaptotagmin 1, isoform E [Drosophila melanogaster]
+20129359	Q9VLS7	-0.591535154644642	0.07	CG8552, isoform A
+158794	Q01637	-0.266074860153845	0.3	UMP synthase; r-l gene product [Drosophila melanogaster]
+20129563	Q9VJJ0	-0.517772054497078	0.13	CG17331, isoform A
+20129625	Q9VIX7	0.153474480661718	0.39	fondue, isoform B
+20129681	Q9VIF2	-0.209892305334165	0.12	CG9248, isoform B
+20129729	A1Z6N5	0.352559713541026	0.47	CG3270
+17737779	Q9VGJ9	0.265402879488477	0.55	heme oxygenase [Drosophila melanogaster]
+20129731	Q7JVH6	-0.382022442050881	0.34	CG9436
+20129897	A1Z8U0	0.398358758132213	0.38	pre-mRNA processing factor 8
+17933716	A4UZR3	-0.262394771577744	0.07	trehalase, isoform D [Drosophila melanogaster]
+17933716	Q9W2M2	-0.262394771577744	0.07	trehalase, isoform D [Drosophila melanogaster]
+20129913	Q7K4T8	-0.185972942674182	0.26	CG8520, isoform A
+20130115	A1ZB72	-0.393342428179525	0.34	glutathione S transferase E7
+20130247	Q9W229	-0.381387109836927	0.21	ribosomal protein S24
+21357935	Q9VVS6	-0.265495969673986	0.32	Aut1 [Drosophila melanogaster]
+21357969	Q9VD48	0.266694322828444	0.32	CG5791, isoform A [Drosophila melanogaster]
+21358065	Q9W022	0.260866569151084	0.29	CG8993 [Drosophila melanogaster]
+20130301	Q9W1N3	-0.176753063951767	0.36	levy
+20151367	Q8SXC3	-0.754347672394443	0.15	GH08902p
+21355083	Q7K485	-0.139857663582961	0.45	cathD
+21355181	Q9VCC6	-0.502500340529183	0.15	CG6178
+24653255	Q4V4H7	-0.263647255842871	0.73	CG13323 [Drosophila melanogaster]
+24654610	A1ZAZ8	-0.267167462047444	0.99	CG6362 [Drosophila melanogaster]
+24657386	Q9VZF6	-0.267607135623618	0.45	CG14997, isoform A [Drosophila melanogaster]
+21355211	Q9VCA5	-0.185983398993989	0.47	CG5706
+28317298	P55035	0.265659875240617	0.33	AT14053p, partial [Drosophila melanogaster]
+21355373	Q9VSY0	0.274941172517968	0.17	cuticular protein 67B
+28571955	Q95TK5	0.26411554451672	0.88	CG1635 [Drosophila melanogaster]
+21355551	Q9V7D2	-0.30367639033114	0.14	vacuolar H[+] ATPase subunit 36-1
+21355589	Q9VSS1	-0.191566427394288	0.7	pixie, isoform A
+21355591	Q9VSS2	-0.260289029094976	0.5	signal recognition particle protein 68
+45552124	Q86B59	0.268141296266883	0.26	AP-1gamma, isoform C [Drosophila melanogaster]
+21355753	Q9VSL9	-0.456985681276815	0.09	CG6638
+62473764	Q59E43	-0.255616934271311	0.28	CG32576, isoform B [Drosophila melanogaster]
+21355773	Q9V3G7	-0.169925001442312	0.54	regulatory particle non-ATPase 7
+21355779	Q9VSL2	-0.179549420330713	0.49	glutathione S transferase O3
+281360654	A8JTM7	-0.261705345361274	0.03	megalin, isoform A [Drosophila melanogaster]
+386766263	A0A0B4K6D0	-0.261741088812273	0.66	CG6954, isoform D [Drosophila melanogaster]
+442619377	A0A0B4KHL4	-0.259381757548703	0.51	gilgamesh, isoform L [Drosophila melanogaster]
+21355871	Q9VZF1	0.271673324107667	0.2	CG1309
+442631934	M9PI37	0.258311995591391	0.39	sodium chloride cotransporter 69, isoform E [Drosophila melanogaster]
+21356069	Q9VH64	0.335760368066932	0.4	CG8507
+21356113	Q9V3J4	-0.174029399775049	0.49	sec13
+21356159	A4V4A5	-0.311586150665903	0.4	ran, isoform A
+21356159	Q9VZ23	-0.311586150665903	0.4	ran, isoform A
+3004661	P54353	-0.244418727666447	0.47	dodo [Drosophila melanogaster]
+21356165	Q9VQR2	-0.170643654030467	0.38	pdsw, isoform A
+4732105	Q8SYG2	-0.257681171339587	0.34	COP9 signalosome subunit 3 CSN3 [Drosophila melanogaster]
+21356279	Q9VB69	-0.184046109686965	0.45	malic enzyme b, isoform A
+6984182	Q9NHA5	-0.249359468936717	0.62	arginase, partial [Drosophila melanogaster]
+21356339	Q9VU39	0.800263174002947	0.93	CG11255, isoform A
+21356389	Q9VDT5	0.562823523451908	0.1	CG4572, isoform B
+17738031	A0A1B2AJS4	-0.251061764167718	0.61	cap binding protein 20 [Drosophila melanogaster]
+17738031	Q9V3L6	-0.251061764167718	0.61	cap binding protein 20 [Drosophila melanogaster]
+21356395	Q9VVA6	-0.143909411398713	0.44	nudC, isoform A
+18859803	Q9VYV3	-0.252607034383456	0.32	pretaporter, isoform A [Drosophila melanogaster]
+21356425	Q9Y112	-0.616996328360869	0.08	CG10863
+21356433	D1Z373	-0.295076875237931	0.36	eukaryotic release factor 1, isoform A
+21356433	Q9VPH7	-0.295076875237931	0.36	eukaryotic release factor 1, isoform A
+21356473	Q9VDV2	-0.61317020285967	0.06	CG6195
+21356061	Q9VH77	-0.251783270859085	0.5	CG8417 [Drosophila melanogaster]
+21356527	Q9VU68	-0.142919122133787	0.31	flare, isoform A
+21356773	Q9V3L7	-0.473370809595171	0.22	NP15.6
+24582773	Q8SY53	-0.247927513443586	0.31	oligosaccharide transferase gamma subunit [Drosophila melanogaster]
+24583631	Q9VKK1	-0.246799922835256	0.44	Ge-1, isoform A [Drosophila melanogaster]
+21356837	Q9VW59	-0.284976958714471	0.34	RhoGDI, isoform A
+24639372	Q9W4X7	-0.248969752180247	0.48	CG8636 [Drosophila melanogaster]
+21356893	Q9VBI2	-0.156190890408483	0.4	Dak1
+21357009	M9PHM6	-0.493281810499805	0.13	ribosomal protein L18, isoform A
+21357009	Q9VS34	-0.493281810499805	0.13	ribosomal protein L18, isoform A
+21357019	Q9VE75	0.153474480661718	0.47	vacuolar H[+] ATPase subunit 100-2, isoform B
+24655776	Q95RC8	0.252607639214128	0.24	mutator 2, isoform A [Drosophila melanogaster]
+24657225	Q9VZI3	-0.258490480688846	0.46	fermitin 1, isoform A [Drosophila melanogaster]
+21357041	Q9VNF3	-0.156202141641981	0.44	CG12171
+62484475	E2QCY9	0.250744425954017	0.59	synapsin, isoform D [Drosophila melanogaster]
+21357079	Q9VG79	-0.311627174197317	0.4	dipeptidase C
+21357161	Q9V9W3	-0.441958798594132	0.08	ribosomal protein L6, isoform B
+161076333	Q6IGW6	0.251109052911076	0.47	CG34200 [Drosophila melanogaster]
+21357213	Q9VV46	0.159960615223969	0.07	cuticular protein 72Ec
+21357229	Q9V436	-0.308677071389506	0.32	regulatory particle non-ATPase 12
+21357319	Q9V3Z4	-0.170699187154955	0.29	regulatory particle non-ATPase 5
+21357503	Q9XYZ5	0.140738267349236	0.45	piccolo
+21357545	Q9Y166	-0.230169771928167	0.36	dicarboxylate carrier 1, isoform A
+320545256	Q9VIV9	0.255041615080263	0.39	CG10195, isoform B [Drosophila melanogaster]
+386771239	D5AEK7	-0.256013978156022	0.12	CG4729, isoform E [Drosophila melanogaster]
+442625174	M9PBN2	-0.244125943283729	0.58	neural lazarillo, isoform B [Drosophila melanogaster]
+442630958	M9PHS3	0.257858916488521	0.41	Autophagy-specific gene 18, isoform F [Drosophila melanogaster]
+21357547	Q9VFV9	-0.361739273118795	0.12	DnaJ-like-2, isoform A
+2827495	O46068	-0.243271151012364	0.73	EG:25E8.2 [Drosophila melanogaster]
+3046718	Q9V463	0.241008099503795	0.37	Nup154 [Drosophila melanogaster]
+21357797	Q9VFC7	-0.137789234225349	0.37	myofilin, isoform B
+21357965	Q961R8	0.213514269989995	0.15	Glycyl-tRNA synthetase, isoform A
+21358039	Q9VTU4	-0.377585419224466	0.44	CG5642
+21358125	Q9VH07	-0.132103536007345	0.44	pontin
+21358145	Q7K5K3	0.154885601978171	0.33	CG11876, isoform D
+17946003	Q8SYN6	-0.243766072129015	0.43	RE50471p [Drosophila melanogaster]
+21358207	Q9VFP1	-0.188072348152572	0.27	Cyp6d5
+21358269	Q9VTW1	-0.154182264896565	0.48	CG4300, isoform B
+21358555	Q960Y8	0.208946890271496	0.5	aluminum tubes, isoform G
+21358615	Q9VAC1	0.217307132176665	0.32	CG7920, isoform A
+21355283	Q9VT04	0.243925582886089	0.36	pathetic, isoform A [Drosophila melanogaster]
+21355865	Q9VHC3	0.250961573533219	0.25	blistery, isoform A [Drosophila melanogaster]
+22024126	A1Z909	0.235499409977925	0.55	CG8545 [Drosophila melanogaster]
+21483298	Q8MR58	-0.321928094887362	0.07	GH14462p
+24582714	Q9VLS4	-0.238424938489792	0.28	CG8498 [Drosophila melanogaster]
+24642424	P54352	-0.235168012098196	0.49	easily shocked, isoform A [Drosophila melanogaster]
+21492634	P56538	0.250387029550591	0.29	eIF6
+21635425	Q8MLZ7	0.332575339086871	0.15	imaginal disc growth factor 3
+24644901	Q7KSW3	0.238475291892029	0.67	CG31472, isoform B [Drosophila melanogaster]
+24645889	Q9VGR0	0.238256832799397	0.57	CG17187 [Drosophila melanogaster]
+24646105	Q9VGH5	-0.244052578576531	0.43	glorund, isoform A [Drosophila melanogaster]
+21711631	Q8MQS7	-0.14957635605051	0.47	GH01866p
+24662216	Q9VT96	-0.24397595446957	0.54	CG32061 [Drosophila melanogaster]
+21711795	Q8MQM4	0.339088646045545	0.15	RH42893p
+28573649	Q9W1F2	0.237641248405396	0.57	CG16787 [Drosophila melanogaster]
+24580896	Q9VQ29	-0.23455621514778	0.3	rieske iron-sulfur protein, isoform B
+45550141	Q9VMD7	-0.242661672376628	0.96	CG9527, isoform A [Drosophila melanogaster]
+24581168	Q9VQE0	-0.251763293498774	0.42	dynamin related protein 1, isoform A
+24581334	Q9VQL1	0.212729323985728	0.12	CG17259, isoform A
+66771385	Q4V5R8	-0.235688574751666	0.42	IP11930p [Drosophila melanogaster]
+24581357	Q9VQM2	-0.313890775821944	0.54	CG12400, isoform A
+24581914	Q9VMS1	-0.175294174148156	0.17	cyclope, isoform A
+162951723	P91679	-0.232715508755877	0.51	GH01855p [Drosophila melanogaster]
+221330401	Q9V8M2	0.237410500187013	0.5	Cyp12b2 [Drosophila melanogaster]
+24582809	Q9VLM8	0.131244533278253	0.46	Alanyl-tRNA synthetase, isoform A
+24582809	T2FFB7	0.131244533278253	0.46	Alanyl-tRNA synthetase, isoform A
+24583248	P32100	-0.3536369546147	0.34	ribosomal protein L7
+24583248	X2J5G6	-0.3536369546147	0.34	ribosomal protein L7
+281361942	Q9VES5	0.233417925067696	0.53	CG14893 [Drosophila melanogaster]
+24583279	P23128	-0.439623137557117	0.07	maternal expression at 31B, isoform A
+24583944	Q9VK69	-0.216719212921253	0.32	CG5525
+24584107	O62621	-0.159478214007197	0.3	beta'-coatomer protein
+24584399	M9PBB5	-0.444302093784038	0.17	vasa, isoform A
+24584399	P09052	-0.444302093784038	0.17	vasa, isoform A
+24585145	A0A023GQA5	-0.143862704856116	0.5	lethal (2) 37Cc, isoform A
+24585145	P24156	-0.143862704856116	0.5	lethal (2) 37Cc, isoform A
+24585186	Q0E8P1	-0.272765943851567	0.35	CG17549, isoform B
+17137712	Q9V431	-0.225015503951586	0.47	Aac11 [Drosophila melanogaster]
+17647123	Q9W2G9	0.222392421336448	0.13	acyl-Coenzyme A oxidase at 57D proximal [Drosophila melanogaster]
+24585535	Q9VIH9	-0.203181817370613	0.46	CG9338, isoform A
+24585671	P02283	-0.541825997343158	0.27	histone H2B
+24585880	Q8MT58	-0.147957881387101	0.33	CG17337
+24586016	A1Z6L9	-0.210217707390346	0.31	Trap1, isoform A
+21355241	A0A1B2AJ92	-0.225881407416328	0.44	CG7603 [Drosophila melanogaster]
+21355241	Q9VVH3	-0.225881407416328	0.44	CG7603 [Drosophila melanogaster]
+21357419	Q9VG04	-0.217753526532927	0.56	CG8031 [Drosophila melanogaster]
+24586400	E1JGZ9	-0.213897627170992	0.35	proteasome alpha1 subunit, isoform A
+24586400	Q9XZJ4	-0.213897627170992	0.35	proteasome alpha1 subunit, isoform A
+24638644	Q9V4E0	-0.13336926862679	0.37	CG1970, isoform A
+21428328	Q8MT06	-0.228606093077881	0.31	AT23067p [Drosophila melanogaster]
+21429190	Q9VNH6	0.22907296375452	0.58	SD04949p [Drosophila melanogaster]
+21430344	Q7JVE9	0.22937105281619	0.64	LP02703p [Drosophila melanogaster]
+22024288	Q9W1X4	-0.225292311842243	0.54	nucleoporin 214 [Drosophila melanogaster]
+24639109	O76902	-0.24656609497803	0.52	rush hour
+24639835	Q9XYU1	-0.223378205482004	0.68	minichromosome maintenance 3 [Drosophila melanogaster]
+24639632	Q9W4M7	0.229481846122767	0.31	twenty-four, isoform B
+24639643	Q9W4M4	-0.28080910756177	0.38	CG15570
+24642678	Q8SY58	-0.228918417977285	0.47	CG4872 [Drosophila melanogaster]
+24639744	Q9W4H6	-0.145197915539936	0.35	lethal (1) G0334, isoform D
+24640413	P18171	-0.145605322246899	0.6	defective chorion 1, isoform A
+24647789	Q9VEE9	0.230612928141416	0.32	CG18012, isoform A [Drosophila melanogaster]
+24640423	Q9W3N9	-0.210085525884835	0.33	CG10932
+24640486	P11584	0.519608762727057	0.08	myospheroid
+24640486	X2JAU0	0.519608762727057	0.08	myospheroid
+24640745	Q24319	-0.294791964949848	0.17	oligosaccharyltransferase 48kD subunit
+24641079	Q9W2S1	0.202402624959487	0.46	transport and golgi organization 5, isoform A
+24641119	Q9VZ64	-0.161967479663393	0.54	CG17333
+60678153	Q5BHY9	-0.220534611542131	0.34	GH10846p [Drosophila melanogaster]
+24641278	NA	-0.213536820203993	0.31	discs large 1, isoform F
+116008159	Q9NB71	0.221648188644736	0.92	highwire [Drosophila melanogaster]
+116008159	X2JF19	0.221648188644736	0.92	highwire [Drosophila melanogaster]
+189181869	B3DMQ9	-0.221401218933398	0.43	IP19519p [Drosophila melanogaster]
+24641429	Q9VYT3	0.519778331961019	0.18	CG2025
+24641480	Q9VYQ8	0.446607578279714	0.11	ubiquitin-specific protease 7
+24641865	P06607	-0.161996105416956	0.3	yolk protein 3
+24641865	X2JEX8	-0.161996105416956	0.3	yolk protein 3
+281360786	Q8IR72	0.227805917522812	0.93	CG32638 [Drosophila melanogaster]
+320545084	Q9VJS0	-0.226040198351592	0.71	CG42685 [Drosophila melanogaster]
+24642027	F2FB46	-0.224431566610046	0.33	Flotillin-2, isoform A
+386764191	M9NF14	-0.223508801720431	0.77	IGF-II mRNA-binding protein, isoform L [Drosophila melanogaster]
+386764252	Q9VYU0	0.227672185859353	0.59	CG43154, isoform C [Drosophila melanogaster]
+24642051	Q9VY04	0.29373120305671	0.15	CG9509
+24642172	Q27580	-0.317740297923929	0.08	adenosylhomocysteinase at 13, isoform A
+24642172	X2JF40	-0.317740297923929	0.08	adenosylhomocysteinase at 13, isoform A
+24642480	Q8IR16	-0.226375935254946	0.37	no on or off transient A, isoform B
+336832	P00399	-0.222392421336448	0.5	cytochrome c oxidase subunit I, partial (mitochondrion) [Drosophila melanogaster]
+24642586	P05990	0.338263036878836	0.19	rudimentary, isoform A
+24642586	X2JFG0	0.338263036878836	0.19	rudimentary, isoform A
+902622	P80455	-0.211504105193712	0.59	40S ribosomal protein S12 [Drosophila melanogaster]
+24642641	P12080	0.24473358909085	0.24	inflated, isoform B
+24643106	Q9VWQ7	-0.392841753164648	0.09	CG6891, isoform A
+24643142	Q9VWP2	-0.286016576083511	0.34	CG7322, isoform A
+16182333	Q9VEB3	-0.212078964759656	0.85	GH01229p [Drosophila melanogaster]
+24643254	Q0KHQ6	0.279949876245665	0.13	6-phosphofructo-2-kinase, isoform A
+24643409	Q8IQV9	0.279423366372827	0.29	nucleoporin 205, isoform B
+24643715	M9NHG9	0.224919033262244	0.1	sluggish A, isoform E
+24643715	Q04499	0.224919033262244	0.1	sluggish A, isoform E
+24644059	Q9VN50	0.208814014835907	0.4	CG9769
+24644155	Q9VN93	-0.204819791888498	0.1	CG12163, isoform A
+24644197	Q9VNA3	-0.269186632815389	0.32	CG11999
+18859709	Q9VZ01	-0.214617276783091	0.86	CG11752 [Drosophila melanogaster]
+18859875	Q9VXY3	-0.214124805352848	0.49	CG5599 [Drosophila melanogaster]
+24644479	P19109	-0.244538062216404	0.23	Rm62, isoform A
+24644950	Q9VHX4	-0.215946177306077	0.76	CG2767
+24645047	Q9VHR8	-0.275257661456705	0.24	dipeptidyl aminopeptidase III, isoform C
+19921048	Q9VL13	-0.217029236569355	0.37	Mob3 [Drosophila melanogaster]
+24645179	Q9VHL2	-0.303042377997979	0.07	Tcp-1eta
+24645384	Q9VHC7	-0.382797162278636	0.15	rumpelstiltskin, isoform A
+19923034	M9MRM4	0.204140716780225	0.94	Sac1, isoform A [Drosophila melanogaster]
+19923034	Q9W0I6	0.204140716780225	0.94	Sac1, isoform A [Drosophila melanogaster]
+20129441	Q9VKR4	-0.205836179954553	0.51	CG6415 [Drosophila melanogaster]
+24645421	Q9VHB1	0.307636007318328	0.08	CG9399, isoform A
+21355389	A0A126BEE6	0.207324973247506	0.38	CG8223 [Drosophila melanogaster]
+21355389	Q9I7K6	0.207324973247506	0.38	CG8223 [Drosophila melanogaster]
+21355657	Q961R9	-0.216406661044062	0.68	CG6126 [Drosophila melanogaster]
+21355877	Q9VD66	-0.219185243192622	0.05	female-specific independent of transformer [Drosophila melanogaster]
+21357833	Q9VFE7	-0.21280637250725	0.82	CG7262 [Drosophila melanogaster]
+24645465	Q8INN6	0.303577068790301	0.45	Unc-115b, isoform C
+24645509	Q9VH72	-0.195991105822387	0.53	CG9471, isoform A
+24645757	A0A1B2AL87	-0.131736031610567	0.55	fau, isoform C
+24645757	C0HK95	-0.131736031610567	0.55	fau, isoform C
+24581885	Q9VMT2	-0.217281844198229	0.76	troponin C at 25D [Drosophila melanogaster]
+24645774	Q9VGW6	-0.47198129610529	0.29	minichromosome maintenance 5
+24646146	Q9VGF7	-0.263034405833794	0.12	CG18347, isoform A
+24646159	Q9VGF1	-0.267233283106443	0.26	CG3397
+24586638	Q4QPY6	-0.215656089840572	0.57	CG30354, isoform A [Drosophila melanogaster]
+24646278	Q9VG81	-0.309684499132615	0.1	CG5167
+24647046	A0A0B4KGP8	-0.225292311842243	0.43	eukaryotic initiation factor 2gamma, isoform B
+24647046	Q24208	-0.225292311842243	0.43	eukaryotic initiation factor 2gamma, isoform B
+24647193	Q9VF53	-0.248283954468472	0.07	CG18522
+24647855	Q9VEC2	-0.208252316389718	0.51	CG12321
+24647263	Q9VF24	0.212240120053878	0.75	crossveinless d [Drosophila melanogaster]
+24648682	O18332	-0.484289802253206	0.33	Rab1
+24648444	Q86BR8	0.208946890271496	0.44	mitochondrial transcription factor A, isoform B [Drosophila melanogaster]
+24648786	Q8SWX4	-0.308950240889152	0.43	CG31343
+24648790	Q8IN25	-0.209621182659544	0.29	CG31198
+24653143	A1Z936	-0.21386194108979	0.83	CG8632, isoform A [Drosophila melanogaster]
+28572120	Q8IN02	0.214223118415742	0.54	diphthamide methyltransferase [Drosophila melanogaster]
+28573630	A0A0B4LGF8	-0.209827040150587	0.59	muscle LIM protein at 60A, isoform E [Drosophila melanogaster]
+28573630	P53777	-0.209827040150587	0.59	muscle LIM protein at 60A, isoform E [Drosophila melanogaster]
+24648946	Q9VD29	-0.281961687569718	0.18	sar1, isoform A
+24649019	Q9VD01	-0.460311579043284	0.08	Phosphatidylethanolamine-binding protein 1
+24649027	A4V391	-0.213968846751443	0.29	Tcp1-like, isoform A
+24649027	P12613	-0.213968846751443	0.29	Tcp1-like, isoform A
+29468958	Q86M57	0.217174712065429	0.21	RE14149p [Drosophila melanogaster]
+68051305	Q4QQA0	0.208216034847939	0.55	IP11809p [Drosophila melanogaster]
+221330104	A1Z7Y7	-0.210016674409673	0.72	spaghetti-squash activator, isoform C [Drosophila melanogaster]
+24649148	Q9VCU1	-0.225881407416328	0.21	CG4721
+24649395	Q7KMP8	-0.376767482351127	0.15	regulatory particle non-ATPase 9, isoform A
+442615675	M9PHH0	-0.210896782498619	0.47	c12.2, isoform B [Drosophila melanogaster]
+24649994	Q9VBT8	-0.189477798863713	0.24	CG11878
+24650054	Q9VBR6	-0.347923303420307	0.25	target of brain insulin
+24650124	Q9VBN5	-0.312189091687094	0.2	ribosomal protein L27, isoform A
+5678951	Q9NF72	0.205410475865617	0.45	EG:BACR7A4.9 [Drosophila melanogaster]
+24650445	Q9VBA0	0.185355042011918	0.57	CG6330, isoform A
+6715438	Q9NHX7	-0.199033405904943	0.75	20S proteasome beta5 subunit [Drosophila melanogaster]
+24650747	P09180	-0.421463768438277	0.06	ribosomal protein L4
+24651125	O01666	-0.428441750800849	0.11	ATP synthase-gamma chain, isoform A
+24651181	A0A0B4K6N1	-0.6419033971946	0.07	ribosomal protein S8, isoform C
+24651181	Q8MLY8	-0.6419033971946	0.07	ribosomal protein S8, isoform C
+24651589	Q9VA02	1.26126531298074	0.06	CG1544
+24651589	T2FGC6	1.26126531298074	0.06	CG1544
+24651757	Q9V9T5	-0.166172866581205	0.4	CG2118, isoform A
+24651794	A0A0B4K7G4	-0.310700839464108	0.12	modulo, isoform A
+24651794	P13469	-0.310700839464108	0.12	modulo, isoform A
+24652204	Q9V5C6	-0.348895142487632	0.22	proteasome alpha7 subunit
+24652256	Q7JWF1	-0.26559011073755	0.19	electron transfer flavoprotein-ubiquinone oxidoreductase, isoform A
+24652322	A0A0B4KEH0	-0.198904068414078	0.32	14-3-3zeta, isoform D
+24652326	NA	-0.183345517204634	0.33	14-3-3zeta, isoform A
+17945771	Q8SYU4	-0.206830984185707	0.54	RE33778p [Drosophila melanogaster]
+24652408	A1Z877	0.304854581528421	0.14	Nidogen/entactin, isoform A
+24652463	Q7JQH9	-0.179168845685932	0.36	withered, isoform A
+24652780	Q5U117	-0.249105567202392	0.27	enigma
+19920932	Q9VLP1	-0.201633861169651	0.73	CG14275, isoform A [Drosophila melanogaster]
+19922066	Q7K3N4	0.201047518938093	0.56	CG8888 [Drosophila melanogaster]
+19922420	Q7K581	0.210566985939658	0.43	CG8963, isoform A [Drosophila melanogaster]
+24653117	P23625	-0.248366356044958	0.37	G protein alpha49B, isoform D
+19923024	Q9W0M4	-0.195305315968766	0.38	CG13887, isoform B [Drosophila melanogaster]
+24653497	A1Z9J3	0.323510865250053	0.18	short stop, isoform H
+20130001	Q6IDF5	-0.200987057733177	0.11	CG12859 [Drosophila melanogaster]
+21355225	Q9VC92	-0.199308808223407	0.55	CG6432 [Drosophila melanogaster]
+21357745	Q9VAW3	-0.200024608307993	0.76	Glutamine:fructose-6-phosphate aminotransferase 2 [Drosophila melanogaster]
+24653514	Q95029	-0.298795129339838	0.24	cysteine proteinase-1, isoform C
+24653584	A1Z9N0	-0.39305068583947	0.17	optic atrophy 1-like, isoform A
+24639281	A0A0F6QCW0	-0.196866025673459	0.54	bcn92 [Drosophila melanogaster]
+24639281	O46098	-0.196866025673459	0.54	bcn92 [Drosophila melanogaster]
+24653595	A0A0B4LFD2	-0.232660756790275	0.15	heat shock protein cognate 5
+24653595	P29845	-0.232660756790275	0.15	heat shock protein cognate 5
+24654434	A1ZAU4	-0.132407613369813	0.41	CG4847, isoform D
+24654465	Q500Y7	-0.414038056882871	0.13	CG14482, isoform A
+24654975	A1ZB68	-0.231325546106456	0.43	glutathione S transferase E3
+24655093	Q9W0H6	0.17168545930675	0.36	CG9149
+24655252	Q8IRH1	-0.191986763972092	0.19	puromycin sensitive aminopeptidase, isoform C
+24655985	Q9W028	-0.289866885655064	0.3	yellow-g2
+28573762	Q960W6	0.205171346607359	0.52	CG8306 [Drosophila melanogaster]
+24656093	Q7KV94	-0.429649736087546	0.24	CG16758, isoform B
+24656137	Q7JUS9	-0.154077421682909	0.39	CG9090
+24656312	Q9VZW7	-0.139235797371172	0.21	CG2107
+24656476	Q9VZU7	0.198328716445979	0.27	CG12082, isoform A
+161078647	Q7YU01	-0.207389587373395	0.45	lipophorin receptor 2, isoform E [Drosophila melanogaster]
+213515582	B7ZWP8	0.199308808223407	0.57	RH45484p [Drosophila melanogaster]
+219131049	Q9GPN7	0.201822214853695	0.24	gamma dynein [Drosophila melanogaster]
+219990765	B8A417	-0.200768490254139	0.65	RE62467p [Drosophila melanogaster]
+24656625	D1Z3A1	-0.525338518034738	0.08	ribosomal protein L28, isoform A
+24656625	Q9VZS5	-0.525338518034738	0.08	ribosomal protein L28, isoform A
+24657023	Q9VZL3	-0.390459476558178	0.13	Sc2
+24658560	P35381	-0.18776285656265	0.21	bellwether
+301154376	E1UIK5	-0.204136784712284	0.62	CG8768 protein [Drosophila melanogaster]
+24658883	A0A0B4JD46	-0.254062064606219	0.38	CG3800, isoform A
+24658883	Q8T8R1	-0.254062064606219	0.38	CG3800, isoform A
+24659106	Q9I7Q5	-0.387023123109247	0.67	cuticular protein 65Au
+24660381	Q9VSA9	-0.355480654598389	0.15	CG7409
+984321	P98159	-0.192904947470838	0.52	serine protease [Drosophila melanogaster]
+1575558	Q94529	-0.201633861169651	0.41	GS1-like protein [Drosophila melanogaster]
+3319334	Q9V9S8	-0.188203735160621	0.78	ferrochelatase [Drosophila melanogaster]
+5726645	Q9U9B0	-0.187818637206533	0.43	gigas protein [Drosophila melanogaster]
+5835245	NA	0.183473432044146	0.52	cytochrome b (mitochondrion) [Drosophila melanogaster]
+7582378	Q9W0S9	-0.182960814135923	0.76	unknown [Drosophila melanogaster]
+24661523	Q9VSX2	-0.232173442129033	0.39	CG4461
+24661815	P06606	-0.396490200145132	0.22	alpha-Tubulin at 67C
+13276123	P05031	-0.191365525715823	0.6	unnamed protein product [Drosophila melanogaster]
+15010420	Q961V9	-0.188661564023898	0.43	GH03273p [Drosophila melanogaster]
+24663317	Q9VTY2	0.767696807440005	0.51	CG10638, isoform A
+17136226	B5RJQ0	-0.195787064754278	0.45	Ecdysone-inducible gene L3, isoform A [Drosophila melanogaster]
+17136226	Q95028	-0.195787064754278	0.45	Ecdysone-inducible gene L3, isoform A [Drosophila melanogaster]
+24663668	P41042	-0.353089026373823	0.13	ribosomal protein S4, isoform A
+24663668	X2JGM9	-0.353089026373823	0.13	ribosomal protein S4, isoform A
+17136932	A0A1B2AKC6	-0.195015982405143	0.43	mitochondrial acyl carrier protein 1, isoform B [Drosophila melanogaster]
+17136932	Q94519	-0.195015982405143	0.43	mitochondrial acyl carrier protein 1, isoform B [Drosophila melanogaster]
+24664191	Q0E8E8	-0.205114429904612	0.27	mitochondrial phosphate carrier protein, isoform A
+24664391	Q9VUJ1	-0.343909653305852	0.13	proteasome beta2 subunit
+24666371	E4NKG1	0.188249659655393	0.26	caprin
+24666371	Q9I7D3	0.188249659655393	0.26	caprin
+24667554	Q9VPE2	0.137957272783677	0.38	CG6020, isoform A
+24667974	Q9VP57	0.229714332633767	0.32	putzig, isoform A
+24668543	Q8MSW0	0.150491626527451	0.08	Isoleucyl-tRNA synthetase, isoform A
+17975583	Q7JV69	-0.199155712766067	0.44	serpin 55B [Drosophila melanogaster]
+24668874	Q8SYJ2	-0.146841388329271	0.42	CG32230, isoform A
+19920436	Q9VPJ0	-0.190539359927469	0.73	CG11377, isoform A [Drosophila melanogaster]
+19920832	Q9Y0Y5	0.186011985609949	0.18	epsilonCOP [Drosophila melanogaster]
+19921016	Q9VL69	-0.196142522178623	0.78	CG5885 [Drosophila melanogaster]
+19921728	Q7K3M5	-0.200532987372709	0.3	CG11107, isoform A [Drosophila melanogaster]
+19922188	Q7K2P1	-0.19374293587597	0.13	cuticular protein 50Cb [Drosophila melanogaster]
+19922660	Q7JYH3	-0.194891916958888	0.44	CG9350 [Drosophila melanogaster]
+25009916	Q8IH82	-0.170588157069199	0.39	AT31511p
+25012603	NA	0.240094423069907	0.14	RE41560p, partial
+25012968	Q8IGE9	-0.174678531412947	0.16	RH35990p, partial
+25013021	Q8IGD2	-0.144166599213084	0.48	RH51979p, partial
+20151843	Q8SWZ9	-0.184621512649014	0.51	RH47744p [Drosophila melanogaster]
+20301938	Q9VK06	-0.185190456432507	0.4	CG31729, isoform B [Drosophila melanogaster]
+25013056	NA	-0.173718574600758	0.36	RH61958p
+26984227	NA	-0.279617290029398	0.29	CG12628 protein
+27819795	Q86PD5	-0.390789953032167	0.34	RE59670p
+21356291	Q9VBU6	0.188493434671928	0.38	CG11857 [Drosophila melanogaster]
+27819918	Q7K0S8	-0.358148282800116	0.08	LD36566p, partial
+21635417	Q8MM24	0.199033405904943	0.31	imaginal disc growth factor 1 [Drosophila melanogaster]
+24648944	Q9VD30	-0.194087052116302	0.47	retinol dehydrogenase B, isoform A [Drosophila melanogaster]
+28317180	Q9U9Q4	-0.594548549550354	0.1	GM14618p, partial
+24654107	Q058Z8	0.18607242401891	0.54	CG30324 [Drosophila melanogaster]
+24655160	Q9W0G1	-0.188203735160621	0.75	protein tyrosine phosphatase 61F, isoform C [Drosophila melanogaster]
+28416333	Q86NN8	-0.488389241026103	0.06	RH49324p, partial
+28571643	Q8T4D6	0.204091604593504	0.2	CG4706
+24666167	Q9VVM2	-0.184424571137427	0.43	CG5506 [Drosophila melanogaster]
+28571730	Q86BP1	-0.266157123591694	0.11	CG5044, isoform B
+28571758	Q9VEG6	0.17826115977974	0.39	Peroxinectin-like
+25012709	Q9W266	-0.191298652234879	0.79	RE59077p [Drosophila melanogaster]
+25013082	P41073	0.193702384725438	0.25	SD02426p [Drosophila melanogaster]
+28571996	Q8IMH4	-0.18776285656265	0.65	Saposin-related, isoform B [Drosophila melanogaster]
+45555767	Q9VXB0	-0.193747634389554	0.44	CG9132, isoform B [Drosophila melanogaster]
+116007510	Q7PLI2	0.190375204977667	0.49	Nipped-B, isoform F [Drosophila melanogaster]
+161081331	A8JNK1	0.188702208472941	0.43	ensconsin, isoform F [Drosophila melanogaster]
+211938669	B6IDT4	0.197320338173503	0.18	GH23282p [Drosophila melanogaster]
+261338801	C9QPJ5	0.193941882560848	0.78	FI12113p [Drosophila melanogaster]
+319919925	E9LFH3	-0.183864192400186	0.66	amino acid transmembrane transporter [Drosophila melanogaster]
+28572127	Q95SI7	-0.307181509518176	0.16	CG6028
+384551758	I0E2K0	0.193030361705105	0.47	FI19804p1 [Drosophila melanogaster]
+28573018	Q95RA9	-0.17730453180791	0.59	CG9796
+28573410	A1Z992	-0.179909090014934	0.11	CG33138, isoform A
+28574061	A0A0S0WNN6	0.158527446185196	0.4	embargoed
+28574061	Q9TVM2	0.158527446185196	0.4	embargoed
+28574063	Q86BM5	-0.324112342149238	0.39	A kinase anchor protein 200, isoform D
+28574408	Q95TZ7	-0.155904531127378	0.3	Z band alternatively spliced PDZ-motif protein 66, isoform F
+28574516	Q9VKM7	-0.255257055242075	0.41	CG33129, isoform E
+4101730	Q9VE62	-0.177698707949114	0.95	Ste20-like protein kinase [Drosophila melanogaster]
+5835243	NA	0.1760303640915	0.46	NADH dehydrogenase subunit 4L (mitochondrion) [Drosophila melanogaster]
+28574560	Q8T4C4	-0.21616780079582	0.31	CG5389
+28574860	Q86BI9	0.159198594849254	0.25	CG18135, isoform D
+17647125	Q9W2G8	-0.180862847927201	0.51	acyl-Coenzyme A oxidase at 57D distal [Drosophila melanogaster]
+28574878	Q8T4G5	0.206450877467426	0.4	CG6512, isoform A
+29335981	P22817	0.212235806300277	0.42	RE17458p
+17738071	P54359	0.179424973183039	0.46	septin 2, isoform A [Drosophila melanogaster]
+19921046	Q9VL18	-0.177787119215283	0.57	eEF1delta, isoform B [Drosophila melanogaster]
+19921348	O61722	-0.175134191033418	0.88	PRL-1, isoform B [Drosophila melanogaster]
+33636521	P15348	0.347098670622268	0.2	RE49802p
+38047743	Q6XIS8	0.394573396719128	0.16	similar to Drosophila melanogaster Mhc, partial [Drosophila yakuba]
+38048133	Q6XI85	-0.519374159093579	0.14	similar to Drosophila melanogaster Arf102F, partial [Drosophila yakuba]
+20129483	Q9VK44	0.171321034454746	0.54	CG9934, isoform A [Drosophila melanogaster]
+20129859	Q7JVK6	-0.181940377599154	0.38	translin [Drosophila melanogaster]
+38048721	Q6XHE3	-0.178721949679471	0.2	similar to Drosophila melanogaster CG7217, partial [Drosophila yakuba]
+21355475	A0A0B4KG41	-0.172962712080696	0.48	CG10326, isoform A [Drosophila melanogaster]
+21355475	Q9VES1	-0.172962712080696	0.48	CG10326, isoform A [Drosophila melanogaster]
+38048731	Q6XHD8	-0.611434712082347	0.08	similar to Drosophila melanogaster CG8415, partial [Drosophila yakuba]
+21356627	Q9VGL0	-0.16720550008872	0.53	CG14712 [Drosophila melanogaster]
+21358265	Q8T0T9	0.174774401103708	0.58	CG13920 [Drosophila melanogaster]
+40215478	NA	0.266280065337448	0.17	SD02276p
+24586293	Q9V4N3	-0.171368418311981	0.62	cytochrome b5, isoform A [Drosophila melanogaster]
+24641874	Q9VY84	0.180553605819034	0.73	CG10993 [Drosophila melanogaster]
+24642084	Q9VXZ0	-0.16580889297008	0.88	CG5548 [Drosophila melanogaster]
+24644398	Q9VNH7	-0.176243742245043	0.56	CG2082, isoform A [Drosophila melanogaster]
+40215765	Q6NP22	0.815508716183506	0.06	LD47325p
+24650935	Q9VAQ0	-0.179636507105318	0.62	Cullin-5 [Drosophila melanogaster]
+40215848	Q6NP10	-0.144389909335175	0.31	LD13390p
+41058170	Q6NN26	0.287255517232583	0.31	RE18634p
+45549019	Q8IRG6	-0.543314803362665	0.45	dre4, isoform A
+24661483	Q9VSW5	-0.181112682074771	0.4	Kinesin-like protein at 67A, isoform A [Drosophila melanogaster]
+45549037	NA	0.265179677665351	0.17	abnormal wing discs
+45549573	Q9VXI1	-0.460841188891969	0.07	CG9914
+45550134	Q9VMK3	-0.268935007273478	0.28	palisade, isoform A
+28573181	Q8SX76	0.177396250873448	0.49	pch2 [Drosophila melanogaster]
+45550470	Q86BY9	0.198063091974707	0.27	rigor mortis
+45550732	A0A0B4LGZ7	0.148863385914483	0.41	fau, isoform A
+45550732	C0HK92	0.148863385914483	0.41	fau, isoform A
+45550463	Q8IH56	-0.180328175070193	0.5	CG11961, isoform B [Drosophila melanogaster]
+45551068	A1Z871	-0.46111449814482	0.38	CAP, isoform B
+109390622	Q18LA9	-0.179108323607648	0.6	pol protein [Drosophila melanogaster]
+116811192	A0AMM0	0.169948548828779	0.38	CG6255 [Drosophila melanogaster]
+159884209	A8WHL5	-0.178560697503598	0.53	RE51716p [Drosophila melanogaster]
+45551448	Q76NR6	-0.249556021394908	0.16	regucalcin, isoform D
+45552183	Q24179	-0.25846167604397	0.35	SLY-1 homologous, isoform C
+45552923	Q7KV69	0.147500424036172	0.33	karst, isoform B
+332000076	F3YDP5	-0.17730453180791	0.48	IP18912p [Drosophila melanogaster]
+442616414	M9PJN5	-0.182203331220749	0.73	HDAC6, isoform G [Drosophila melanogaster]
+45554154	Q7KVX5	-0.234465253637023	0.43	Vap-33-1, isoform A
+50880290	Q9VE00	-0.399095955409822	0.23	cytochrome P450
+54650560	Q9V7N5	0.202629166515018	0.5	RE74713p
+54650900	Q5U0U9	0.432218025584531	0.06	AT25839p
+57157225	Q5KTT4	0.338983259067092	0.1	hypothetical protein
+62471820	Q59E58	0.167599948496069	0.42	zipper, isoform C
+15149556	Q966S5	-0.16710473001981	0.35	junctophilin [Drosophila melanogaster]
+62473454	P13217	0.393639462366468	0.1	no receptor potential A, isoform D
+62473454	X2JCI4	0.393639462366468	0.1	no receptor potential A, isoform D
+62862016	A8Y560	-0.295076875237931	0.1	ribosomal protein L15, isoform A
+62862016	O17445	-0.295076875237931	0.1	ribosomal protein L15, isoform A
+62862338	Q7PLL6	0.245577208757248	0.2	CG17514, isoform A
+17316365	Q9VKG3	0.161403446596459	0.6	Mst33A, isoform A [Drosophila melanogaster]
+68051273	Q5U0Z2	-0.272553483913788	0.32	LD30448p
+78706744	Q7KSQ0	-0.23495588280036	0.42	scheggia, isoform E
+85724808	Q5BI73	-0.139403056665416	0.58	chorion protein a at 7F, isoform A
+17864338	Q9VSR5	-0.164187703468483	0.95	mitochondrial ribosomal protein L12 [Drosophila melanogaster]
+85861121	Q29QE3	-0.232559447493447	0.07	GH19966p
+18859747	Q9VZ24	0.162845823339301	0.82	CG15201 [Drosophila melanogaster]
+20129989	Q9V719	0.164341428008293	0.36	SAPK-interacting protein 1 [Drosophila melanogaster]
+21355533	Q9VT61	-0.168732369959843	0.83	CG8108, isoform B [Drosophila melanogaster]
+90855695	P14318	-0.199122642013601	0.16	IP13591p
+116007164	NA	-0.406674026344217	0.09	lipid storage droplet-2, isoform C
+116007958	Q0KIB9	0.393201698038371	0.06	mustard, isoform P
+21356443	Q9Y171	0.169824954262795	0.65	CG6404, isoform B [Drosophila melanogaster]
+116008198	Q9W2U7	0.252823446547362	0.59	no circadian temperature entrainment, isoform A
+119116236	A0ZWR6	0.254741199034308	0.36	thiolester containing protein II, isoform A
+157816520	P07186	-0.43269616577535	0.08	IP19163p
+21357673	Q9VB10	-0.163498732282879	0.44	CG5590 [Drosophila melanogaster]
+24583960	Q9VK60	-0.163100802328381	0.1	CG6180 [Drosophila melanogaster]
+158703538	A9QHQ8	-0.306977753421391	0.1	odorant-binding protein 56d
+158704842	A9QJL0	-0.391082767127121	0.19	odorant-binding protein 99c
+161077433	Q7KVI9	0.241996416063007	0.23	CG9812, isoform B
+161077453	NA	0.19713246893471	0.36	Unc-89, isoform B
+161078635	A8JRB8	0.334195434755033	0.21	CG5028, isoform C
+25012174	Q8IH36	-0.16082279433506	0.86	GH27183p, partial [Drosophila melanogaster]
+161084461	A8JNU6	0.174395705487538	0.24	neural conserved at 73EF, isoform I
+28572126	Q95WY3	-0.16391375306214	0.46	Nop56 [Drosophila melanogaster]
+162944906	A9UNB7	-0.158989523761157	0.63	LP13860p
+189458933	B3DNA4	-0.14957635605051	0.35	IP19006p
+194911980	B3P985	-0.745875075755904	0.19	GG12751 [Drosophila erecta]
+161076803	Q7KTJ7	-0.166103290489904	0.17	basigin, isoform G [Drosophila melanogaster]
+161077209	E1JGK5	-0.151035514643221	0.6	mapmodulin, isoform C [Drosophila melanogaster]
+161077209	Q9V895	-0.151035514643221	0.6	mapmodulin, isoform C [Drosophila melanogaster]
+201065825	B5RIY3	-0.140047960107697	0.77	FI06040p
+209944662	B6UYA6	0.157791245806457	0.83	subito [Drosophila melanogaster]
+201066237	B5RJI8	-0.181792799894732	0.47	IP19154p
+223969161	C0MM13	-0.16017702489075	0.48	CG3603-PA [Drosophila melanogaster]
+268394807	D0Z745	-0.169338310473558	0.48	AT07790p [Drosophila melanogaster]
+218506039	B7FNQ3	-0.266243962309684	0.13	RE33133p
+219990677	B8A3X3	-0.230057083387521	0.21	FI09227p
+221330407	B7YZK4	-0.608312987998537	0.07	CG42351, isoform E
+385719244	I1WYH0	-0.163780085248659	0.91	FI19082p1 [Drosophila melanogaster]
+221330830	B7Z0B2	0.227867551402599	0.12	CG10359, isoform E
+221330856	P37276	-0.132637768578119	0.48	dynein heavy chain 64C, isoform C
+304728	P35600	0.155756401893169	0.91	transcription factor [Drosophila melanogaster]
+221331108	Q9VTU9	-0.331450869005869	0.14	CG6910, isoform B
+221468537	B7YZP9	-0.158697746019058	0.43	muscle LIM protein at 60A, isoform B
+221513692	M9PIM0	-0.321928094887362	0.17	ribosomal protein L10, isoform C
+221513692	O61231	-0.321928094887362	0.17	ribosomal protein L10, isoform C
+225008668	Q86DS1	-0.261338115172895	0.38	HIP-replacement
+225193096	C0PV64	-0.442358105278356	0.08	MIP07547p
+236752377	C4IXZ0	-0.393467188856625	0.4	RT02589p
+242397519	C5WLR2	-0.319756995845735	0.37	MIP04215p
+254939727	C6SUZ3	0.25642341928126	0.33	AT20328p
+17137668	O77062	0.146078259487945	0.38	excitatory amino acid transporter 1, isoform A [Drosophila melanogaster]
+255918253	C6TP73	-0.24370292758186	0.31	LP17834p
+256773323	C7LAA5	0.403982310769848	0.14	GM15464p
+17648067	Q7KJ73	0.15718333255073	0.51	tetraspanin 42Ee, isoform A [Drosophila melanogaster]
+256818839	C7LAB1	0.140321288397415	0.2	SD23689p
+17864106	P04359	-0.15200309344505	0.66	ribosomal protein L32, isoform A [Drosophila melanogaster]
+17933630	A1Z7S3	0.148445274031861	0.48	lightoid, isoform B [Drosophila melanogaster]
+259013617	C8VV34	0.238448767555521	0.39	AT31327p
+19920508	Q9VPY7	-0.158001834066493	0.67	CG5126 [Drosophila melanogaster]
+259089570	C8VV58	-0.162729500038108	0.12	GH03580p
+261338785	C9QPI7	-0.243454036864277	0.11	RH10980p
+21355333	Q9VTZ7	-0.149282815692828	0.48	CG4069 [Drosophila melanogaster]
+281359537	Q59DP9	0.22404027421793	0.12	plasma membrane calcium ATPase, isoform J
+281359545	Q59DP8	0.204904994607607	0.11	plasma membrane calcium ATPase, isoform N
+21357405	Q9VG08	-0.14827901920245	0.98	yellow-f2 [Drosophila melanogaster]
+281359561	D1YSG0	0.137236382736138	0.51	bent, isoform F
+281360442	E1JHQ0	0.200259647659597	0.47	galectin, isoform B
+281361040	Q86B44	-0.284208428938204	0.07	glutathione synthetase, isoform H
+21711759	Q8MQN6	0.152898667120923	0.52	RE39339p [Drosophila melanogaster]
+24581429	Q9VQQ6	0.146162713281968	0.71	sorting nexin 1 [Drosophila melanogaster]
+281361784	E1JIK9	-0.202666997277456	0.22	myofilin, isoform I
+281362442	A0A0B4KGX1	0.250196100504554	0.41	jaguar, isoform H
+281362442	Q01989	0.250196100504554	0.41	jaguar, isoform H
+24640098	G2J611	-0.146384776386926	1	wuho [Drosophila melanogaster]
+24640098	Q9W415	-0.146384776386926	1	wuho [Drosophila melanogaster]
+24645845	Q9VGT0	0.144101225984359	0.5	UDP-glycosyltransferase 35b [Drosophila melanogaster]
+281362724	A0A0B4K7Y7	0.382549646529939	0.28	La related protein, isoform D
+281362724	Q9VAW5	0.382549646529939	0.28	La related protein, isoform D
+281362896	Q0KHY3	0.611823840888722	0.07	CG31004, isoform D
+281363358	Q0E980	0.325770161181757	0.11	CG8547, isoform C
+24762502	D5A7M1	-0.15200309344505	0.58	ejaculatory bulb protein III [Drosophila melanogaster]
+281364426	E1JHT6	0.258574757643094	0.1	Rtnl1, isoform H
+281366731	A0A0B7P9G0	0.240398209390764	0.39	unextended, isoform E
+296531490	D6W4L2	0.217700726011726	0.4	MIP21134p
+54650722	Q5U137	-0.153323034105183	0.41	LP16180p [Drosophila melanogaster]
+61675649	Q58CL2	-0.15704371014558	0.43	RH03344p [Drosophila melanogaster]
+195591882	A0A0J9RYR7	-0.144970762907546	0.89	GD14890 [Drosophila simulans]
+195591882	B4QJ33	-0.144970762907546	0.89	GD14890 [Drosophila simulans]
+299523283	D8FT08	-0.160032196683881	0.42	IP05783p
+308818238	E3CTQ1	0.326624881588761	0.16	RT10219p
+320542608	NA	0.164942149152548	0.37	fau, isoform E
+386766427	Q8IMW2	0.147624652934476	0.6	CG5794, isoform F [Drosophila melanogaster]
+320544548	M9MRD6	0.134301091711591	0.32	Muscle-specific protein 300, isoform I
+323301126	P22465	-0.152426109146919	0.46	RH01287p
+323301198	E8NH86	-0.329790212660333	0.69	RE02453p
+324096510	F0JAP3	-0.295824340951463	0.14	SD23833p
+329112621	F3YDH3	0.144389909335175	0.35	RH01206p
+330864889	F3YDM3	-0.56464251634156	0.11	RH18256p
+4377460	O18397	-0.135351852894886	0.57	oxysterol binding protein homologue [Drosophila melanogaster]
+356461072	G7H836	-0.227653190197494	0.35	TB01296p1
+356461080	O18404	-0.161751069996612	0.23	AT02390p1
+17737523	A0A1B2AJW2	0.133453444777166	0.84	drosomycin [Drosophila melanogaster]
+17737523	P41964	0.133453444777166	0.84	drosomycin [Drosophila melanogaster]
+17737681	Q23983	-0.139459720715261	0.71	soluble NSF attachment protein [Drosophila melanogaster]
+374858076	H5V866	-0.195920209975257	0.2	FI18103p1
+379699068	Q9VBP9	-0.167109985835258	0.46	FI19201p1
+386763896	M9NFY9	0.48053079857687	0.06	CG43090
+386766827	A0A0B4K7S0	0.358827677698891	0.13	fat facets, isoform D
+386767551	A0A0B4K715	0.282663212582727	0.19	ryanodine receptor 44F, isoform J
+19922090	Q7K2E1	0.139336681608889	0.45	CG8839, isoform A [Drosophila melanogaster]
+19922136	Q6AWP0	-0.150559676575381	0.69	CG3814, isoform A [Drosophila melanogaster]
+20129503	Q9VJY7	-0.140671809564188	0.59	CG7099 [Drosophila melanogaster]
+386768292	A8DYJ2	0.420914065615513	0.2	hu li tai shao, isoform P
+386769685	D4G7B1	0.139822969652893	0.46	imaginal disc growth factor 2, isoform C
+386771816	Q7PLB8	-0.312414291888187	0.11	CG17374
+404331802	J9THZ9	-0.362570079384708	0.17	cytochrome c oxidase subunit II (mitochondrion)
+429892406	L0CQR2	-0.286133104455108	0.25	ribosomal protein S11, partial
+442615312	M9PDW8	0.210896782498619	0.35	CG34417, isoform T
+21358451	Q8T0K1	-0.143787140608888	0.51	CG2010, isoform B [Drosophila melanogaster]
+21358513	Q9VVG5	0.140082067851711	0.96	CG7630 [Drosophila melanogaster]
+22026914	Q9W259	-0.136340931837867	0.85	CG13506 [Drosophila melanogaster]
+442615611	M9PH20	0.387023123109247	0.08	retinal degeneration A, isoform I
+442616854	Q8IQX8	0.181913351981378	0.38	Histidyl-tRNA synthetase, isoform D
+442620178	A0A0B4KH28	0.993602228801849	0.69	syndapin, isoform C
+442622559	A0A0B4KEJ7	-0.282143228781499	0.13	coro, isoform E
+24641032	Q9W2U4	-0.140556740196894	0.65	protein phosphatase 4 regulatory subunit 2-related protein, isoform A [Drosophila melanogaster]
+24644712	Q9VI53	-0.138605238229507	0.55	CG1105 [Drosophila melanogaster]
+442622753	A0A0B4KF99	-0.380142708832658	0.12	aldehyde dehydrogenase type III, isoform U
+24646855	Q8SZN1	-0.132755208851772	0.71	CG31313, isoform A [Drosophila melanogaster]
+24650927	Q9VAQ4	-0.138446769969144	0.81	CG11841 [Drosophila melanogaster]
+24651231	Q8I0P9	-0.131052109798022	0.67	acid phosphatase 1, isoform B [Drosophila melanogaster]
+442622868	A0A0B4KFC5	0.169925001442312	0.54	lingerer, isoform K
+24655674	Q9W078	0.137067730047516	0.88	cuticular protein 62Bb, isoform A [Drosophila melanogaster]
+442622933	A0A0B4KFE4	-0.238404739325079	0.17	Acyl-CoA synthetase long-chain, isoform J
+442623834	A0A0B4KFR8	0.184424571137428	0.33	Z band alternatively spliced PDZ-motif protein 52, isoform L
+24762344	Q8MLR2	-0.129283016944966	0.49	CG4019, isoform C [Drosophila melanogaster]
+442623873	A1ZA73	0.192645077942396	0.24	Stretchin-Mlck, isoform R
+38681451	P92030	-0.140257885771951	0.66	egalitarian [Drosophila melanogaster]
+40215602	Q6NP37	-0.137503523749935	0.97	RE31380p [Drosophila melanogaster]
+45550393	A1Z7V9	-0.134017347971688	0.64	CG1814, isoform A [Drosophila melanogaster]
+442623966	A0A0B4LFL3	-0.191034028036411	0.28	elongation factor 1 beta
+442623966	O96827	-0.191034028036411	0.28	elongation factor 1 beta
+45551502	Q7KVB1	-0.133413347638728	0.67	ABCB7, isoform B [Drosophila melanogaster]
+442625389	M9PC99	0.178563919716185	0.42	ghost, isoform C
+442629645	M9PBI9	0.209923069374231	0.31	sallimus, isoform S
+442629669	Q0E8J3	0.53051471669878	0.13	zormin, isoform I
+442631071	M9PBW9	0.300382564606098	0.18	rhea, isoform G
+442631377	M9PF46	-0.179549420330713	0.4	CG6767, isoform G
+442631429	M9PEZ7	-0.13664605267513	0.49	CG14168, isoform E
+442631451	M9PF57	0.28169825009883	0.52	CG43897, isoform M
+442631724	M9PI17	-0.204233052217608	0.38	CG6084, isoform D
+526479864	S5PU30	-0.269888076874856	0.08	IP21842p1
+481029145	M9WSU4	0.143110016560591	0.31	FI21107p1 [Drosophila melanogaster]
+33636453	O02649	-0.094250325796051	0.00343	SD06594p
+157908	P26270	-0.128156351490682	0.69	Mov34 [Drosophila melanogaster]
+7789	P23779	0.0530770522889618	0.61	cystatin-like protein
+7833	P27619	-0.00639777119815066	0.97	dynamin
+7919	P13060	-0.0789513413948221	0.46	unnamed protein product
+8356	P52304	-0.116409492115311	0.38	protein kinase
+11176	Q01604	-0.0051068904330888	0.89	phosphoglycerate kinase
+17933644	O18475	0.11924700017866	0.57	mutagen-sensitive 308 [Drosophila melanogaster]
+156750	P02572	-0.0954195650786824	0.55	actin
+19921306	Q9V3Z9	-0.121906164601238	0.78	CG16884 [Drosophila melanogaster]
+19921802	Q7K0D8	-0.1305038950361	0.76	nucleoporin 50 [Drosophila melanogaster]
+20129879	Q6NP72	0.122619286663956	0.45	CG13220, isoform A [Drosophila melanogaster]
+20130365	Q9W148	-0.119298928372344	0.47	unconventional prefoldin RPB5 interactor [Drosophila melanogaster]
+157478	P07487	-0.101360714959241	0.65	glyceraldehyde-3-phosphate dehydrogenase (Gadph-2) protein (EC 1.2.1.12)
+21355401	A0A0B4LF54	-0.123988717275453	0.38	cytochrome P450-6a17 [Drosophila melanogaster]
+21355401	Q9V770	-0.123988717275453	0.38	cytochrome P450-6a17 [Drosophila melanogaster]
+21355625	Q9VN73	0.130299896798121	0.74	CG1124 [Drosophila melanogaster]
+21355973	Q9VSH4	0.12818826916949	0.67	CG7185, isoform A [Drosophila melanogaster]
+158709	P19334	0.0659975587742401	0.7	trp protein
+158739	Q24560	0.0337268745581239	0.96	beta-1 tubulin
+21356787	Q9VGF5	-0.114770187246075	0.67	transport and golgi organization 9 [Drosophila melanogaster]
+158743	P61857	-0.00861313030470803	0.95	beta-2 tubulin
+433083	P20228	-0.0549664592179286	0.77	glutamic acid decarboxylase
+21358401	Q9VM46	0.11826288161982	0.67	CG13779 [Drosophila melanogaster]
+21358523	Q9VAH9	0.124470737320152	0.4	integrator 11 [Drosophila melanogaster]
+433474	P49455	0.0219703998356056	0.73	protein 33-specific exons
+24581916	Q9VMR9	0.117569596381176	0.57	CG14022 [Drosophila melanogaster]
+441286	P08928	0.00927781358801065	0.89	unnamed protein product
+443597	P52029	0.0757273261632452	0.51	glucosephosphate isomerase
+24585516	Q9VII9	0.125530882083859	0.63	CG31673 [Drosophila melanogaster]
+24640251	Q9W3U9	0.118438096116873	0.73	CG14434 [Drosophila melanogaster]
+531500	Q03427	-0.0934186969301062	0.41	nuclear lamin C protein
+552101	NA	0.120533665307489	0.51	myosin heavy-chain a, partial
+924933	P54351	0.0439239563949021	0.65	N-ethylmaleimide sensitive fusion protein-2
+1027513	P54358	-0.0421254756726766	0.84	DNA polymerase delta
+24650009	Q9VBT2	-0.124727811474156	0.84	CG11893 [Drosophila melanogaster]
+1168232	P41572	-0.12176896328766	0.28	RecName: Full=6-phosphogluconate dehydrogenase, decarboxylating
+1335783	Q9VXF1	0.0149503414659716	0.82	CnnA14D(I)
+1490236	Q24439	-0.0350469470992008	0.68	oligomycin sensitivity conferring protein precursor
+85724756	P83102	0.120521286601896	0.75	Dyrk3, isoform A [Drosophila melanogaster]
+1699220	Q9TWZ1	0.0482551686072212	0.71	D-ERp60=protein disulphide isomerase isoform/multifunctional endoplasmic reticulum luminal polypeptide [Drosophila melanogaster, Peptide, 489 aa]
+1857954	P91944	0.0180339228302616	0.93	elongation factor 1 alpha-like factor
+209945900	Q23973	-0.115477217419936	0.65	matrimony [Drosophila melanogaster]
+221329926	Q9VY47	-0.126345733865413	0.74	CG42271, isoform C [Drosophila melanogaster]
+1923274	A1Z8P9	-0.0154852474974186	0.82	Tpr homolog
+1944534	Q9VQG4	-0.111748357652455	0.41	colt
+260310400	C9QP47	0.121746496480193	0.57	FI12001p [Drosophila melanogaster]
+2326408	O46096	-0.0726844539014832	0.1	EG:87B1.3
+2996202	O61613	-0.00745580491904723	0.99	myristoyl-CoA: protein N-myristoyl transferase
+3108349	NA	-0.12919906367072	0.3	pyruvate kinase
+3337433	Q7KN62	-0.0754901995842635	0.28	transitional endoplasmic reticulum ATPase TER94
+386764340	Q9VYH8	-0.123031471661354	0.91	CG15721 [Drosophila melanogaster]
+442614855	M9PDJ5	-0.132028393683784	0.62	Hr4, isoform I [Drosophila melanogaster]
+3387808	Q9V6K1	0.0721497857558354	0.49	tripeptidyl peptidase II
+442632043	M9PF27	-0.121620811123419	0.87	Wbp2 ortholog, isoform D [Drosophila melanogaster]
+442633249	M9PCX4	0.130584109810144	0.52	CG3961, isoform E [Drosophila melanogaster]
+3820911	P20477	0.0872863971675793	0.58	glutamine synthetase I
+4512034	Q9XYM1	-0.041222662726513	0.78	aspartyl tRNA synthetase
+4837636	Q9XZU1	0.0865876849960907	0.5	CAS protein
+5107100	P08171	-0.070389327891398	0.5	esterase 6
+5731771	Q9U1K3	-0.0651327117502311	0.72	globin
+19920464	Q9VPQ2	-0.105709441171115	0.39	CG4164 [Drosophila melanogaster]
+19923002	M9ND19	-0.108059745857453	0.63	UDP-galactose 4'-epimerase, isoform A [Drosophila melanogaster]
+19923002	Q9W0P5	-0.108059745857453	0.63	UDP-galactose 4'-epimerase, isoform A [Drosophila melanogaster]
+6063416	Q9U916	-0.0752881273042371	0.49	calreticulin
+20130319	Q9W1H6	-0.113008961829186	0.83	CG5597 [Drosophila melanogaster]
+6851385	Q9VV36	-0.0388192488905282	0.78	retinin
+7109190	Q9NHF8	-0.0936350721112301	0.73	gag protein
+7141239	Q9VCK0	-0.123735368422245	0.68	eukaryotic translation initiation factor 3 p66 subunit
+21355331	Q9VSZ1	-0.119052671643763	0.52	CG3529, isoform B [Drosophila melanogaster]
+21356931	Q9VV87	-0.106520323651042	0.8	baldspot, isoform A [Drosophila melanogaster]
+21357215	Q9VV49	-0.108566357219364	0.61	CG4753, isoform B [Drosophila melanogaster]
+7271162	Q9NFN9	-0.0972972013549149	0.39	putative Sec23 protein
+21357907	Q9VF20	-0.0986842748594068	0.87	heavy metal tolerance factor 1 [Drosophila melanogaster]
+7739653	Q9NH72	0.0201778819376303	0.84	rasputin
+8250173	Q9NFX2	-0.0741908980512541	0.51	iron regulatory protein 1B
+24584738	Q9VJH2	0.114846324995766	0.65	CG31739, isoform A [Drosophila melanogaster]
+10121901	P22464	-0.0303736490435189	0.8	annexin B9a
+10697246	Q9GUB1	0.00780258819619263	0.9	phospholipase A2 activating protein homolog
+24645175	Q9VHL4	0.108934371553164	0.6	ionotropic receptor 85a [Drosophila melanogaster]
+24645865	A0A1B3Q3N5	-0.115908968146154	0.69	ribosomal protein S25, isoform A [Drosophila melanogaster]
+24645865	P48588	-0.115908968146154	0.69	ribosomal protein S25, isoform A [Drosophila melanogaster]
+24654224	A1ZAI8	-0.10546050750802	0.64	CG15617 [Drosophila melanogaster]
+12006785	Q9VUY9	0.0135465318379479	0.84	phosphoglucomutase
+24663365	Q9VTZ6	-0.112422532400979	0.85	CG10688 [Drosophila melanogaster]
+14029388	Q968K4	0.0726037489568399	0.97	MMS19
+24762671	Q9W149	0.104943704914043	0.85	CG11414 [Drosophila melanogaster]
+14571519	Q8IN43	-0.0938281081238286	0.57	stress-inducible humoral factor Turandot C
+15150407	Q961S9	0.0948591863414412	0.57	SD01502p
+28574007	B7FNJ7	0.11544553401223	0.59	hepatocyte growth factor regulated tyrosine kinase substrate, isoform C [Drosophila melanogaster]
+28574007	Q960X8	0.11544553401223	0.59	hepatocyte growth factor regulated tyrosine kinase substrate, isoform C [Drosophila melanogaster]
+41058189	Q6NN20	0.11607163216741	0.47	RE09736p [Drosophila melanogaster]
+60593112	Q5BN20	-0.115027849703832	0.67	ORF2 [Drosophila melanogaster]
+15291353	NA	-0.106765848873065	0.64	GH17893p
+15291597	NA	-0.117651588654273	0.34	GM14215p
+161077224	A8DYI2	0.114030582976667	0.72	CG30118, isoform C [Drosophila melanogaster]
+15292509	Q960E6	0.0419417630733083	0.57	SD04748p
+189214216	B3G0T0	-0.115966018048325	0.55	Fmr1 [Drosophila melanogaster]
+201065563	B5RIK2	0.11150831521699	0.56	FI02890p [Drosophila melanogaster]
+221500419	Q9VRG5	-0.101538026462062	0.77	CG1801 [Drosophila melanogaster]
+16182654	Q95U46	0.0677446066358343	0.55	GH07925p
+16767852	Q7KML2	-0.0780025120012732	0.6	GH01266p
+17136240	P17210	-0.0136104315186531	0.98	kinesin heavy chain
+17136716	P13677	-0.133025418630783	0.56	inactivation no afterpotential C
+386763412	H9XVM6	-0.116193017504523	0.5	Crk, isoform E [Drosophila melanogaster]
+442616878	M9PHI8	-0.113177454572301	0.74	CG42450, isoform B [Drosophila melanogaster]
+442619721	Q01617	0.116562685111567	0.54	couch potato, isoform S [Drosophila melanogaster]
+17136938	M9PBN7	-0.0753536820033687	0.61	capping protein beta, isoform A
+17136938	P48603	-0.0753536820033687	0.61	capping protein beta, isoform A
+17136982	Q9VA56	0.0401759224545626	0.81	tropomodulin, isoform B
+157032	Q02910	0.0931094043914815	0.71	calcium-binding protein [Drosophila melanogaster]
+17136984	Q9VMD9	-0.0653262478779435	0.59	tiggrin
+17136984	X2JDD7	-0.0653262478779435	0.59	tiggrin
+17136998	P52295	-0.0918736912188124	0.55	pendulin
+896260	V9H007	-0.0931094043914815	0.49	unknown [Drosophila melanogaster]
+3342458	O76511	-0.0985157406410686	0.81	thymidylate synthase [Drosophila melanogaster]
+7021482	Q9NHD7	-0.0939761482090138	0.93	secretory carrier membrane protein [Drosophila melanogaster]
+17137072	A0A0B4LFJ1	-0.0865367504679953	0.63	CG5210
+17137072	Q23997	-0.0865367504679953	0.63	CG5210
+17137106	P21914	-0.0588936890535686	0.39	succinate dehydrogenase B
+17137134	Q24400	-0.054765803430892	0.8	muscle LIM protein at 84B, isoform A
+17137186	M9PD26	-0.00406966430904696	0.97	cytochrome b5-related, isoform A
+17137186	P19967	-0.00406966430904696	0.97	cytochrome b5-related, isoform A
+17136442	Q9V9W7	-0.0924462487645951	0.95	rough deal [Drosophila melanogaster]
+17136790	P17917	-0.0951572330403401	0.68	mutagen-sensitive 209, isoform A [Drosophila melanogaster]
+17137228	P84029	0.0604052393187757	0.46	cytochrome c proximal
+17137228	X2J6D4	0.0604052393187757	0.46	cytochrome c proximal
+17137252	Q9VMV5	0.0885366746016572	0.7	viking, isoform A
+17647155	Q7KLE5	-0.0987339535853596	0.65	amphiphysin, isoform A [Drosophila melanogaster]
+17137288	Q94523	0.0817431494415365	0.48	succinate dehydrogenase A, isoform A
+17137302	A0A0B4KFT0	-0.079434467494405	0.61	cytochrome c oxidase subunit Va, isoform A
+17137302	Q94514	-0.079434467494405	0.61	cytochrome c oxidase subunit Va, isoform A
+17137450	M9PG62	-0.068037520716222	0.55	regulatory particle non-ATPase 3, isoform A
+17137450	P25161	-0.068037520716222	0.55	regulatory particle non-ATPase 3, isoform A
+19528335	Q9I7K0	-0.091991896271575	0.93	LD21358p [Drosophila melanogaster]
+21355911	Q9VHA8	0.0935028973408657	0.96	P58IPK [Drosophila melanogaster]
+21356765	Q9VS47	0.0965943982387919	0.64	CG8602, isoform A [Drosophila melanogaster]
+17137564	Q9VCV4	0.00815084112086426	0.93	iron regulatory protein 1A
+17137626	O97477	-0.0682347357524522	0.47	inos
+17137738	Q7KMQ0	-0.0880561766651961	0.64	regulatory particle triple-A ATPase 1
+17530801	P54357	-0.0859732231098529	0.97	myosin light chain cytoplasmic, isoform A
+24640767	Q9W373	-0.0972972013549149	0.59	CG12119 [Drosophila melanogaster]
+24641266	Q9VZ00	-0.101445263559546	0.8	CG1737 [Drosophila melanogaster]
+24641317	Q9VYX8	-0.0923769921999364	0.67	CG1572, isoform A [Drosophila melanogaster]
+17647183	Q24253	-0.0835866302729748	0.84	beta adaptin
+17647245	Q7KKI0	0.0262315415731795	0.81	T-complex chaperonin 5, isoform A
+17647429	O61604	0.0510741845942694	0.7	fimbrin, isoform A
+24648089	A0A0B4KHD3	-0.0931094043914815	0.89	mitochondrial pyruvate carrier, isoform B [Drosophila melanogaster]
+24648089	Q7KSC4	-0.0931094043914815	0.89	mitochondrial pyruvate carrier, isoform B [Drosophila melanogaster]
+17647519	P02517	-0.0900254542684416	0.94	heat shock protein 26
+17647519	X2JGG6	-0.0900254542684416	0.94	heat shock protein 26
+24650873	Q9VAT1	0.103093492964104	0.56	CG1647, isoform A [Drosophila melanogaster]
+24654215	D6W4V4	0.0880561766651961	0.86	picot, isoform B [Drosophila melanogaster]
+24654215	Q9V7S5	0.0880561766651961	0.86	picot, isoform B [Drosophila melanogaster]
+24657102	Q9VZJ8	-0.100028818331272	0.57	CG11594, isoform A [Drosophila melanogaster]
+17647809	P52034	0.0484985176911901	0.64	phosphofructokinase, isoform A
+17736973	Q9V3I2	0.0253717897083116	0.97	Rab5, isoform E
+17737405	I0DHK3	-0.070389327891398	0.41	proteasome 35kD subunit
+17737405	P12881	-0.070389327891398	0.41	proteasome 35kD subunit
+17737513	Q9V3Y4	-0.106915203916512	0.77	mitochondrial carrier homolog 1, isoform A
+17737667	M9PD14	0.0461701814329259	0.7	flightin, isoform A
+17737667	P35554	0.0461701814329259	0.7	flightin, isoform A
+28574962	Q8MZI3	-0.0995356735509144	0.96	CG10077, isoform A [Drosophila melanogaster]
+17737759	Q9VN44	0.0425918767244681	0.57	karyopherin beta 3, isoform A
+17737923	P20432	0.09515723304034	0.62	glutathione S transferase D1, isoform A
+40364985	Q6SAH0	0.0955776599822312	0.49	epidermal growth factor receptor [Drosophila melanogaster]
+41615522	NA	-0.0972218077126679	0.78	TPA_inf: HDC00910 [Drosophila melanogaster]
+45549100	O76454	-0.0929664996277681	0.45	pterin-4a-carbinolamine dehydratase [Drosophila melanogaster]
+17738051	P06002	0.0399664073176446	0.78	neither inactivation nor afterpotential E
+45552599	A1Z8V5	0.0914230277635946	0.69	CG13168, isoform C [Drosophila melanogaster]
+17738151	Q9V3V6	-0.0109711178210031	0.96	Tat-binding protein-1
+17862750	Q9VMA3	0.0360692547075217	0.99	LD47924p
+17864148	Q8I0G5	-0.0126000367796335	0.97	gamma-coatomer protein, isoform A
+17864358	A1Z9E3	0	0.81	elongation factor Tu mitochondrial, isoform A
+17864392	Q9VSD6	-0.027866793432944	0.65	moleskin
+211938529	B6IDL4	-0.0948235462015935	0.81	FI03638p [Drosophila melanogaster]
+213515580	B7ZWP7	0.104023064543228	0.54	RH14172p [Drosophila melanogaster]
+17864468	M9PBZ9	0.0443941193584534	0.87	eukaryotic initiation factor 4E, isoform B
+17864468	P48598	0.0443941193584534	0.87	eukaryotic initiation factor 4E, isoform B
+17865831	M9ND27	-0.0922585078519885	0.7	turandot M, isoform A
+17865831	Q9VMR8	-0.0922585078519885	0.7	turandot M, isoform A
+329458961	I6LTT5	-0.102569733640548	0.95	odorant receptor 35a [Drosophila melanogaster]
+17933672	P18432	0.073730388533372	0.63	myosin light chain 2, isoform A
+386767824	A0A0B4K859	0.103081400319083	0.57	CG8771, isoform C [Drosophila melanogaster]
+17933708	Q9V3A8	0.0540398397128891	0.71	ergic53, isoform A
+17944461	Q8SZM6	-0.0660891904577725	0.6	RH03361p
+17945503	Q8SZ19	0.0160004786937152	0.83	RE23388p
+8799	P16163	0.0835233555622835	0.72	urate oxidase [Drosophila melanogaster]
+157166	P33270	0.0840642647884745	0.72	cytochrome P-450 [Drosophila melanogaster]
+17946601	Q8SY88	0.00628626284743114	0.85	RH23043p
+17975545	B6IDW7	-0.092480916016964	0.45	actin 88F
+18447513	Q8SXY3	0.0690416444296514	0.81	RE62710p
+18543319	Q9W4P5	-0.034215715337913	0.8	vacuolar H[+] ATPase subunit AC39-1
+6572149	Q9U1I5	-0.087601684770495	0.73	serine protease inhibitor (serpin-4) [Drosophila melanogaster]
+18858119	Q9W3Y3	0.0916304754655683	0.87	CG3226
+17136284	P10105	-0.0789170572242214	0.72	labial, isoform A [Drosophila melanogaster]
+18858175	Q9W392	0.0198721467116149	0.96	CG7033
+18859631	A0A0B4LGS0	-0.00822050680496853	0.86	amylase proximal
+18859631	P08144	-0.00822050680496853	0.86	amylase proximal
+18860063	Q9V405	-0.112397824487964	0.12	regulatory particle triple-A ATPase 3
+18860083	Q9I7S8	-0.0368367681803714	0.67	ade5, isoform A
+18921139	Q9W3L4	0.133025418630783	0.36	CG2233, isoform A
+18921171	Q9VY87	-0.00705475753395046	0.97	cathepsin B1, isoform A
+19527547	Q27331	0.0387323944887146	0.86	RE30552p
+18859765	Q9VYT0	0.0781766515951817	0.52	CG15739, isoform A [Drosophila melanogaster]
+19920834	Q9VMC6	-0.0790715709911988	0.7	CG9547 [Drosophila melanogaster]
+19920836	Q9VMB6	-0.0901978089715781	0.85	equilibrative nucleoside transporter 2 [Drosophila melanogaster]
+19528409	Q8SXK8	0.0388192488905282	0.94	RE11224p
+19920594	Q9VQF7	0.0400774393753351	0.76	CG9894, isoform B
+19920676	Q9Y119	0.0286400480439013	0.89	Trehalose-6-phosphate synthase 1
+19920794	Q9VMI3	0.0517013069866212	0.72	CG9140
+19921326	Q9V3Y7	-0.0207585601667973	0.91	CG15293
+21357465	Q9VW19	0.0845713333773717	0.71	CG9372 [Drosophila melanogaster]
+21358227	Q9VAM6	0.0752881273042372	0.59	CG1458 [Drosophila melanogaster]
+21483482	Q8MR05	-0.0877045999506771	0.66	LD48009p [Drosophila melanogaster]
+19921566	Q9VIQ8	-0.0188590272513159	0.89	cytochrome c oxidase subunit IV, isoform A
+24583743	Q9VKE7	0.0862557333504191	0.92	CG14933, isoform A [Drosophila melanogaster]
+24586297	Q7JWD3	0.0892673380970873	0.73	CG1598 [Drosophila melanogaster]
+19921864	Q9V521	-0.0920605529887678	0.71	prophenoloxidase 45
+19921944	Q7KN97	-0.0773489102862526	0.3	CG1516, isoform E
+24641198	B5RIS4	0.0843162859334753	0.61	GTP-binding protein [Drosophila melanogaster]
+24641198	Q9U5L1	0.0843162859334753	0.61	GTP-binding protein [Drosophila melanogaster]
+19922206	Q7K2G1	-0.0630786826233802	0.91	CG13349, isoform A
+24647605	Q9VEN3	-0.0855180711860571	0.7	germinal centre kinase III [Drosophila melanogaster]
+19922364	Q7KN90	0.0400980686075584	0.73	Cysteinyl-tRNA synthetase
+19922458	E2QCG7	0.0693737030406619	0.66	eIF3-S9, isoform B
+19922458	Q0E940	0.0693737030406619	0.66	eIF3-S9, isoform B
+24655662	A1ZBK7	0.0813675508519896	0.79	crammer [Drosophila melanogaster]
+19922556	Q7K3D4	-0.0378020327123844	0.9	CG5482
+20129257	Q9VMI5	0.0597062461242676	0.82	CG9135, isoform A
+20129309	Q9VM18	0.0107264065930583	0.99	CG5177, isoform A
+41617048	NA	0.085729874025884	0.73	TPA_inf: HDC06110 [Drosophila melanogaster]
+20129315	Q9VM14	0.0711123021189504	0.67	CG5261, isoform B
+45550736	Q9VGS3	-0.0861792230803442	0.94	succinate dehydrogenase C, isoform A [Drosophila melanogaster]
+85725182	NA	-0.0870451046405656	0.89	CG4174, isoform C [Drosophila melanogaster]
+85726431	Q4V619	-0.0785334025466896	0.84	CG13163 [Drosophila melanogaster]
+219990721	B8A3Z5	-0.0833283835988961	0.71	MIP02464p [Drosophila melanogaster]
+20129775	Q0E9F9	0.0304448703819131	0.8	CG2915, isoform A
+20129971	Q7JR58	-0.11073109491999	0.56	CG6543, isoform A
+281363229	NA	-0.0841969663232531	0.54	no extended memory, isoform F [Drosophila melanogaster]
+20130025	Q7K569	-0.0870405684415617	0.56	glycerophosphate oxidase-1, isoform C
+20130199	Q9W2M4	0.00774395332700905	0.92	CG10527
+20130249	Q9W227	-0.00996111005020147	0.96	CG2852
+158214	P04388	-0.0766212816029125	0.94	Dras2 protein [Drosophila melanogaster]
+20130415	Q9W0J9	-0.126072942973531	0.45	CG9119
+1498252	P98081	-0.0773333584452653	0.98	tyrosine kinase substrate [Drosophila melanogaster]
+20151901	Q8T3L2	-0.107423582981227	0.5	SD01527p
+2625056	O17444	-0.0769027944499067	0.64	vesicular acetylcholine transporter [Drosophila melanogaster]
+2950374	O46036	-0.0774045036856066	0.83	C-terminal binding protein [Drosophila melanogaster]
+20428641	Q9V3U6	0.0341482224118456	0.83	26-29kD-proteinase
+20908094	NA	0.115477217419936	0.74	TPA_exp: TITIN
+21355325	Q9XZ32	0.113553507158572	0.62	CG10254, isoform A
+21355439	Q9VCK6	-0.0829485712016005	0.61	CG10184
+21355577	Q95U34	0.0326661889203221	0.72	galactokinase, isoform B
+13936316	Q8IN44	-0.0695373787477428	0.92	Turandot A [Drosophila melanogaster]
+21355629	C0MJU2	0.0104669990510689	0.93	proteasome beta3 subunit
+21355629	Q9XYN7	0.0104669990510689	0.93	proteasome beta3 subunit
+21355683	Q9VSP9	-0.0303736490435189	0.96	CG5804
+21355917	Q9VZI1	0.0395961743457948	0.79	Chd64, isoform B
+21356081	Q9VN86	-0.0698648068745716	0.65	CG2604, isoform A
+21356183	Q9I7J0	0.0852023225368853	0.77	CG5023, isoform A
+21356361	Q9VGW7	-0.127235188296108	0.84	arginine methyltransferase 1
+21356377	Q9VDT1	-0.0719045545737237	0.65	Arc42
+21356539	Q9VGP4	-0.120602249597803	0.17	Ranbp9
+17864298	D2NUK9	0.0711610289212389	0.79	hoi-polloi, isoform A [Drosophila melanogaster]
+17864298	Q9U3Z7	0.0711610289212389	0.79	hoi-polloi, isoform A [Drosophila melanogaster]
+21356737	Q9VBP6	-0.0466932354480415	0.67	succinic semialdehyde dehydrogenase, isoform A
+17933694	Q7K4Q9	-0.0721497857558354	0.73	HMG coenzyme A synthase, isoform A [Drosophila melanogaster]
+21356859	Q9VW54	-0.124328135002202	0.15	regulatory particle non-ATPase 1
+19921920	B5RJ76	0.0736855481330175	0.71	updo, isoform A [Drosophila melanogaster]
+19921920	Q9V595	0.0736855481330175	0.71	updo, isoform A [Drosophila melanogaster]
+21357069	Q9VG82	-0.0418201756946271	0.94	Cyp9f2
+19922526	Q7KK90	0.0801703486839834	0.5	glutathione S transferase E1 [Drosophila melanogaster]
+21357605	Q7KMM4	0.112383416556025	0.49	CG14476, isoform B
+21355187	Q9VCC0	-0.082462160191973	0.82	CHORD [Drosophila melanogaster]
+21357721	Q9VB05	0.034215715337913	0.95	ALG-2 interacting protein X
+21357739	Q9VAY2	-0.0431202163698201	0.72	glycoprotein 93
+21357875	Q9VFF0	-0.119909463735197	0.44	CG3731, isoform B
+21357927	Q9VEY5	-0.103386789238852	0.56	CG5903
+21358201	Q9VFQ9	-0.108041673879438	0.46	dipeptidase B, isoform A
+21358499	Q9VVL7	-0.0480471744071088	0.66	CG7430, isoform A
+24586597	A1Z7F2	0.070516780079377	0.7	maltase A7 [Drosophila melanogaster]
+21406656	Q24251	0.0569023912344769	0.91	RH59211p
+24647182	Q9VF56	0.0646656516959445	0.56	CG5205 [Drosophila melanogaster]
+24649293	P51023	0.073657041725309	0.63	pointed, isoform D [Drosophila melanogaster]
+21483306	Q8MR56	0.103201990748684	0.77	GH18178p
+24653025	A1Z8Z3	-0.0717906830680101	0.81	cuticular protein 49Ag [Drosophila melanogaster]
+24658920	Q9VRS0	-0.0754522284294654	0.67	alpha Karyopherin-4 [Drosophila melanogaster]
+21483324	A1ZAX1	-0.0136104315186531	0.98	GH21728p
+21483368	Q24046	0.0643346417521238	0.73	LD02379p
+24762736	Q8MMD2	-0.0798533076892147	0.81	epidermal growth factor receptor pathway substrate clone 15, isoform B [Drosophila melanogaster]
+28572062	Q961Q8	-0.0740284182310579	0.99	CG10562 [Drosophila melanogaster]
+28573189	Q95U30	-0.0771996319978654	0.8	alpha-Esterase-5, isoform A [Drosophila melanogaster]
+21686985	Q7K0B6	-0.0498485494505615	0.95	glutathione S transferase T1
+22026816	Q9U915	0.00761318410987527	0.93	adenylate kinase-2
+24580914	P15007	-0.108934371553164	0.19	enolase, isoform B
+24581010	A4UZZ4	-0.0813001021018482	0.53	glycogen phosphorylase, isoform A
+24581010	Q9XTL9	-0.0813001021018482	0.53	glycogen phosphorylase, isoform A
+24581345	Q9VQL6	-0.118644496498619	0.57	v(2)k05816, isoform A
+24581952	Q27268	0.0138057995250304	0.77	helicase at 25E, isoform A
+24582196	Q9VMF0	0.126661964102508	0.58	CG9498
+24583049	Q9VLB7	-0.0855180711860571	0.55	GDP dissociation inhibitor, isoform A
+108743771	Q1EBY4	0.0787119760140408	0.64	IP15231p [Drosophila melanogaster]
+116812081	Q9VLP9	-0.0687127500840142	0.96	CG7840 [Drosophila melanogaster]
+24583150	Q9VL78	-0.0935741153121975	0.49	FK506-binding protein FKBP59
+24583150	X2J5E8	-0.0935741153121975	0.49	FK506-binding protein FKBP59
+24583343	Q9VKZ8	-0.0687127500840142	0.6	CG5384, isoform A
+161084440	Q9VVC3	-0.082462160191973	0.76	cuticular protein 73D [Drosophila melanogaster]
+221458445	Q9VD14	0.0726374991078563	0.76	CG13850, isoform A [Drosophila melanogaster]
+256599230	C8AXY2	0.0615752791209535	0.7	JHEH1 [Drosophila melanogaster]
+281361403	Q95RX5	0.0759381305397343	0.64	CG11984, isoform D [Drosophila melanogaster]
+24583414	Q9VKW5	-0.0592392033746761	0.57	CG5355
+24583992	M9PD18	0.0532420212769795	0.81	vacuolar H[+] ATPase subunit 68-1, isoform A
+24583992	P48602	0.0532420212769795	0.81	vacuolar H[+] ATPase subunit 68-1, isoform A
+24584673	Q9V3J1	0.0147970019280805	0.86	vacuolar H[+]-ATPase SFD subunit, isoform B
+385454	Q08473	-0.0535155093270017	0.71	SqdA [Drosophila melanogaster]
+1002909	Q10714	-0.0582986405646671	0.91	putative metalloprotease; Method: conceptual translation supplied by author [Drosophila melanogaster]
+7799409	C7DZL4	-0.0612001564367374	0.99	NADH dehydrogenase subunit 5 [Drosophila melanogaster]
+16648108	Q95T90	-0.0463929054844511	0.76	GH12222p [Drosophila melanogaster]
+17136902	P12370	-0.0564780335002542	0.72	cAMP-dependent protein kinase 1, isoform D [Drosophila melanogaster]
+24584810	NA	-0.123382415505282	0.34	cytoplasmic linker protein 190, isoform C
+24584835	Q9VJD4	0.00302135197523691	0.81	small glutamine-rich tetratricopeptide containing protein, isoform A
+24585531	Q9VII1	-0.0695808688952407	0.68	CG9336, isoform A
+24585660	Q9VIC9	0.0749847150250711	0.64	CG8665
+17933556	P34082	-0.0608822421470224	0.83	fasciclin 2, isoform A [Drosophila melanogaster]
+24585673	P84051	0.0149503414659716	0.91	histone H2A
+24585803	A0A0B4LES3	-0.0136965747802391	0.87	CG3107, isoform A
+24585803	Q9V9E3	-0.0136965747802391	0.87	CG3107, isoform A
+24586460	Q7JV23	-0.0331668639351993	0.71	Acetyl-CoA carboxylase, isoform B
+19921094	Q95TN4	-0.0552295207203922	0.96	CG7456 [Drosophila melanogaster]
+19921772	Q7K3W2	-0.0590275756520487	0.77	CG8728 [Drosophila melanogaster]
+24638766	Q05825	0.0389189892923024	0.75	ATP synthase-beta, isoform A
+24638766	X2JH42	0.0389189892923024	0.75	ATP synthase-beta, isoform A
+24638876	Q7KW39	-0.0913227849174671	0.51	CG17896, isoform B
+20129425	Q9VL01	-0.0553885698665322	0.78	CG5390 [Drosophila melanogaster]
+20130317	Q9W1I7	0.0576324633211035	0.66	CG5554 [Drosophila melanogaster]
+21355319	Q9VRJ4	0.0505887097128979	0.91	CG10672 [Drosophila melanogaster]
+24640005	Q9W457	-0.038553240769393	0.69	CG3011, isoform A
+24640124	Q9W401	0.0352676349722807	0.65	knockdown, isoform B
+24640177	Q9W3X6	-0.0689473537174914	0.84	lethal (1) G0255, isoform A
+22024229	Q9W2K4	-0.0551536616634319	0.85	CG4266, isoform A [Drosophila melanogaster]
+24582462	Q9VM33	-0.051838931519618	0.93	iconoclast [Drosophila melanogaster]
+24640551	NA	-0.126830022235483	0.47	thioredoxin reductase-1, isoform B
+24640557	A4V449	0.0840642647884745	0.2	NADH:ubiquinone reductase 75kD subunit precursor, isoform A
+24640557	Q94511	0.0840642647884745	0.2	NADH:ubiquinone reductase 75kD subunit precursor, isoform A
+24640588	Q9W3F6	-0.0102683354538271	0.89	CG1440, isoform A
+24640659	Q9W3C3	-0.117740268928505	0.55	CG2004, isoform A
+24640851	Q9W327	0.0306316186536633	0.8	Lysyl-tRNA synthetase, isoform B
+24658804	Q9W1X5	-0.0526623325452206	0.89	nahoda, isoform A [Drosophila melanogaster]
+24640873	E6PBV6	-0.109877617772373	0.68	CG1354, isoform A
+24640873	Q8SWU7	-0.109877617772373	0.68	CG1354, isoform A
+24666674	Q8SXQ1	-0.0617761975866899	0.86	CG9629 [Drosophila melanogaster]
+24640905	Q9W303	-0.0210616155278296	0.79	imaginal disc growth factor 4, isoform A
+24640905	X2JEB6	-0.0210616155278296	0.79	imaginal disc growth factor 4, isoform A
+24642430	Q9VXI6	-0.00617857492912426	0.89	CG3560
+24642436	Q27294	-0.0132038917723709	0.85	cabeza, isoform B
+24642547	M9NE01	-0.0678153842275715	0.68	protein phosphatase 2B at 14D, isoform A
+24642547	Q27889	-0.0678153842275715	0.68	protein phosphatase 2B at 14D, isoform A
+27820099	O46084	0.0518389315196181	0.73	GH02880p, partial [Drosophila melanogaster]
+28573965	Q961L4	-0.0615877982228316	0.49	CG1600, isoform C [Drosophila melanogaster]
+28574998	Q95RU0	-0.0526853959864205	0.65	cueball [Drosophila melanogaster]
+24642955	NA	-0.0414199273799808	0.67	wings up A, isoform D
+24642961	E4NKM1	-0.0350469470992008	0.53	wings up A, isoform A
+48596237	Q6KC89	0.0602106175255595	0.64	gag protein [Drosophila melanogaster]
+78706884	Q9VKH9	0.0588230535402793	0.68	CENP-ana [Drosophila melanogaster]
+161077961	Q9VWJ1	-0.0539517379741466	0.98	CG8034, isoform A [Drosophila melanogaster]
+24642963	NA	-0.0259952085329446	0.8	wings up A, isoform G
+24643010	Q9VWV6	-0.0894981508391025	0.53	transferrin 1
+24643268	Q9VWH4	0.0059248339571055	0.95	lethal (1) G0156, isoform A
+281365642	Q9VZE2	0.0590266658659555	0.77	CG15012 [Drosophila melanogaster]
+24643988	NA	0	0.98	eIF3-S10
+24645208	Q9VHJ8	-0.0995356735509144	0.58	skpA associated protein, isoform A
+281366803	Q8SY69	-0.0575333559843307	0.66	CG41128 [Drosophila melanogaster]
+24645663	Q8INM3	0.0339473319233375	0.82	slender lobes, isoform B
+442615889	M9PGV5	0.0579804203150994	0.84	myosin 10A, isoform E [Drosophila melanogaster]
+442634302	M9PG40	-0.0579473492092796	0.54	CG40045, isoform D [Drosophila melanogaster]
+24645909	Q9VGQ1	0.0291463456595165	0.92	CG5214
+24646114	Q8SXC2	-0.0644887264517137	0.73	CG6950, isoform B
+24646386	Q9VG31	-0.127550049720511	0.43	malic enzyme, isoform B
+24647008	Q9VFC2	-0.0235547279788968	0.67	serpin 88Ea, isoform A
+24647073	P06754	0.0184726600714787	0.75	tropomyosin 1, isoform M
+2708648	O44425	0.0412226627265129	0.58	antigen 5-related protein [Drosophila melanogaster]
+24647095	A0A0B4KHJ9	-0.031609606516822	1	tropomyosin 2, isoform B
+24647199	Q9VF51	-0.039801008057975	0.68	CG6045
+24647502	P10674	-0.0827885987137615	0.57	fasciclin 1, isoform B
+16768530	Q95S66	0.043626932400258	0.87	GM07803p [Drosophila melanogaster]
+17136454	Q7JPB9	-0.0417102518848372	0.75	seizure, isoform A [Drosophila melanogaster]
+24647570	Q9VEP6	0.0991446462979746	0.66	CG3590
+17137802	Q94534	-0.036246566210343	0.92	beaten path Ia [Drosophila melanogaster]
+17647337	Q9VSU6	-0.0513468800002204	0.82	dihydropteridine reductase, isoform A [Drosophila melanogaster]
+24647881	Q9VEB1	-0.125981653854715	0.36	malate dehydrogenase 2
+24647885	C6TP70	-0.0747525726210263	0.42	14-3-3epsilon, isoform A
+24647885	P92177	-0.0747525726210263	0.42	14-3-3epsilon, isoform A
+24648576	H9ZJM5	0.124239301835652	0.24	Na pump alpha subunit, isoform A
+24648576	P13607	0.124239301835652	0.24	Na pump alpha subunit, isoform A
+17738007	O16158	0.0358321058550294	0.98	sarcoplasmic calcium-binding protein 2 [Drosophila melanogaster]
+24648872	Q9VD58	-0.020391788831178	0.97	CG6439, isoform A
+24649101	Q9VCW6	-0.0953069600957274	0.53	Glutamate-cysteine ligase modifier subunit, isoform A
+24649832	Q9VC18	0.0282890444314237	0.88	CG11089, isoform A
+18079279	P48592	0.0398127016300894	0.91	ribonucleoside diphosphate reductase small subunit [Drosophila melanogaster]
+18860045	A4V4A1	-0.0497530351970996	0.72	Klp10A, isoform A [Drosophila melanogaster]
+18860045	Q960Z0	-0.0497530351970996	0.72	Klp10A, isoform A [Drosophila melanogaster]
+24650465	Q9VB96	0.067114195858537	0.64	CG31075, isoform A
+24651364	Q9VA83	-0.0159415438690215	0.94	ferritin 2 light chain homologue, isoform A
+24652434	A1Z892	-0.0502343025201364	0.74	peroxiredoxin 2540-1
+24653003	A1Z8Y3	-0.0201778819376302	0.82	cuticular protein 49Ab
+24654347	A4UZL5	-0.0205735399625183	0.92	glutathione S transferase S1, isoform A
+24654347	P41043	-0.0205735399625183	0.92	glutathione S transferase S1, isoform A
+24655003	Q7KN75	-0.0909736600474904	0.38	Dodeca-satellite-binding protein 1, isoform C
+24655082	Q7JXB5	-0.0616923224062419	0.83	CG10924, isoform A
+24655311	A1ZBE9	0.131244533278253	0.42	CG15100
+24656494	Q9VZU4	0.0784923083192993	0.7	CG12079
+22024280	Q9W133	0.0433424826823705	0.7	CG3608 [Drosophila melanogaster]
+24656772	Q8IRD3	0.109347396188361	0.96	PHGPx, isoform D
+24658292	Q9VRL0	-0.0347654181606766	0.75	CG4769, isoform A
+24642523	Q9VXG4	0.0484860779739921	0.87	annexin B11, isoform B [Drosophila melanogaster]
+24659598	Q967S0	-0.0381351288867711	0.64	phosphoribosylamidotransferase 2, isoform B
+24643838	Q9VMY5	-0.0386804681640599	0.98	CG12582, isoform A [Drosophila melanogaster]
+24644870	Q9V3Z2	0.0495237837939192	0.93	serine protease 7, isoform A [Drosophila melanogaster]
+24644968	Q9VHW0	-0.0527874143594352	0.86	CG7910 [Drosophila melanogaster]
+24659809	A0A1B2AIW6	0.00571365119439364	0.99	Diazepam-binding inhibitor, isoform A
+24659809	P42281	0.00571365119439364	0.99	Diazepam-binding inhibitor, isoform A
+24647665	Q9VEK7	0.0368367681803715	1	cellular repressor of E1A-stimulated genes, isoform A [Drosophila melanogaster]
+24648236	NA	0.0326046654319277	0.8	CG31219, isoform A [Drosophila melanogaster]
+24661120	A4V1N9	-0.0939257052083307	0.51	paramyosin, isoform C
+24664922	Q9VUW2	-0.0455146592523686	0.89	CG17029, isoform A [Drosophila melanogaster]
+24661336	NA	-0.0759488532332986	0.64	arginine kinase, isoform A
+24661348	A8JNP1	-0.0715532610250339	0.65	arginine kinase, isoform D
+24661884	Q94516	0.0333585969464309	0.72	ATP synthase, subunit b
+25012464	Q8IGV1	0.0399356973111766	0.84	RE24907p, partial [Drosophila melanogaster]
+28574010	Q8STA5	0.0433274316641007	0.99	CG2862, isoform A [Drosophila melanogaster]
+24662946	Q9VTP4	0.0145728010872726	0.8	ribosomal protein L10Ab, isoform A
+24665395	Q9VV75	0.0132968226134579	0.89	CG4169, isoform A
+24665414	Q9I7R5	0.0513991525066441	0.86	CG32165, isoform A
+45551515	Q9VRJ2	0.0423001990624538	0.75	CG10671, isoform B [Drosophila melanogaster]
+24666913	P29829	0.0542430447839872	0.81	G protein beta-subunit 76C
+24667139	Q9VW68	0.0634790568244001	0.65	CG7433, isoform A
+24667510	Q9VPF3	-0.0994086142315414	0.8	CG11796, isoform A
+78706698	Q6NL44	-0.040893947042802	0.83	CG33722, isoform C [Drosophila melanogaster]
+119638079	A1YK07	0.0452760573035888	0.96	Nup75 [Drosophila melanogaster]
+24668389	B7Z098	0.113210610447991	0.6	CG7414, isoform A
+24668389	Q9VNX8	0.113210610447991	0.6	CG7414, isoform A
+161076752	NA	-0.0402870035499582	0.81	uninflatable, isoform A [Drosophila melanogaster]
+24668413	Q9VNX4	0.096215315259303	0.49	delta-1-Pyrroline-5-carboxylate dehydrogenase 1, isoform A
+24762792	H0RNI8	0.0443941193584534	0.78	CG3760, isoform B
+24762792	Q8MMC4	0.0443941193584534	0.78	CG3760, isoform B
+358030375	H0RN87	0.0445865132398896	0.96	FI16819p1 [Drosophila melanogaster]
+409168327	K4M4D5	0.0459930979000737	0.76	AT25382p1 [Drosophila melanogaster]
+25009742	Q8IHE3	-0.0848028410359856	0.65	AT09326p
+25009816	Q8IHB4	0.0480622407741343	0.92	AT16867p, partial
+25012295	NA	0.0567690959324975	0.62	LD35838p
+290247	Q24372	-0.0284986064868285	0.95	lachesin [Drosophila melanogaster]
+25012383	Q8IGX3	-0.0424352663203966	0.73	RE10625p
+1794137	P91891	-0.0316274307924588	0.86	DMO25 [Drosophila melanogaster]
+6006703	Q9U8D0	-0.0338748656380228	0.9	protoporphyrinogen oxidase [Drosophila melanogaster]
+25012713	Q8IGN0	0.0884089742217654	0.62	RE59368p
+8896016	Q24008	-0.0347654181606766	0.93	INAD [Drosophila melanogaster]
+9246969	Q9NBK7	0.0259952085329444	0.82	Toll-4 [Drosophila melanogaster]
+25013040	Q8IGC5	-0.0965269236785762	0.52	RH56418p
+27819773	NA	-0.0561051018851504	0.62	RH07636p
+27819944	Q7K206	-0.102810805583775	0.71	LD27185p, partial
+17736985	Q7KY01	-0.0319000844662871	0.92	aquaporin, isoform A [Drosophila melanogaster]
+28416365	Q86NN5	0.106177189556029	0.57	GM13757p
+17864540	M9PH10	-0.0327899351176695	0.75	comatose, isoform A [Drosophila melanogaster]
+17864540	P46461	-0.0327899351176695	0.75	comatose, isoform A [Drosophila melanogaster]
+18447150	Q8T8S4	0.0295442756140154	0.63	AT31109p [Drosophila melanogaster]
+28571493	Q9VN13	0.1045889012772	0.61	CG11739, isoform C
+18859849	Q9VYI6	-0.0327155751433783	0.95	CG32649 [Drosophila melanogaster]
+28573732	P20240	0.0276835586857143	0.89	otefin
+28574202	Q9VJQ3	-0.04517998330412	0.79	yellow-c
+19920760	Q9VMQ5	0.0259952085329444	0.9	CG7277 [Drosophila melanogaster]
+28574296	Q94522	-0.049117766564691	0.81	succinyl coenzyme A synthetase alpha subunit, isoform A
+28574733	Q9VQR8	-0.0160301098189489	0.91	CG33123
+29423264	NA	-0.0920291384923456	0.71	extracellular matrix protein papilin 3
+33589378	Q7YU50	-0.0718929184817857	0.72	RE51676p
+38047649	Q6XIX5	-0.0661902796944665	0.85	similar to Drosophila melanogaster Gapdh1, partial [Drosophila yakuba]
+21356111	Q9VC06	-0.0312455100109921	0.51	CG11771 [Drosophila melanogaster]
+38047755	Q6XIS2	0.036711778356521	0.92	similar to Drosophila melanogaster PyK, partial [Drosophila yakuba]
+21358069	Q9VP29	-0.0264233767603974	0.75	CG7519, isoform A [Drosophila melanogaster]
+40215669	Q7JUX5	-0.0258400049352595	0.81	RE13549p
+40882479	Q6NND1	-0.0266117302473197	0.83	RE68639p
+45549185	B3DMP7	-0.0705614974770058	0.53	Tal
+45549185	Q9W1G0	-0.0705614974770058	0.53	Tal
+45549226	NA	-0.102447268970818	0.39	glutamate dehydrogenase, isoform A
+45549352	Q9W391	-0.0308499646612552	0.78	CG7766, isoform A
+45550423	H8F4T6	-0.0636586372223178	0.67	CG16935
+45550423	Q9V6U9	-0.0636586372223178	0.67	CG16935
+24643390	Q9VWD0	0.0201215959207734	0.79	parvin [Drosophila melanogaster]
+24644932	A0A0C5K8A0	-0.0348658529159045	0.73	lodestar [Drosophila melanogaster]
+24644932	P34739	-0.0348658529159045	0.73	lodestar [Drosophila melanogaster]
+45550476	Q9W2J5	-0.059772220517369	0.74	glycogenin, isoform A
+45550701	Q9VI16	-0.0771178494282218	0.58	CG1041, isoform A
+45550715	Q9VHN7	-0.0696341878370524	0.45	CG8036, isoform B
+24647164	Q8SWR8	0.0226014289371326	0.98	Ataxin-2, isoform A [Drosophila melanogaster]
+45551893	D5SHR2	0.0395283641866373	0.76	CG6904, isoform A
+45551893	Q9VFC8	0.0395283641866373	0.76	CG6904, isoform A
+24649427	Q9VCH1	-0.0265534190413165	0.94	eukaryotic translation initiation factor 4G2 [Drosophila melanogaster]
+45551906	H1UUJ7	-0.0707730744133809	0.78	tropomyosin 2, isoform C
+45552169	E8NH12	-0.049117766564691	0.7	alpha-Adaptin, isoform B
+45552169	P91926	-0.049117766564691	0.7	alpha-Adaptin, isoform B
+45553475	NA	-0.0947404899704098	0.43	glutamate dehydrogenase, isoform F
+45554813	NA	-0.0414544271717178	0.88	discs large 1, isoform B
+24667933	Q9V400	-0.0281968918306521	0.8	integrin linked kinase, isoform A [Drosophila melanogaster]
+45555120	P98163	0.07162967698103	0.54	yolkless, isoform B
+45555998	NA	0.0669310081189868	0.5	CG32549, isoform A
+45825129	P29613	-0.128324096975539	0.37	AT02695p
+51092037	Q6AWP5	-0.00910220710725244	0.89	RE65032p
+45550666	Q0E8C8	-0.02472189623786	0.81	serpin 77Ba, isoform A [Drosophila melanogaster]
+45551974	Q8SY00	-0.0233813839753429	0.94	CG31102, isoform A [Drosophila melanogaster]
+62471741	Q7YTZ4	-0.1263164497814	0.86	CG10737, isoform E
+116806396	A0APQ0	0.0289126919152389	0.82	CG10623 [Drosophila melanogaster]
+221329987	A0A126GUP6	0.021996196050406	0.62	melanization protease 1, isoform C [Drosophila melanogaster]
+221330870	B7Z0B9	0.0253973977849919	0.92	CG10625, isoform H [Drosophila melanogaster]
+62862484	Q8MSI2	-0.111326901190862	0.5	sarcoplasmic calcium-binding protein 1, isoform A
+281365244	NA	0.0384741478146356	0.8	CG40341 [Drosophila melanogaster]
+320544437	A8WHB7	0.0212477337040393	0.85	CG34049 [Drosophila melanogaster]
+68051705	Q4QPQ0	0.0200532269031302	0.79	GH22814p
+78706970	Q4ABD8	-0.0659975587742401	0.81	histone H1
+78707176	A1Z6V5	-0.0242475462466774	0.83	serpin 43Ab
+85724872	Q9VPX7	0.105228334340069	0.72	capulet, isoform A
+111145081	P07764	-0.106199403831925	0.49	aldolase
+161076327	A8DZ29	-0.0637900122659718	0.77	eukaryotic translation initiation factor 4G, isoform B
+161076367	A1Z713	0.0210616155278296	0.81	vacuolar protein sorting 13, isoform A
+161076460	A8DY81	-0.0409717810563062	0.79	Not1, isoform C
+161077242	A8DYI6	-0.0706355425930604	0.51	lethal (2) 03709, isoform E
+161077703	P02844	-0.112741212350182	0.47	yolk protein 2
+161077703	X2JB25	-0.112741212350182	0.47	yolk protein 2
+162944920	Q07171	-0.0980135755997505	0.47	RE15339p
+162944958	A9UNE3	0.0958600154075162	0.68	TA01584p
+194896432	B3NXV3	0.0597062461242676	0.91	GG17658 [Drosophila erecta]
+195334973	B4HT63	-0.0987781544781735	0.75	GM21711 [Drosophila sechellia]
+195341135	B4HZ69	-0.13245029602365	0.58	GM12771 [Drosophila sechellia]
+4877972	Q9VIW3	0.00582907880219745	0.91	RanGAP [Drosophila melanogaster]
+201065971	B5RJ56	-0.125530882083859	0.66	FI07351p
+221330176	Q86PD3	-0.0832783950317877	0.63	CG30022
+12053857	Q9VF08	-0.00871663959192421	0.79	hypothetical protein [Drosophila melanogaster]
+14189952	Q968S4	-0.00914460006606553	0.97	putative thrombospondin [Drosophila melanogaster]
+221379660	Q7KSF4	-0.0492996159422679	0.89	cheerio, isoform G
+221379859	Q9VE79	-0.129283016944966	0.61	CG14309
+17647589	M9NEV0	-0.00921853002937866	0.66	little imaginal discs, isoform A [Drosophila melanogaster]
+17647589	Q9VMJ7	-0.00921853002937866	0.66	little imaginal discs, isoform A [Drosophila melanogaster]
+17647617	Q9XYU0	0.0272214687350242	0.99	minichromosome maintenance 7 [Drosophila melanogaster]
+221458344	A0A0B4KHL7	-0.0142138592197008	0.92	CG6455, isoform C
+221458344	P91928	-0.0142138592197008	0.92	CG6455, isoform C
+221468704	B7YZQ7	-0.119909463735197	0.49	nucleosome remodeling factor - 38kD, isoform B
+221468704	O77460	-0.119909463735197	0.49	nucleosome remodeling factor - 38kD, isoform B
+17945565	Q8SZ03	0.0115879742752118	0.78	RE25729p [Drosophila melanogaster]
+255653084	C6TP14	-0.0981803939389034	0.53	RE74637p
+255708501	C6TP45	-0.0871691628695006	0.9	LD06931p
+18859701	Q9VXQ8	-0.0185421622037174	0.93	CG11679 [Drosophila melanogaster]
+262051029	D0IQD2	0.0242475462466772	0.84	RE10478p
+281359589	D1YSG8	-0.00313629480230107	0.95	Calcium/calmodulin-dependent protein kinase II, isoform J
+281360817	E1JJP0	-0.119415166944771	0.37	upheld, isoform H
+281360817	P19351	-0.119415166944771	0.37	upheld, isoform H
+19921570	Q9VIQ5	-0.00863843142734643	0.91	CG10680, isoform A [Drosophila melanogaster]
+19922194	Q7K188	0.0156391237775904	0.84	CG6329, isoform C [Drosophila melanogaster]
+281362164	E1JIR4	0.121410173173677	0.26	Na pump alpha subunit, isoform I
+281362709	Q8MST5	-0.0473057147783566	0.71	beta-Tubulin at 97EF, isoform B
+281362741	NA	-0.0491875496275317	0.85	papilin, isoform E
+281363473	Q7KN85	0.117836490293858	0.45	ATP citrate lyase, isoform D
+21357207	Q9VV41	0.0102324981504699	0.62	CG4933 [Drosophila melanogaster]
+21357701	Q9VGT3	0.012072832300575	0.81	Ugt86Da [Drosophila melanogaster]
+21358259	Q95T12	0.0208921038589336	0.96	flower, isoform A [Drosophila melanogaster]
+21358413	Q9VFM9	-0.0150543457222895	0.94	twinfilin [Drosophila melanogaster]
+21428558	Q7JVX3	-0.00753367268540755	0.86	LD41739p [Drosophila melanogaster]
+21430576	Q8MS45	0.0137801855683959	0.72	RE08455p [Drosophila melanogaster]
+281363477	E2QCF1	0.0957589828054307	0.52	ATP citrate lyase, isoform F
+281365929	A5XCL5	0.0550875601042087	0.7	UGP, isoform D
+281365931	E1JI91	0.0504784450277936	0.71	UGP, isoform E
+289063489	D3PFE8	-0.114016260291656	0.2	AT05101p
+315064917	O96794	-0.0183785293148545	0.95	aminopeptidase P
+320542051	M9MS55	0.11276793016195	0.28	CG32626, isoform H
+320542342	E8NH67	-0.066045334879185	0.9	CG9572, isoform B
+24641132	Q9VZ57	0.0146716014359515	0.88	CG1637, isoform A [Drosophila melanogaster]
+320544214	Q8MLU9	-0.0784413546026459	0.98	CG13492
+320544812	Q7KTG2	-0.0433925955133807	0.85	CG15828
+24645407	O62531	-0.021606456189375	0.84	AP-47 [Drosophila melanogaster]
+320545203	NA	0.0117771677763535	0.83	Jwa ortholog, partial
+320545855	M9MSL3	0.0305020883973439	0.75	Hsc70Cb, isoform G
+24647287	Q9VF12	0.0119726416660759	0.93	CG31291, isoform A [Drosophila melanogaster]
+24648628	Q9VDE4	0.0174514482670084	0.68	CG17282 [Drosophila melanogaster]
+320545982	M9MRX0	-0.0579596035299121	0.88	limpet, isoform J
+24652011	Q961H2	-0.017109124510014	0.7	CG30344 [Drosophila melanogaster]
+24652438	Q4Z8K6	-0.013483229363622	0.98	Ran-binding protein M, isoform A [Drosophila melanogaster]
+320546124	M9MS76	0.106041637410325	0.63	cAMP-dependent protein kinase R1, isoform V
+323301172	E8NH73	-0.0842689168976039	0.62	AT15809p
+24663131	Q95RE4	0.0181759259644455	0.9	ypsilon schachtel, isoform A [Drosophila melanogaster]
+328751763	F3YDB5	-0.0987781544781735	0.62	IP05604p
+24666141	Q9VVL5	0.00921040373247962	0.97	CG5567 [Drosophila melanogaster]
+375065958	H5V8B8	-0.111621147708482	0.35	MIP33436p1
+28574893	Q86BI3	-0.0108067549565829	0.87	Zinc-finger protein at 72D, isoform B [Drosophila melanogaster]
+378342877	H7BWR4	-0.127550049720511	0.43	malic enzyme
+385719252	I1WYH4	0.0223183794235947	0.85	RH19138p1
+152014915	A7KX19	-0.00961634091325356	0.8	signal peptide peptidase [Drosophila melanogaster]
+159153096	A9YK67	-0.0118741002882918	0.71	CG1885-PA [Drosophila melanogaster]
+386763419	H9XVM9	0.067114195858537	0.82	CG1674, isoform L
+161077698	Q9W2Z4	-0.00993987895814376	0.86	CG2990, isoform C [Drosophila melanogaster]
+221330907	Q9VRT4	0.0195401863956452	0.99	CG42269 [Drosophila melanogaster]
+386763692	NA	-0.0292645945051947	0.91	terribly reduced optic lobes, isoform AD
+221476138	B7YZX6	-0.0100168055480532	0.72	CG10600, isoform B [Drosophila melanogaster]
+260064127	C9QNY0	-0.0190248256817563	0.95	MIP14263p [Drosophila melanogaster]
+386764650	E4NKJ3	-0.0224373891197553	0.83	wings up A, isoform H
+320545637	M9MRQ6	0.00808234629785853	0.98	Sh3beta, isoform E [Drosophila melanogaster]
+386764652	M9NFC0	-0.020134557111702	0.83	wings up A, isoform I
+386764654	M9NH88	-0.0257630960650818	0.7	wings up A, isoform J
+386765448	A0A0B4K618	-0.0207585601667973	0.95	Fmr1, isoform G
+386766497	A0A0B4K7J2	0.102615066482886	0.61	nucleoporin 358, isoform B
+1695706	P91622	0	0.94	DmPdk [Drosophila melanogaster]
+6694274	Q7KJV6	0.00547513006615097	0.92	ubiquitin-like protein activating enzyme [Drosophila melanogaster]
+386771285	M9NFH8	0.110558375147698	0.34	CG9674, isoform F
+17647377	F3YDB2	0	0.9	eukaryotic initiation factor 2beta [Drosophila melanogaster]
+17647377	P41375	0	0.9	eukaryotic initiation factor 2beta [Drosophila melanogaster]
+418207522	K7XI11	0.0917792299164798	0.46	alpha tubulin 84B, partial
+418207538	K7WSB4	0.0323177202727285	0.84	alpha tubulin 84B, partial
+17945866	Q8SYR7	0.00593702500785211	0.94	RE39378p [Drosophila melanogaster]
+442615594	M9PHG2	-0.043164179267174	0.71	moesin, isoform M
+21356731	Q9VBQ5	0	0.87	CG5112 [Drosophila melanogaster]
+24580865	Q9VQ11	0	0.76	CG31928, isoform A [Drosophila melanogaster]
+24583291	Q9VL16	0.0049577197959675	0.97	CG5676 [Drosophila melanogaster]
+442621630	A0A0B4KI10	-0.00975896646232846	0.99	regulatory particle non-ATPase 2, isoform B
+442621874	A0A0B4KHW3	0	0.94	aralar1, isoform F
+442623993	A0A0B4KFT5	-0.0301428732226813	0.88	glutathione S transferase S1, isoform D
+442625607	M9PBV2	0.109389574293044	0.7	NTPase, isoform F
+28571554	Q8INT0	-0.00508887667279973	0.99	CG31493, isoform A [Drosophila melanogaster]
+77380131	Q3HKQ5	-2.59994240518308e-05	0.93	male accessory gland protein [Drosophila melanogaster]
+442627348	NA	0.0237975711821918	0.83	fatty acid (long chain) transport protein, isoform D
+442631647	M9PF91	-0.131789872555541	0.46	superoxide dismutase, isoform D
+508083071	R9S0M5	-0.03629612922299	0.86	FI20527p1
