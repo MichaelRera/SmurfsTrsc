@@ -1,6 +1,7 @@
 # SmurfsTrsc
 
 The repository contains the processed data and codes used for the following bioRxiv preprint <a href = "https://doi.org/10.1101/2022.11.22.517330"> Smurfness-based two-phase model of ageing helps deconvolve the ageing transcriptional signature</a>.
+<p>
 Raw RNAseq data are accessible through https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE219063
 Raw proteomics and metabolomics data are available at https://doi.org/10.1101/2022.11.22.517330
 <p> Authors : Flaminia Zane, Michael Rera
