@@ -114,6 +114,8 @@ data_var40 = data.frame(smurf = day_40_s_sd$var40s2, n_smurf = day_40_ns_sd$var4
 ```
 
 
+
+
 ```{plots_by_age r}
 
 ##plot and estimation
