@@ -11,7 +11,7 @@ data_plot_adf1 = read_xlsx("../data/qpcr_excel/qPCR_adf1.xlsx", sheet = 8)
 colnames(data_plot_adf1) = c("RU", "Av_2DDCT", "STDEV")
 data_plot_adf1$RU = factor(data_plot_adf1$RU, levels = as.character(data_plot_adf1$RU) )
 
-##barplot
+##barplot.
 ggplot(data_plot_adf1, aes(RU, Av_2DDCT)) + 
   geom_bar(stat = 'identity', fill = c("black", "brown4", "firebrick1","coral", "lightpink1"), alpha = 0.8) + 
   geom_errorbar(aes(ymin= Av_2DDCT - STDEV, ymax= Av_2DDCT + STDEV), width=0.1, position=position_dodge(.9)) +
