@@ -84,6 +84,11 @@ percentVar <- round(100 * attr(pca, "percentVar"))
 #visualize coordinates
 pca
 
+##to check for extra components
+# pca_extra = prcomp(assay(vst)) 
+# pca_extra2 = pca_extra$rotation %>%  as.data.frame() %>% mutate(condition = colData$condition, days = colData$days)
+# ggplot(pca_extra2, aes(PC3, PC4)) + geom_point(aes(col = condition, shape = as.character(days)), size = 6)
+
 ##modify the names for the pca, so that in the graph I do not repeat the information about the age and the condition
 names_samples_pca = substring(rownames(pca),4)
 names_samples_pca_final = sub("_", "-", names_samples_pca)

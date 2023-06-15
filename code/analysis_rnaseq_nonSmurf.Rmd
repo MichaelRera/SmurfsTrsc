@@ -250,7 +250,6 @@ kbl_en = kbl(df_enrich_table_cut, col.names = table_colnames, row.names = F) %>%
 
 
 
-
 ##Exploring the correlation over time of the genes in the non-Smurf
 
 Here we explore if a stronger signal can be identified when studiying an expression trend in non-Smurf with time, independently of the DESeq2 results. For that, we infer a linear model and test for statistically significance of the time coeffiencient. We filter on the genes presenting a r*2* > 0.5, with a focus on the genes not differentially expressed in the Smurfs. The code generates Fig. 6a and Table S9.
