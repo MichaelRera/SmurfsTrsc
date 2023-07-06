@@ -126,6 +126,9 @@ age_centroid = pca2 %>% select(-c( group, condition, name, names_graph)) %>% gro
 require(FactoMineR)
 ##generate the dataframe
 vst_df = vst %>% assay %>% as.data.frame()
+#print vst df for further analysis
+write.table(vst_df, "../data/vst_df.txt", quote = FALSE, sep ="\t", row.names = , col.names = TRUE)
+###
 df_hcpc = t(vst_df) %>% as.data.frame() %>%  mutate(age = colData$days, smurfness = colData$condition, time = colData$time)
 
 ##select the top genes

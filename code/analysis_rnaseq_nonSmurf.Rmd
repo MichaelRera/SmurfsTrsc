@@ -257,6 +257,7 @@ Here we explore if a stronger signal can be identified when studiying an express
 
 ```{exploring_correlation_time r}
 #use the vst data
+#vst_df = read.table("../data/vst_df.txt", header = TRUE)
 vst_df = vst %>% assay %>%as.data.frame()
 vst_for_lm = vst_df %>% rownames_to_column("flybase") %>%  gather(., value = 'expression', key = 'sample', -flybase) %>% 
   mutate(time = ifelse(grepl("20",.$sample), "20", 
@@ -344,6 +345,52 @@ ggsave("../figures/Fig6a_nonSmurf_lm.pdf", width = 9, height = 7)
 
 
 
+###perform GSEA analysis on all the genes and the estimated coefficients - without pvalue of r2 cutoff, to identify potential interesting trajectories.
+
+gene_list1 <- as.numeric(res_lm$slope)
+names(gene_list1) <- as.character(res_lm$gene)
+gene_list1 = gene_list1[!is.na(names(gene_list1))] %>% .[!duplicated(names(.))] %>% sort(., decreasing = TRUE)
+
+require(clusterProfiler)
+#run the analysis
+n = 10 #number of times repeating
+P = 100 #percentage for selection
+pval = 0.05 #threshold to apply
+gse_go1 = vector("list", n)
+organism = "org.Dm.eg.db"
+library(organism, character.only = TRUE) #library is already loaded
+set.seed(123)
+for (i in 1:length(gse_go1)) {
+  gse_go1[[i]] <- gseGO(geneList= gene_list1,
+                       ont ="BP", 
+                       keyType = "ENSEMBL", 
+                       nPerm = 15000, 
+                       minGSSize = 10, 
+                       maxGSSize = 600, 
+                       pvalueCutoff = 0.05, #change the significance level
+                       verbose = TRUE, 
+                       OrgDb = organism, 
+                       pAdjustMethod = "fdr") # %>% as.data.frame()
+}
+
+
+df_gse1 = lapply(gse_go1, function(x) as.data.frame(x))
+#extract the categories of interest
+categories1 = lapply(df_gse1, function(x) x$Description)
+filtering_vector1 = tibble(category = unlist(categories1)) %>% #unlist the list and making it a tibble
+  group_by(category) %>% 
+  summarise(count = n()) %>% #group by category and generate a new column counting how many times a category occurs
+  mutate(percentage_presence = count/n*100) %>% #adding a column with the persentage 
+  #arrange(desc(count)) %>% #adding this only if we want to visualize
+  filter(percentage_presence >= P)
+
+df_gse1[[1]]$Description %in% filtering_vector1$category 
+plot_gse = gse_go1[[1]]
+#pdf("../../Google Drive/PAPER_SMURF_TRANSCRIPTOME/temporary_lm/sign_smurf_lm.pdf", width = 16, height = 14)
+pdf("../../Google Drive/PAPER_SMURF_TRANSCRIPTOME/temporary_lm/gsea_on_all_genes_time_non_smurf.pdf", width = 16, height = 14)
+emapplot(plot_gse, showCategory = filtering_vector1$category, color = "NES", 
+         layout = "fr", cex_label_category = 0.1) + scale_color_gradient(low = "blue" , high = "red" )
+dev.off()
 
 
 ```
