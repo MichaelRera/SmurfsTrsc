@@ -48,10 +48,14 @@ results_df = results_df %>% rownames_to_column("info") %>%
   
 ###select the smurfness (k1)
 smurf_sign = results_df %>% filter(result_type == "smurfness") %>% filter(Pr...t.. < 0.05) #2549
+write.table(smurf_sign, 'smurf_sign_lm.txt', sep = '\t', quote = FALSE, row.names = FALSE, col.names = TRUE)
 ###select the time (k2)
 time_sign = results_df %>% filter(result_type == "time") %>% filter(Pr...t.. < 0.05) #2027
+write.table(time_sign, 'time_sign_lm.txt', sep = '\t', quote = FALSE, row.names = FALSE, col.names = TRUE)
+
 ##select the interaction (k3)
 interaction_sign = results_df %>% filter(result_type == "interaction") %>% filter(Pr...t.. < 0.05) #1569
+write.table(interaction_sign, 'interaction_sign_lm.txt', sep = '\t', quote = FALSE, row.names = FALSE, col.names = TRUE)
 
 
 ##show how they overlap if interested
